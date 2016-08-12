@@ -112,14 +112,14 @@
     //授权
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager requestAlwaysAuthorization];
-    NSLog(@"%@",self.locationinfo);
+    //NSLog(@"%@",self.locationinfo);
         // Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated{
     
     self.navigationController.navigationBar.hidden = YES;
-    NSLog(@"result1---%@",self.result1);
-    NSLog(@"result2---%@",self.result2);
+    //NSLog(@"result1---%@",self.result1);
+    //NSLog(@"result2---%@",self.result2);
     [super viewWillAppear:animated];
     //开始定位
     [self.locationManager startUpdatingLocation];
@@ -175,7 +175,7 @@
         
    imageview.image = [self.arr objectAtIndex:indexPath.row];
     ll.text = [array objectAtIndex:indexPath.row];
-    ll.textAlignment = UITextAlignmentCenter;
+    ll.textAlignment = NSTextAlignmentCenter;
     ll.font = [UIFont systemFontOfSize:16];
     ll.textColor =[UIColor colorWithHexString:@"483D8B"];
     cell.backgroundColor = [UIColor clearColor];
@@ -209,7 +209,7 @@
     
     UILabel *ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
     ll.text = [array objectAtIndex:indexPath.row];
-    ll.textAlignment = UITextAlignmentCenter;
+    ll.textAlignment = NSTextAlignmentCenter;
     ll.font = [UIFont systemFontOfSize:16];
     ll.textColor =[UIColor whiteColor];
     [cell.contentView addSubview:ll];
@@ -218,26 +218,38 @@
     flog =1;
     if (indexPath.row ==0) {
        // NSLog(@"跳到签到界面");
+        [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
+
         SignInViewController  *sign = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"sign"];
         
         [self.navigationController pushViewController:sign animated:YES];
+        [WarningBox warningBoxHide:YES andView:self.view];
+
         
     }else if (indexPath.row == 1) {
        // NSLog(@"跳到公告界面");
+        [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
+
         Gonggao_ViewController *ggvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"gonggao"];
         //[self presentViewController:ggvc animated:YES completion:nil];
 //        ggvc.studentId = self.studentId;
 //        ggvc.ip = self.ip;
+        
         [self.navigationController pushViewController:ggvc animated:YES];
+        [WarningBox warningBoxHide:YES andView:self.view];
+
 
         
     }
     else if(indexPath.row == 2){
        // NSLog(@"跳到信息上报界面");
+        [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
         Shangbao_ViewController *sbvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"shangbao"];
 //        sbvc.ip = self.ip;
 //        sbvc.studentId = self.studentId;
         [self.navigationController pushViewController:sbvc animated:YES];
+        [WarningBox warningBoxHide:YES andView:self.view];
+
 
     }
     else if (indexPath.row == 3){
@@ -332,18 +344,22 @@
     else if (indexPath.row == 4){
         //NSLog(@"跳到信息回复界面");
 
+        [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
        InfoRevertViewController  *info = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"revert"];
      
         [self.navigationController pushViewController:info animated:YES];
         
-        
+        [WarningBox warningBoxHide:YES andView:self.view];
+
         
     }else{
        // NSLog(@"跳到设置界面");
-        
+        [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
         SetViewController  *set = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"set"];
         
         [self.navigationController pushViewController:set animated:YES];
+        [WarningBox warningBoxHide:YES andView:self.view];
+
         
     }
     
@@ -363,7 +379,7 @@
     imageview.image = [self.arr objectAtIndex:indexPath.row];
     UILabel *ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
     ll.text = [array objectAtIndex:indexPath.row];
-    ll.textAlignment = UITextAlignmentCenter;
+    ll.textAlignment = NSTextAlignmentCenter;
     ll.font = [UIFont systemFontOfSize:16];
     ll.textColor =[UIColor colorWithHexString:@"483D8B"];
     [cell.contentView addSubview:imageview];
