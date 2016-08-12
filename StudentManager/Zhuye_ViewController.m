@@ -549,10 +549,18 @@ int nicaicai=0;
                         NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
             
                         self.SSS = [dic objectForKey:[NSString stringWithFormat:@"%@",strrrrrr]];
-                        NSLog(@"SSS---%@",self.SSS);
+            
+                        NSLog(@"SSS--12345-%@",self.SSS);
                         //拿到城市ID
                         [[NSUserDefaults standardUserDefaults]setObject:self.SSS forKey:@"cityId"];
-            
+            NSString *str;
+            if (self.SSS == nil) {
+                str = [NSString stringWithFormat:@"%@-%@-%@",shi1,shi1,sheng1];
+                NSString *str1 = [dic objectForKey:[NSString stringWithFormat:@"%@",str]];
+                NSLog(@"str1--1---%@",str1);
+                
+                [[NSUserDefaults standardUserDefaults]setObject:str1 forKey:@"cityId"];
+            }
             
                         Tianqi *tianqi = [[Tianqi alloc]init];
                         self.xingqi.text = [tianqi code:newLocation];

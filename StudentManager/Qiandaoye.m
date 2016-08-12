@@ -8,6 +8,7 @@
 
 #import "Qiandaoye.h"
 #import "ViewController.h"
+#import "Color+Hex.h"
 
 @interface Qiandaoye ()<UIScrollViewDelegate>
 {
@@ -27,6 +28,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor colorWithHexString:@"5fc1ff"];
+    
     self.navigationController.navigationBar.hidden = YES;
 
     width=[[UIScreen mainScreen] bounds].size.width;

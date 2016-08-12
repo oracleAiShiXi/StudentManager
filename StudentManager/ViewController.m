@@ -65,7 +65,7 @@
     }else if(self.view.frame.size.width == 375){
         self.xuexiao.layer.cornerRadius = 28.0;
     }else{
-        self.xuexiao.layer.cornerRadius = 25.0;
+        self.xuexiao.layer.cornerRadius = 18.0;
     }
     //self.xuexiao.layer.cornerRadius = 30.0;
     self.xuexiao.placeholder = @"选择你的学校";
@@ -76,7 +76,7 @@
     self.xuexiao.delegate = self;
     [self.view addSubview:self.xuexiao];
     
-    self.xuanxuexiao = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2+100, self.view.frame.size.height/3+15, 25, 25)];
+    self.xuanxuexiao = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2+100, self.view.frame.size.height/3+13, 25, 20)];
     self.xuanxuexiao.backgroundColor = [UIColor clearColor];
     [self.xuanxuexiao setImage:[UIImage imageNamed:@"arrowdown.png"] forState:UIControlStateNormal];
     [self.xuanxuexiao addTarget:self action:@selector(xuexiao:) forControlEvents:UIControlEventTouchUpInside];
@@ -93,7 +93,7 @@
     }else if(self.view.frame.size.width == 375){
         self.queding.layer.cornerRadius = 28.0;
     }else{
-        self.queding.layer.cornerRadius = 25.0;
+        self.queding.layer.cornerRadius = 18.0;
     }
     self.queding.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.queding.layer.borderWidth = 2.0;
