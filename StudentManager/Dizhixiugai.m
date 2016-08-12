@@ -8,6 +8,7 @@
 
 #import "Dizhixiugai.h"
 #import "WarningBox.h"
+#import "Color+Hex.h"
 @interface Dizhixiugai ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 {
     NSMutableDictionary *linshiDic1;
@@ -51,6 +52,8 @@
     self.navigationItem.title = @"住宿地址修改";
     //按钮大小
     int MaxWidth = 20,MaxHeigth = 20;
+    
+     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"5fc1ff"];
     
     //设置导航栏左侧按钮
     UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, MaxWidth, MaxHeigth)];

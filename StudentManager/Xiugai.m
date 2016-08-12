@@ -13,6 +13,7 @@
 #import "SBJson.h"
 #import "AFHTTPSessionManager.h"
 #import "WarningBox.h"
+#import "Color+Hex.h"
 
 @interface Xiugai ()<UITextFieldDelegate>
 {
@@ -60,11 +61,7 @@
      @{NSFontAttributeName:[UIFont systemFontOfSize:18],
        NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
-    //设置导航条为透明
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = YES;
-    
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"5fc1ff"];    
     //按钮大小
     int MaxWidth=40,MinWidth=20,MaxHeigth=20;
     

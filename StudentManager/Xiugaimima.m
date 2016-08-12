@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "WarningBox.h"
 #import "SBJson.h"
+#import "Color+Hex.h"
 
 @interface Xiugaimima ()<UITextFieldDelegate>
 
@@ -23,6 +24,8 @@
     self.navigationItem.title = @"修改密码";
     //按钮大小
     int MaxWidth = 20,MaxHeigth = 20;
+    
+     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"5fc1ff"];
     
     //设置导航栏左侧按钮
     UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, MaxWidth, MaxHeigth)];
