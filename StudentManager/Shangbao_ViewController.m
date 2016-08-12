@@ -37,10 +37,11 @@
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont systemFontOfSize:18],
        NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    //设置导航条为透明
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = YES;
+//    //设置导航条为透明
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//    self.navigationController.navigationBar.shadowImage = [UIImage new];
+//    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"5fc1ff"];
     self.view.backgroundColor = [UIColor colorWithHexString:@"5fc1ff"];
     //按钮大小
     int MinWidth=20,MaxHeigth=20;

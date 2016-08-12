@@ -112,6 +112,7 @@
     //授权
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager requestAlwaysAuthorization];
+    
     //NSLog(@"%@",self.locationinfo);
         // Do any additional setup after loading the view.
 }
@@ -412,39 +413,84 @@
     self.latitude = [[NSString alloc] initWithFormat:@"%f",currlocation.coordinate.latitude];
     self.latitude = [[NSString alloc] initWithFormat:@"%f",currlocation.coordinate.longitude];
     
-   
-    
-    
-    
-    Tianqi *tianqi = [[Tianqi alloc]init];
-    self.xingqi.text = [tianqi code:currlocation];
-    NSString *s = [tianqi tianqitupian:currlocation];
-    [self.tianqi setImage:[UIImage imageNamed:s]];
-    self.wendu.text = [tianqi wendu:currlocation];
-
-}
-
--(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
     CLGeocoder *geocoder = [[CLGeocoder alloc]init];
-    [geocoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks,NSError *error){
+    [geocoder reverseGeocodeLocation:currlocation completionHandler:^(NSArray *placemarks,NSError *error){
+        NSString *ss1;
+        for (CLPlacemark *place in placemarks) {
+            NSString *s1 = [NSString stringWithFormat:@"%@",place.subLocality];
+            ss1 = [s1 substringToIndex:s1.length-1];
+            NSLog(@"Quss1---%@",ss1);
+        }
         if (placemarks.count > 0) {
             CLPlacemark *placemark = placemarks[0];
             
             NSLog(@"具体位置%@",placemark.name);
             NSDictionary *addressDictionary = placemark.addressDictionary;
             
-            NSString *address = [addressDictionary objectForKey:(NSString *)kABPersonAddressStreetKey];
-            address = address == nil ?@"":address;
             NSString *state = [addressDictionary objectForKey:(NSString *)kABPersonAddressStateKey];
             state = state == nil ?@"":state;
             NSString *city = [addressDictionary objectForKey:(NSString *)kABPersonAddressCityKey];
             city = city == nil ?@"":city;
-            self.locationinfo = [NSString stringWithFormat:@"%@ \n%@ \n%@",state,address,city];
-            NSLog(@"%@\n%@\n%@",state,address,city);
+            
+            self.locationinfo = [NSString stringWithFormat:@"%@",state];
+            NSString *ss3 = [self.locationinfo substringToIndex:self.locationinfo.length-1];
+            self.cityName = [NSString stringWithFormat:@"%@",city];
+            NSString *ss2 = [self.cityName substringToIndex:self.cityName.length-1];
+            NSLog(@"ss3----%@",ss3);
+            NSLog(@"CityNamess2---%@",ss2);
+            NSString *str = [NSString stringWithFormat:@"%@-%@-%@",ss1,ss2,ss3];
+            NSLog(@"str--%@",str);
+            
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"code" ofType:@"plist"];
+            NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
+            NSLog(@"dic---%@",dic);
+            self.SSS = [dic objectForKey:[NSString stringWithFormat:@"%@",str]];
+            NSLog(@"SSS---%@",self.SSS);
+            //拿到城市ID
+            [[NSUserDefaults standardUserDefaults]setObject:self.SSS forKey:@"cityId"];
+            
+
+            Tianqi *tianqi = [[Tianqi alloc]init];
+            self.xingqi.text = [tianqi code:currlocation];
+            NSString *s = [tianqi tianqitupian:currlocation];
+            [self.tianqi setImage:[UIImage imageNamed:s]];
+            self.wendu.text = [tianqi wendu:currlocation];
         }
     }];
 
+    
+    
+    
+    
+
 }
+
+//-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+//{
+//    CLGeocoder *geocoder = [[CLGeocoder alloc]init];
+//    [geocoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks,NSError *error){
+//        if (placemarks.count > 0) {
+//            CLPlacemark *placemark = placemarks[0];
+//            
+//            NSLog(@"具体位置%@",placemark.name);
+//            NSDictionary *addressDictionary = placemark.addressDictionary;
+//            
+//            NSString *state = [addressDictionary objectForKey:(NSString *)kABPersonAddressStateKey];
+//            state = state == nil ?@"":state;
+//            NSString *city = [addressDictionary objectForKey:(NSString *)kABPersonAddressCityKey];
+//            city = city == nil ?@"":city;
+//            NSString *s1 = [addressDictionary objectForKey:(NSString *)kABPersonAddressZIPKey];
+//            s1 = s1 == nil ?@"":s1;
+//            self.locationinfo = [NSString stringWithFormat:@"%@-%@-%@",state,city,s1];
+//            self.cityName = [NSString stringWithFormat:@"%@",city];
+//            
+//            NSLog(@"CityName---%@",self.cityName);
+////            NSString *path = [[NSBundle mainBundle] pathForResource:@"code" ofType:@"plist"];
+////            NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
+//            //NSLog(@"%@\n%@\n%@",state,address,city);
+//        }
+//    }];
+//
+//}
 
 @end

@@ -24,5 +24,6 @@
 
 @property(nonatomic,strong)NSString *tianqi;
 
+@property(nonatomic,retain)NSString *cityid;
 
 @end

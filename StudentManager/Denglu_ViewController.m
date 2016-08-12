@@ -233,6 +233,8 @@
                     //加载省市
                     [self shengshi];
                     
+                    //[self presentViewController:zhuye animated:NO completion:nil];
+                    
                     [self.navigationController pushViewController:zhuye animated:YES];
                 }else{
                     

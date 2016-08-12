@@ -258,6 +258,7 @@
         dlvc.serial = self.serial;
     
         [self.navigationController pushViewController:dlvc animated:YES];
+        //[self presentViewController:dlvc animated:NO completion:nil];
     }
     
     
