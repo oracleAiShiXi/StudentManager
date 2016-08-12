@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface Denglu_ViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *xuexiaomingzi;
-@property (weak, nonatomic) IBOutlet UILabel *yingwen;
+@property (strong, nonatomic) UILabel *xuexiaomingzi;
+@property (strong, nonatomic) UILabel *yingwen;
 
 @property(nonatomic,retain)NSString *name;
 @property(nonatomic,retain)NSString *ip;

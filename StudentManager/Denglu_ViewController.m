@@ -45,14 +45,31 @@
     self.fanhui1.backgroundColor = [UIColor clearColor];
     [self.fanhui1 addTarget:self action:@selector(fanhui) forControlEvents:UIControlEventTouchUpInside];
     //学校名字
+    self.xuexiaomingzi = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-100, self.view.frame.size.height/5, 200, 40)];
     self.xuexiaomingzi.textColor = [UIColor whiteColor];
+    self.xuexiaomingzi.font = [UIFont systemFontOfSize:40];
+    self.xuexiaomingzi.text = self.name;
     self.xuexiaomingzi.adjustsFontSizeToFitWidth = YES;
     self.yingwen.adjustsFontSizeToFitWidth = YES;
+    self.yingwen = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-80, self.view.frame.size.height/5+40, 160, 15)];
+    self.yingwen.textColor = [UIColor whiteColor];
+    self.yingwen.text = @"The name of school";
+    [self.view addSubview:self.xuexiaomingzi];
+    [self.view addSubview:self.yingwen];
     //账号
     self.zhanghao1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-150, self.view.frame.size.height/3, 300, self.view.frame.size.height/10-10)];
     self.zhanghao1.backgroundColor = [UIColor clearColor];
     self.zhanghao1.borderStyle = UITextBorderStyleRoundedRect;
-    self.zhanghao1.layer.cornerRadius = 30.0;
+    //self.zhanghao1.layer.cornerRadius = 30.0;
+    if (self.view.frame.size.width == 414) {
+        self.zhanghao1.layer.cornerRadius = 30.0;
+        
+        
+    }else if(self.view.frame.size.width == 375){
+        self.zhanghao1.layer.cornerRadius = 28.0;
+    }else{
+        self.zhanghao1.layer.cornerRadius = 18.0;
+    }
     self.zhanghao1.placeholder = @"账号";
     self.zhanghao1.layer.borderColor = [[UIColor whiteColor]CGColor];
     self.zhanghao1.layer.borderWidth = 2.0;
@@ -69,7 +86,16 @@
     self.mima1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-150, self.view.frame.size.height/3+80, 300, self.view.frame.size.height/10-10)];
     self.mima1.backgroundColor = [UIColor clearColor];
     self.mima1.borderStyle = UITextBorderStyleRoundedRect;
-    self.mima1.layer.cornerRadius = 30.0;
+    //self.mima1.layer.cornerRadius = 30.0;
+    if (self.view.frame.size.width == 414) {
+        self.mima1.layer.cornerRadius = 30.0;
+        
+        
+    }else if(self.view.frame.size.width == 375){
+        self.mima1.layer.cornerRadius = 28.0;
+    }else{
+        self.mima1.layer.cornerRadius = 18.0;
+    }
     self.mima1.placeholder = @"密码";
     self.mima1.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.mima1.layer.borderWidth = 2.0;
