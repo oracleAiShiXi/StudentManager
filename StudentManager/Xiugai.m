@@ -35,6 +35,8 @@
     NSMutableDictionary *linshiDic;
     
     int mm;
+    
+    int n;
 
 }
 @end
@@ -70,10 +72,8 @@
     leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, MinWidth, MaxHeigth)];
     leftBtn1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, MaxWidth, MaxHeigth)];
     [leftBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [leftBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateHighlighted];
     
     [leftBtn1 setTitle:@"取消" forState:UIControlStateNormal];
-    [leftBtn1 setTitle:@"取消" forState:UIControlStateHighlighted];
 
     [leftBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [leftBtn1 addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
@@ -88,10 +88,8 @@
     rightBtn1 = [[UIButton alloc] initWithFrame:CGRectMake(width-MaxWidth, 0, MaxWidth, MaxHeigth)];
     
     [rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
-    [rightBtn setTitle:@"编辑" forState:UIControlStateHighlighted];
     
     [rightBtn1 setTitle:@"保存" forState:UIControlStateNormal];
-    [rightBtn1 setTitle:@"保存" forState:UIControlStateHighlighted];
     
     [rightBtn setTintColor:[UIColor whiteColor]];
     rightBtn.titleLabel.font = [UIFont systemFontOfSize:18];
@@ -142,7 +140,11 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self shuju];
+    if (n==1) {
+        [self linshishuju];
+    } else {
+        [self shuju];
+    }
 
 }
 
@@ -197,6 +199,60 @@
     
 
 }
+
+
+- (void)linshishuju{
+    
+    NSString *linshiPath1 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/linshi.plist"];
+    
+    NSLog(@"linshi====%@",NSHomeDirectory());
+    
+    NSMutableDictionary *linshiDic1 = [NSMutableDictionary dictionaryWithContentsOfFile:linshiPath1];
+    
+    
+    if (linshiDic1[@"money"]==nil) {
+        self.yuexintextfield.text = @"";
+    } else {
+        self.yuexintextfield.text = [NSString stringWithFormat:@"%@",linshiDic1[@"money"]];
+    }
+    
+    if (linshiDic1[@"companyName"]==nil) {
+        self.danweilabel.text = @"";
+    } else {
+        self.danweilabel.text = [NSString stringWithFormat:@"%@",linshiDic1[@"companyName"]];
+    }
+    
+    if (linshiDic1[@"lodgingAddress"]==nil) {
+        self.dizhilabel.text = @"";
+    } else {
+        self.dizhilabel.text = [NSString stringWithFormat:@"%@",linshiDic1[@"lodgingAddress"]];
+    }
+    
+    if (linshiDic1[@"studentPhone"]==nil) {
+        self.dianhuatextfield.text = @"";
+    } else {
+        self.dianhuatextfield.text = [NSString stringWithFormat:@"%@",linshiDic1[@"studentPhone"]];
+    }
+    
+    if ([linshiDic1[@"isInPost"] intValue]==0) {
+        [self.noBtn setImage:[UIImage imageNamed:@"xuanzhong.png"] forState:UIControlStateNormal];
+        [self.yesBtn setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
+        [self.noBtn setImage:[UIImage imageNamed:@"xuanzhong.png"] forState:UIControlStateDisabled];
+        [self.yesBtn setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateDisabled];
+        isInPost = [NSString stringWithFormat:@"0"];
+        
+    } else {
+        
+        [self.yesBtn setImage:[UIImage imageNamed:@"xuanzhong.png"] forState:UIControlStateNormal];
+        [self.noBtn setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
+        [self.yesBtn setImage:[UIImage imageNamed:@"xuanzhong.png"] forState:UIControlStateDisabled];
+        [self.noBtn setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateDisabled];
+        isInPost = [NSString stringWithFormat:@"1"];
+    }
+    
+}
+
+
 - (void)back:(id)sender {
     if (k==0) {
         //返回上一页
@@ -238,9 +294,8 @@
         self.dizhiimv.hidden = NO;
         self.mimaimv.hidden = NO;
         
-        if ([dataDic[@"isInPost"] intValue]==0) {
+        if ([isInPost intValue]==0) {
             [self.yuexintextfield setEnabled:NO];
-            NSLog(@"isInPost-=-%@",dataDic[@"isInPost"]);
         }else{
             [self.yuexintextfield setEnabled:YES];
         }
@@ -264,20 +319,19 @@
        
         k=1;
         
-//        linshiPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/linshi.plist"];
-//       
-//        NSLog(@"linshi====%@",NSHomeDirectory());
-//        
-//        linshiDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
-//        
-//        [linshiDic writeToFile:linshiPath atomically:YES];
+        linshiPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/linshi.plist"];
+
+        NSMutableDictionary *lDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+        
+        [lDic writeToFile:linshiPath atomically:YES];
+        n=1;
         
         NSLog(@"编辑");
 
     }else{//保存
         
         [self save];
-        //if (mm==1) {
+        
         //设置编辑箭头不显示
         self.danweiimv.hidden = YES;
         self.dizhiimv.hidden = YES;
@@ -301,9 +355,9 @@
         [self.yesBtn setEnabled:NO];
         [self.noBtn setEnabled:NO];
         k=0;
-        
+        n=1;
         NSLog(@"保存");
-       // }
+
     }
 }
 
@@ -314,7 +368,7 @@
 
 
 - (IBAction)xiuggaidanweiBtn:(id)sender {
-    if ([dataDic[@"isInPost"] intValue]==0) {
+    if ([isInPost intValue]==0) {
         
         [WarningBox warningBoxModeText:@"不在岗时，不能编辑企业信息！" andView:self.view];
         
@@ -334,7 +388,6 @@
 
 }
 
-
 - (IBAction)xiugaimimaBtn:(id)sender {
     
     Xiugaimima *xm = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"xgmm"];
@@ -342,7 +395,6 @@
     [self.navigationController pushViewController:xm animated:YES];
 
 }
-
 
 - (IBAction)YESorNO:(id)sender {
     
@@ -353,48 +405,28 @@
         [self.noBtn setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
         [self.noBtn setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateDisabled];
         isInPost = [NSString stringWithFormat:@"1"];
-        NSLog(@"%@",isInPost);
-    }
-    else
-    {
+    
+    } else {
+        
         [self.noBtn setImage:[UIImage imageNamed:@"xuanzhong.png"] forState:UIControlStateNormal];
         [self.yesBtn setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
         [self.noBtn setImage:[UIImage imageNamed:@"xuanzhong.png"] forState:UIControlStateDisabled];
         [self.yesBtn setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateDisabled];
         isInPost = [NSString stringWithFormat:@"0"];
-        NSLog(@"%@",isInPost);
     }
     
 }
 //保存数据
 -(void)save{
     //保存修改信息
-    [dataDic setObject:isInPost forKey:@"isInPost"];
-    [dataDic setObject:self.yuexintextfield.text forKey:@"money"];
-    [dataDic setObject:self.dianhuatextfield.text forKey:@"studentPhone"];
-    [dataDic writeToFile:path atomically:YES];
+    linshiDic = [NSMutableDictionary dictionaryWithContentsOfFile:linshiPath];
     
-//    NSString *bijiaoPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/linshi.plist"];
-//    
-//    NSMutableDictionary *bijiaoDic = [NSMutableDictionary dictionaryWithContentsOfFile:bijiaoPath];
-//    
-//    NSArray *bijiaoArr = [bijiaoDic allValues];
-//    
-//    NSLog(@"%@",bijiaoArr);
-//    
-//    NSArray *dataArr = [dataDic allValues];
-//    
-//    for (int i=0; i<[bijiaoArr count]; i++) {
-//        
-//        if ([bijiaoArr[i] isEqual:dataArr[i]]) {
-//            mm=0;
-//            [WarningBox warningBoxModeText:@"没有信息变更" andView:self.view];
-//        }else{
-//            mm=1;
-//        }
-//    }
-
-//    if (mm==1) {
+    [linshiDic setObject:[NSString stringWithFormat:@"%@", isInPost ] forKey:@"isInPost"];
+    [linshiDic setObject:[NSString stringWithFormat:@"%@", self.yuexintextfield.text ] forKey:@"money"];
+    [linshiDic setObject:[NSString stringWithFormat:@"%@", self.dianhuatextfield.text ] forKey:@"studentPhone"];
+    [linshiDic writeToFile:linshiPath atomically:YES];
+    
+    [linshiDic writeToFile:path atomically:YES];
     
     [WarningBox warningBoxModeIndeterminate:@"保存中..." andView:self.view];
     
@@ -403,13 +435,8 @@
     //    [def objectForKey:@"IP"];
     //    [def objectForKey:@"studentId"];
 
-    
-        [dataDic setValue:[def objectForKey:@"studentId"] forKey:@"studentId"];
+    [linshiDic setValue:[def objectForKey:@"studentId"] forKey:@"studentId"];
 
-    
-    
-    
-    
     //将上传对象转换为json类型
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
@@ -419,7 +446,7 @@
         
     SBJsonWriter *writer = [[SBJsonWriter alloc] init];
     
-    NSString *jsonstring = [writer stringWithObject:dataDic];
+    NSString *jsonstring = [writer stringWithObject:linshiDic];
     
     NSDictionary *MSG = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
     NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=stuinfomod",[def objectForKey:@"IP"]];
@@ -427,7 +454,6 @@
     [manager POST:url parameters:MSG progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject);
         
         [WarningBox warningBoxHide:YES andView:self.view];
         
@@ -443,12 +469,27 @@
         
     }];
    
-//    }
+
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [_yuexintextfield resignFirstResponder];
     [_dianhuatextfield resignFirstResponder];
+}
+
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if (textField == _dianhuatextfield) {
+        NSString * toBeString = [textField.text stringByReplacingCharactersInRange:range withString:string]; //得到输入框的内容
+        if ([toBeString length] > 11) { //如果输入框内容大于20则弹出警告
+            textField.text = [toBeString substringToIndex:11];
+            
+            [WarningBox warningBoxTopModeText:@"号码数位已超，请不要再输了！" andView:self.view];
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end

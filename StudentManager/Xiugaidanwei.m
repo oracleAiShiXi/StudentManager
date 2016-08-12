@@ -14,10 +14,10 @@
 @interface Xiugaidanwei ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 {
     
-    NSMutableDictionary *dataDic;
+    NSMutableDictionary *linshiDic1;
     
-    NSString *path;
-    
+    NSString *linshiPath1;
+
     NSString *path2;
     
     NSMutableArray *dataArr;
@@ -97,10 +97,10 @@
     
     
     // 文件路径
-    path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/userInfo.plist"];
+    linshiPath1 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/linshi.plist"];
     
     // 读取数据
-    dataDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+    linshiDic1 = [NSMutableDictionary dictionaryWithContentsOfFile:linshiPath1];
     
     
     path2 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/province.plist"];
@@ -109,32 +109,32 @@
     
     //NSLog(@"dataDic===%@",dataDic);
     
-    if (dataDic[@"companyName"]==nil) {
+    if (linshiDic1[@"companyName"]==nil) {
         self.danweiTextField.text = @"";
     } else {
-        self.danweiTextField.text = [NSString stringWithFormat:@"%@",dataDic[@"companyName"]];
+        self.danweiTextField.text = [NSString stringWithFormat:@"%@",linshiDic1[@"companyName"]];
     }
-    if (dataDic[@"department"]==nil) {
+    if (linshiDic1[@"department"]==nil) {
         self.bumenTxetField.text = @"";
     } else {
-        self.bumenTxetField.text = [NSString stringWithFormat:@"%@",dataDic[@"department"]];
+        self.bumenTxetField.text = [NSString stringWithFormat:@"%@",linshiDic1[@"department"]];
     }
-    if (dataDic[@"post"]==nil) {
+    if (linshiDic1[@"post"]==nil) {
         self.zhiweiTextField.text = @"";
     } else {
-        self.zhiweiTextField.text = [NSString stringWithFormat:@"%@",dataDic[@"post"]];
+        self.zhiweiTextField.text = [NSString stringWithFormat:@"%@",linshiDic1[@"post"]];
     }
-    if (dataDic[@"companyPhone"]==nil) {
+    if (linshiDic1[@"companyPhone"]==nil) {
         self.danweidianhuaTextField.text = @"";
     } else {
-        self.danweidianhuaTextField.text = [NSString stringWithFormat:@"%@",dataDic[@"companyPhone"]];
+        self.danweidianhuaTextField.text = [NSString stringWithFormat:@"%@",linshiDic1[@"companyPhone"]];
     }
-    if (dataDic[@"companyAddress"]==nil) {
+    if (linshiDic1[@"companyAddress"]==nil) {
         self.danweidizhiTextFiled.text = @"";
     } else {
-        self.danweidizhiTextFiled.text = [NSString stringWithFormat:@"%@",dataDic[@"companyAddress"]];
+        self.danweidizhiTextFiled.text = [NSString stringWithFormat:@"%@",linshiDic1[@"companyAddress"]];
     }
-    if (dataDic[@"companyProvinceId"]==nil) {
+    if (linshiDic1[@"companyProvinceId"]==nil) {
         self.shenlabel.text = @"";
     } else {
         
@@ -142,14 +142,14 @@
             
             NSDictionary *aa = [NSDictionary dictionaryWithDictionary:dataArr[i]];
             
-            if ([aa[@"provinceId"] isEqual:dataDic[@"companyProvinceId"]]) {
+            if ([aa[@"provinceId"] isEqual:linshiDic1[@"companyProvinceId"]]) {
                 
                 self.shenlabel.text = [NSString stringWithFormat:@"%@",aa[@"provinceName"]];
                 
                 companyProvinceId = [NSString stringWithFormat:@"%@",aa[@"provinceId"]];
                 
                 //展示市名称
-                if (dataDic[@"companyCityId"]==nil) {
+                if (linshiDic1[@"companyCityId"]==nil) {
                     self.shilabel.text = @"";
                 } else {
                     
@@ -159,7 +159,7 @@
                         
                         NSDictionary *bb = [NSDictionary dictionaryWithDictionary:arr[k]];
                         
-                        if ([bb[@"cityId"] isEqual:dataDic[@"companyCityId"]]) {
+                        if ([bb[@"cityId"] isEqual:linshiDic1[@"companyCityId"]]) {
                             
                             self.shilabel.text = [NSString stringWithFormat:@"%@",bb[@"cityName"]];
                             
@@ -172,9 +172,6 @@
             }
         }
     }
-    
-   
-    
     
     
     MaxX = 35;
@@ -214,27 +211,28 @@
 //返回上一页
 - (void)back:(id)sender{
     
-//    NSString *linshiPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/linshi.plist"];
-//    
-//    NSLog(@"====%@",NSHomeDirectory());
-//    
-//    NSMutableDictionary *linshiDic = [NSMutableDictionary dictionaryWithContentsOfFile:linshiPath];
-    
+    if ([_danweiTextField.text isEqual:@""] || [_bumenTxetField.text isEqual:@""] || [_zhiweiTextField.text isEqual:@""] || [_danweidianhuaTextField.text isEqual:@""] || [_danweidianhuaTextField.text isEqual:@""]) {
+        
+        [WarningBox warningBoxTopModeText:@"信息不能为空，请补全！" andView:self.view];
+    } else {
+
     [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
 
-    [dataDic setValue:_danweiTextField.text forKey:@"companyName"];
-    [dataDic setValue:_bumenTxetField.text forKey:@"department"];
-    [dataDic setValue:_zhiweiTextField.text forKey:@"post"];
-    [dataDic setValue:_danweidianhuaTextField.text forKey:@"companyPhone"];
-    [dataDic setValue:_danweidizhiTextFiled.text forKey:@"companyAddress"];
-    [dataDic setValue:companyProvinceId forKey:@"companyProvinceId"];
-    [dataDic setValue:companyCityId forKey:@"companyCityId"];
-    [dataDic writeToFile:path atomically:YES];
+        [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
+        
+        [linshiDic1 setValue:_danweiTextField.text forKey:@"companyName"];
+        [linshiDic1 setValue:_bumenTxetField.text forKey:@"department"];
+        [linshiDic1 setValue:_zhiweiTextField.text forKey:@"post"];
+        [linshiDic1 setValue:_danweidianhuaTextField.text forKey:@"companyPhone"];
+        [linshiDic1 setValue:_danweidizhiTextFiled.text forKey:@"companyAddress"];
+        [linshiDic1 setValue:companyProvinceId forKey:@"companyProvinceId"];
+        [linshiDic1 setValue:companyCityId forKey:@"companyCityId"];
+        [linshiDic1 writeToFile:linshiPath1 atomically:YES];
     
     [WarningBox warningBoxHide:YES andView:self.view];
     
     [self.navigationController popViewControllerAnimated:YES];
-    
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -254,8 +252,7 @@
 
 - (IBAction)shenBtn:(id)sender {
     
-    mm=1;
-    
+    [shiTableView removeFromSuperview];
     sheng = [[NSMutableArray alloc] init];
     pId = [[NSMutableArray alloc] init];
     
@@ -277,7 +274,6 @@
 
 - (IBAction)shiBtn:(id)sender {
     
-    if (mm==1) {
     shi = [[NSMutableArray alloc] init];
     cId = [[NSMutableArray alloc] init];
     NSArray *carr;
@@ -302,9 +298,6 @@
     
     [self.view addSubview:shiTableView];
         
-    }else{
-        [WarningBox warningBoxModeText:@"请先选择省份！" andView:self.view];
-    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -391,6 +384,21 @@
     [_danweidizhiTextFiled resignFirstResponder];
     [_bumenTxetField resignFirstResponder];
     [_zhiweiTextField resignFirstResponder];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if (textField == _danweidianhuaTextField) {
+        NSString * toBeString = [textField.text stringByReplacingCharactersInRange:range withString:string]; //得到输入框的内容
+        if ([toBeString length] > 11) { //如果输入框内容大于20则弹出警告
+            textField.text = [toBeString substringToIndex:11];
+            
+            [WarningBox warningBoxTopModeText:@"号码数位已超，请不要再输了！" andView:self.view];
+            return NO;
+        }
+    }
+    return YES;
+    
 }
 
 

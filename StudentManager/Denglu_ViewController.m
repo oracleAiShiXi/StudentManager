@@ -229,6 +229,10 @@
                     Zhuye_ViewController *zhuye = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"zhuye"];
 //                    zhuye.studentId = studentId;
 //                    zhuye.ip = self.ip;
+                   
+                    //加载省市
+                    [self shengshi];
+                    
                     [self.navigationController pushViewController:zhuye animated:YES];
                 }else{
                     
@@ -261,6 +265,85 @@
         [self.checkbox1 setImage:[UIImage imageNamed:@"mempass.png"] forState:UIControlStateNormal];
     }
 
+}
+
+//加载省市
+- (void)shengshi{
+    
+    //拿到学校IP和studentID
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    //    [def objectForKey:@"IP"];
+    //    [def objectForKey:@"studentId"];
+    
+    
+    //请求省市列表
+    //将上传对象转换为json类型
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html", nil];
+    
+    
+    NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=procity",[def objectForKey:@"IP"]];
+    
+    [manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        
+        NSArray *cityArr = [NSArray arrayWithArray:responseObject[@"cityDTOs"]];
+        
+        NSArray *provinceArr = [NSArray arrayWithArray:responseObject[@"provinceDTOs"]];
+        
+        
+        //最大的数组，里边包含省市
+        NSMutableArray*Array=[[NSMutableArray alloc] init];
+        for (int i=0; i<provinceArr.count; i++) {
+            //判断这个省中有没有市
+            int ss=0;
+            //省的字典，包含这个省的所有市、省的id 和省的名字
+            NSMutableDictionary*ddsheng=[[NSMutableDictionary alloc] init];
+            //这个省里边有多少个市
+            NSMutableArray*citys=[[NSMutableArray alloc] init];
+            for (int j=0; j<cityArr.count; j++) {
+                //市的字典，包含市的id 和市的名字
+                NSMutableDictionary* ddcity=[[NSMutableDictionary alloc] init];
+                if ([[provinceArr[i] objectForKey:@"provinceId"] isEqual:[cityArr[j] objectForKey:@"provinceId"]] ) {
+                    ss=1;
+                    [ddcity setValue:[cityArr[j] objectForKey:@"cityId"] forKey:@"cityId"];
+                    [ddcity setValue:[cityArr[j] objectForKey:@"cityName"] forKey:@"cityName"];
+                    
+                    [citys addObject:ddcity];
+                }
+                
+            }
+            if (ss==1) {
+                [ddsheng setObject:citys forKey:@"citys"];
+                [ddsheng setObject:[NSString stringWithFormat:@"%@",[provinceArr[i] objectForKey:@"provinceId"]] forKey:@"provinceId"];
+                [ddsheng setObject:[NSString stringWithFormat:@"%@",[provinceArr[i] objectForKey:@"provinceName"]] forKey:@"provinceName"];
+                [Array addObject:ddsheng];
+            }else{
+                NSLog(@"没有对应的城市");
+            }
+            
+        }
+        
+        //把数据存入plist文件
+        NSString *path1=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/province.plist"];
+        NSLog(@"NSHomeDirectory()=====%@",NSHomeDirectory());
+        
+        [Array writeToFile:path1 atomically:YES];
+        
+        [WarningBox warningBoxHide:YES andView:self.view];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        [WarningBox warningBoxHide:YES andView:self.view];
+        [WarningBox warningBoxModeText:@"网络异常，请重试！" andView:self.view];
+        NSLog(@"%@",error);
+        
+    }];
+    
 }
 
 @end

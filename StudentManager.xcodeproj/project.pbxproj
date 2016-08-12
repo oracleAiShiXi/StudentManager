@@ -336,12 +336,105 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BBE586761D5C62F300ACB57A /* 个人信息 */ = {
+			isa = PBXGroup;
+			children = (
+				D7E2D7B31D5B0AA000E9A6E5 /* Gerenxinxi.h */,
+				D7E2D7B41D5B0AA000E9A6E5 /* Gerenxinxi.m */,
+				BBE586771D5C630D00ACB57A /* 修改 */,
+			);
+			name = "个人信息";
+			sourceTree = "<group>";
+		};
+		BBE586771D5C630D00ACB57A /* 修改 */ = {
+			isa = PBXGroup;
+			children = (
+				D7E2D7B51D5B0AA000E9A6E5 /* Xiugai.h */,
+				D7E2D7B61D5B0AA000E9A6E5 /* Xiugai.m */,
+				D7E2D7B71D5B0AA000E9A6E5 /* Xiugaidanwei.h */,
+				D7E2D7B81D5B0AA000E9A6E5 /* Xiugaidanwei.m */,
+				D7E2D7B91D5B0AA000E9A6E5 /* Dizhixiugai.h */,
+				D7E2D7BA1D5B0AA000E9A6E5 /* Dizhixiugai.m */,
+				D7E2D7BB1D5B0AA000E9A6E5 /* Xiugaimima.h */,
+				D7E2D7BC1D5B0AA000E9A6E5 /* Xiugaimima.m */,
+			);
+			name = "修改";
+			sourceTree = "<group>";
+		};
+		BBE586781D5C633200ACB57A /* 前导页 */ = {
+			isa = PBXGroup;
+			children = (
+				D7E2D7C21D5B0ACC00E9A6E5 /* Qiandaoye.h */,
+				D7E2D7C31D5B0ACC00E9A6E5 /* Qiandaoye.m */,
+			);
+			name = "前导页";
+			sourceTree = "<group>";
+		};
+		BBE586791D5C635D00ACB57A /* others */ = {
+			isa = PBXGroup;
+			children = (
+				D7E2D7C51D5B0B1300E9A6E5 /* AppDelegate.h */,
+				D7E2D7C61D5B0B1300E9A6E5 /* AppDelegate.m */,
+			);
+			name = others;
+			sourceTree = "<group>";
+		};
+		BBE5867A1D5C639C00ACB57A /* 登录 */ = {
+			isa = PBXGroup;
+			children = (
+				D7E2D72A1D5B015A00E9A6E5 /* ViewController.h */,
+				D7E2D72B1D5B015A00E9A6E5 /* ViewController.m */,
+				D7E2D72D1D5B016900E9A6E5 /* Denglu_ViewController.h */,
+				D7E2D72E1D5B016900E9A6E5 /* Denglu_ViewController.m */,
+			);
+			name = "登录";
+			sourceTree = "<group>";
+		};
+		BBE5867B1D5C63B500ACB57A /* 主页 */ = {
+			isa = PBXGroup;
+			children = (
+				D7E2D7301D5B017400E9A6E5 /* Zhuye_ViewController.h */,
+				D7E2D7311D5B017400E9A6E5 /* Zhuye_ViewController.m */,
+				D7E2D7321D5B017400E9A6E5 /* Tianqi.h */,
+				D7E2D7331D5B017400E9A6E5 /* Tianqi.m */,
+				D7E2D7361D5B017B00E9A6E5 /* Sos_ViewController.h */,
+				D7E2D7371D5B017B00E9A6E5 /* Sos_ViewController.m */,
+			);
+			name = "主页";
+			sourceTree = "<group>";
+		};
+		BBE5867C1D5C63E700ACB57A /* 签到 */ = {
+			isa = PBXGroup;
+			children = (
+				D70A23C91D5178A0002F24A6 /* SignInViewController.h */,
+				D70A23CA1D5178A0002F24A6 /* SignInViewController.m */,
+			);
+			name = "签到";
+			sourceTree = "<group>";
+		};
+		BBE5867D1D5C640D00ACB57A /* 公告 */ = {
+			isa = PBXGroup;
+			children = (
+				D7E2D7391D5B018500E9A6E5 /* Gonggao_ViewController.h */,
+				D7E2D73A1D5B018500E9A6E5 /* Gonggao_ViewController.m */,
+				D7E2D73B1D5B018500E9A6E5 /* Xiangqing_ViewController.h */,
+				D7E2D73C1D5B018500E9A6E5 /* Xiangqing_ViewController.m */,
+			);
+			name = "公告";
+			sourceTree = "<group>";
+		};
+		BBE5867E1D5C64B800ACB57A /* 信息上报 */ = {
+			isa = PBXGroup;
+			children = (
+				D7E2D73F1D5B018E00E9A6E5 /* Shangbao_ViewController.h */,
+				D7E2D7401D5B018E00E9A6E5 /* Shangbao_ViewController.m */,
+			);
+			name = "信息上报";
+			sourceTree = "<group>";
+		};
 		D7C9F97C1D49B43700CB9ACD = {
 			isa = PBXGroup;
 			children = (
-				D7E2D7B11D5B094700E9A6E5 /* QuartzCore.framework */,
-				D7E2D7AF1D5B093000E9A6E5 /* Security.framework */,
-				D7E2D7AD1D5B092A00E9A6E5 /* AddressBook.framework */,
 				D7C9F9871D49B43700CB9ACD /* StudentManager */,
 				D7C9F9A11D49B43700CB9ACD /* StudentManagerTests */,
 				D7C9F9AC1D49B43700CB9ACD /* StudentManagerUITests */,
@@ -364,39 +457,15 @@
 			children = (
 				D7C9F9BD1D49F0B400CB9ACD /* Framework */,
 				D7C9F9BB1D49F0A400CB9ACD /* Image */,
-				D7E2D7C21D5B0ACC00E9A6E5 /* Qiandaoye.h */,
-				D7E2D7C31D5B0ACC00E9A6E5 /* Qiandaoye.m */,
-				D7E2D7C51D5B0B1300E9A6E5 /* AppDelegate.h */,
-				D7E2D7C61D5B0B1300E9A6E5 /* AppDelegate.m */,
-				D7E2D72A1D5B015A00E9A6E5 /* ViewController.h */,
-				D7E2D72B1D5B015A00E9A6E5 /* ViewController.m */,
-				D7E2D7B31D5B0AA000E9A6E5 /* Gerenxinxi.h */,
-				D7E2D7B41D5B0AA000E9A6E5 /* Gerenxinxi.m */,
-				D7E2D7B51D5B0AA000E9A6E5 /* Xiugai.h */,
-				D7E2D7B61D5B0AA000E9A6E5 /* Xiugai.m */,
-				D7E2D7B71D5B0AA000E9A6E5 /* Xiugaidanwei.h */,
-				D7E2D7B81D5B0AA000E9A6E5 /* Xiugaidanwei.m */,
-				D7E2D7B91D5B0AA000E9A6E5 /* Dizhixiugai.h */,
-				D7E2D7BA1D5B0AA000E9A6E5 /* Dizhixiugai.m */,
-				D7E2D7BB1D5B0AA000E9A6E5 /* Xiugaimima.h */,
-				D7E2D7BC1D5B0AA000E9A6E5 /* Xiugaimima.m */,
-				D7E2D72D1D5B016900E9A6E5 /* Denglu_ViewController.h */,
-				D7E2D72E1D5B016900E9A6E5 /* Denglu_ViewController.m */,
-				D7E2D7301D5B017400E9A6E5 /* Zhuye_ViewController.h */,
-				D7E2D7311D5B017400E9A6E5 /* Zhuye_ViewController.m */,
-				D7E2D7321D5B017400E9A6E5 /* Tianqi.h */,
-				D7E2D7331D5B017400E9A6E5 /* Tianqi.m */,
-				D7E2D7361D5B017B00E9A6E5 /* Sos_ViewController.h */,
-				D7E2D7371D5B017B00E9A6E5 /* Sos_ViewController.m */,
-				D7E2D7391D5B018500E9A6E5 /* Gonggao_ViewController.h */,
-				D7E2D73A1D5B018500E9A6E5 /* Gonggao_ViewController.m */,
-				D7E2D73B1D5B018500E9A6E5 /* Xiangqing_ViewController.h */,
-				D7E2D73C1D5B018500E9A6E5 /* Xiangqing_ViewController.m */,
-				D7E2D73F1D5B018E00E9A6E5 /* Shangbao_ViewController.h */,
-				D7E2D7401D5B018E00E9A6E5 /* Shangbao_ViewController.m */,
+				BBE586791D5C635D00ACB57A /* others */,
+				BBE586781D5C633200ACB57A /* 前导页 */,
+				BBE586761D5C62F300ACB57A /* 个人信息 */,
+				BBE5867A1D5C639C00ACB57A /* 登录 */,
+				BBE5867B1D5C63B500ACB57A /* 主页 */,
+				BBE5867D1D5C640D00ACB57A /* 公告 */,
 				D7E2D7D01D5B1D6000E9A6E5 /* 设置 */,
-				D70A23C91D5178A0002F24A6 /* SignInViewController.h */,
-				D70A23CA1D5178A0002F24A6 /* SignInViewController.m */,
+				BBE5867E1D5C64B800ACB57A /* 信息上报 */,
+				BBE5867C1D5C63E700ACB57A /* 签到 */,
 				D7E2D7D11D5B1D8A00E9A6E5 /* 信息回复 */,
 				D7C9F9911D49B43700CB9ACD /* Main.storyboard */,
 				D7C9F9941D49B43700CB9ACD /* Assets.xcassets */,
@@ -502,6 +571,9 @@
 		D7C9F9BD1D49F0B400CB9ACD /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				D7E2D7B11D5B094700E9A6E5 /* QuartzCore.framework */,
+				D7E2D7AF1D5B093000E9A6E5 /* Security.framework */,
+				D7E2D7AD1D5B092A00E9A6E5 /* AddressBook.framework */,
 				D7E2D7481D5B027C00E9A6E5 /* MBProgressHUD.h */,
 				D7E2D7491D5B027C00E9A6E5 /* MBProgressHUD.m */,
 				D7E2D7451D5B021300E9A6E5 /* WarningBox.h */,
@@ -677,6 +749,7 @@
 				TargetAttributes = {
 					D7C9F9841D49B43700CB9ACD = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 54H7H99RM2;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -990,6 +1063,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/StudentManager/BaiduMap_IOSSDK_v3.0.0_Lib",
@@ -997,8 +1072,9 @@
 				INFOPLIST_FILE = StudentManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = zxc.StudentManager;
+				PRODUCT_BUNDLE_IDENTIFIER = StudentManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1006,6 +1082,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/StudentManager/BaiduMap_IOSSDK_v3.0.0_Lib",
@@ -1013,8 +1091,9 @@
 				INFOPLIST_FILE = StudentManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = zxc.StudentManager;
+				PRODUCT_BUNDLE_IDENTIFIER = StudentManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

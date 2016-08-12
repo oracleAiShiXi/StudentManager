@@ -10,9 +10,9 @@
 #import "WarningBox.h"
 @interface Dizhixiugai ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 {
-    NSMutableDictionary *dataDic;
+    NSMutableDictionary *linshiDic1;
     
-    NSString *path;
+    NSString *linshiPath1;
     
     NSString *path2;
     
@@ -55,7 +55,6 @@
     //设置导航栏左侧按钮
     UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, MaxWidth, MaxHeigth)];
     [leftBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [leftBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateHighlighted];
     [leftBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *leftItem =[[UIBarButtonItem alloc]initWithCustomView: leftBtn];
@@ -75,34 +74,35 @@
     [self.shilabel.layer setBorderColor:[[UIColor whiteColor] CGColor]];
     
     // 文件路径
-    path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/userInfo.plist"];
+    linshiPath1 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/linshi.plist"];
     
-    // 读取个人信息
-    dataDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
-    // 文件路径
+    // 读取数据
+    linshiDic1 = [NSMutableDictionary dictionaryWithContentsOfFile:linshiPath1];
+    
+    // 省市文件路径
     path2 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/province.plist"];
     //读取省市文件
     dataArr = [NSMutableArray arrayWithContentsOfFile:path2];
 
     
-    if (dataDic[@"expName"]==nil) {
+    if (linshiDic1[@"expName"]==nil) {
         self.jinjilianxirenTextField.text = @"";
     } else {
-        self.jinjilianxirenTextField.text = [NSString stringWithFormat:@"%@",dataDic[@"expName"]];
+        self.jinjilianxirenTextField.text = [NSString stringWithFormat:@"%@",linshiDic1[@"expName"]];
     }
-    if (dataDic[@"expPhone"]==nil) {
+    if (linshiDic1[@"expPhone"]==nil) {
         self.lianxidianhuaTextField.text = @"";
     } else {
-        self.lianxidianhuaTextField.text = [NSString stringWithFormat:@"%@",dataDic[@"expPhone"]];
+        self.lianxidianhuaTextField.text = [NSString stringWithFormat:@"%@",linshiDic1[@"expPhone"]];
     }
-    if (dataDic[@"lodgingAddress"]==nil) {
+    if (linshiDic1[@"lodgingAddress"]==nil) {
         self.zhusudizhiTextField.text = @"";
     } else {
-        self.zhusudizhiTextField.text = [NSString stringWithFormat:@"%@",dataDic[@"lodgingAddress"]];
+        self.zhusudizhiTextField.text = [NSString stringWithFormat:@"%@",linshiDic1[@"lodgingAddress"]];
     }
     
     
-    if (dataDic[@"lodgingProvinceId"]==nil) {
+    if (linshiDic1[@"lodgingProvinceId"]==nil) {
         self.shenlabel.text = @"";
     } else {
 
@@ -110,13 +110,13 @@
             
             NSDictionary *pp = [NSDictionary dictionaryWithDictionary:dataArr[i]];
             
-            if ([pp[@"provinceId"] isEqual:dataDic[@"lodgingProvinceId"]]) {
+            if ([pp[@"provinceId"] isEqual:linshiDic1[@"lodgingProvinceId"]]) {
                 
                 self.shenlabel.text = [NSString stringWithFormat:@"%@",pp[@"provinceName"]];
                 lodgingProvinceId = [NSString stringWithFormat:@"%@",pp[@"provinceId"]];
                 
                 //展示市名称
-                if (dataDic[@"lodgingCityId"]==nil) {
+                if (linshiDic1[@"lodgingCityId"]==nil) {
                     self.shilabel.text = @"";
                 } else {
                     
@@ -126,7 +126,7 @@
                         
                         NSDictionary *bb = [NSDictionary dictionaryWithDictionary:arr[k]];
                         
-                        if ([bb[@"cityId"] isEqual:dataDic[@"lodgingCityId"]]) {
+                        if ([bb[@"cityId"] isEqual:linshiDic1[@"lodgingCityId"]]) {
                             
                             self.shilabel.text = [NSString stringWithFormat:@"%@",bb[@"cityName"]];
                             
@@ -168,6 +168,7 @@
     _lianxidianhuaTextField.delegate = self;
     _zhusudizhiTextField.delegate = self;
     
+    
    }
 - (void)back:(id)sender{
     
@@ -179,17 +180,17 @@
 
     [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
     
-    [dataDic setValue:lodgingProvinceId forKey:@"lodgingProvinceId"];
+    [linshiDic1 setValue:lodgingProvinceId forKey:@"lodgingProvinceId"];
     
-    [dataDic setValue:lodgingCityId forKey:@"lodgingCityId"];
+    [linshiDic1 setValue:lodgingCityId forKey:@"lodgingCityId"];
     
-    [dataDic setValue:_jinjilianxirenTextField.text forKey:@"expName"];
+    [linshiDic1 setValue:_jinjilianxirenTextField.text forKey:@"expName"];
     
-    [dataDic setValue:_lianxidianhuaTextField.text forKey:@"expPhone"];
+    [linshiDic1 setValue:_lianxidianhuaTextField.text forKey:@"expPhone"];
     
-    [dataDic setValue:_zhusudizhiTextField.text forKey:@"lodgingAddress"];
+    [linshiDic1 setValue:_zhusudizhiTextField.text forKey:@"lodgingAddress"];
     
-    [dataDic writeToFile:path atomically:YES];
+    [linshiDic1 writeToFile:linshiPath1 atomically:YES];
     
     [WarningBox warningBoxHide:YES andView:self.view];
     
@@ -214,8 +215,6 @@
     
     [shiTableView removeFromSuperview];
     
-    mm=1;
-    
     sheng = [[NSMutableArray alloc] init];
     pId = [[NSMutableArray alloc] init];
     
@@ -238,8 +237,6 @@
 }
 
 - (IBAction)shiBtn:(id)sender {
-    
-    if (mm==1) {
         
         shi = [[NSMutableArray alloc] init];
         cId = [[NSMutableArray alloc] init];
@@ -267,12 +264,6 @@
         self.biankuangview.hidden = YES;
         [shiTableView reloadData];
         [self.view addSubview:shiTableView];
-        
-    }else{
-        
-        [WarningBox warningBoxModeText:@"请先选择省份！" andView:self.view];
-        
-    }
     
 }
 
@@ -366,5 +357,19 @@
     [_zhusudizhiTextField resignFirstResponder];
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if (textField == _lianxidianhuaTextField) {
+        NSString * toBeString = [textField.text stringByReplacingCharactersInRange:range withString:string]; //得到输入框的内容
+        if ([toBeString length] > 11) { //如果输入框内容大于20则弹出警告
+            textField.text = [toBeString substringToIndex:11];
+            
+            [WarningBox warningBoxTopModeText:@"号码数位已超，请不要再输了！" andView:self.view];
+            return NO;
+        }
+    }
+    return YES;
+    
+}
 
 @end

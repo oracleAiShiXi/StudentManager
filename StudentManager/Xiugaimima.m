@@ -12,11 +12,7 @@
 #import "SBJson.h"
 
 @interface Xiugaimima ()<UITextFieldDelegate>
-{
-    
-    NSString *oldpassword;
 
-}
 @end
 
 @implementation Xiugaimima
@@ -31,7 +27,6 @@
     //设置导航栏左侧按钮
     UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, MaxWidth, MaxHeigth)];
     [leftBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [leftBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateHighlighted];
     [leftBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *leftItem =[[UIBarButtonItem alloc]initWithCustomView: leftBtn];
@@ -50,8 +45,6 @@
     self.xinmimaTextField.delegate = self;
     self.querenmimaTextField.delegate = self;
     
-    
-    oldpassword = [NSString stringWithFormat:@"22"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,12 +59,24 @@
 }
 
 - (IBAction)queren:(id)sender {
+    
+    [_querenmimaTextField resignFirstResponder];
+    
     if ([_xinmimaTextField.text isEqual:@""] || [_querenmimaTextField isEqual:@""]) {
-       
+        
         [WarningBox warningBoxTopModeText:@"请将密码填写完全！" andView:self.view];
         
+    }else if(![_xinmimaTextField.text isEqual:_querenmimaTextField.text]){
         
-    }else{
+        [WarningBox warningBoxTopModeText:@"两次输入不同，请重新输入！" andView:self.view];
+        
+        _xinmimaTextField.text = @"";
+        
+        _querenmimaTextField.text = @"";
+        
+        [_xinmimaTextField becomeFirstResponder];
+        
+    } else {
        
     [WarningBox warningBoxModeIndeterminate:@"修改中..." andView:self.view];
     
@@ -125,19 +130,29 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-        if (textField == _xinmimaTextField) {
-            [_querenmimaTextField becomeFirstResponder];
+    if (textField == _xinmimaTextField) {
+        [_querenmimaTextField becomeFirstResponder];
         
     }
     if (textField == _querenmimaTextField) {
         
         if ([_xinmimaTextField.text isEqual:_querenmimaTextField.text]) {
             [_querenmimaTextField resignFirstResponder];
+            
+            [_querenmimaTextField resignFirstResponder];
+            
+            [self queren:nil];
+            
         } else {
             [WarningBox warningBoxTopModeText:@"两次输入不同，请重新输入！" andView:self.view];
+            _xinmimaTextField.text = @"";
+            
+            _querenmimaTextField.text = @"";
+            
+            [_xinmimaTextField becomeFirstResponder];
+            
         }
     }
-    
     
     return YES;
 }
@@ -147,16 +162,4 @@
     [_xinmimaTextField resignFirstResponder];
     [_querenmimaTextField resignFirstResponder];
 }
-
-//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-//    
-//    if ([_jiumimaTextField.text isEqual:@""] || [_xinmimaTextField.text isEqual:@""] || [_querenmimaTextField isEqual:@""]) {
-//        _querenBtn.enabled = NO;
-//    }else{
-//        _querenBtn.enabled = YES;
-//        
-//    }
-//    return YES;
-//}
-
 @end
