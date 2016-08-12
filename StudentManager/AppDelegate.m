@@ -26,13 +26,13 @@
         [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"firstLaunch"];
         
         Qiandaoye *qd=[[Qiandaoye alloc] init];
-        
-        self.window.rootViewController=qd;
+        UINavigationController *navcontlr=[[UINavigationController alloc] initWithRootViewController:qd];
+        self.window.rootViewController=navcontlr;
         
     }else{
         
         ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"viewc"];
-
+        
         UINavigationController *navcontlr=[[UINavigationController alloc] initWithRootViewController:vc];
         
         self.window.rootViewController=navcontlr;

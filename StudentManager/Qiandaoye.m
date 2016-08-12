@@ -27,6 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.hidden = YES;
+
     width=[[UIScreen mainScreen] bounds].size.width;
     
     height=[[UIScreen mainScreen] bounds].size.height;
@@ -41,6 +43,9 @@
     //隐藏滚动条
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
+    
+    
+    
     
     [self.view addSubview:scrollView];
     
@@ -95,9 +100,9 @@
     
     ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"viewc"];
         
-    //[self.navigationController pushViewController:vc animated:YES];
+    [self.navigationController pushViewController:vc animated:YES];
     
-    [self presentViewController:vc animated:NO completion:nil];
+    //[self presentViewController:vc animated:NO completion:nil];
     NSLog(@"跳转");
     
 }
@@ -106,6 +111,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 /*
