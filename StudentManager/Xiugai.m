@@ -367,7 +367,7 @@
 - (IBAction)xiuggaidanweiBtn:(id)sender {
     if ([isInPost intValue]==0) {
         
-        [WarningBox warningBoxModeText:@"不在岗时，不能编辑企业信息！" andView:self.view];
+        [WarningBox warningBoxTopModeText:@"不在岗时，不能编辑企业信息！" andView:self.view];
         
     }else{
         Xiugaidanwei *xd = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"xgdw"];

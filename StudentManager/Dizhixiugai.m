@@ -175,11 +175,10 @@
    }
 - (void)back:(id)sender{
     
-//    NSString *linshiPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/linshi.plist"];
-//    
-//    NSLog(@"====%@",NSHomeDirectory());
-//    
-//    NSMutableDictionary *linshiDic = [NSMutableDictionary dictionaryWithContentsOfFile:linshiPath];
+    if ([_jinjilianxirenTextField.text isEqual:@""] || [_lianxidianhuaTextField.text isEqual:@""] || [_zhusudizhiTextField.text isEqual:@""]) {
+        
+        [WarningBox warningBoxTopModeText:@"信息不能为空，请补全！" andView:self.view];
+    } else {
 
     [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
     
@@ -198,6 +197,7 @@
     [WarningBox warningBoxHide:YES andView:self.view];
     
     [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
