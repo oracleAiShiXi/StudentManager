@@ -65,7 +65,7 @@
     //图标
     [self.dingwei setImage:[UIImage imageNamed:@"dingwei_03.png"]];
     
-    
+    [self initializeLocationService];
 
     gx1 = [[UIView alloc] initWithFrame:CGRectMake(60, self.view1.frame.size.height*1.6, self.view1.frame.size.width-50, 1)];
     gx1.backgroundColor = [UIColor blackColor];
@@ -402,67 +402,68 @@
     [self.navigationController pushViewController:svc animated:YES];}
 
 #pragma mark - tianqi
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
-{
-    CLLocation *currlocation = [locations lastObject];
-        //NSLog(@"latitude--%3.5f",currlocation.coordinate.latitude);
-        //NSLog(@"longitude--%3.5f",currlocation.coordinate.longitude);
-        //NSLog(@"altitude--%3.5f",currlocation.altitude);
-    NSLog(@"定位成功！");
-    self.latitude = [[NSString alloc] initWithFormat:@"%f",currlocation.coordinate.latitude];
-    self.latitude = [[NSString alloc] initWithFormat:@"%f",currlocation.coordinate.longitude];
-    
-    CLGeocoder *geocoder = [[CLGeocoder alloc]init];
-    [geocoder reverseGeocodeLocation:currlocation completionHandler:^(NSArray *placemarks,NSError *error){
-        NSString *ss1;
-        for (CLPlacemark *place in placemarks) {
-            NSString *s1 = [NSString stringWithFormat:@"%@",place.subLocality];
-            ss1 = [s1 substringToIndex:s1.length-1];
-            NSLog(@"Quss1---%@",ss1);
-        }
-        if (placemarks.count > 0) {
-            CLPlacemark *placemark = placemarks[0];
-            
-            NSLog(@"具体位置%@",placemark.name);
-            NSDictionary *addressDictionary = placemark.addressDictionary;
-            
-            NSString *state = [addressDictionary objectForKey:(NSString *)kABPersonAddressStateKey];
-            state = state == nil ?@"":state;
-            NSString *city = [addressDictionary objectForKey:(NSString *)kABPersonAddressCityKey];
-            city = city == nil ?@"":city;
-            
-            self.locationinfo = [NSString stringWithFormat:@"%@",state];
-            NSString *ss3 = [self.locationinfo substringToIndex:self.locationinfo.length-1];
-            self.cityName = [NSString stringWithFormat:@"%@",city];
-            NSString *ss2 = [self.cityName substringToIndex:self.cityName.length-1];
-            NSLog(@"ss3----%@",ss3);
-            NSLog(@"CityNamess2---%@",ss2);
-            NSString *str = [NSString stringWithFormat:@"%@-%@-%@",ss1,ss2,ss3];
-            NSLog(@"str--%@",str);
-            
-            NSString *path = [[NSBundle mainBundle] pathForResource:@"code" ofType:@"plist"];
-            NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
-            NSLog(@"dic---%@",dic);
-            self.SSS = [dic objectForKey:[NSString stringWithFormat:@"%@",str]];
-            NSLog(@"SSS---%@",self.SSS);
-            //拿到城市ID
-            [[NSUserDefaults standardUserDefaults]setObject:self.SSS forKey:@"cityId"];
-            
-
-            Tianqi *tianqi = [[Tianqi alloc]init];
-            self.xingqi.text = [tianqi code:currlocation];
-            NSString *s = [tianqi tianqitupian:currlocation];
-            [self.tianqi setImage:[UIImage imageNamed:s]];
-            self.wendu.text = [tianqi wendu:currlocation];
-        }
-    }];
-
-    
-    
-    
-    
-
-}
+//-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
+//{
+//    CLLocation *currlocation = [locations lastObject];
+//        //NSLog(@"latitude--%3.5f",currlocation.coordinate.latitude);
+//        //NSLog(@"longitude--%3.5f",currlocation.coordinate.longitude);
+//        //NSLog(@"altitude--%3.5f",currlocation.altitude);
+//    NSLog(@"定位成功！");
+//    self.latitude = [[NSString alloc] initWithFormat:@"%f",currlocation.coordinate.latitude];
+//    self.latitude = [[NSString alloc] initWithFormat:@"%f",currlocation.coordinate.longitude];
+//    
+//    CLGeocoder *geocoder = [[CLGeocoder alloc]init];
+//    [geocoder reverseGeocodeLocation:currlocation completionHandler:^(NSArray *placemarks,NSError *error){
+//        NSString *ss1;
+//        NSLog(@"%@",placemarks);
+//        for (CLPlacemark *place in placemarks) {
+//            NSString *s1 = [NSString stringWithFormat:@"%@",place.subLocality];
+//            ss1 = [s1 substringToIndex:s1.length-1];
+//            NSLog(@"Quss1---%@",ss1);
+//        }
+//        if (placemarks.count > 0) {
+//            CLPlacemark *placemark = placemarks[0];
+//            
+//            NSLog(@"具体位置%@",placemark.name);
+//            NSDictionary *addressDictionary = placemark.addressDictionary;
+//            
+//            NSString *state = [addressDictionary objectForKey:(NSString *)kABPersonAddressStateKey];
+//            state = state == nil ?@"":state;
+//            NSString *city = [addressDictionary objectForKey:(NSString *)kABPersonAddressCityKey];
+//            city = city == nil ?@"":city;
+//            
+//            self.locationinfo = [NSString stringWithFormat:@"%@",state];
+//            NSString *ss3 = [self.locationinfo substringToIndex:self.locationinfo.length-1];
+//            self.cityName = [NSString stringWithFormat:@"%@",city];
+//            NSString *ss2 = [self.cityName substringToIndex:self.cityName.length-1];
+//            NSLog(@"ss3----%@",ss3);
+//            NSLog(@"CityNamess2---%@",ss2);
+//            NSString *str = [NSString stringWithFormat:@"%@-%@-%@",ss1,ss2,ss3];
+//            NSLog(@"str--%@",str);
+//            
+//            NSString *path = [[NSBundle mainBundle] pathForResource:@"code" ofType:@"plist"];
+//            NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
+//            NSLog(@"dic---%@",dic);
+//            self.SSS = [dic objectForKey:[NSString stringWithFormat:@"%@",str]];
+//            NSLog(@"SSS---%@",self.SSS);
+//            //拿到城市ID
+//            [[NSUserDefaults standardUserDefaults]setObject:self.SSS forKey:@"cityId"];
+//            
+//
+//            Tianqi *tianqi = [[Tianqi alloc]init];
+//            self.xingqi.text = [tianqi code:currlocation];
+//            NSString *s = [tianqi tianqitupian:currlocation];
+//            [self.tianqi setImage:[UIImage imageNamed:s]];
+//            self.wendu.text = [tianqi wendu:currlocation];
+//        }
+//    }];
+//
+//    
+//    
+//    
+//    
+//
+//}
 
 //-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 //{
@@ -491,5 +492,83 @@
 //    }];
 //
 //}
+- (void)initializeLocationService {
+    
+    // 初始化定位管理器
+    _locationManager = [[CLLocationManager alloc] init];
+    // 设置代理
+    _locationManager.delegate = self;
+    // 设置定位精确度到米
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    // 设置过滤器为无
+    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    // 开始定位
+    // 取得定位权限，有两个方法，取决于你的定位使用情况
+    // 一个是requestAlwaysAuthorization，一个是requestWhenInUseAuthorization
+    [_locationManager requestAlwaysAuthorization];//这句话ios8以上版本使用。
+    [_locationManager startUpdatingLocation];
+}
+int nicaicai=0;
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+    //将经度显示到label上
+
+        NSString *jing = [NSString stringWithFormat:@"%lf", newLocation.coordinate.longitude];
+    //将纬度现实到label上
+        NSString *wei = [NSString stringWithFormat:@"%lf", newLocation.coordinate.latitude];
+    // 获取当前所在的城市名
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    //根据经纬度反向地理编译出地址信息
+    [geocoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *array1, NSError *error){
+        if (array1.count > 0){
+            
+            CLPlacemark *placemark = [array1 objectAtIndex:0];
+            NSLog(@"%@",placemark);
+                NSString *sheng=[NSString stringWithFormat:@"%@",[placemark.addressDictionary objectForKey:@"State"]];
+            
+            
+            //获取城市
+            NSString *city = placemark.locality;
+            NSString * shi ;NSString * qu;
+            if (city) {
+                //四大直辖市的城市信息无法通过locality获得，只能通过获取省份的方法来获得（如果city为空，则可知为直辖市）
+                city = placemark.administrativeArea;
+                
+                //市
+                
+                shi=[NSString stringWithFormat:@"%@",placemark.locality];
+                //区
+                qu=[NSString stringWithFormat:@"%@",placemark.subLocality];
+            }
+            NSString*strrrrrr=[NSString stringWithFormat:@"%@-%@-%@",qu,shi,sheng];
+            NSLog(@"\n\n\n\n\n\n\n%@--%@--%@",qu,shi,sheng );
+
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"code" ofType:@"plist"];
+                        NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
+            
+                        self.SSS = [dic objectForKey:[NSString stringWithFormat:@"%@",strrrrrr]];
+                        NSLog(@"SSS---%@",self.SSS);
+                        //拿到城市ID
+                        [[NSUserDefaults standardUserDefaults]setObject:self.SSS forKey:@"cityId"];
+            
+            
+                        Tianqi *tianqi = [[Tianqi alloc]init];
+                        self.xingqi.text = [tianqi code:newLocation];
+                        NSString *s = [tianqi tianqitupian:newLocation];
+                        [self.tianqi setImage:[UIImage imageNamed:s]];
+                        self.wendu.text = [tianqi wendu:newLocation];
+        }
+        else if (error == nil && [array1 count] == 0)
+        {
+            //NSLog(@"No results were returned.");
+        }
+        else if (error != nil)
+        {
+            //NSLog(@"An error occurred = %@", error);
+        }
+    }];
+    //系统会一直更新数据，直到选择停止更新，因为我们只需要获得一次经纬度即可，所以获取之后就停止更新
+    [manager stopUpdatingLocation];
+    
+}
 
 @end
