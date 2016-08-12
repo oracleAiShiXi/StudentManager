@@ -172,13 +172,23 @@
     
     MaxX = 35;
     
-    MaxY = CGRectGetMaxY(self.shenlabel.frame)+45;
-    
-    MaxY1 =CGRectGetMaxY(self.shilabel.frame)+45;
+    //适配4s
+    if ([[UIScreen mainScreen] bounds].size.height==480) {
+        MaxY = CGRectGetMaxY(self.shenlabel.frame)-205;
+        MaxY1 =CGRectGetMaxY(self.shilabel.frame)-205;
+        
+        MaxH = 200;
+        NSLog(@"4s");
+    } else {
+        
+        MaxY = CGRectGetMaxY(self.shenlabel.frame)+45;
+        
+        MaxY1 =CGRectGetMaxY(self.shilabel.frame)+45;
+        
+        MaxH = 150;
+    }
     
     MaxW = [[UIScreen mainScreen] bounds].size.width-70;
-    
-    MaxH = 150;
     
     shengTableView = [[UITableView alloc] initWithFrame:CGRectMake(MaxX , MaxY, MaxW, MaxH)];
     shengTableView.backgroundColor = [UIColor colorWithRed:99/255.0 green:194/255.0 blue:252/255.0 alpha:1];
@@ -248,6 +258,12 @@
 
 - (IBAction)shenBtn:(id)sender {
     
+    //适配4s
+    if ([[UIScreen mainScreen] bounds].size.height==480) {
+        
+        _biankuangview.hidden = YES;
+    }
+    
     [shiTableView removeFromSuperview];
     sheng = [[NSMutableArray alloc] init];
     pId = [[NSMutableArray alloc] init];
@@ -269,7 +285,12 @@
 }
 
 - (IBAction)shiBtn:(id)sender {
-    
+    //适配4s
+    if ([[UIScreen mainScreen] bounds].size.height==480) {
+        
+        _biankuangview.hidden = YES;
+    }
+
     shi = [[NSMutableArray alloc] init];
     cId = [[NSMutableArray alloc] init];
     NSArray *carr;
@@ -350,6 +371,11 @@
 //tableView点击方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView==shengTableView) {
+        //适配4s
+        if ([[UIScreen mainScreen] bounds].size.height==480) {
+            
+            _biankuangview.hidden = NO;
+        }
         //取消选中
         [shengTableView deselectRowAtIndexPath:indexPath animated:YES];
         
@@ -359,7 +385,12 @@
         
         [shengTableView removeFromSuperview];
     }else{
-        
+        //适配4s
+        if ([[UIScreen mainScreen] bounds].size.height==480) {
+            
+            _biankuangview.hidden = NO;
+        }
+
         //取消选中
         [shiTableView deselectRowAtIndexPath:indexPath animated:YES];
         
