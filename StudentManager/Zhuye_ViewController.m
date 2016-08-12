@@ -524,11 +524,12 @@ int nicaicai=0;
             CLPlacemark *placemark = [array1 objectAtIndex:0];
             NSLog(@"%@",placemark);
                 NSString *sheng=[NSString stringWithFormat:@"%@",[placemark.addressDictionary objectForKey:@"State"]];
+            NSString *sheng1 = [sheng substringToIndex:sheng.length-1];
             
             
             //获取城市
             NSString *city = placemark.locality;
-            NSString * shi ;NSString * qu;
+            NSString * shi ;NSString * qu;NSString *shi1;NSString *qu1;
             if (city) {
                 //四大直辖市的城市信息无法通过locality获得，只能通过获取省份的方法来获得（如果city为空，则可知为直辖市）
                 city = placemark.administrativeArea;
@@ -536,11 +537,13 @@ int nicaicai=0;
                 //市
                 
                 shi=[NSString stringWithFormat:@"%@",placemark.locality];
+                shi1 = [shi substringToIndex:shi.length-1];
                 //区
                 qu=[NSString stringWithFormat:@"%@",placemark.subLocality];
+                qu1 = [qu substringToIndex:qu.length-1];
             }
-            NSString*strrrrrr=[NSString stringWithFormat:@"%@-%@-%@",qu,shi,sheng];
-            NSLog(@"\n\n\n\n\n\n\n%@--%@--%@",qu,shi,sheng );
+            NSString*strrrrrr=[NSString stringWithFormat:@"%@-%@-%@",qu1,shi1,sheng1];
+            NSLog(@"\n\n\n\n\n\n\n%@-%@-%@",qu1,shi1,sheng1 );
 
             NSString *path = [[NSBundle mainBundle] pathForResource:@"code" ofType:@"plist"];
                         NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
