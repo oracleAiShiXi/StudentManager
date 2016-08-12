@@ -43,7 +43,9 @@
     [super viewDidLoad];
     
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-
+   
+    
+    
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg-2.png"]];
     
     imageView.frame = self.view.bounds;
@@ -117,7 +119,9 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     
-    self.navigationController.navigationBar.hidden = YES;
+
+    
+   [self.navigationController setNavigationBarHidden:YES animated:YES];
     //NSLog(@"result1---%@",self.result1);
     //NSLog(@"result2---%@",self.result2);
     [super viewWillAppear:animated];
@@ -132,8 +136,8 @@
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
     
-       self.navigationController.navigationBar.hidden = YES;
     [super viewWillDisappear:animated];
     //结束定位
     [self.locationManager stopUpdatingLocation];
