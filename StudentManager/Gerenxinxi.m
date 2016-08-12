@@ -50,7 +50,6 @@
     //设置导航栏左侧按钮
     UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, MinWidth, MaxHeigth)];
     [leftBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [leftBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateHighlighted];
     [leftBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *leftItem =[[UIBarButtonItem alloc]initWithCustomView: leftBtn];
@@ -59,7 +58,6 @@
     //设置导航栏右侧按钮
     UIButton *rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(width-MaxWidth, 0, MaxWidth, MaxHeigth)];
     [rightBtn setTitle:@"修改" forState:UIControlStateNormal];
-    [rightBtn setTitle:@"修改" forState:UIControlStateHighlighted];
     [rightBtn setTintColor:[UIColor whiteColor]];
     rightBtn.titleLabel.font = [UIFont systemFontOfSize:18];
     [rightBtn addTarget:self action:@selector(Tiaoxiugai:) forControlEvents:UIControlEventTouchUpInside];

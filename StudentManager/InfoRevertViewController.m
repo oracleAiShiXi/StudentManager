@@ -48,13 +48,13 @@
     //设置导航条属性
     self.navigationController.navigationBar.barTintColor =[UIColor colorWithRed:95/255.0 green:193/255.0 blue:255/255.0 alpha:1];
     self.title  =@"咨询回复";
-    UIButton  *backbtn = [[UIButton alloc]initWithFrame:CGRectMake(15,10, 25, 25)];
+    UIButton  *backbtn = [[UIButton alloc]initWithFrame:CGRectMake(15,10, 20, 20)];
     [backbtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [backbtn addTarget:self action:@selector(backbutton:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftben = [[UIBarButtonItem alloc]initWithCustomView:backbtn];
     self.navigationItem.leftBarButtonItem =leftben;
     
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
 
 }
 
@@ -209,16 +209,16 @@
          UILabel *ll1 = (UILabel*)[cell.contentView viewWithTag:100];
         ll1.text = @"咨询标题:";
         ll1.font = [UIFont systemFontOfSize:14.0];
-        ll1.textColor=[UIColor blackColor];
+        //ll1.textColor=[UIColor blackColor];
         UILabel *ll2 = (UILabel*)[cell.contentView viewWithTag:101];
         ll2.text = @"咨询时间:";
         ll2.font = [UIFont systemFontOfSize:14.0];
-        ll2.textColor=[UIColor blackColor];
+        //ll2.textColor=[UIColor blackColor];
         UILabel *l1 = (UILabel*)[cell.contentView viewWithTag:102];
         UILabel *l2 = (UILabel*)[cell.contentView viewWithTag:103];
         l1.font = [UIFont systemFontOfSize:14.0];
-        l1.textColor=[UIColor blackColor];
-        l2.textColor=[UIColor blackColor];
+        //l1.textColor=[UIColor blackColor];
+        //l2.textColor=[UIColor blackColor];
         l2.font = [UIFont systemFontOfSize:14.0];
         [cell.contentView addSubview:ll1];
         [cell.contentView addSubview:ll2];
@@ -282,24 +282,6 @@
 
     }
     
-    
-    
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end

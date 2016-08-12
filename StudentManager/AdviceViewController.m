@@ -40,13 +40,13 @@
     
     self.navigationController.navigationBar.hidden = NO;
     self.title  =@"用户建议";
-    UIButton  *backbtn = [[UIButton alloc]initWithFrame:CGRectMake(15,10, 25, 25)];
+    UIButton  *backbtn = [[UIButton alloc]initWithFrame:CGRectMake(15,10, 20, 20)];
     [backbtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [backbtn addTarget:self action:@selector(backbutton:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftben = [[UIBarButtonItem alloc]initWithCustomView:backbtn];
     self.navigationItem.leftBarButtonItem =leftben;
     
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     [self.textview.layer setCornerRadius:10];
     [self.refer.layer setCornerRadius:10];
