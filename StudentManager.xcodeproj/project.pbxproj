@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C05F2E71D5D6A6800562A39 /* code_1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C05F2E51D5D6A6800562A39 /* code_1.plist */; };
-		5C05F2E81D5D6A6800562A39 /* code.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C05F2E61D5D6A6800562A39 /* code.plist */; };
+		BB223F8D1D5D9BA2002531DB /* code.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB223F8C1D5D9BA2002531DB /* code.plist */; };
 		D707AE641D4AEDBB007ED80A /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D707AE631D4AEDBB007ED80A /* SetViewController.m */; };
 		D707AE671D4B428D007ED80A /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D707AE661D4B428D007ED80A /* HelpViewController.m */; };
 		D707AE6A1D4B42AC007ED80A /* AdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D707AE691D4B42AC007ED80A /* AdviceViewController.m */; };
@@ -142,8 +141,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5C05F2E51D5D6A6800562A39 /* code_1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = code_1.plist; path = ../../../Downloads/code/code_1.plist; sourceTree = "<group>"; };
-		5C05F2E61D5D6A6800562A39 /* code.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = code.plist; path = ../../../Downloads/code/code.plist; sourceTree = "<group>"; };
+		BB223F8C1D5D9BA2002531DB /* code.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = code.plist; sourceTree = "<group>"; };
 		D707AE621D4AEDBB007ED80A /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };
 		D707AE631D4AEDBB007ED80A /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
 		D707AE651D4B428D007ED80A /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
@@ -472,8 +470,7 @@
 				BBE5867C1D5C63E700ACB57A /* 签到 */,
 				D7E2D7D11D5B1D8A00E9A6E5 /* 信息回复 */,
 				D7C9F9911D49B43700CB9ACD /* Main.storyboard */,
-				5C05F2E51D5D6A6800562A39 /* code_1.plist */,
-				5C05F2E61D5D6A6800562A39 /* code.plist */,
+				BB223F8C1D5D9BA2002531DB /* code.plist */,
 				D7C9F9941D49B43700CB9ACD /* Assets.xcassets */,
 				D7C9F9961D49B43700CB9ACD /* LaunchScreen.storyboard */,
 				D7C9F9991D49B43700CB9ACD /* Info.plist */,
@@ -805,6 +802,7 @@
 				D7E2D78C1D5B07F900E9A6E5 /* anniu_6.png in Resources */,
 				D7D664721D4ED9D90037335C /* usehelp05.png in Resources */,
 				D7E2D7CB1D5B0D9F00E9A6E5 /* xuanzhong.png in Resources */,
+				BB223F8D1D5D9BA2002531DB /* code.plist in Resources */,
 				D7E2D7A01D5B07F900E9A6E5 /* 17.png in Resources */,
 				D7C9F9981D49B43700CB9ACD /* LaunchScreen.storyboard in Resources */,
 				D7E2D7A71D5B07F900E9A6E5 /* bg_chooseschool.png in Resources */,
@@ -814,7 +812,6 @@
 				D7E2D7881D5B07F900E9A6E5 /* anniu_4.png in Resources */,
 				D7E2D7A81D5B07F900E9A6E5 /* dingwei_03.png in Resources */,
 				D7E2D7891D5B07F900E9A6E5 /* bianse-anniu_4.png in Resources */,
-				5C05F2E71D5D6A6800562A39 /* code_1.plist in Resources */,
 				D7E2D7911D5B07F900E9A6E5 /* 2.png in Resources */,
 				D7E2D77C1D5B07F900E9A6E5 /* jinru_03.png in Resources */,
 				D7E2D7901D5B07F900E9A6E5 /* 1.png in Resources */,
@@ -860,7 +857,6 @@
 				D7E2D7801D5B07F900E9A6E5 /* mempass-1@2x.png in Resources */,
 				D7E2D79C1D5B07F900E9A6E5 /* 13.png in Resources */,
 				D7E2D79E1D5B07F900E9A6E5 /* 15.png in Resources */,
-				5C05F2E81D5D6A6800562A39 /* code.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

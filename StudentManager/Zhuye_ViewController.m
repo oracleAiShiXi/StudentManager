@@ -13,8 +13,6 @@
 #import "SetViewController.h"
 #import "SignInViewController.h"
 #import "InfoRevertViewController.h"
-
-
 #import "Tianqi.h"
 #import <CoreLocation/CoreLocation.h>
 #import "Color+Hex.h"
@@ -43,7 +41,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
- 
+    
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg-2.png"]];
     
