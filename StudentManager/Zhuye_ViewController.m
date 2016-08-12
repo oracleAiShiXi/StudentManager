@@ -96,7 +96,7 @@
     
     flog =0;
     //NSLog(@"studentID--%@",self.studentId);
-    NSLog(@"ip-----%@",self.ip);
+    //NSLog(@"ip-----%@",self.ip);
     [self.geju reloadData];
     
     
@@ -321,7 +321,7 @@
             
             //把数据存入plist文件
             NSString *path=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/userInfo.plist"];
-            NSLog(@"NSHomeDirectory()=====%@",NSHomeDirectory());
+           /// NSLog(@"NSHomeDirectory()=====%@",NSHomeDirectory());
             
             [dataDic writeToFile:path atomically:YES];
             

@@ -22,6 +22,7 @@
     NSString*sheng;
     NSString*shi;
     NSString*qu;
+    NSString*street;
     
 }
 @end
@@ -95,7 +96,7 @@
     //将纬度现实到label上
     wei = [NSString stringWithFormat:@"%lf", newLocation.coordinate.latitude];
     // 获取当前所在的城市名
-    NSLog(@"经纬度------%@,%@",jing,wei);
+   // NSLog(@"经纬度------%@,%@",jing,wei);
     
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     //根据经纬度反向地理编译出地 址信息
@@ -105,21 +106,20 @@
            
             NSLog(@"-------------------------------具体位置%@",placemark);
             
+            street = [NSString stringWithFormat:@"%@",placemark];
             
-           // sheng=[NSString stringWithFormat:@"%@",[placemark.addressDictionary objectForKey:@"State"]];
-           // NSLog(@"%@",sheng);
+            
+         
             //获取城市
             NSString *city = placemark.locality;
             
             if (city) {
                 //四大直辖市的城市信息无法通过locality获得，只能通过获取省份的方法来获得（如果city为空，则可知为直辖市）
                 city = placemark.administrativeArea;
-                
                 //市
-                
-               // shi=[NSString stringWithFormat:@"%@",placemark.locality];
+                 shi=[NSString stringWithFormat:@"%@",placemark.locality];
                 //区
-                //qu=[NSString stringWithFormat:@"%@",placemark.subLocality];
+                 qu=[NSString stringWithFormat:@"%@",placemark.subLocality];
             }
             
         }
@@ -244,14 +244,14 @@
     
     //出入参数：
   
-     NSDictionary*datadic=[NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId",@"123.0",@"longitude",@"65.3",@"latitude",@"甲骨文",@"address", nil];
-    
+     NSDictionary*datadic=[NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId",jing,@"longitude",wei,@"latitude",street,@"address", nil];
+        NSLog(@"%@-------%@--------%@",jing,wei,sheng);
     
     NSString *jsonstring =[writer stringWithObject:datadic];
     
     
     NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=attup",[def objectForKey:@"IP"]];
-    
+        NSLog(@"the url=------%@",url);
     
     NSDictionary *msg = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
     
@@ -263,6 +263,7 @@
        
    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
        @try {
+           NSLog(@"%@",responseObject);
            [WarningBox warningBoxHide:YES andView:self.view];
            
            [WarningBox warningBoxModeText:@"签到成功！" andView:self.view];
