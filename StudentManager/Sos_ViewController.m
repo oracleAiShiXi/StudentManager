@@ -30,6 +30,7 @@
 //    self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = NO;
     self.view.backgroundColor = [UIColor colorWithHexString:@"5fc1ff"];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"5fc1ff"];
     //按钮大小
     int MinWidth=20,MaxHeigth=20;
     

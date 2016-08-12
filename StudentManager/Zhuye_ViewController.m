@@ -136,8 +136,8 @@
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
-    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+        
     [super viewWillDisappear:animated];
     //结束定位
     [self.locationManager stopUpdatingLocation];
