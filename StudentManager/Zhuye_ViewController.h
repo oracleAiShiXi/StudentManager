@@ -15,7 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIView *view1;
 @property (weak, nonatomic) IBOutlet UIImageView *dingwei;
 @property (weak, nonatomic) IBOutlet UIImageView *tianqi;
-- (IBAction)sos:(id)sender;
+@property (strong, nonatomic)UIButton *sos;
+- (void)sos:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *wendu;
 @property (weak, nonatomic) IBOutlet UILabel *xingqi;
 

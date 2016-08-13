@@ -61,10 +61,29 @@
     UILabel *l1 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/2+90, self.view.frame.size.width-100, 20)];
     l1.textColor = [UIColor whiteColor];
     l1.text = @"注:把你的紧急情况进行上报，我们会立马查收!";
+    UITextField *tf5;
+    if (self.view.frame.size.width == 414){
+        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2, 100, 40)];
+        self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2, 100, 40)];
     l1.font = [UIFont systemFontOfSize:15];
+    }else if (self.view.frame.size.width == 375){
+        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2, 100, 40)];
+        self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2, 100, 40)];
+        l1.font = [UIFont systemFontOfSize:13];
+
+    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
+        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+30, 80, 30)];
+        self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+30, 80, 30)];
+        l1.font = [UIFont systemFontOfSize:10];
+        
+    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
+        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+40, 60, 25)];
+        self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+40, 60, 25)];
+        l1.font = [UIFont systemFontOfSize:9];
+    }
     [self.view addSubview:l1];
     
-    UITextField *tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2, 100, 40)];
+    
     tf5.backgroundColor = [UIColor clearColor];
     tf5.textColor = [UIColor whiteColor];
     tf5.enabled = NO;
@@ -75,7 +94,7 @@
     tf5.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:tf5];
     
-    self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2, 100, 40)];
+    
     [self.myBt setTitle:@"提交" forState:UIControlStateNormal];
     [self.myBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.myBt.backgroundColor = [UIColor clearColor];

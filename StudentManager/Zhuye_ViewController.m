@@ -48,6 +48,7 @@
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg-2.png"]];
     
+    
     imageView.frame = self.view.bounds;
     
     imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -64,6 +65,27 @@
     self.view1.alpha = 0.7;
     
     [self.view addSubview:self.view1];
+    if (self.view.frame.size.width == 414){
+        self.sos = [[UIButton alloc] initWithFrame:CGRectMake(240, 10, 60, 30)];
+        
+    }else if (self.view.frame.size.width == 375){
+        self.sos = [[UIButton alloc] initWithFrame:CGRectMake(230, 10, 45, 20)];
+        
+    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
+        
+        self.sos = [[UIButton alloc] initWithFrame:CGRectMake(170, 10, 40, 20)];
+
+    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
+        
+        self.sos = [[UIButton alloc] initWithFrame:CGRectMake(180, 10, 35, 18)];
+
+    }
+    [self.sos setImage:[UIImage imageNamed:@"anniu_03.png"] forState:UIControlStateNormal];
+    [self.sos setImage:[UIImage imageNamed:@"anniu_03.png"] forState:UIControlStateHighlighted];
+    [self.sos addTarget:self action:@selector(sos:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view1 addSubview:self.sos];
+    
+    
     //图标
     [self.dingwei setImage:[UIImage imageNamed:@"dingwei_03.png"]];
     
@@ -171,16 +193,41 @@
     static NSString * CellIdentifier = @"GradientCell";
     UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
 
-    imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-20, (cell.frame.size.height)/2-30, 40, 40)];
+    UILabel *ll;
+    
+    if (self.view.frame.size.width == 414) {
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-20, (cell.frame.size.height)/2-30, 50, 50)];
+        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
+        ll.font = [UIFont systemFontOfSize:16];
+        
+    }else if (self.view.frame.size.width == 375){
+        
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-20, (cell.frame.size.height)/2-30, 50, 50)];
+        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
+        ll.font = [UIFont systemFontOfSize:16];
+        
+    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-10, 20, 35, 35)];
+        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
+        ll.font = [UIFont systemFontOfSize:11];
+        
+    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-10, 5, 25, 25)];
+        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-40)];
+        ll.font = [UIFont systemFontOfSize:9];
+        
+    }
 
-    UILabel *ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
+
+    
+
+    
 
     if (flog == 0) {
         
    imageview.image = [self.arr objectAtIndex:indexPath.row];
     ll.text = [array objectAtIndex:indexPath.row];
     ll.textAlignment = NSTextAlignmentCenter;
-    ll.font = [UIFont systemFontOfSize:16];
     ll.textColor =[UIColor colorWithHexString:@"483D8B"];
     cell.backgroundColor = [UIColor clearColor];
     }
@@ -205,16 +252,36 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    
-     imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-20, (cell.frame.size.height)/2-30, 40, 40)];
+    UILabel *ll;
+    if (self.view.frame.size.width == 414) {
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-20, (cell.frame.size.height)/2-30, 50, 50)];
+        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
+        ll.font = [UIFont systemFontOfSize:16];
+        
+    }else if (self.view.frame.size.width == 375){
+        
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-20, (cell.frame.size.height)/2-30, 50, 50)];
+        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
+        ll.font = [UIFont systemFontOfSize:16];
+        
+    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-10, 20, 35, 35)];
+        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
+        ll.font = [UIFont systemFontOfSize:11];
+        
+    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-10, 5, 25, 25)];
+        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-40)];
+        ll.font = [UIFont systemFontOfSize:9];
+        
+    }
+
     imageview.image = [self.arr1 objectAtIndex:indexPath.row];
     [cell.contentView addSubview:imageview];
     
     
-    UILabel *ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
     ll.text = [array objectAtIndex:indexPath.row];
     ll.textAlignment = NSTextAlignmentCenter;
-    ll.font = [UIFont systemFontOfSize:16];
     ll.textColor =[UIColor whiteColor];
     [cell.contentView addSubview:ll];
     [cell.contentView addSubview:button];
@@ -379,12 +446,34 @@
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-20, (cell.frame.size.height)/2-30, 40, 40)];
+    UILabel *ll;
+    if (self.view.frame.size.width == 414) {
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-20, (cell.frame.size.height)/2-30, 50, 50)];
+        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
+        ll.font = [UIFont systemFontOfSize:16];
+        
+    }else if (self.view.frame.size.width == 375){
+        
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-20, (cell.frame.size.height)/2-30, 50, 50)];
+        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
+        ll.font = [UIFont systemFontOfSize:16];
+        
+    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-10, 20, 35, 35)];
+        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
+        ll.font = [UIFont systemFontOfSize:11];
+        
+    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-10, 5, 25, 25)];
+        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-40)];
+        ll.font = [UIFont systemFontOfSize:9];
+        
+    }
+
     imageview.image = [self.arr objectAtIndex:indexPath.row];
-    UILabel *ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
     ll.text = [array objectAtIndex:indexPath.row];
     ll.textAlignment = NSTextAlignmentCenter;
-    ll.font = [UIFont systemFontOfSize:16];
+    
     ll.textColor =[UIColor colorWithHexString:@"483D8B"];
     [cell.contentView addSubview:imageview];
     [cell.contentView addSubview:ll];
@@ -394,7 +483,7 @@
 
 
 #pragma mark - button
-- (IBAction)sos:(id)sender {
+- (void)sos:(id)sender {
     
     //NSLog(@"跳转帮助界面");
     Sos_ViewController *svc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"sos"];

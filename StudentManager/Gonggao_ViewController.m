@@ -136,7 +136,15 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    return 80;
+    if (self.view.frame.size.width == 414) {
+        return 80;
+    }else if (self.view.frame.size.width == 375){
+        return 80;
+    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
+        return 50;
+    }else{
+        return 40;
+    }
 }
 // 数据源方法,每一组的每一行应该显示怎么的界面(含封装的数据),重点!!!
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -152,23 +160,65 @@
     cell.backgroundColor = [UIColor colorWithHexString:@"5fc1ff"];
     //选中cell不变色
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    UIView *haha = [[UIView alloc] initWithFrame:CGRectMake(15, 5, self.view.frame.size.width-30, 70)];
+    UIView *haha;
+    UIButton *lala;
+    UILabel *l;
+    UILabel *tongzhi;
+    UILabel *shijian;
+    if (self.view.frame.size.width == 414) {
+        
+        haha = [[UIView alloc] initWithFrame:CGRectMake(15, 5, self.view.frame.size.width-30, 70)];
+        lala = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-50, 25, 15, 15)];
+        l = [[UILabel alloc]initWithFrame:CGRectMake(25, 10, 50, 30)];
+        tongzhi = [[UILabel alloc]initWithFrame:CGRectMake(75, 10, self.view.frame.size.width-50, 30)];
+        shijian = [[UILabel alloc] initWithFrame:CGRectMake(25, 40, self.view.frame.size.width-50, 30)];
+        l.font = [UIFont boldSystemFontOfSize:20];
+        tongzhi.font = [UIFont boldSystemFontOfSize:20];
+        shijian.font = [UIFont boldSystemFontOfSize:18];
+
+    }else if (self.view.frame.size.width == 375){
+        
+        haha = [[UIView alloc] initWithFrame:CGRectMake(15, 5, self.view.frame.size.width-30, 70)];
+        lala = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-50, 25, 15, 15)];
+        l = [[UILabel alloc]initWithFrame:CGRectMake(25, 10, 50, 30)];
+        tongzhi = [[UILabel alloc]initWithFrame:CGRectMake(75, 10, self.view.frame.size.width-50, 30)];
+        shijian = [[UILabel alloc] initWithFrame:CGRectMake(25, 40, self.view.frame.size.width-50, 30)];
+        l.font = [UIFont boldSystemFontOfSize:20];
+        tongzhi.font = [UIFont boldSystemFontOfSize:20];
+        shijian.font = [UIFont boldSystemFontOfSize:18];
+    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
+        
+        haha = [[UIView alloc] initWithFrame:CGRectMake(15, 3, self.view.frame.size.width-30, 44)];
+        lala = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-50, 15, 15, 15)];
+        l = [[UILabel alloc]initWithFrame:CGRectMake(15, 3, 50, 20)];
+        tongzhi = [[UILabel alloc]initWithFrame:CGRectMake(45, 3, self.view.frame.size.width-50, 20)];
+        shijian = [[UILabel alloc] initWithFrame:CGRectMake(15, 20, self.view.frame.size.width-50, 20)];
+        l.font = [UIFont boldSystemFontOfSize:12];
+        tongzhi.font = [UIFont boldSystemFontOfSize:12];
+        shijian.font = [UIFont boldSystemFontOfSize:10];
+    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
+        
+        haha = [[UIView alloc] initWithFrame:CGRectMake(15, 3, self.view.frame.size.width-30, 34)];
+        lala = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-50, 10, 10, 10)];
+        l = [[UILabel alloc]initWithFrame:CGRectMake(15, 3, 25, 15)];
+        tongzhi = [[UILabel alloc]initWithFrame:CGRectMake(45, 3, self.view.frame.size.width-50, 15)];
+        shijian = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, self.view.frame.size.width-50, 15)];
+        l.font = [UIFont boldSystemFontOfSize:10];
+        tongzhi.font = [UIFont boldSystemFontOfSize:10];
+        shijian.font = [UIFont boldSystemFontOfSize:8];
+    }
+    
     
     haha.backgroundColor = [UIColor whiteColor];
     haha.layer.cornerRadius = 5.0;
 
-    UIButton *lala = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-50, 25, 15, 15)];
+    
     [lala setImage:[UIImage imageNamed:@"jinru_03.png"]forState:UIControlStateNormal];
     [haha addSubview:lala];
-    UILabel *l = [[UILabel alloc]initWithFrame:CGRectMake(25, 10, 50, 30)];
-    UILabel *tongzhi = [[UILabel alloc]initWithFrame:CGRectMake(75, 10, self.view.frame.size.width-50, 30)];
-    UILabel *shijian = [[UILabel alloc] initWithFrame:CGRectMake(25, 40, self.view.frame.size.width-50, 30)];
     l.text = @"通知:";
     tongzhi.text = title[indexPath.row];
     shijian.text = time[indexPath.row];
-    l.font = [UIFont boldSystemFontOfSize:20];
-    tongzhi.font = [UIFont boldSystemFontOfSize:20];
-    shijian.font = [UIFont boldSystemFontOfSize:18];
+    
     //字体加深
     l.backgroundColor = [UIColor clearColor];
     tongzhi.backgroundColor = [UIColor clearColor];

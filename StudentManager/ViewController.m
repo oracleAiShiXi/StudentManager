@@ -54,47 +54,70 @@
 
     self.navigationController.navigationBar.hidden = YES;
     
-    self.xuexiao = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3, 280, self.view.frame.size.height/10-10)];
-    self.xuexiao.backgroundColor = [UIColor clearColor];
-    self.xuexiao.textColor = [UIColor whiteColor];
-    self.xuexiao.borderStyle = UITextBorderStyleRoundedRect;
-    if (self.view.frame.size.width == 414) {
-        self.xuexiao.layer.cornerRadius = 30.0;
-        
+    
 
+    
+    if (self.view.frame.size.width == 414) {
+        
+        self.xuexiao = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3, 280, self.view.frame.size.height/10-10)];
+        self.xuexiao.layer.cornerRadius = 30.0;
+        self.xuanxuexiao = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2+100, self.view.frame.size.height/3+20, 25, 20)];
+        self.queding = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+80, 280, self.view.frame.size.height/10-10)];
+        self.queding.layer.cornerRadius = 30.0;
+        self.queren = [[UIButton alloc]initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+80, 280, self.view.frame.size.height/10-10)];
+        self.xuexiaomingcheng = [[UITableView alloc]initWithFrame:CGRectMake((self.view.frame.size.width)/2-150, (self.view.frame.size.height/3)+(self.view.frame.size.height/10-10), 300, 300)];
+
+        
     }else if(self.view.frame.size.width == 375){
+        
+        self.xuexiao = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3, 280, self.view.frame.size.height/10-10)];
         self.xuexiao.layer.cornerRadius = 28.0;
-    }else{
-        self.xuexiao.layer.cornerRadius = 18.0;
+        self.xuanxuexiao = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2+100, self.view.frame.size.height/3+16, 25, 20)];
+        self.queding = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+70, 280, self.view.frame.size.height/10-10)];
+        self.queding.layer.cornerRadius = 28.0;
+        self.queren = [[UIButton alloc]initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+70, 280, self.view.frame.size.height/10-10)];
+        self.xuexiaomingcheng = [[UITableView alloc]initWithFrame:CGRectMake((self.view.frame.size.width)/2-150, (self.view.frame.size.height/3)+(self.view.frame.size.height/10-10), 300, 300)];
+        
+    }else if(self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
+        
+        self.xuexiao = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3, 240, self.view.frame.size.height/10-10)];
+        self.xuexiao.layer.cornerRadius = 22.0;
+        self.xuanxuexiao = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2+85, self.view.frame.size.height/3+14, 25, 20)];
+        self.queding = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+60, 240, self.view.frame.size.height/10-10)];
+        self.queren = [[UIButton alloc]initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+60, 240, self.view.frame.size.height/10-5)];
+        self.queding.layer.cornerRadius = 22.0;
+        self.xuexiaomingcheng = [[UITableView alloc]initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, (self.view.frame.size.height/3)+(self.view.frame.size.height/10-10)+10, 240, 240)];
+        
+    }else if(self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
+        
+        self.xuexiao = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3, 240, self.view.frame.size.height/10)];
+        self.xuexiao.layer.cornerRadius = 22.0;
+        self.xuanxuexiao = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2+85, self.view.frame.size.height/3+12, 25, 20)];
+        self.queding = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+60, 240, self.view.frame.size.height/10)];
+        self.queren = [[UIButton alloc]initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+60, 280, self.view.frame.size.height/10)];
+        self.queding.layer.cornerRadius = 22.0;
+        self.xuexiaomingcheng = [[UITableView alloc]initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, (self.view.frame.size.height/3)+(self.view.frame.size.height/10-10)+10, 240, 240)];
+        
     }
-    //self.xuexiao.layer.cornerRadius = 30.0;
     self.xuexiao.placeholder = @"选择你的学校";
     self.xuexiao.layer.borderColor = [[UIColor whiteColor]CGColor];
     self.xuexiao.layer.borderWidth = 2.0;
     self.xuexiao.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.xuexiao.enabled = NO;
     self.xuexiao.delegate = self;
+    self.xuexiao.backgroundColor = [UIColor clearColor];
+    self.xuexiao.textColor = [UIColor whiteColor];
+    self.xuexiao.borderStyle = UITextBorderStyleRoundedRect;
+
     [self.view addSubview:self.xuexiao];
     
-    self.xuanxuexiao = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2+100, self.view.frame.size.height/3+13, 25, 20)];
     self.xuanxuexiao.backgroundColor = [UIColor clearColor];
     [self.xuanxuexiao setImage:[UIImage imageNamed:@"arrowdown.png"] forState:UIControlStateNormal];
     [self.xuanxuexiao addTarget:self action:@selector(xuexiao:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.xuanxuexiao];
     
-    self.queding = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+80, 280, self.view.frame.size.height/10-10)];
     self.queding.backgroundColor = [UIColor clearColor];
     self.queding.borderStyle = UITextBorderStyleRoundedRect;
-    //self.queding.layer.cornerRadius = 30.0;
-    if (self.view.frame.size.width == 414) {
-        self.queding.layer.cornerRadius = 30.0;
-        
-        
-    }else if(self.view.frame.size.width == 375){
-        self.queding.layer.cornerRadius = 28.0;
-    }else{
-        self.queding.layer.cornerRadius = 18.0;
-    }
     self.queding.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.queding.layer.borderWidth = 2.0;
     self.queding.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -102,7 +125,7 @@
     self.queding.delegate = self;
     [self.view addSubview:self.queding];
     
-    self.queren = [[UIButton alloc]initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+80, 280, self.view.frame.size.height/10-10)];
+    
     self.queren.backgroundColor = [UIColor clearColor];
     [self.queren setTitle:@"确定" forState:UIControlStateNormal];
     [self.queren setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -110,12 +133,10 @@
     [self.view addSubview:self.queren];
 
     
-
-    
-    self.xuexiaomingcheng = [[UITableView alloc]initWithFrame:CGRectMake((self.view.frame.size.width)/2-150, (self.view.frame.size.height/3)+(self.view.frame.size.height/10-10), 300, 300)];
     self.xuexiaomingcheng.backgroundColor = [UIColor colorWithHexString:@"63d5ff"];
     self.xuexiaomingcheng.delegate = self;
     self.xuexiaomingcheng.dataSource = self;
+    self.xuexiaomingcheng.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.xuexiaomingcheng];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -198,8 +219,8 @@
         [vv removeFromSuperview];
     }
     cell.backgroundColor = [UIColor colorWithHexString:@"63d5ff"];
-    duzui=[[UIView alloc] initWithFrame:CGRectMake(0, 40, CGRectGetWidth(self.view.frame), 1)];
-    duzui.backgroundColor = [UIColor whiteColor];
+    //duzui=[[UIView alloc] initWithFrame:CGRectMake(0, 40, CGRectGetWidth(self.view.frame), 1)];
+    //duzui.backgroundColor = [UIColor whiteColor];
     UILabel *ll=[[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.view.frame.size.width-20, 40)];
     ll.textColor = [UIColor whiteColor];
     ll.text=arr[indexPath.row];

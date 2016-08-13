@@ -52,43 +52,133 @@
     [leftBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem =[[UIBarButtonItem alloc]initWithCustomView: leftBtn];
     self.navigationItem.leftBarButtonItem = leftItem;
+    UILabel *l1;
+    UILabel *l2;
+    UILabel *l3;
+    UILabel *l4;
+    UILabel *l5;
+    UITextField *tf1;
+    UITextField *tf2;
+    UITextField *tf5;
+    if (self.view.frame.size.width == 414) {
+        l1 = [[UILabel alloc] initWithFrame:CGRectMake(60, self.view.frame.size.height/8+10, 100, 40)];
+        l1.font = [UIFont boldSystemFontOfSize:20];
+        self.b1 = [[UIButton alloc] initWithFrame:CGRectMake(180, self.view.frame.size.height/8+20, 15, 15)];
+        l2 = [[UILabel alloc] initWithFrame:CGRectMake(200, self.view.frame.size.height/8+10, 50, 40)];
+        l2.font = [UIFont boldSystemFontOfSize:20];
+        self.b2 = [[UIButton alloc] initWithFrame:CGRectMake(280, self.view.frame.size.height/8+20, 15, 15)];
+        l3 = [[UILabel alloc] initWithFrame:CGRectMake(300, self.view.frame.size.height/8+10, 50, 40)];
+        l3.font = [UIFont boldSystemFontOfSize:20];
+        l4 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/8+85, 50, 30)];
+        l4.font = [UIFont boldSystemFontOfSize:20];
+        l5 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/8+165, 50, 30)];
+        l5.font = [UIFont boldSystemFontOfSize:20];
+        tf1 = [[UITextField alloc] initWithFrame:CGRectMake(100, self.view.frame.size.height/8+80, self.view.frame.size.width-150, 50)];
+        self.biaoti = [[UITextField alloc] initWithFrame:CGRectMake(100+5, self.view.frame.size.height/8+80, self.view.frame.size.width-150, 50)];
+        tf2 = [[UITextField alloc] initWithFrame:CGRectMake(100, self.view.frame.size.height/8+160, self.view.frame.size.width-150, 250)];
+        self.neirong = [[UITextView alloc] initWithFrame:CGRectMake(100+5, self.view.frame.size.height/8+160, self.view.frame.size.width-150, 250)];
+        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+100, 100, 40)];
+        self.tijiao = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+100, 100, 40)];
+        
+    }else if(self.view.frame.size.width == 375){
+        l1 = [[UILabel alloc] initWithFrame:CGRectMake(60, self.view.frame.size.height/8+10, 100, 40)];
+        l1.font = [UIFont boldSystemFontOfSize:20];
+        self.b1 = [[UIButton alloc] initWithFrame:CGRectMake(180, self.view.frame.size.height/8+20, 15, 15)];
+        l2 = [[UILabel alloc] initWithFrame:CGRectMake(200, self.view.frame.size.height/8+10, 50, 40)];
+        l2.font = [UIFont boldSystemFontOfSize:20];
+        self.b2 = [[UIButton alloc] initWithFrame:CGRectMake(280, self.view.frame.size.height/8+20, 15, 15)];
+        l3 = [[UILabel alloc] initWithFrame:CGRectMake(300, self.view.frame.size.height/8+10, 50, 40)];
+        l3.font = [UIFont boldSystemFontOfSize:20];
+        l4 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/8+85, 50, 30)];
+        l4.font = [UIFont boldSystemFontOfSize:20];
+        l5 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/8+165, 50, 30)];
+        l5.font = [UIFont boldSystemFontOfSize:20];
+        tf1 = [[UITextField alloc] initWithFrame:CGRectMake(100, self.view.frame.size.height/8+80, self.view.frame.size.width-150, 50)];
+        self.biaoti = [[UITextField alloc] initWithFrame:CGRectMake(100+5, self.view.frame.size.height/8+80, self.view.frame.size.width-150, 50)];
+        tf2 = [[UITextField alloc] initWithFrame:CGRectMake(100, self.view.frame.size.height/8+160, self.view.frame.size.width-150, 250)];
+        self.neirong = [[UITextView alloc] initWithFrame:CGRectMake(100+5, self.view.frame.size.height/8+160, self.view.frame.size.width-150, 250)];
+        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+100, 100, 40)];
+        self.tijiao = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+100, 100, 40)];
+        
+    }else if(self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
+        l1 = [[UILabel alloc] initWithFrame:CGRectMake(30, self.view.frame.size.height/8+10, 80, 30)];
+        l1.font = [UIFont boldSystemFontOfSize:18];
+        self.b1 = [[UIButton alloc] initWithFrame:CGRectMake(130, self.view.frame.size.height/8+20, 15, 15)];
+        l2 = [[UILabel alloc] initWithFrame:CGRectMake(150, self.view.frame.size.height/8+10, 50, 30)];
+        l2.font = [UIFont boldSystemFontOfSize:18];
+        self.b2 = [[UIButton alloc] initWithFrame:CGRectMake(200, self.view.frame.size.height/8+20, 15, 15)];
+        l3 = [[UILabel alloc] initWithFrame:CGRectMake(220, self.view.frame.size.height/8+10, 50, 30)];
+        l3.font = [UIFont boldSystemFontOfSize:18];
+        l4 = [[UILabel alloc] initWithFrame:CGRectMake(40, self.view.frame.size.height/8+65, 50, 30)];
+        l4.font = [UIFont boldSystemFontOfSize:18];
+        l5 = [[UILabel alloc] initWithFrame:CGRectMake(40, self.view.frame.size.height/8+125, 50, 30)];
+        l5.font = [UIFont boldSystemFontOfSize:18];
+        tf1 = [[UITextField alloc] initWithFrame:CGRectMake(80, self.view.frame.size.height/8+60, self.view.frame.size.width-120, 40)];
+        self.biaoti = [[UITextField alloc] initWithFrame:CGRectMake(80+5, self.view.frame.size.height/8+55, self.view.frame.size.width-150, 50)];
+        tf2 = [[UITextField alloc] initWithFrame:CGRectMake(80, self.view.frame.size.height/8+120, self.view.frame.size.width-120, 250)];
+        self.neirong = [[UITextView alloc] initWithFrame:CGRectMake(80+5, self.view.frame.size.height/8+120, self.view.frame.size.width-150, 250)];
+        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+100, 100, 40)];
+        self.tijiao = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+100, 100, 40)];
+        
+    }else if(self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
+        l1 = [[UILabel alloc] initWithFrame:CGRectMake(30, self.view.frame.size.height/8+10, 80, 30)];
+        l1.font = [UIFont boldSystemFontOfSize:18];
+        self.b1 = [[UIButton alloc] initWithFrame:CGRectMake(130, self.view.frame.size.height/8+20, 15, 15)];
+        l2 = [[UILabel alloc] initWithFrame:CGRectMake(150, self.view.frame.size.height/8+10, 50, 30)];
+        l2.font = [UIFont boldSystemFontOfSize:18];
+        self.b2 = [[UIButton alloc] initWithFrame:CGRectMake(200, self.view.frame.size.height/8+20, 15, 15)];
+        l3 = [[UILabel alloc] initWithFrame:CGRectMake(220, self.view.frame.size.height/8+10, 50, 30)];
+        l3.font = [UIFont boldSystemFontOfSize:18];
+        l4 = [[UILabel alloc] initWithFrame:CGRectMake(40, self.view.frame.size.height/8+65, 50, 30)];
+        l4.font = [UIFont boldSystemFontOfSize:18];
+        l5 = [[UILabel alloc] initWithFrame:CGRectMake(40, self.view.frame.size.height/8+125, 50, 30)];
+        l5.font = [UIFont boldSystemFontOfSize:18];
+        tf1 = [[UITextField alloc] initWithFrame:CGRectMake(80, self.view.frame.size.height/8+60, self.view.frame.size.width-120, 40)];
+        self.biaoti = [[UITextField alloc] initWithFrame:CGRectMake(80+5, self.view.frame.size.height/8+55, self.view.frame.size.width-150, 50)];
+        tf2 = [[UITextField alloc] initWithFrame:CGRectMake(80, self.view.frame.size.height/8+120, self.view.frame.size.width-120, 220)];
+        self.neirong = [[UITextView alloc] initWithFrame:CGRectMake(80+5, self.view.frame.size.height/8+120, self.view.frame.size.width-150, 220)];
+        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+100, 100, 30)];
+        self.tijiao = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+100, 100, 30)];
+        
+    }
+
     
-    UILabel *l1 = [[UILabel alloc] initWithFrame:CGRectMake(60, self.view.frame.size.height/8+10, 100, 40)];
+    
+    
+    
+    
+    
     l1.text = @"咨询类型:";
     l1.textColor = [UIColor whiteColor];
-    l1.font = [UIFont boldSystemFontOfSize:20];
     l1.backgroundColor = [UIColor clearColor];
     [self.view addSubview:l1];
-    self.b1 = [[UIButton alloc] initWithFrame:CGRectMake(180, self.view.frame.size.height/8+20, 15, 15)];
+    
     [self.b1 setImage:[UIImage imageNamed:@"mempass.png"] forState:UIControlStateNormal];
     self.b1.backgroundColor = [UIColor clearColor];
     [self.b1 addTarget:self action:@selector(anniu1) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.b1];
-    UILabel *l2 = [[UILabel alloc] initWithFrame:CGRectMake(200, self.view.frame.size.height/8+10, 50, 40)];
+    
     l2.text = @"实习";
     l2.textColor = [UIColor whiteColor];
-    l2.font = [UIFont boldSystemFontOfSize:20];
     l2.backgroundColor = [UIColor clearColor];
     [self.view addSubview:l2];
-    self.b2 = [[UIButton alloc] initWithFrame:CGRectMake(280, self.view.frame.size.height/8+20, 15, 15)];
+    
     [self.b2 setImage:[UIImage imageNamed:@"mempass.png"] forState:UIControlStateNormal];
     self.b2.backgroundColor = [UIColor clearColor];
     [self.b2 addTarget:self action:@selector(anniu2) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.b2];
 
-    UILabel *l3 = [[UILabel alloc] initWithFrame:CGRectMake(300, self.view.frame.size.height/8+10, 50, 40)];
+    
     l3.text = @"就业";
     l3.textColor = [UIColor whiteColor];
-    l3.font = [UIFont boldSystemFontOfSize:20];
     l3.backgroundColor = [UIColor clearColor];
     [self.view addSubview:l3];
-    UILabel *l4 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/8+85, 50, 30)];
+    
     l4.text = @"标题";
     l4.textColor = [UIColor whiteColor];
-    l4.font = [UIFont boldSystemFontOfSize:20];
     l4.backgroundColor = [UIColor clearColor];
     [self.view addSubview:l4];
-    UITextField *tf1 = [[UITextField alloc] initWithFrame:CGRectMake(100, self.view.frame.size.height/8+80, self.view.frame.size.width-150, 50)];
+    
     tf1.backgroundColor = [UIColor clearColor];
     tf1.textColor = [UIColor whiteColor];
     tf1.enabled = NO;
@@ -98,18 +188,17 @@
     tf1.layer.borderWidth = 2.0;
     tf1.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:tf1];
-    self.biaoti = [[UITextField alloc] initWithFrame:CGRectMake(100+5, self.view.frame.size.height/8+80, self.view.frame.size.width-150, 50)];
+    
     self.biaoti.clearsOnBeginEditing = NO;
     self.biaoti.backgroundColor = [UIColor clearColor];
     self.biaoti.textColor = [UIColor whiteColor];
     [self.view addSubview:self.biaoti];
-    UILabel *l5 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/8+165, 50, 30)];
+    
     l5.text = @"内容";
     l5.textColor = [UIColor whiteColor];
-    l5.font = [UIFont boldSystemFontOfSize:20];
     l5.backgroundColor = [UIColor clearColor];
     [self.view addSubview:l5];
-    UITextField *tf2 = [[UITextField alloc] initWithFrame:CGRectMake(100, self.view.frame.size.height/8+160, self.view.frame.size.width-150, 250)];
+    
     tf2.backgroundColor = [UIColor clearColor];
     tf2.textColor = [UIColor whiteColor];
     tf2.enabled = NO;
@@ -119,7 +208,7 @@
     tf2.layer.borderWidth = 2.0;
     tf2.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:tf2];
-    self.neirong = [[UITextView alloc] initWithFrame:CGRectMake(100+5, self.view.frame.size.height/8+160, self.view.frame.size.width-150, 250)];
+    
     self.neirong.backgroundColor = [UIColor clearColor];
     //再次编辑textview不清空
     self.neirong.font = [UIFont systemFontOfSize:18];
@@ -127,7 +216,7 @@
     [self.view addSubview:self.neirong];
     
     
-    UITextField *tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+100, 100, 40)];
+    
     tf5.backgroundColor = [UIColor clearColor];
     tf5.textColor = [UIColor whiteColor];
     tf5.enabled = NO;
@@ -138,7 +227,7 @@
     tf5.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:tf5];
     
-    self.tijiao = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+100, 100, 40)];
+    
     [self.tijiao setTitle:@"提交" forState:UIControlStateNormal];
     [self.tijiao setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.tijiao.backgroundColor = [UIColor clearColor];
