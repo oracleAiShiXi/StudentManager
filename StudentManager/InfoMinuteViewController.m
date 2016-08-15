@@ -25,12 +25,12 @@
     _reppro.delegate = self;
     [_problem.layer setCornerRadius:5.0];
     [_reppro.layer setCornerRadius:5.0];
-    _reppro.enabled = NO;
-    _problem.enabled = NO;
     
+    _problem.editable = NO;
+    _reppro.editable = NO;
     //设置textfield文本在顶部显示
-    _problem.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
-    _reppro.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+//    _problem.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+//    _reppro.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
   
     
     

@@ -98,7 +98,7 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         @try {
-            NSLog(@"%@",responseObject);
+          //  NSLog(@"%@",responseObject);
             
             //NSLog(@"%@",[responseObject objectForKey:@"programVersion"]);
             _edition.text = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"programVersion"]];
@@ -161,7 +161,7 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         @try {
-            NSLog(@"%@",responseObject);
+           // NSLog(@"%@",responseObject);
       
             shuju=[NSMutableArray array];
             attpe=[NSMutableArray array];
@@ -184,7 +184,7 @@
                 
             }
           
-            NSLog(@"%@",typename);
+            //NSLog(@"%@",typename);
             
             NSString *str=[NSString stringWithFormat:@"\r%@:%@-%@\n%@:%@-%@",typename[0],starttime[0],endtime[0],typename[1],starttime[1],endtime[1]];
             
@@ -221,11 +221,12 @@
 //退出账号
 - (IBAction)exit:(id)sender {
   
-//    ViewController *view = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"viewc"];
-//
-//    [self.navigationController popToViewController:view animated:YES];
-    [self.navigationController  popToRootViewControllerAnimated:YES];
+    ViewController *view = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"viewc"];
+
+    //[self.navigationController popToViewController:view animated:YES];
+    [self.navigationController pushViewController:view animated:YES];
     
-    NSLog(@"退出账号");
+
+   // NSLog(@"退出账号");
 }
 @end
