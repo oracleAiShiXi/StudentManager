@@ -277,6 +277,8 @@
         //设置选择按钮不可点击
         [self.yesBtn setEnabled:NO];
         [self.noBtn setEnabled:NO];
+        //取消时重新装载数据
+        [self shuju];
 
     }
     

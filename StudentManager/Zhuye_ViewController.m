@@ -34,8 +34,7 @@
     UIImageView *imageview;
     NSMutableArray *array;
     int flog;
-    NSMutableArray *Values;
-
+    
     
 }
 
@@ -356,87 +355,93 @@
         
         
         
-        //拿到学校IP和studentID
-        NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-        //    [def objectForKey:@"IP"];
-        //    [def objectForKey:@"studentId"];
+//        //拿到学校IP和studentID
+//        NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+//        //    [def objectForKey:@"IP"];
+//        //    [def objectForKey:@"studentId"];
+//        
+//        //请求学生信息
+//        [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
+//        
+//        //将上传对象转换为json类型
+//        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//        
+//        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html", nil];
+//        
+//        //上传参数
+//        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId", nil];
+//        
+//        SBJsonWriter *writer = [[SBJsonWriter alloc] init];
+//        
+//        NSString *jsonstring = [writer stringWithObject:dic];
+//        
+//        NSDictionary *MSG = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
+//        NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=stuinformation",[def objectForKey:@"IP"]];
+//        
+//        [manager POST:url parameters:MSG progress:^(NSProgress * _Nonnull uploadProgress) {
+//            
+//            
+//        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//            
+//            NSLog(@"%@",responseObject);
+//            //把返回数据存入可变字典
+//            NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:responseObject];
+//            NSMutableDictionary *dataDic = [[NSMutableDictionary alloc] init];
+//            
+//            //将字典里的空指针转化为空字符串
+//            Values = [[NSMutableArray alloc] init];
+//            NSString *aa = [[NSString alloc] init];
+//            for (aa in [dic allValues]) {
+//                if ([aa isEqual:[NSNull null]]) {
+//                    aa=@"";
+//                }
+//                [Values addObject:aa];
+//            }
+//            
+//            NSLog(@"%@",Values);
+//            
+//            NSMutableArray *Keys = [[NSMutableArray alloc] init];
+//            for (NSString *bb in [dic allKeys]) {
+//                [Keys addObject:bb];
+//            }
+//            
+//            NSLog(@"%@",Keys);
+//            
+//            for (int i=0; i<[dic count]; i++) {
+//                
+//                [dataDic setValue:Values[i] forKey:Keys[i]];
+//            }
+//            
+//            NSLog(@"data------%@",dataDic);
+//            
+//            //把数据存入plist文件
+//            NSString *path=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/userInfo.plist"];
+//           /// NSLog(@"NSHomeDirectory()=====%@",NSHomeDirectory());
+//            
+//            [dataDic writeToFile:path atomically:YES];
+//            
+//            [WarningBox warningBoxHide:YES andView:self.view];
+//            
+//            //跳转到个人信息界面
+//            Gerenxinxi *gr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"grxx"];
+//            [self.navigationController pushViewController:gr animated:YES];
+//            
+//        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//            
+//            
+//            [WarningBox warningBoxHide:YES andView:self.view];
+//            
+//            [WarningBox warningBoxModeText:@"网络异常，请重试！" andView:self.view];
+//            
+//            NSLog(@"%@",error);
+//            
+//        }];
         
-        //请求学生信息
-        [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
-        
-        //将上传对象转换为json类型
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html", nil];
-        
-        //上传参数
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId", nil];
-        
-        SBJsonWriter *writer = [[SBJsonWriter alloc] init];
-        
-        NSString *jsonstring = [writer stringWithObject:dic];
-        
-        NSDictionary *MSG = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
-        NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=stuinformation",[def objectForKey:@"IP"]];
-        
-        [manager POST:url parameters:MSG progress:^(NSProgress * _Nonnull uploadProgress) {
-            
-            
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            
-            NSLog(@"%@",responseObject);
-            //把返回数据存入可变字典
-            NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:responseObject];
-            NSMutableDictionary *dataDic = [[NSMutableDictionary alloc] init];
-            
-            //将字典里的空指针转化为空字符串
-            Values = [[NSMutableArray alloc] init];
-            NSString *aa = [[NSString alloc] init];
-            for (aa in [dic allValues]) {
-                if ([aa isEqual:[NSNull null]]) {
-                    aa=@"";
-                }
-                [Values addObject:aa];
-            }
-            
-            NSLog(@"%@",Values);
-            
-            NSMutableArray *Keys = [[NSMutableArray alloc] init];
-            for (NSString *bb in [dic allKeys]) {
-                [Keys addObject:bb];
-            }
-            
-            NSLog(@"%@",Keys);
-            
-            for (int i=0; i<[dic count]; i++) {
-                
-                [dataDic setValue:Values[i] forKey:Keys[i]];
-            }
-            
-            NSLog(@"data------%@",dataDic);
-            
-            //把数据存入plist文件
-            NSString *path=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/userInfo.plist"];
-           /// NSLog(@"NSHomeDirectory()=====%@",NSHomeDirectory());
-            
-            [dataDic writeToFile:path atomically:YES];
-            
-            [WarningBox warningBoxHide:YES andView:self.view];
-            
-            //跳转到个人信息界面
-            Gerenxinxi *gr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"grxx"];
-            [self.navigationController pushViewController:gr animated:YES];
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            
-            
-            [WarningBox warningBoxHide:YES andView:self.view];
-            
-            [WarningBox warningBoxModeText:@"网络异常，请重试！" andView:self.view];
-            
-            NSLog(@"%@",error);
-            
-        }];
+        //跳转到个人信息界面
+                    Gerenxinxi *gr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"grxx"];
+                    [self.navigationController pushViewController:gr animated:YES];
+                    
+
         
         //NSLog(@"跳到个人信息界面");
 

@@ -23,6 +23,9 @@
     NSString *Rempath;
     NSUserDefaults *defaults;
     BOOL isRemember;
+    
+    NSMutableArray *Values;
+
 }
 @end
 
@@ -73,7 +76,7 @@
         self.denglu1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+160, 280, self.view.frame.size.height/10-10)];
         self.denglu1.layer.cornerRadius = 30.0;
         self.lijidenglu = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+160, 240, self.view.frame.size.height/10-10)];
-        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+240, 25, 25)];
+        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+245, 20, 20)];
         self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+240, 60, 25)];
 
         
@@ -88,7 +91,7 @@
         self.denglu1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+160, 280, self.view.frame.size.height/10-10)];
         self.denglu1.layer.cornerRadius = 28.0;
         self.lijidenglu = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+160, 240, self.view.frame.size.height/10-10)];
-        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+240, 25, 25)];
+        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+245, 20, 20)];
         self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+240, 60, 25)];
 
         
@@ -102,7 +105,7 @@
         self.denglu1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+120, 240, self.view.frame.size.height/10-10)];
         self.denglu1.layer.cornerRadius = 22.0;
         self.lijidenglu = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+120, 240, self.view.frame.size.height/10-10)];
-        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+180, 25, 25)];
+        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+185, 20, 20)];
         self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+180, 60, 25)];
         
     }else if(self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
@@ -115,7 +118,7 @@
         self.denglu1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+130, 240, self.view.frame.size.height/10)];
         self.denglu1.layer.cornerRadius = 22.0;
         self.lijidenglu = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+130, 240, self.view.frame.size.height/10)];
-        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+190, 25, 25)];
+        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+195, 20, 20)];
         self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+190, 60, 25)];
         
     }
@@ -167,7 +170,7 @@
     [self.lijidenglu addTarget:self action:@selector(lijidenglu1) forControlEvents:UIControlEventTouchUpInside];
     //记住密码
     
-    [self.checkbox1 setImage:[UIImage imageNamed:@"mempass.png"] forState:UIControlStateNormal];
+    [self.checkbox1 setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
     [self.checkbox1 addTarget:self action:@selector(choose) forControlEvents:UIControlEventTouchUpInside];
     //记住密码文本
     
@@ -208,7 +211,7 @@
     
     if ([isZiDongdenglu  isEqual: @"1"]) {
         isRemember = YES;
-        [self.checkbox1 setImage:[UIImage imageNamed:@"mempass-1.png"] forState:UIControlStateNormal];
+        [self.checkbox1 setImage:[UIImage imageNamed:@"xuanzhong.png"] forState:UIControlStateNormal];
         self.zhanghao.text = [NSString stringWithFormat:@"%@",[defaults objectForKey:@"hahahaha"]];
         
         self.mima.text = [NSString stringWithFormat:@"%@",[defaults objectForKey:@"password"]];
@@ -300,7 +303,7 @@
                    
                     //加载省市
                     [self shengshi];
-                    
+                    [self gerenxixin];
                     //[self presentViewController:zhuye animated:NO completion:nil];
                     
                     [self.navigationController pushViewController:zhuye animated:YES];
@@ -328,11 +331,11 @@
     if (isRemember == NO) {
         isRemember = YES;
         [defaults setObject:@"1" forKey:@"zddl"];
-        [self.checkbox1 setImage:[UIImage imageNamed:@"mempass-1.png"] forState:UIControlStateNormal];
+        [self.checkbox1 setImage:[UIImage imageNamed:@"xuanzhong.png"] forState:UIControlStateNormal];
     }else{
         [defaults setObject:@"0" forKey:@"zddl"];
         isRemember=NO;
-        [self.checkbox1 setImage:[UIImage imageNamed:@"mempass.png"] forState:UIControlStateNormal];
+        [self.checkbox1 setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
     }
 
 }
@@ -414,6 +417,87 @@
         
     }];
     
+}
+
+
+-(void)gerenxixin{
+    
+    //拿到学校IP和studentID
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    //    [def objectForKey:@"IP"];
+    //    [def objectForKey:@"studentId"];
+    
+    //请求学生信息
+    //将上传对象转换为json类型
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html", nil];
+    
+    //上传参数
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId", nil];
+    
+    SBJsonWriter *writer = [[SBJsonWriter alloc] init];
+    
+    NSString *jsonstring = [writer stringWithObject:dic];
+    
+    NSDictionary *MSG = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
+    NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=stuinformation",[def objectForKey:@"IP"]];
+    
+    [manager POST:url parameters:MSG progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"%@",responseObject);
+        //把返回数据存入可变字典
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:responseObject];
+        NSMutableDictionary *dataDic = [[NSMutableDictionary alloc] init];
+        
+        //将字典里的空指针转化为空字符串
+        Values = [[NSMutableArray alloc] init];
+        NSString *aa = [[NSString alloc] init];
+        for (aa in [dic allValues]) {
+            if ([aa isEqual:[NSNull null]]) {
+                aa=@"";
+            }
+            [Values addObject:aa];
+        }
+        
+        NSLog(@"%@",Values);
+        
+        NSMutableArray *Keys = [[NSMutableArray alloc] init];
+        for (NSString *bb in [dic allKeys]) {
+            [Keys addObject:bb];
+        }
+        
+        NSLog(@"%@",Keys);
+        
+        for (int i=0; i<[dic count]; i++) {
+            
+            [dataDic setValue:Values[i] forKey:Keys[i]];
+        }
+        
+        NSLog(@"data------%@",dataDic);
+        
+        //把数据存入plist文件
+        NSString *path=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/userInfo.plist"];
+        /// NSLog(@"NSHomeDirectory()=====%@",NSHomeDirectory());
+        
+        [dataDic writeToFile:path atomically:YES];
+        
+        [WarningBox warningBoxHide:YES andView:self.view];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        
+        [WarningBox warningBoxHide:YES andView:self.view];
+        
+        [WarningBox warningBoxModeText:@"网络异常，请重试！" andView:self.view];
+        
+        NSLog(@"%@",error);
+        
+    }];
+
 }
 
 @end
