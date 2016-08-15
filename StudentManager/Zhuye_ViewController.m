@@ -605,9 +605,9 @@ int nicaicai=0;
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
     //将经度显示到label上
 
-        NSString *jing = [NSString stringWithFormat:@"%lf", newLocation.coordinate.longitude];
+        //NSString *jing = [NSString stringWithFormat:@"%lf", newLocation.coordinate.longitude];
     //将纬度现实到label上
-        NSString *wei = [NSString stringWithFormat:@"%lf", newLocation.coordinate.latitude];
+        //NSString *wei = [NSString stringWithFormat:@"%lf", newLocation.coordinate.latitude];
     // 获取当前所在的城市名
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     //根据经纬度反向地理编译出地址信息
