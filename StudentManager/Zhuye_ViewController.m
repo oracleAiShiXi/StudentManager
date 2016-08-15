@@ -226,18 +226,18 @@
     UILabel *ll;
     
     if (self.view.frame.size.width == 414) {
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-20, (cell.frame.size.height)/2-30, 50, 50)];
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
         ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
         ll.font = [UIFont systemFontOfSize:16];
         
     }else if (self.view.frame.size.width == 375){
         
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-20, (cell.frame.size.height)/2-30, 50, 50)];
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
         ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
         ll.font = [UIFont systemFontOfSize:16];
         
     }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-10, 20, 35, 35)];
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-15, 20, 30, 30)];
         ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
         ll.font = [UIFont systemFontOfSize:11];
         
@@ -284,18 +284,18 @@
     UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     UILabel *ll;
     if (self.view.frame.size.width == 414) {
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-20, (cell.frame.size.height)/2-30, 50, 50)];
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
         ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
         ll.font = [UIFont systemFontOfSize:16];
         
     }else if (self.view.frame.size.width == 375){
         
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-20, (cell.frame.size.height)/2-30, 50, 50)];
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
         ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
         ll.font = [UIFont systemFontOfSize:16];
         
     }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-10, 20, 35, 35)];
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-15, 20, 30, 30)];
         ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
         ll.font = [UIFont systemFontOfSize:11];
         
@@ -305,7 +305,6 @@
         ll.font = [UIFont systemFontOfSize:9];
         
     }
-
     imageview.image = [self.arr1 objectAtIndex:indexPath.row];
     [cell.contentView addSubview:imageview];
     
@@ -478,18 +477,18 @@
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     UILabel *ll;
     if (self.view.frame.size.width == 414) {
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-20, (cell.frame.size.height)/2-30, 50, 50)];
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
         ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
         ll.font = [UIFont systemFontOfSize:16];
         
     }else if (self.view.frame.size.width == 375){
         
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-20, (cell.frame.size.height)/2-30, 50, 50)];
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
         ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
         ll.font = [UIFont systemFontOfSize:16];
         
     }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-10, 20, 35, 35)];
+        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-15, 20, 30, 30)];
         ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
         ll.font = [UIFont systemFontOfSize:11];
         
@@ -499,7 +498,6 @@
         ll.font = [UIFont systemFontOfSize:9];
         
     }
-
     imageview.image = [self.arr objectAtIndex:indexPath.row];
     ll.text = [array objectAtIndex:indexPath.row];
     ll.textAlignment = NSTextAlignmentCenter;

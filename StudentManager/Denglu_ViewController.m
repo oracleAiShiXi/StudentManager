@@ -40,7 +40,7 @@
     //NSLog(@"--%@",self.ip);
     //NSLog(@"--%@",self.serial);
     //返回按钮
-    self.fanhui1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 30, 30)];
+    self.fanhui1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 20, 20)];
     [self.fanhui1 setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     self.fanhui1.backgroundColor = [UIColor clearColor];
     [self.fanhui1 addTarget:self action:@selector(fanhui) forControlEvents:UIControlEventTouchUpInside];

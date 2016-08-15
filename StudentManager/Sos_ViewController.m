@@ -28,7 +28,7 @@
     //设置导航条为透明
 //    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 //    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = NO;
+   // self.navigationController.navigationBar.translucent = NO;
     self.view.backgroundColor = [UIColor colorWithHexString:@"5fc1ff"];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"5fc1ff"];
     //按钮大小
@@ -41,36 +41,22 @@
     [leftBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem =[[UIBarButtonItem alloc]initWithCustomView: leftBtn];
     self.navigationItem.leftBarButtonItem = leftItem;
-    
-    self.myTF = [[UITextField alloc] initWithFrame:CGRectMake(50, 80, self.view.frame.size.width-100, self.view.frame.size.height/2)];
-    self.myTF.backgroundColor = [UIColor clearColor];
-    self.myTF.enabled = NO;
-    self.myTF.borderStyle = UITextBorderStyleRoundedRect;
-    self.myTF.layer.cornerRadius = 8.0;
-    self.myTF.layer.borderColor = [[UIColor whiteColor]CGColor];
-    self.myTF.layer.borderWidth = 2.0;
-    self.myTF.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self.view addSubview:self.myTF];
-    
-    self.myTV = [[UITextView alloc] initWithFrame:CGRectMake(55, 90, self.view.frame.size.width-110, self.view.frame.size.height/2-10)];
-    self.myTV.backgroundColor = [UIColor clearColor];
-    self.myTV.font = [UIFont systemFontOfSize:18];
-    self.myTV.textColor = [UIColor whiteColor];
-    [self.view addSubview:self.myTV];
-    
-    UILabel *l1 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/2+90, self.view.frame.size.width-100, 20)];
-    l1.textColor = [UIColor whiteColor];
-    l1.text = @"注:把你的紧急情况进行上报，我们会立马查收!";
+    UILabel *l1;
     UITextField *tf5;
+    self.myTF = [[UITextField alloc] initWithFrame:CGRectMake(50, 80, self.view.frame.size.width-100, self.view.frame.size.height/2)];
+    self.myTV = [[UITextView alloc] initWithFrame:CGRectMake(55, 90, self.view.frame.size.width-110, self.view.frame.size.height/2-10)];
     if (self.view.frame.size.width == 414){
         tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2, 100, 40)];
+        l1 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/2+90, self.view.frame.size.width-100, 20)];
+
+        
         self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2, 100, 40)];
-    l1.font = [UIFont systemFontOfSize:15];
+        l1.font = [UIFont systemFontOfSize:15];
     }else if (self.view.frame.size.width == 375){
         tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2, 100, 40)];
         self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2, 100, 40)];
         l1.font = [UIFont systemFontOfSize:13];
-
+        
     }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
         tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+30, 80, 30)];
         self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+30, 80, 30)];
@@ -81,6 +67,24 @@
         self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+40, 60, 25)];
         l1.font = [UIFont systemFontOfSize:9];
     }
+
+    self.myTF.backgroundColor = [UIColor clearColor];
+    self.myTF.enabled = NO;
+    self.myTF.borderStyle = UITextBorderStyleRoundedRect;
+    self.myTF.layer.cornerRadius = 8.0;
+    self.myTF.layer.borderColor = [[UIColor whiteColor]CGColor];
+    self.myTF.layer.borderWidth = 2.0;
+    self.myTF.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [self.view addSubview:self.myTF];
+    
+    self.myTV.backgroundColor = [UIColor clearColor];
+    self.myTV.font = [UIFont systemFontOfSize:18];
+    self.myTV.textColor = [UIColor whiteColor];
+    [self.view addSubview:self.myTV];
+    
+    
+    l1.textColor = [UIColor whiteColor];
+    l1.text = @"注:把你的紧急情况进行上报，我们会立马查收!";
     [self.view addSubview:l1];
     
     
@@ -111,6 +115,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+    [self.navigationController setNavigationBarHidden:NO];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"5fc1ff"];
     
 }
