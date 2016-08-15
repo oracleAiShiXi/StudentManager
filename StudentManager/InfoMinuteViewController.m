@@ -28,16 +28,13 @@
     
     _problem.editable = NO;
     _reppro.editable = NO;
-    //设置textfield文本在顶部显示
-//    _problem.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
-//    _reppro.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+
   
     
     
     //拿到存的学校IP和studentId
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-    //    [def objectForKey:@"IP"];
-    //    [def objectForKey:@"studentId"];
+
     
     [WarningBox warningBoxModeIndeterminate:@"正在加载中" andView:self.view];
     //将上传对象转换为json格式字符串
@@ -92,8 +89,9 @@
                 _problem.text = [responseObject objectForKey:@"advisoryContent"];
                 
             }
-            
-            
+            // _problem.text = [responseObject objectForKey:@"advisoryContent"];
+            //_reppro.text = [responseObject objectForKey:@"reportContent"];
+
             if ([[responseObject objectForKey:@"state"] intValue]==1) {
                                _hftime.text = [responseObject objectForKey:@"reportTime"];
                 _huif.text=  [responseObject objectForKey:@"menName"];

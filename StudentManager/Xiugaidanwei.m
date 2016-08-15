@@ -43,9 +43,7 @@
     
     int mm;
     
-   
-    
-    
+    int n,kk;
     
 }
 @end
@@ -56,6 +54,10 @@
     [super viewDidLoad];
     
     mm=0;
+    
+    n=0;
+    
+    kk=0;
     
     self.navigationItem.title = @"单位信息修改";
     
@@ -263,24 +265,32 @@
         
         _biankuangview.hidden = YES;
     }
-    
-    [shiTableView removeFromSuperview];
-    sheng = [[NSMutableArray alloc] init];
-    pId = [[NSMutableArray alloc] init];
-    
-    for (int i=0; i<[dataArr count]; i++) {
+    if (n==0){
+        [shiTableView removeFromSuperview];
+        sheng = [[NSMutableArray alloc] init];
+        pId = [[NSMutableArray alloc] init];
         
-        NSString *pp = [NSString stringWithString:dataArr[i][@"provinceName"]];
+        for (int i=0; i<[dataArr count]; i++) {
+            
+            NSString *pp = [NSString stringWithString:dataArr[i][@"provinceName"]];
+            
+            NSString *ID = [NSString stringWithString:dataArr[i][@"provinceId"]];
+            
+            [sheng addObject:pp];
+            [pId addObject:ID];
+            
+        }
+        [shengTableView reloadData];
         
-        NSString *ID = [NSString stringWithString:dataArr[i][@"provinceId"]];
+        [self.view addSubview:shengTableView];
         
-        [sheng addObject:pp];
-        [pId addObject:ID];
+        n = 1;
+    }else{
+        [shengTableView removeFromSuperview];
         
+        n = 0;
     }
-    [shengTableView reloadData];
     
-    [self.view addSubview:shengTableView];
     
 }
 
@@ -290,6 +300,8 @@
         
         _biankuangview.hidden = YES;
     }
+    
+    if (kk==0) {
 
     shi = [[NSMutableArray alloc] init];
     cId = [[NSMutableArray alloc] init];
@@ -314,7 +326,13 @@
     [shiTableView reloadData];
     
     [self.view addSubview:shiTableView];
+        kk=1;
+    }else{
         
+        [shiTableView removeFromSuperview];
+        kk=0;
+    }
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -384,6 +402,8 @@
         companyProvinceId = [NSString stringWithFormat:@"%@",pId[indexPath.row]];
         
         [shengTableView removeFromSuperview];
+        n=0;
+        
     }else{
         //适配4s
         if ([[UIScreen mainScreen] bounds].size.height==480) {
@@ -399,6 +419,8 @@
         companyCityId = [NSString stringWithFormat:@"%@",cId[indexPath.row]];
         
         [shiTableView removeFromSuperview];
+        
+        kk=0;
         
     }
     

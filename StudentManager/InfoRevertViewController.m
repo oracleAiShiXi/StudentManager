@@ -30,9 +30,6 @@
     
     //_mytable1.separatorStyle=UITableViewCellSeparatorStyleNone;
     _mytable1.backgroundColor=[UIColor colorWithRed:95/255.0 green:193/255.0 blue:255/255.0 alpha:1];
-    
-    
- 
     _mytable1.showsVerticalScrollIndicator = NO;
     _mytable1.dataSource =self;
     _mytable1.delegate  =self;
@@ -71,10 +68,7 @@
      [WarningBox warningBoxModeIndeterminate:@"正在加载中" andView:self.view];
     //拿到存的学校IP和studentId
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-    //    [def objectForKey:@"IP"];
-    //    [def objectForKey:@"studentId"];
-    
-    
+ 
     //将上传对象转换为json格式字符串
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
@@ -85,18 +79,10 @@
     //出入参数：
     //studentid需要传过来
     NSDictionary*datadic=[NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId", nil];
-    
-    
     NSString *jsonstring =[writer stringWithObject:datadic];
-    
-    
     NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=stuadvisorylook",[def objectForKey:@"IP"]];
-    
-    
     NSDictionary *msg = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
-    
     [manager POST:url parameters:msg progress:^(NSProgress * _Nonnull uploadProgress) {
-        
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         @try {
             
@@ -119,9 +105,8 @@
                     [arr4 addObject:[aa objectForKey:@"advisoryTitle"]];
                     [arr5 addObject:[aa objectForKey:@"advisoryTime"]];
                     [arr6 addObject:[aa objectForKey:@"stuAdvisoryId"]];
-                   
+                
                 }
-               
             }
             
             [_mytable1 reloadData];

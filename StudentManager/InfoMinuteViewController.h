@@ -15,7 +15,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *huif;
 @property (weak, nonatomic) IBOutlet UILabel *hftime;
 @property (weak, nonatomic) IBOutlet UITextView *problem;
+
 @property (weak, nonatomic) IBOutlet UITextView *reppro;
+
 
 
 

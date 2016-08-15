@@ -39,6 +39,8 @@
     
     int mm;
     
+    int n,kk;
+    
 }
 @end
 
@@ -48,6 +50,10 @@
     [super viewDidLoad];
     
     mm=0;
+    
+    n=0;
+    
+    kk=0;
     
     self.navigationItem.title = @"住宿地址修改";
     //按钮大小
@@ -218,29 +224,41 @@
     
     [shiTableView removeFromSuperview];
     
-    sheng = [[NSMutableArray alloc] init];
-    pId = [[NSMutableArray alloc] init];
-    
-    for (int i=0; i<[dataArr count]; i++) {
+    if (n==0) {
+        sheng = [[NSMutableArray alloc] init];
+        pId = [[NSMutableArray alloc] init];
         
-        NSString *pp = [NSString stringWithString:dataArr[i][@"provinceName"]];
+        for (int i=0; i<[dataArr count]; i++) {
+            
+            NSString *pp = [NSString stringWithString:dataArr[i][@"provinceName"]];
+            
+            NSString *ID = [NSString stringWithString:dataArr[i][@"provinceId"]];
+            
+            [sheng addObject:pp];
+            [pId addObject:ID];
+            
+        }
+        self.biankuangview.hidden = YES;
         
-        NSString *ID = [NSString stringWithString:dataArr[i][@"provinceId"]];
+        [shengTableView reloadData];
         
-        [sheng addObject:pp];
-        [pId addObject:ID];
+        [self.view addSubview:shengTableView];
         
+        n=1;
+
+    }else{
+        
+        [shengTableView removeFromSuperview];
+        
+        n=0;
     }
-    self.biankuangview.hidden = YES;
-    
-    [shengTableView reloadData];
-    
-    [self.view addSubview:shengTableView];
     
 }
 
 - (IBAction)shiBtn:(id)sender {
-        
+    
+    
+    if (kk==0) {
         shi = [[NSMutableArray alloc] init];
         cId = [[NSMutableArray alloc] init];
         NSArray *carr;
@@ -267,6 +285,16 @@
         self.biankuangview.hidden = YES;
         [shiTableView reloadData];
         [self.view addSubview:shiTableView];
+        
+        kk=1;
+
+    }else{
+        
+        [shiTableView removeFromSuperview];
+        kk=0;
+        
+    }
+        
     
 }
 
@@ -336,6 +364,8 @@
         //self.shilabel.text = [NSString stringWithFormat:@"%@",shi[0]];
         
         self.biankuangview.hidden = NO;
+        
+        n=0;
     }else{
         
         //取消选中
@@ -348,6 +378,7 @@
         [shiTableView removeFromSuperview];
         
         self.biankuangview.hidden = NO;
+        kk=0;
         
     }
     
