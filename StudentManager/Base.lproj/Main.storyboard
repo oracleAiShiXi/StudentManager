@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eH0-F9-Dlu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eH0-F9-Dlu">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -209,7 +209,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0jl-b7-kyH" id="zqn-Tz-neU">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iaw-hg-tnu">
@@ -711,7 +711,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9E10A8A3-2468-452D-92BD-378EC372CFD5" translatesAutoresizingMaskIntoConstraints="NO" id="W44-9J-60N">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="27B02251-2305-4B6E-A42A-43730A2D398D" translatesAutoresizingMaskIntoConstraints="NO" id="W44-9J-60N">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uv-H3-jHG">
@@ -1467,10 +1467,10 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRS-Ac-kQM">
-                                        <rect key="frame" x="108" y="217" width="15" height="15"/>
+                                        <rect key="frame" x="103" y="215" width="20" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="15" id="ERm-cD-Zlb"/>
-                                            <constraint firstAttribute="width" constant="15" id="URf-n0-tsW"/>
+                                            <constraint firstAttribute="height" constant="20" id="ERm-cD-Zlb"/>
+                                            <constraint firstAttribute="width" constant="20" id="URf-n0-tsW"/>
                                         </constraints>
                                         <state key="normal" image="checkbox.png"/>
                                         <connections>
@@ -1541,10 +1541,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecz-Iv-qGH">
-                                        <rect key="frame" x="188" y="217" width="15" height="15"/>
+                                        <rect key="frame" x="183" y="215" width="20" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="15" id="U1v-G8-c5e"/>
-                                            <constraint firstAttribute="width" constant="15" id="gzF-Fw-mxO"/>
+                                            <constraint firstAttribute="height" constant="20" id="U1v-G8-c5e"/>
+                                            <constraint firstAttribute="width" constant="20" id="gzF-Fw-mxO"/>
                                         </constraints>
                                         <state key="normal" image="checkbox.png"/>
                                         <connections>
@@ -1569,7 +1569,7 @@
                                     <constraint firstItem="hEg-md-dK6" firstAttribute="leading" secondItem="xrI-UT-xRp" secondAttribute="leading" constant="5" id="CnI-fn-5dS"/>
                                     <constraint firstAttribute="trailing" secondItem="a3l-0F-GzT" secondAttribute="trailing" id="DRm-Ht-7Iz"/>
                                     <constraint firstItem="2T1-5D-Ka9" firstAttribute="leading" secondItem="2ao-d1-3l1" secondAttribute="trailing" constant="5" id="Dr4-vZ-JTH"/>
-                                    <constraint firstItem="ecz-Iv-qGH" firstAttribute="top" secondItem="ynG-8s-qkL" secondAttribute="bottom" constant="12" id="EXc-VN-eG4"/>
+                                    <constraint firstItem="ecz-Iv-qGH" firstAttribute="top" secondItem="ynG-8s-qkL" secondAttribute="bottom" constant="10" id="EXc-VN-eG4"/>
                                     <constraint firstItem="ynG-8s-qkL" firstAttribute="top" secondItem="Utw-FS-MEL" secondAttribute="bottom" constant="40" id="GWg-Ed-LvT"/>
                                     <constraint firstItem="oKn-bp-K8S" firstAttribute="leading" secondItem="rzR-Mv-3iU" secondAttribute="trailing" constant="50" id="Gke-yd-AcJ"/>
                                     <constraint firstItem="rzR-Mv-3iU" firstAttribute="leading" secondItem="ktT-qK-5Ym" secondAttribute="trailing" constant="30" id="GyG-X1-aOp"/>
@@ -1624,7 +1624,7 @@
                                     <constraint firstItem="rzR-Mv-3iU" firstAttribute="top" secondItem="ynG-8s-qkL" secondAttribute="bottom" constant="5" id="vjQ-PZ-2Ya"/>
                                     <constraint firstItem="Nd6-5M-i07" firstAttribute="top" secondItem="a3l-0F-GzT" secondAttribute="bottom" constant="8" id="wsu-gB-b5N"/>
                                     <constraint firstItem="XCY-lz-z2R" firstAttribute="leading" secondItem="xrI-UT-xRp" secondAttribute="leading" constant="5" id="xtU-kk-NVg"/>
-                                    <constraint firstItem="BRS-Ac-kQM" firstAttribute="top" secondItem="ynG-8s-qkL" secondAttribute="bottom" constant="12" id="zmg-MK-gyD"/>
+                                    <constraint firstItem="BRS-Ac-kQM" firstAttribute="top" secondItem="ynG-8s-qkL" secondAttribute="bottom" constant="10" id="zmg-MK-gyD"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2260,7 +2260,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="9E10A8A3-2468-452D-92BD-378EC372CFD5" width="12" height="18">
+        <image name="27B02251-2305-4B6E-A42A-43730A2D398D" width="12" height="18">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

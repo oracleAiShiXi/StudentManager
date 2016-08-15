@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		BB223F8D1D5D9BA2002531DB /* code.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB223F8C1D5D9BA2002531DB /* code.plist */; };
+		BB88D6C11D61984E001A8B30 /* usehelp01.png in Resources */ = {isa = PBXBuildFile; fileRef = BB88D6BC1D61984E001A8B30 /* usehelp01.png */; };
+		BB88D6C21D61984E001A8B30 /* usehelp02.png in Resources */ = {isa = PBXBuildFile; fileRef = BB88D6BD1D61984E001A8B30 /* usehelp02.png */; };
+		BB88D6C31D61984E001A8B30 /* usehelp03.png in Resources */ = {isa = PBXBuildFile; fileRef = BB88D6BE1D61984E001A8B30 /* usehelp03.png */; };
+		BB88D6C41D61984E001A8B30 /* usehelp04.png in Resources */ = {isa = PBXBuildFile; fileRef = BB88D6BF1D61984E001A8B30 /* usehelp04.png */; };
+		BB88D6C51D61984E001A8B30 /* usehelp05.png in Resources */ = {isa = PBXBuildFile; fileRef = BB88D6C01D61984E001A8B30 /* usehelp05.png */; };
 		D707AE641D4AEDBB007ED80A /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D707AE631D4AEDBB007ED80A /* SetViewController.m */; };
 		D707AE671D4B428D007ED80A /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D707AE661D4B428D007ED80A /* HelpViewController.m */; };
 		D707AE6A1D4B42AC007ED80A /* AdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D707AE691D4B42AC007ED80A /* AdviceViewController.m */; };
@@ -20,11 +25,6 @@
 		D7C9F9981D49B43700CB9ACD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7C9F9961D49B43700CB9ACD /* LaunchScreen.storyboard */; };
 		D7C9F9A31D49B43700CB9ACD /* StudentManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C9F9A21D49B43700CB9ACD /* StudentManagerTests.m */; };
 		D7C9F9AE1D49B43700CB9ACD /* StudentManagerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C9F9AD1D49B43700CB9ACD /* StudentManagerUITests.m */; };
-		D7D6646E1D4ED9D90037335C /* usehelp01.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D664691D4ED9D90037335C /* usehelp01.png */; };
-		D7D6646F1D4ED9D90037335C /* usehelp02.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D6646A1D4ED9D90037335C /* usehelp02.png */; };
-		D7D664701D4ED9D90037335C /* usehelp03.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D6646B1D4ED9D90037335C /* usehelp03.png */; };
-		D7D664711D4ED9D90037335C /* usehelp04.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D6646C1D4ED9D90037335C /* usehelp04.png */; };
-		D7D664721D4ED9D90037335C /* usehelp05.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D6646D1D4ED9D90037335C /* usehelp05.png */; };
 		D7D6649E1D4F3A590037335C /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D664751D4F3A590037335C /* AFHTTPSessionManager.m */; };
 		D7D6649F1D4F3A590037335C /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D664781D4F3A590037335C /* AFNetworkReachabilityManager.m */; };
 		D7D664A01D4F3A590037335C /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D6647A1D4F3A590037335C /* AFSecurityPolicy.m */; };
@@ -142,6 +142,11 @@
 
 /* Begin PBXFileReference section */
 		BB223F8C1D5D9BA2002531DB /* code.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = code.plist; sourceTree = "<group>"; };
+		BB88D6BC1D61984E001A8B30 /* usehelp01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usehelp01.png; sourceTree = "<group>"; };
+		BB88D6BD1D61984E001A8B30 /* usehelp02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usehelp02.png; sourceTree = "<group>"; };
+		BB88D6BE1D61984E001A8B30 /* usehelp03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usehelp03.png; sourceTree = "<group>"; };
+		BB88D6BF1D61984E001A8B30 /* usehelp04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usehelp04.png; sourceTree = "<group>"; };
+		BB88D6C01D61984E001A8B30 /* usehelp05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usehelp05.png; sourceTree = "<group>"; };
 		D707AE621D4AEDBB007ED80A /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };
 		D707AE631D4AEDBB007ED80A /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
 		D707AE651D4B428D007ED80A /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
@@ -164,11 +169,6 @@
 		D7C9F9A91D49B43700CB9ACD /* StudentManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudentManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7C9F9AD1D49B43700CB9ACD /* StudentManagerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentManagerUITests.m; sourceTree = "<group>"; };
 		D7C9F9AF1D49B43700CB9ACD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D7D664691D4ED9D90037335C /* usehelp01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usehelp01.png; sourceTree = "<group>"; };
-		D7D6646A1D4ED9D90037335C /* usehelp02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usehelp02.png; sourceTree = "<group>"; };
-		D7D6646B1D4ED9D90037335C /* usehelp03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usehelp03.png; sourceTree = "<group>"; };
-		D7D6646C1D4ED9D90037335C /* usehelp04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usehelp04.png; sourceTree = "<group>"; };
-		D7D6646D1D4ED9D90037335C /* usehelp05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usehelp05.png; sourceTree = "<group>"; };
 		D7D664741D4F3A590037335C /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		D7D664751D4F3A590037335C /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		D7D664761D4F3A590037335C /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -514,13 +514,13 @@
 				D7E2D7C81D5B0D9F00E9A6E5 /* checkbox.png */,
 				D7E2D7C91D5B0D9F00E9A6E5 /* xuanzhong.png */,
 				D7E2D7AB1D5B08D600E9A6E5 /* back.png */,
-				D7D664691D4ED9D90037335C /* usehelp01.png */,
-				D7D6646A1D4ED9D90037335C /* usehelp02.png */,
-				D7D6646B1D4ED9D90037335C /* usehelp03.png */,
-				D7D6646C1D4ED9D90037335C /* usehelp04.png */,
-				D7D6646D1D4ED9D90037335C /* usehelp05.png */,
 				D7E2D74B1D5B07F900E9A6E5 /* tijiao_03.png */,
 				D7E2D74C1D5B07F900E9A6E5 /* jinru_03.png */,
+				BB88D6BC1D61984E001A8B30 /* usehelp01.png */,
+				BB88D6BD1D61984E001A8B30 /* usehelp02.png */,
+				BB88D6BE1D61984E001A8B30 /* usehelp03.png */,
+				BB88D6BF1D61984E001A8B30 /* usehelp04.png */,
+				BB88D6C01D61984E001A8B30 /* usehelp05.png */,
 				D7E2D74D1D5B07F900E9A6E5 /* mempass.png */,
 				D7E2D74E1D5B07F900E9A6E5 /* menpass@2x.png */,
 				D7E2D74F1D5B07F900E9A6E5 /* mempass-1.png */,
@@ -796,11 +796,11 @@
 			files = (
 				D7E2D7CF1D5B14A100E9A6E5 /* geren_11.png in Resources */,
 				D7E2D79B1D5B07F900E9A6E5 /* 12.png in Resources */,
+				BB88D6C41D61984E001A8B30 /* usehelp04.png in Resources */,
 				D7E2D7931D5B07F900E9A6E5 /* 4.png in Resources */,
 				D7E2D78D1D5B07F900E9A6E5 /* bianse-anniu_6.png in Resources */,
 				D7E2D7AA1D5B07F900E9A6E5 /* bg-2.png in Resources */,
 				D7E2D78C1D5B07F900E9A6E5 /* anniu_6.png in Resources */,
-				D7D664721D4ED9D90037335C /* usehelp05.png in Resources */,
 				D7E2D7CB1D5B0D9F00E9A6E5 /* xuanzhong.png in Resources */,
 				BB223F8D1D5D9BA2002531DB /* code.plist in Resources */,
 				D7E2D7A01D5B07F900E9A6E5 /* 17.png in Resources */,
@@ -808,7 +808,6 @@
 				D7E2D7A71D5B07F900E9A6E5 /* bg_chooseschool.png in Resources */,
 				D7E2D7941D5B07F900E9A6E5 /* 5.png in Resources */,
 				D7E2D77E1D5B07F900E9A6E5 /* menpass@2x.png in Resources */,
-				D7D6646E1D4ED9D90037335C /* usehelp01.png in Resources */,
 				D7E2D7881D5B07F900E9A6E5 /* anniu_4.png in Resources */,
 				D7E2D7A81D5B07F900E9A6E5 /* dingwei_03.png in Resources */,
 				D7E2D7891D5B07F900E9A6E5 /* bianse-anniu_4.png in Resources */,
@@ -824,6 +823,7 @@
 				D7E2D7A41D5B07F900E9A6E5 /* 21.png in Resources */,
 				D7E2D78E1D5B07F900E9A6E5 /* bianse-anniu_07.png in Resources */,
 				D7E2D7D31D5B217900E9A6E5 /* shezhi.png in Resources */,
+				BB88D6C21D61984E001A8B30 /* usehelp02.png in Resources */,
 				D7E2D77B1D5B07F900E9A6E5 /* tijiao_03.png in Resources */,
 				D7E2D7861D5B07F900E9A6E5 /* anniu_3.png in Resources */,
 				D7E2D78F1D5B07F900E9A6E5 /* 0.png in Resources */,
@@ -831,15 +831,16 @@
 				D7C9F9951D49B43700CB9ACD /* Assets.xcassets in Resources */,
 				D7E2D78B1D5B07F900E9A6E5 /* bianse-anniu_5.png in Resources */,
 				D7E2D7811D5B07F900E9A6E5 /* anniu_03.png in Resources */,
-				D7D664701D4ED9D90037335C /* usehelp03.png in Resources */,
+				BB88D6C51D61984E001A8B30 /* usehelp05.png in Resources */,
 				D7E2D78A1D5B07F900E9A6E5 /* anniu_5.png in Resources */,
 				D7E2D7991D5B07F900E9A6E5 /* 10.png in Resources */,
 				D7E2D7841D5B07F900E9A6E5 /* anniu_2.png in Resources */,
+				BB88D6C11D61984E001A8B30 /* usehelp01.png in Resources */,
 				D7E2D79D1D5B07F900E9A6E5 /* 14.png in Resources */,
 				D7E2D7821D5B07F900E9A6E5 /* anniu_1.png in Resources */,
 				D7E2D7961D5B07F900E9A6E5 /* 7.png in Resources */,
-				D7D6646F1D4ED9D90037335C /* usehelp02.png in Resources */,
 				D7E2D7A21D5B07F900E9A6E5 /* 19.png in Resources */,
+				BB88D6C31D61984E001A8B30 /* usehelp03.png in Resources */,
 				D7E2D7CA1D5B0D9F00E9A6E5 /* checkbox.png in Resources */,
 				D7E2D77D1D5B07F900E9A6E5 /* mempass.png in Resources */,
 				D7E2D77F1D5B07F900E9A6E5 /* mempass-1.png in Resources */,
@@ -853,7 +854,6 @@
 				D7E2D7AC1D5B08D600E9A6E5 /* back.png in Resources */,
 				D7E2D7851D5B07F900E9A6E5 /* bianse-anniu_2.png in Resources */,
 				D7E2D7871D5B07F900E9A6E5 /* bianse-anniu_3.png in Resources */,
-				D7D664711D4ED9D90037335C /* usehelp04.png in Resources */,
 				D7E2D7801D5B07F900E9A6E5 /* mempass-1@2x.png in Resources */,
 				D7E2D79C1D5B07F900E9A6E5 /* 13.png in Resources */,
 				D7E2D79E1D5B07F900E9A6E5 /* 15.png in Resources */,
