@@ -69,6 +69,7 @@
     
     self.xq2 = [[UITextView alloc] initWithFrame:CGRectMake(32, 134, self.view.frame.size.width-64, self.view.frame.size.height-190)];
     //self.xq2.enabled = NO;
+    self.xq2.editable = NO;
     
     self.xq2.backgroundColor = [UIColor clearColor];
     self.xq2.font = [UIFont systemFontOfSize:18];

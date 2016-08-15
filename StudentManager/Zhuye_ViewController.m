@@ -85,9 +85,9 @@
     }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
         
         self.sos = [[UIButton alloc] initWithFrame:CGRectMake(170, 10, 40, 20)];
-        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(70, 100, 50, 50)];
-        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(150, 160, 12, 18)];
-        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(180, 100, 50, 30)];
+        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(70, 110, 50, 50)];
+        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(150, 150, 12, 18)];
+        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(190, 100, 50, 30)];
         self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(180, 160, 50, 10)];
         self.wendu.font = [UIFont systemFontOfSize:30];
         self.xingqi.font = [UIFont systemFontOfSize:10];
@@ -516,10 +516,11 @@
     //NSLog(@"跳转帮助界面");
     Sos_ViewController *svc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"sos"];
      svc.ip = self.ip;
-    svc.latitude = self.latitude;
-    svc.longitude = self.longitude;
+    svc.latitude = self.wei;
+    svc.longitude = self.jing;
 //    svc.studentId = self.studentId;
     svc.locationinfo = [NSString stringWithFormat:@"%@",self.placemark ];
+    NSLog(@"详细地理位置:%@",svc.locationinfo);
     [self.navigationController pushViewController:svc animated:YES];}
 
 #pragma mark - tianqi
@@ -633,9 +634,9 @@ int nicaicai=0;
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
     //将经度显示到label上
 
-        NSString *jing = [NSString stringWithFormat:@"%lf", newLocation.coordinate.longitude];
+        self.jing = [NSString stringWithFormat:@"%lf", newLocation.coordinate.longitude];
     //将纬度现实到label上
-        NSString *wei = [NSString stringWithFormat:@"%lf", newLocation.coordinate.latitude];
+        self.wei = [NSString stringWithFormat:@"%lf", newLocation.coordinate.latitude];
     // 获取当前所在的城市名
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     //根据经纬度反向地理编译出地址信息

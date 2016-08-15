@@ -63,10 +63,10 @@
     if (self.view.frame.size.width == 414) {
         l1 = [[UILabel alloc] initWithFrame:CGRectMake(60, self.view.frame.size.height/8+10, 100, 40)];
         l1.font = [UIFont boldSystemFontOfSize:20];
-        self.b1 = [[UIButton alloc] initWithFrame:CGRectMake(180, self.view.frame.size.height/8+20, 15, 15)];
+        self.b1 = [[UIButton alloc] initWithFrame:CGRectMake(175, self.view.frame.size.height/8+18, 25, 25)];
         l2 = [[UILabel alloc] initWithFrame:CGRectMake(200, self.view.frame.size.height/8+10, 50, 40)];
         l2.font = [UIFont boldSystemFontOfSize:20];
-        self.b2 = [[UIButton alloc] initWithFrame:CGRectMake(280, self.view.frame.size.height/8+20, 15, 15)];
+        self.b2 = [[UIButton alloc] initWithFrame:CGRectMake(275, self.view.frame.size.height/8+18, 25, 25)];
         l3 = [[UILabel alloc] initWithFrame:CGRectMake(300, self.view.frame.size.height/8+10, 50, 40)];
         l3.font = [UIFont boldSystemFontOfSize:20];
         l4 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/8+85, 50, 30)];
@@ -83,10 +83,10 @@
     }else if(self.view.frame.size.width == 375){
         l1 = [[UILabel alloc] initWithFrame:CGRectMake(60, self.view.frame.size.height/8+10, 100, 40)];
         l1.font = [UIFont boldSystemFontOfSize:20];
-        self.b1 = [[UIButton alloc] initWithFrame:CGRectMake(180, self.view.frame.size.height/8+20, 15, 15)];
+        self.b1 = [[UIButton alloc] initWithFrame:CGRectMake(175, self.view.frame.size.height/8+18, 25, 25)];
         l2 = [[UILabel alloc] initWithFrame:CGRectMake(200, self.view.frame.size.height/8+10, 50, 40)];
         l2.font = [UIFont boldSystemFontOfSize:20];
-        self.b2 = [[UIButton alloc] initWithFrame:CGRectMake(280, self.view.frame.size.height/8+20, 15, 15)];
+        self.b2 = [[UIButton alloc] initWithFrame:CGRectMake(275, self.view.frame.size.height/8+18, 25, 25)];
         l3 = [[UILabel alloc] initWithFrame:CGRectMake(300, self.view.frame.size.height/8+10, 50, 40)];
         l3.font = [UIFont boldSystemFontOfSize:20];
         l4 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/8+85, 50, 30)];
@@ -103,10 +103,10 @@
     }else if(self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
         l1 = [[UILabel alloc] initWithFrame:CGRectMake(30, self.view.frame.size.height/8+10, 80, 30)];
         l1.font = [UIFont boldSystemFontOfSize:18];
-        self.b1 = [[UIButton alloc] initWithFrame:CGRectMake(130, self.view.frame.size.height/8+20, 15, 15)];
+        self.b1 = [[UIButton alloc] initWithFrame:CGRectMake(125, self.view.frame.size.height/8+15, 25, 25)];
         l2 = [[UILabel alloc] initWithFrame:CGRectMake(150, self.view.frame.size.height/8+10, 50, 30)];
         l2.font = [UIFont boldSystemFontOfSize:18];
-        self.b2 = [[UIButton alloc] initWithFrame:CGRectMake(200, self.view.frame.size.height/8+20, 15, 15)];
+        self.b2 = [[UIButton alloc] initWithFrame:CGRectMake(195, self.view.frame.size.height/8+15, 25, 25)];
         l3 = [[UILabel alloc] initWithFrame:CGRectMake(220, self.view.frame.size.height/8+10, 50, 30)];
         l3.font = [UIFont boldSystemFontOfSize:18];
         l4 = [[UILabel alloc] initWithFrame:CGRectMake(40, self.view.frame.size.height/8+65, 50, 30)];
@@ -123,10 +123,10 @@
     }else if(self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
         l1 = [[UILabel alloc] initWithFrame:CGRectMake(30, self.view.frame.size.height/8+10, 80, 30)];
         l1.font = [UIFont boldSystemFontOfSize:18];
-        self.b1 = [[UIButton alloc] initWithFrame:CGRectMake(130, self.view.frame.size.height/8+20, 15, 15)];
+        self.b1 = [[UIButton alloc] initWithFrame:CGRectMake(130, self.view.frame.size.height/8+20, 25, 25)];
         l2 = [[UILabel alloc] initWithFrame:CGRectMake(150, self.view.frame.size.height/8+10, 50, 30)];
         l2.font = [UIFont boldSystemFontOfSize:18];
-        self.b2 = [[UIButton alloc] initWithFrame:CGRectMake(200, self.view.frame.size.height/8+20, 15, 15)];
+        self.b2 = [[UIButton alloc] initWithFrame:CGRectMake(200, self.view.frame.size.height/8+20, 25, 25)];
         l3 = [[UILabel alloc] initWithFrame:CGRectMake(220, self.view.frame.size.height/8+10, 50, 30)];
         l3.font = [UIFont boldSystemFontOfSize:18];
         l4 = [[UILabel alloc] initWithFrame:CGRectMake(40, self.view.frame.size.height/8+65, 50, 30)];

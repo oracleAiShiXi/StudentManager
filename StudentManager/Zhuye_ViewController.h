@@ -30,6 +30,8 @@
 @property(nonatomic,retain)NSString *latitude;
 @property(nonatomic,retain)CLPlacemark *placemark;
 @property(nonatomic,retain)NSString *cityName;
+@property(nonatomic,retain)NSString *jing;
+@property(nonatomic,retain)NSString *wei;
 @property(nonatomic,retain)NSString *SSS;
 @property(nonatomic,retain)NSString *result1;
 @property(nonatomic,retain)NSString *result2;
