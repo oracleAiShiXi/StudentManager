@@ -179,18 +179,20 @@
     }
     
     if ([dataDic[@"isInPost"] intValue]==0) {
-        [self.noBtn setImage:[UIImage imageNamed:@"xuanzhong.png"] forState:UIControlStateNormal];
-        [self.yesBtn setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
-        [self.noBtn setImage:[UIImage imageNamed:@"xuanzhong.png"] forState:UIControlStateDisabled];
-        [self.yesBtn setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateDisabled];
+        [self.noBtn setImage:[UIImage imageNamed:@"xuanzhong@2x.png"] forState:UIControlStateNormal];                    //上 左  下  右
+        //[self.noBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+        [self.yesBtn setImage:[UIImage imageNamed:@"checkbox@2x.png"] forState:UIControlStateNormal];
+        //[self.yesBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 30, 0, 0)];
+        [self.noBtn setImage:[UIImage imageNamed:@"xuanzhong@2x.png"] forState:UIControlStateDisabled];
+        [self.yesBtn setImage:[UIImage imageNamed:@"checkbox@2x.png"] forState:UIControlStateDisabled];
         isInPost = [NSString stringWithFormat:@"0"];
         
     } else {
         
-        [self.yesBtn setImage:[UIImage imageNamed:@"xuanzhong.png"] forState:UIControlStateNormal];
-        [self.noBtn setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
-        [self.yesBtn setImage:[UIImage imageNamed:@"xuanzhong.png"] forState:UIControlStateDisabled];
-        [self.noBtn setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateDisabled];
+        [self.yesBtn setImage:[UIImage imageNamed:@"xuanzhong@2x.png"] forState:UIControlStateNormal];
+        [self.noBtn setImage:[UIImage imageNamed:@"checkbox@2x.png"] forState:UIControlStateNormal];
+        [self.yesBtn setImage:[UIImage imageNamed:@"xuanzhong@2x.png"] forState:UIControlStateDisabled];
+        [self.noBtn setImage:[UIImage imageNamed:@"checkbox@2x.png"] forState:UIControlStateDisabled];
         isInPost = [NSString stringWithFormat:@"1"];
     }
     

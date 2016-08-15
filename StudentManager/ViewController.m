@@ -12,6 +12,7 @@
 #import "SBJson.h"
 #import "AFHTTPSessionManager.h"
 #import "Color+Hex.h"
+#import "WarningBox.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 {
@@ -139,40 +140,40 @@
     self.xuexiaomingcheng.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.xuexiaomingcheng];
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html", nil];
-    
-    NSString *url=[NSString stringWithFormat:@"http://203.171.234.171:8080/jobservice/intf/mobile/school.shtml?command=schoollist"];
-    
-    [manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        @try {
-            //NSLog(@"%@",responseObject);
-            NSDictionary *array = [responseObject objectForKey:@"schoolDTOs"];
-            
-            arr = [[NSMutableArray alloc]init];
-            arr_ip = [[NSMutableArray alloc]init];
-            arr_s = [[NSMutableArray alloc]init];
-            
-            for (NSDictionary *aa in array) {
-                
-                [arr addObject:[aa objectForKey:@"name"]];
-                [arr_ip addObject:[aa objectForKey:@"ip"]];
-                [arr_s addObject:[aa objectForKey:@"serial"]];
-            }
-            [self.xuexiaomingcheng reloadData];
-            
-        } @catch (NSException *exception) {
-            
-            //NSLog(@"网络");
-        }
-        
-        
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        //NSLog(@"- -%@",error);
-    }];
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html", nil];
+//    
+//    NSString *url=[NSString stringWithFormat:@"http://203.171.234.171:8080/jobservice/intf/mobile/school.shtml?command=schoollist"];
+//    
+//    [manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+//        
+//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        @try {
+//            //NSLog(@"%@",responseObject);
+//            NSDictionary *array = [responseObject objectForKey:@"schoolDTOs"];
+//            
+//            arr = [[NSMutableArray alloc]init];
+//            arr_ip = [[NSMutableArray alloc]init];
+//            arr_s = [[NSMutableArray alloc]init];
+//            
+//            for (NSDictionary *aa in array) {
+//                
+//                [arr addObject:[aa objectForKey:@"name"]];
+//                [arr_ip addObject:[aa objectForKey:@"ip"]];
+//                [arr_s addObject:[aa objectForKey:@"serial"]];
+//            }
+//            [self.xuexiaomingcheng reloadData];
+//            
+//        } @catch (NSException *exception) {
+//            
+//            //NSLog(@"网络");
+//        }
+//        
+//        
+//        
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        //NSLog(@"- -%@",error);
+//    }];
     flog = 0;
     self.xuexiaomingcheng.hidden = YES;
     // Do any additional setup after loading the view, typically from a nib.
@@ -244,6 +245,7 @@
         self.ip = arr_ip[indexPath.row];
         self.serial = arr_s[indexPath.row];
         self.xuexiao.text = self.str;
+        flog=0;
       
     }
 }
@@ -254,13 +256,57 @@
 
 - (void)xuexiao:(id)sender {
     if (flog == 0) {
-        self.xuexiaomingcheng.hidden = NO;
-        flog = 1;
-    }
-    else{
+        [self jiazaixuexiao];
+    }else{
         self.xuexiaomingcheng.hidden = YES;
         flog = 0;
     }
+}
+
+-(void)jiazaixuexiao{
+    
+    [WarningBox warningBoxModeIndeterminate:@"正在加载学校列表！" andView:self.view];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html", nil];
+    
+    NSString *url=[NSString stringWithFormat:@"http://203.171.234.171:8080/jobservice/intf/mobile/school.shtml?command=schoollist"];
+    
+    [manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        @try {
+            //NSLog(@"%@",responseObject);
+            NSDictionary *array = [responseObject objectForKey:@"schoolDTOs"];
+            
+            arr = [[NSMutableArray alloc]init];
+            arr_ip = [[NSMutableArray alloc]init];
+            arr_s = [[NSMutableArray alloc]init];
+            
+            for (NSDictionary *aa in array) {
+                
+                [arr addObject:[aa objectForKey:@"name"]];
+                [arr_ip addObject:[aa objectForKey:@"ip"]];
+                [arr_s addObject:[aa objectForKey:@"serial"]];
+            }
+            [WarningBox warningBoxHide:YES andView:self.view];
+            self.xuexiaomingcheng.hidden = NO;
+            flog = 1;
+            [self.xuexiaomingcheng reloadData];
+            
+        } @catch (NSException *exception) {
+            
+            //NSLog(@"网络");
+        }
+        
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [WarningBox warningBoxHide:YES andView:self.view];
+        [WarningBox warningBoxModeText:@"网络异常，请重试！" andView:self.view];
+        flog=0;
+        //NSLog(@"- -%@",error);
+    }];
+
 }
 
 - (void)queding:(id)sender {

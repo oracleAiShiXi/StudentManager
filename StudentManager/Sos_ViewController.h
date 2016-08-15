@@ -21,5 +21,8 @@
 @property(nonatomic,retain)NSString *locationinfo;
 @property(nonatomic,retain)NSString *result;
 
+@property (weak, nonatomic) IBOutlet UIButton *tijiaoBtn;
+- (IBAction)tj:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextView *TextView;
 
 @end

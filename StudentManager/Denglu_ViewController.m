@@ -43,7 +43,7 @@
     //NSLog(@"--%@",self.ip);
     //NSLog(@"--%@",self.serial);
     //返回按钮
-    self.fanhui1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 20, 20)];
+    self.fanhui1 = [[UIButton alloc] initWithFrame:CGRectMake(15, 25, 25, 25)];
     [self.fanhui1 setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     self.fanhui1.backgroundColor = [UIColor clearColor];
     [self.fanhui1 addTarget:self action:@selector(fanhui) forControlEvents:UIControlEventTouchUpInside];
@@ -76,8 +76,8 @@
         self.denglu1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+160, 280, self.view.frame.size.height/10-10)];
         self.denglu1.layer.cornerRadius = 30.0;
         self.lijidenglu = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+160, 240, self.view.frame.size.height/10-10)];
-        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+245, 20, 20)];
-        self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+240, 60, 25)];
+        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-40, self.view.frame.size.height/3+240, 80, 20)];
+        //self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+240, 60, 25)];
 
         
         
@@ -91,8 +91,8 @@
         self.denglu1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+160, 280, self.view.frame.size.height/10-10)];
         self.denglu1.layer.cornerRadius = 28.0;
         self.lijidenglu = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+160, 240, self.view.frame.size.height/10-10)];
-        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+245, 20, 20)];
-        self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+240, 60, 25)];
+        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-40, self.view.frame.size.height/3+240, 80, 20)];
+        //self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+240, 60, 25)];
 
         
     }else if(self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
@@ -105,8 +105,8 @@
         self.denglu1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+120, 240, self.view.frame.size.height/10-10)];
         self.denglu1.layer.cornerRadius = 22.0;
         self.lijidenglu = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+120, 240, self.view.frame.size.height/10-10)];
-        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+185, 20, 20)];
-        self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+180, 60, 25)];
+        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-40, self.view.frame.size.height/3+180, 80, 20)];
+        //self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+180, 60, 25)];
         
     }else if(self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
         self.zhanghao= [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-80+5, self.view.frame.size.height/3+5, 250, self.view.frame.size.height/10-10)];
@@ -118,8 +118,8 @@
         self.denglu1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+130, 240, self.view.frame.size.height/10)];
         self.denglu1.layer.cornerRadius = 22.0;
         self.lijidenglu = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+130, 240, self.view.frame.size.height/10)];
-        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+195, 20, 20)];
-        self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+190, 60, 25)];
+        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-40, self.view.frame.size.height/3+195, 80, 20)];
+        //self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+190, 60, 25)];
         
     }
     self.zhanghao1.placeholder = @"账号:";
@@ -170,15 +170,19 @@
     [self.lijidenglu addTarget:self action:@selector(lijidenglu1) forControlEvents:UIControlEventTouchUpInside];
     //记住密码
     
-    [self.checkbox1 setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
+    [self.checkbox1 setImage:[UIImage imageNamed:@"checkbox@2x.png"] forState:UIControlStateNormal];
+    [self.checkbox1 setTitle:@"记住密码" forState:UIControlStateNormal];
+    _checkbox1.titleLabel.font=[UIFont systemFontOfSize:15];
+    [self.checkbox1 setImageEdgeInsets:UIEdgeInsetsMake(1, 0, 0, 60)];
+    
     [self.checkbox1 addTarget:self action:@selector(choose) forControlEvents:UIControlEventTouchUpInside];
     //记住密码文本
     
-    self.jizhu.backgroundColor = [UIColor clearColor];
-    self.jizhu.font = [UIFont systemFontOfSize:15];
-    self.jizhu.text = @"记住密码";
-    self.jizhu.textColor = [UIColor whiteColor];
-    self.jizhu.textAlignment = UITextAlignmentCenter;
+//    self.jizhu.backgroundColor = [UIColor clearColor];
+//    self.jizhu.font = [UIFont systemFontOfSize:15];
+//    self.jizhu.text = @"记住密码";
+//    self.jizhu.textColor = [UIColor whiteColor];
+//    self.jizhu.textAlignment = UITextAlignmentCenter;
     
     [self.view addSubview:self.fanhui1];
     [self.view addSubview:self.zhanghao1];
@@ -188,7 +192,7 @@
     [self.view addSubview:self.denglu1];
     [self.view addSubview:self.lijidenglu];
     [self.view addSubview:self.checkbox1];
-    [self.view addSubview:self.jizhu];
+    //[self.view addSubview:self.jizhu];
     
   
     
@@ -211,7 +215,7 @@
     
     if ([isZiDongdenglu  isEqual: @"1"]) {
         isRemember = YES;
-        [self.checkbox1 setImage:[UIImage imageNamed:@"xuanzhong.png"] forState:UIControlStateNormal];
+        [self.checkbox1 setImage:[UIImage imageNamed:@"xuanzhong@2x.png"] forState:UIControlStateNormal];
         self.zhanghao.text = [NSString stringWithFormat:@"%@",[defaults objectForKey:@"hahahaha"]];
         
         self.mima.text = [NSString stringWithFormat:@"%@",[defaults objectForKey:@"password"]];
@@ -331,11 +335,11 @@
     if (isRemember == NO) {
         isRemember = YES;
         [defaults setObject:@"1" forKey:@"zddl"];
-        [self.checkbox1 setImage:[UIImage imageNamed:@"xuanzhong.png"] forState:UIControlStateNormal];
+        [self.checkbox1 setImage:[UIImage imageNamed:@"xuanzhong@2x.png"] forState:UIControlStateNormal];
     }else{
         [defaults setObject:@"0" forKey:@"zddl"];
         isRemember=NO;
-        [self.checkbox1 setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
+        [self.checkbox1 setImage:[UIImage imageNamed:@"checkbox@2x.png"] forState:UIControlStateNormal];
     }
 
 }

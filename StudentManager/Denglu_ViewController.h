@@ -26,7 +26,7 @@
 @property(strong,nonatomic)UIButton *lijidenglu;
 @property(strong,nonatomic)UIButton *fanhui1;
 @property(strong,nonatomic)UIButton *checkbox1;
-@property(strong,nonatomic)UILabel *jizhu;
+//@property(strong,nonatomic)UILabel *jizhu;
 
 
 

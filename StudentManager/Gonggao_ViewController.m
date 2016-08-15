@@ -47,7 +47,7 @@
     //设置导航栏左侧按钮
     UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, MinWidth, MaxHeigth)];
     [leftBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [leftBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateHighlighted];
+    //[leftBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateHighlighted];
     [leftBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem =[[UIBarButtonItem alloc]initWithCustomView: leftBtn];
     self.navigationItem.leftBarButtonItem = leftItem;
