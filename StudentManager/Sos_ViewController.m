@@ -109,6 +109,11 @@
 
     NSLog(@"%@",self.ip);
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"5fc1ff"];
+    
+}
 #pragma mark - button
 - (void)back {
     

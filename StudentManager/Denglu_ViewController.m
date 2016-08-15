@@ -64,10 +64,10 @@
     self.zhanghao1.borderStyle = UITextBorderStyleRoundedRect;
     //self.zhanghao1.layer.cornerRadius = 30.0;
     if (self.view.frame.size.width == 414) {
-        self.zhanghao= [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-100, self.view.frame.size.height/3, 250, self.view.frame.size.height/10-10)];
+        self.zhanghao= [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-90, self.view.frame.size.height/3, 250, self.view.frame.size.height/10-10)];
         self.zhanghao1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3, 280, self.view.frame.size.height/10-10)];
         self.zhanghao1.layer.cornerRadius = 30.0;
-        self.mima = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-95, self.view.frame.size.height/3+75, 200, self.view.frame.size.height/10)];
+        self.mima = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-90, self.view.frame.size.height/3+75, 200, self.view.frame.size.height/10)];
         self.mima1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+80, 280, self.view.frame.size.height/10-10)];
         self.mima1.layer.cornerRadius = 30.0;
         self.denglu1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+160, 280, self.view.frame.size.height/10-10)];
@@ -77,10 +77,10 @@
         
         
     }else if(self.view.frame.size.width == 375){
-        self.zhanghao= [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-100, self.view.frame.size.height/3, 200, self.view.frame.size.height/10-10)];
+        self.zhanghao= [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-90, self.view.frame.size.height/3, 200, self.view.frame.size.height/10-10)];
         self.zhanghao1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3, 280, self.view.frame.size.height/10-10)];
         self.zhanghao1.layer.cornerRadius = 28.0;
-        self.mima = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-95, self.view.frame.size.height/3+75, 200, self.view.frame.size.height/10)];
+        self.mima = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-90, self.view.frame.size.height/3+75, 200, self.view.frame.size.height/10)];
         self.mima1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+80, 280, self.view.frame.size.height/10-10)];
         self.mima1.layer.cornerRadius = 28.0;
         self.denglu1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+160, 280, self.view.frame.size.height/10-10)];
@@ -89,10 +89,10 @@
 
         
     }else if(self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
-        self.zhanghao= [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-85, self.view.frame.size.height/3, 200, self.view.frame.size.height/10-10)];
+        self.zhanghao= [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-70, self.view.frame.size.height/3, 200, self.view.frame.size.height/10-10)];
         self.zhanghao1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3, 240, self.view.frame.size.height/10-10)];
         self.zhanghao1.layer.cornerRadius = 22.0;
-        self.mima = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-75, self.view.frame.size.height/3+55, 200, self.view.frame.size.height/10)];
+        self.mima = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-70, self.view.frame.size.height/3+55, 200, self.view.frame.size.height/10)];
         self.mima1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+60, 240, self.view.frame.size.height/10-10)];
         self.mima1.layer.cornerRadius = 22.0;
         self.denglu1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+120, 240, self.view.frame.size.height/10-10)];
@@ -100,10 +100,10 @@
         self.lijidenglu = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+120, 240, self.view.frame.size.height/10-10)];
         
     }else if(self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
-        self.zhanghao= [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-85, self.view.frame.size.height/3+5, 250, self.view.frame.size.height/10-10)];
+        self.zhanghao= [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-80+5, self.view.frame.size.height/3+5, 250, self.view.frame.size.height/10-10)];
         self.zhanghao1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3, 240, self.view.frame.size.height/10)];
         self.zhanghao1.layer.cornerRadius = 22.0;
-        self.mima = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-80, self.view.frame.size.height/3+65, 250, self.view.frame.size.height/10)];
+        self.mima = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-80+5, self.view.frame.size.height/3+65, 250, self.view.frame.size.height/10)];
         self.mima1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+65, 240, self.view.frame.size.height/10)];
         self.mima1.layer.cornerRadius = 22.0;
         self.denglu1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+130, 240, self.view.frame.size.height/10)];
@@ -111,7 +111,9 @@
         self.lijidenglu = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+130, 240, self.view.frame.size.height/10)];
         
     }
-    self.zhanghao1.placeholder = @"账号";
+    self.zhanghao1.placeholder = @"账号:";
+    self.zhanghao1.backgroundColor = [UIColor clearColor];
+    self.zhanghao1.borderStyle = UITextBorderStyleRoundedRect;
     self.zhanghao1.layer.borderColor = [[UIColor whiteColor]CGColor];
     self.zhanghao1.layer.borderWidth = 2.0;
     self.zhanghao1.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -127,9 +129,8 @@
     
     self.mima1.backgroundColor = [UIColor clearColor];
     self.mima1.borderStyle = UITextBorderStyleRoundedRect;
-    //self.mima1.layer.cornerRadius = 30.0;
     
-    self.mima1.placeholder = @"密码";
+    self.mima1.placeholder = @"密码:";
     self.mima1.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.mima1.layer.borderWidth = 2.0;
     self.mima1.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -157,13 +158,13 @@
     self.lijidenglu.titleLabel.font = [UIFont systemFontOfSize:24];
     [self.lijidenglu addTarget:self action:@selector(lijidenglu1) forControlEvents:UIControlEventTouchUpInside];
     //记住密码
-    self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+240, 15, 15)];
+    self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+240, 25, 25)];
     [self.checkbox1 setImage:[UIImage imageNamed:@"mempass.png"] forState:UIControlStateNormal];
     [self.checkbox1 addTarget:self action:@selector(choose) forControlEvents:UIControlEventTouchUpInside];
     //记住密码文本
-    self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-15, self.view.frame.size.height/3+240, 60, 15)];
+    self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+240, 60, 25)];
     self.jizhu.backgroundColor = [UIColor clearColor];
-    self.jizhu.font = [UIFont systemFontOfSize:12];
+    self.jizhu.font = [UIFont systemFontOfSize:15];
     self.jizhu.text = @"记住密码";
     self.jizhu.textColor = [UIColor whiteColor];
     self.jizhu.textAlignment = UITextAlignmentCenter;

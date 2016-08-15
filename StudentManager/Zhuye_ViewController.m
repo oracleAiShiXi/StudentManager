@@ -54,10 +54,7 @@
     imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
     [self.view addSubview:imageView];
-    
-    self.wendu.adjustsFontSizeToFitWidth = YES;
-    self.xingqi.adjustsFontSizeToFitWidth = YES;
-    
+        
     self.view1.backgroundColor = [UIColor whiteColor];
     
     self.view1.layer.cornerRadius = 5.0;
@@ -67,23 +64,56 @@
     [self.view addSubview:self.view1];
     if (self.view.frame.size.width == 414){
         self.sos = [[UIButton alloc] initWithFrame:CGRectMake(240, 10, 60, 30)];
+        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 60, 60)];
+        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(200, 150, 12, 18)];
+        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(220, 90, 70, 50)];
+        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(220, 150, 70, 20)];
+        self.wendu.font = [UIFont systemFontOfSize:40];
+        self.xingqi.font = [UIFont systemFontOfSize:15];
+
+
         
     }else if (self.view.frame.size.width == 375){
         self.sos = [[UIButton alloc] initWithFrame:CGRectMake(230, 10, 45, 20)];
+        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 60, 60)];
+        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(200, 150, 12, 18)];
+        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(220, 90, 70, 50)];
+        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(220, 150, 70, 20)];
+        self.wendu.font = [UIFont systemFontOfSize:40];
+        self.xingqi.font = [UIFont systemFontOfSize:15];
         
     }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
         
         self.sos = [[UIButton alloc] initWithFrame:CGRectMake(170, 10, 40, 20)];
+        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(70, 80, 50, 50)];
+        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(130, 140, 12, 18)];
+        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(150, 80, 50, 30)];
+        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(150, 140, 50, 10)];
+        self.wendu.font = [UIFont systemFontOfSize:30];
+        self.xingqi.font = [UIFont systemFontOfSize:10];
 
     }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
         
         self.sos = [[UIButton alloc] initWithFrame:CGRectMake(180, 10, 35, 18)];
 
     }
+    self.wendu.adjustsFontSizeToFitWidth = YES;
+    self.xingqi.adjustsFontSizeToFitWidth = YES;
+    self.tianqi.backgroundColor = [UIColor clearColor];
+    self.dingwei.backgroundColor = [UIColor clearColor];
+    self.wendu.backgroundColor = [UIColor clearColor];
+    self.wendu.textColor = [UIColor whiteColor];
+    self.xingqi.backgroundColor = [UIColor clearColor];
+    self.xingqi.textColor = [UIColor whiteColor];
+    [self.view addSubview:self.tianqi];
+    [self.view addSubview:self.dingwei];
+    [self.view addSubview:self.wendu];
+    [self.view addSubview:self.xingqi];
     [self.sos setImage:[UIImage imageNamed:@"anniu_03.png"] forState:UIControlStateNormal];
     [self.sos setImage:[UIImage imageNamed:@"anniu_03.png"] forState:UIControlStateHighlighted];
     [self.sos addTarget:self action:@selector(sos:) forControlEvents:UIControlEventTouchUpInside];
     [self.view1 addSubview:self.sos];
+    
     
     
     //图标

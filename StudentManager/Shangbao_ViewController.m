@@ -117,8 +117,8 @@
         self.biaoti = [[UITextField alloc] initWithFrame:CGRectMake(80+5, self.view.frame.size.height/8+55, self.view.frame.size.width-150, 50)];
         tf2 = [[UITextField alloc] initWithFrame:CGRectMake(80, self.view.frame.size.height/8+120, self.view.frame.size.width-120, 250)];
         self.neirong = [[UITextView alloc] initWithFrame:CGRectMake(80+5, self.view.frame.size.height/8+120, self.view.frame.size.width-150, 250)];
-        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+100, 100, 40)];
-        self.tijiao = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+100, 100, 40)];
+        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+90, 100, 40)];
+        self.tijiao = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+90, 100, 40)];
         
     }else if(self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
         l1 = [[UILabel alloc] initWithFrame:CGRectMake(30, self.view.frame.size.height/8+10, 80, 30)];
@@ -242,6 +242,12 @@
     
     
     //NSLog(@"%@--%@",self.ip,self.studentId);
+    
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"5fc1ff"];
     
 }
 #pragma mark - button
