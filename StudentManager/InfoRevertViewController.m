@@ -11,6 +11,7 @@
 #import "SBJson.h"
 #import "InfoMinuteViewController.h"
 #import "WarningBox.h"
+#import "Color+Hex.h"
 @interface InfoRevertViewController ()
 {
     NSMutableArray * arr ;
@@ -35,7 +36,7 @@
     _mytable1.delegate  =self;
 
     flag = 1;
-    
+    self.view.backgroundColor = [UIColor colorWithHexString:@"5fc1ff"];
     
     [self wangluo];
     [self daohang];
@@ -162,87 +163,107 @@
 
 #pragma mark tableview datasouce
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-   
+    //return 1;
     if (flag==1) {
         return [arr2 count];
     }else {
         return [arr6 count];
     }
+
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+
   
 }
 
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+
+    UIView *as;
+    as = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 5)];
+    as.backgroundColor = [UIColor clearColor];
+  
+    return as;
+   
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+
+    return 5;
+}
+
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50;
+    return 60;
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell;
-    // _mytable1.separatorStyle=UITableViewCellSeparatorStyleNone;
-    // _mytable2.separatorStyle=UITableViewCellSeparatorStyleNone;
-   
-        
+
+    
+    
         static  NSString *id1 = @"cell1";
         cell = [tableView dequeueReusableCellWithIdentifier:id1];
         if (cell==nil) {
             cell=  [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:id1];
         }
-        
+        UIView  *v1 = (UIView*)[cell.contentView viewWithTag:200];
+        [v1.layer setCornerRadius:5.0];
+        [cell.contentView addSubview:v1];
+    
          UILabel *ll1 = (UILabel*)[cell.contentView viewWithTag:100];
         ll1.text = @"咨询标题:";
         ll1.font = [UIFont systemFontOfSize:14.0];
-        //ll1.textColor=[UIColor blackColor];
-        UILabel *ll2 = (UILabel*)[cell.contentView viewWithTag:101];
-        ll2.text = @"咨询时间:";
-        ll2.font = [UIFont systemFontOfSize:14.0];
-        //ll2.textColor=[UIColor blackColor];
-        UILabel *l1 = (UILabel*)[cell.contentView viewWithTag:102];
-        UILabel *l2 = (UILabel*)[cell.contentView viewWithTag:103];
+    
+//        UILabel *ll2 = (UILabel*)[cell.contentView viewWithTag:101];
+//        ll2.text = @"咨询时间:";
+//        ll2.font = [UIFont systemFontOfSize:14.0];
+    
+        UILabel *l1 = (UILabel*)[cell.contentView viewWithTag:101];
+        UILabel *l2 = (UILabel*)[cell.contentView viewWithTag:102];
         l1.font = [UIFont systemFontOfSize:14.0];
-        //l1.textColor=[UIColor blackColor];
-        //l2.textColor=[UIColor blackColor];
+
         l2.font = [UIFont systemFontOfSize:14.0];
-        [cell.contentView addSubview:ll1];
-        [cell.contentView addSubview:ll2];
-        [cell.contentView addSubview:l1];
-        [cell.contentView addSubview:l2];
-        
-   cell.backgroundColor = [UIColor clearColor];
     
-        
+    UIImageView *img =(UIImageView *)[cell.contentView viewWithTag:201];
     
+    
+    [v1 addSubview:img];
+    [v1 addSubview:ll1];
+    [v1 addSubview:l1];
+    [v1 addSubview:l2];
+    
+
+    
+      cell.backgroundColor = [UIColor clearColor];
+   
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+   
     
         if (flag==1){
         
-            if (![arr[indexPath.row] isEqual:[NSNull null]]) {
-                l1.text = arr[indexPath.row];
+            if (![arr[indexPath.section] isEqual:[NSNull null]]) {
+                l1.text = arr[indexPath.section];
                 
             }else{
                 l1.text = @" ";
             }
-            l2.text = arr1[indexPath.row];
+            l2.text = arr1[indexPath.section];
         
         
         }else{
-            if (![arr4[indexPath.row] isEqual:[NSNull null]]) {
-                    l1.text = arr4[indexPath.row];
+            if (![arr4[indexPath.section] isEqual:[NSNull null]]) {
+                    l1.text = arr4[indexPath.section];
         
             }else{
                 l1.text = @" ";
             }
-                l2.text = arr5[indexPath.row];
+                l2.text = arr5[indexPath.section];
         
         }
        
-   
-    
-//    for (id suView in cell.contentView.subviews) {//获取当前cell的全部子视图
-//        [suView removeFromSuperview];//移除全部子视图
-//    }
-    
+ 
     
        
         return cell;
@@ -252,16 +273,16 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [  tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (flag==1){
-        [[NSUserDefaults standardUserDefaults]setObject:arr2[indexPath.row] forKey:@"xiangxi"];
+        [[NSUserDefaults standardUserDefaults]setObject:arr2[indexPath.section] forKey:@"xiangxi"];
         
-        NSLog(@"dasdasd-----%@",arr2[indexPath.row]);
+        //NSLog(@"dasdasd-----%@",arr2[indexPath.row]);
        InfoMinuteViewController  *minute = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"minute"];
         [self.navigationController pushViewController:minute animated:YES];
         
     }else {
-        [[NSUserDefaults standardUserDefaults]setObject:arr6[indexPath.row] forKey:@"xiangxi"];
+        [[NSUserDefaults standardUserDefaults]setObject:arr6[indexPath.section] forKey:@"xiangxi"];
        
-         NSLog(@"------==--=-=%@",arr6[indexPath.row]);
+        // NSLog(@"------==--=-=%@",arr6[indexPath.row]);
         InfoMinuteViewController  *minute = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"minute"];
         [self.navigationController pushViewController:minute animated:YES];
 

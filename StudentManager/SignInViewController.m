@@ -17,13 +17,13 @@
     UIImagePickerController  *Imgpicker;
     CLLocationManager *_locationManager;
     NSString *filepath;
-    NSString*jing;
-    NSString*wei;
+   
     NSString*sheng;
     NSString*shi;
     NSString*qu;
     NSString*street;
-    
+    NSString*jing;
+    NSString*wei;
 }
 @end
 

@@ -13,12 +13,23 @@
 #import "SBJson.h"
 #import "AFHTTPSessionManager.h"
 #import "Zhuye_ViewController.h"
-
+#import <CoreLocation/CoreLocation.h>
+@interface Sos_ViewController()
+{
+    NSString*street;
+    NSString*jing;
+    NSString*wei;
+     CLLocationManager *_locationManager;
+}
+@end
 @implementation Sos_ViewController
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    [self initializeLocationService];
+    
     self.title = @"紧急情况上报";
     self.navigationController.navigationBar.hidden = NO;
     //设置导航栏的文字大小和颜色
@@ -138,9 +149,7 @@
         
         //拿到学校IP和studentID
         NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-        //    [def objectForKey:@"IP"];
-        //    [def objectForKey:@"studentId"];
-        
+ 
         
     //接口
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -149,9 +158,11 @@
     
     SBJsonWriter *writer = [[SBJsonWriter alloc]init];
     //出入参数：
-    NSDictionary*datadic=[NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId",self.longitude,@"longitude",self.latitude,@"latitude",self.locationinfo,@"locationinfo",self.myTV.text,@"soscontent", nil];
+     NSDictionary*datadic=[NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId",jing,@"longitude",wei,@"latitude",street,@"locationinfo",self.myTV.text,@"soscontent", nil];
+        
+        
     NSString *jsonstring =[writer stringWithObject:datadic];
-    NSString *url=[NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=sosup",[def objectForKey:@"studentId"]];
+    NSString *url=[NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=sosup",[def objectForKey:@"IP"]];
     NSDictionary *msg = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
     
     [manager POST:url parameters:msg progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -172,16 +183,10 @@
             //}
             
         } @catch (NSException *exception) {
-            
-            
             NSLog(@"网络");
-            
             //[self.navigationController popViewControllerAnimated:YES];
-            
         }
-        
-        
-        
+    
     }failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //NSLog(@"- -%@",error);
     }];
@@ -200,5 +205,85 @@
 {
     [self.view endEditing:YES];
 }
+
+
+#pragma mark - CLLocationManagerDelegate methods 定位
+
+-(void)initializeLocationService{
+    
+    if ([CLLocationManager locationServicesEnabled]){
+        // 初始化定位管理器
+        _locationManager = [[CLLocationManager alloc] init];
+        // 设置代理
+        _locationManager.delegate = self;
+        // 设置定位精确度到米
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        // 设置过滤器为无
+        _locationManager.distanceFilter = kCLDistanceFilterNone;
+        // 开始定位
+        // 取得定位权限，有两个方法，取决于你的定位使用情况
+        // 一个是requestAlwaysAuthorization，一个是requestWhenInUseAuthorization
+        [_locationManager requestAlwaysAuthorization];//这句话ios8以上版本使用。
+        [_locationManager startUpdatingLocation];
+        
+    }else{
+        NSLog(@"我们找不到你");
+    }
+    
+    
+    
+}
+
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+    //将经度显示到label上
+    jing = [NSString stringWithFormat:@"%lf", newLocation.coordinate.longitude];
+    //将纬度现实到label上
+    wei = [NSString stringWithFormat:@"%lf", newLocation.coordinate.latitude];
+    // 获取当前所在的城市名
+    // NSLog(@"经纬度------%@,%@",jing,wei);
+    
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    //根据经纬度反向地理编译出地 址信息
+    [geocoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *array, NSError *error){
+        if (array.count > 0){
+            CLPlacemark *placemark = [array objectAtIndex:0];
+            
+            NSLog(@"-------------------------------具体位置%@",placemark);
+            
+            street = [NSString stringWithFormat:@"%@",placemark];
+            
+            
+            
+            //获取城市
+            NSString *city = placemark.locality;
+            
+            if (city) {
+                //四大直辖市的城市信息无法通过locality获得，只能通过获取省份的方法来获得（如果city为空，则可知为直辖市）
+                city = placemark.administrativeArea;
+                //市
+                //shi=[NSString stringWithFormat:@"%@",placemark.locality];
+                //区
+                //qu=[NSString stringWithFormat:@"%@",placemark.subLocality];
+            }
+            
+        }
+        else if (error == nil && [array count] == 0)
+        {
+            NSLog(@"No results were returned.");
+        }
+        else if (error != nil)
+        {
+            NSLog(@"An error occurred = %@", error);
+        }
+    }];
+    //系统会一直更新数据，直到选择停止更新，因为我们只需要获得一次经纬度即可，所以获取之后就停止更新
+    [manager stopUpdatingLocation];
+    
+}
+
+
+
+
 
 @end
