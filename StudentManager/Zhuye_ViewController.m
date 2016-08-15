@@ -85,10 +85,10 @@
     }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
         
         self.sos = [[UIButton alloc] initWithFrame:CGRectMake(170, 10, 40, 20)];
-        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(70, 80, 50, 50)];
-        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(130, 140, 12, 18)];
-        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(150, 80, 50, 30)];
-        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(150, 140, 50, 10)];
+        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(70, 100, 50, 50)];
+        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(150, 160, 12, 18)];
+        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(180, 100, 50, 30)];
+        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(180, 160, 50, 10)];
         self.wendu.font = [UIFont systemFontOfSize:30];
         self.xingqi.font = [UIFont systemFontOfSize:10];
 
@@ -519,7 +519,7 @@
     svc.latitude = self.latitude;
     svc.longitude = self.longitude;
 //    svc.studentId = self.studentId;
-    svc.locationinfo = self.locationinfo;
+    svc.locationinfo = [NSString stringWithFormat:@"%@",self.placemark ];
     [self.navigationController pushViewController:svc animated:YES];}
 
 #pragma mark - tianqi
@@ -633,34 +633,34 @@ int nicaicai=0;
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
     //将经度显示到label上
 
-        //NSString *jing = [NSString stringWithFormat:@"%lf", newLocation.coordinate.longitude];
+        NSString *jing = [NSString stringWithFormat:@"%lf", newLocation.coordinate.longitude];
     //将纬度现实到label上
-        //NSString *wei = [NSString stringWithFormat:@"%lf", newLocation.coordinate.latitude];
+        NSString *wei = [NSString stringWithFormat:@"%lf", newLocation.coordinate.latitude];
     // 获取当前所在的城市名
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     //根据经纬度反向地理编译出地址信息
     [geocoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *array1, NSError *error){
         if (array1.count > 0){
             
-            CLPlacemark *placemark = [array1 objectAtIndex:0];
-            NSLog(@"%@",placemark);
-                NSString *sheng=[NSString stringWithFormat:@"%@",[placemark.addressDictionary objectForKey:@"State"]];
+            self.placemark = [array1 objectAtIndex:0];
+            NSLog(@"1-1-1-1%@",self.placemark);
+                NSString *sheng=[NSString stringWithFormat:@"%@",[self.placemark.addressDictionary objectForKey:@"State"]];
             NSString *sheng1 = [sheng substringToIndex:sheng.length-1];
             
             
             //获取城市
-            NSString *city = placemark.locality;
+            NSString *city = self.placemark.locality;
             NSString * shi ;NSString * qu;NSString *shi1;NSString *qu1;
             if (city) {
                 //四大直辖市的城市信息无法通过locality获得，只能通过获取省份的方法来获得（如果city为空，则可知为直辖市）
-                city = placemark.administrativeArea;
+                city = self.placemark.administrativeArea;
                 
                 //市
                 
-                shi=[NSString stringWithFormat:@"%@",placemark.locality];
+                shi=[NSString stringWithFormat:@"%@",self.placemark.locality];
                 shi1 = [shi substringToIndex:shi.length-1];
                 //区
-                qu=[NSString stringWithFormat:@"%@",placemark.subLocality];
+                qu=[NSString stringWithFormat:@"%@",self.placemark.subLocality];
                 qu1 = [qu substringToIndex:qu.length-1];
             }
             NSString*strrrrrr=[NSString stringWithFormat:@"%@-%@-%@",qu1,shi1,sheng1];

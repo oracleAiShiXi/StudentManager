@@ -159,7 +159,7 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [WarningBox warningBoxHide:YES andView:self.view];
         @try {
-            if ([[responseObject objectForKey:@"result"] intValue]==0){
+            //if ([[responseObject objectForKey:@"result"] intValue]==0){
                 [WarningBox warningBoxModeText:@"上报成功" andView:self.view];
                 [WarningBox warningBoxHide:YES andView:self.view];
                 NSLog(@"上报1－－%@",responseObject);
@@ -169,7 +169,7 @@
                 Zhuye_ViewController *zvc = [[Zhuye_ViewController alloc]init];
                 zvc.result2 = self.result;
                 [self.navigationController popViewControllerAnimated:YES];
-            }
+            //}
             
         } @catch (NSException *exception) {
             

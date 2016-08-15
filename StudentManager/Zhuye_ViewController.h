@@ -28,7 +28,7 @@
 
 @property(nonatomic,retain)NSString *longitude;
 @property(nonatomic,retain)NSString *latitude;
-@property(nonatomic,retain)NSString *locationinfo;
+@property(nonatomic,retain)CLPlacemark *placemark;
 @property(nonatomic,retain)NSString *cityName;
 @property(nonatomic,retain)NSString *SSS;
 @property(nonatomic,retain)NSString *result1;
