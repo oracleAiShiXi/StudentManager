@@ -55,6 +55,7 @@
     self.myTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-34)];
     self.myTable.delegate = self;
     self.myTable.dataSource = self;
+    self.myTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.myTable.backgroundColor = [UIColor colorWithHexString:@"5fc1ff"];
     [self.view addSubview:self.myTable];
     //NSLog(@"=======%@",self.ip);

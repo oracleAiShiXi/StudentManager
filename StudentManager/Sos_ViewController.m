@@ -46,25 +46,28 @@
     self.myTF = [[UITextField alloc] initWithFrame:CGRectMake(50, 80, self.view.frame.size.width-100, self.view.frame.size.height/2)];
     self.myTV = [[UITextView alloc] initWithFrame:CGRectMake(55, 90, self.view.frame.size.width-110, self.view.frame.size.height/2-10)];
     if (self.view.frame.size.width == 414){
-        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2, 100, 40)];
-        l1 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/2+90, self.view.frame.size.width-100, 20)];
+        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+10, 100, 40)];
+        l1 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/2+90, self.view.frame.size.width-90, 20)];
 
         
-        self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2, 100, 40)];
+        self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+10, 100, 40)];
         l1.font = [UIFont systemFontOfSize:15];
     }else if (self.view.frame.size.width == 375){
-        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2, 100, 40)];
-        self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2, 100, 40)];
+        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+10, 100, 40)];
+        self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+10, 100, 40)];
+        l1 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/2+90, self.view.frame.size.width-100, 20)];
         l1.font = [UIFont systemFontOfSize:13];
         
     }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
         tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+30, 80, 30)];
         self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+30, 80, 30)];
+        l1 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/2+90, self.view.frame.size.width-100, 20)];
         l1.font = [UIFont systemFontOfSize:10];
         
     }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
         tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+40, 60, 25)];
         self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+40, 60, 25)];
+        l1 = [[UILabel alloc] initWithFrame:CGRectMake(60, self.view.frame.size.height/2+90, self.view.frame.size.width-100, 20)];
         l1.font = [UIFont systemFontOfSize:9];
     }
 
