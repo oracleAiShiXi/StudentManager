@@ -73,6 +73,8 @@
         self.denglu1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+160, 280, self.view.frame.size.height/10-10)];
         self.denglu1.layer.cornerRadius = 30.0;
         self.lijidenglu = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+160, 240, self.view.frame.size.height/10-10)];
+        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+240, 25, 25)];
+        self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+240, 60, 25)];
 
         
         
@@ -86,6 +88,8 @@
         self.denglu1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-140, self.view.frame.size.height/3+160, 280, self.view.frame.size.height/10-10)];
         self.denglu1.layer.cornerRadius = 28.0;
         self.lijidenglu = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+160, 240, self.view.frame.size.height/10-10)];
+        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+240, 25, 25)];
+        self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+240, 60, 25)];
 
         
     }else if(self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
@@ -98,6 +102,8 @@
         self.denglu1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+120, 240, self.view.frame.size.height/10-10)];
         self.denglu1.layer.cornerRadius = 22.0;
         self.lijidenglu = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+120, 240, self.view.frame.size.height/10-10)];
+        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+180, 25, 25)];
+        self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+180, 60, 25)];
         
     }else if(self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
         self.zhanghao= [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-80+5, self.view.frame.size.height/3+5, 250, self.view.frame.size.height/10-10)];
@@ -109,6 +115,8 @@
         self.denglu1 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+130, 240, self.view.frame.size.height/10)];
         self.denglu1.layer.cornerRadius = 22.0;
         self.lijidenglu = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, self.view.frame.size.height/3+130, 240, self.view.frame.size.height/10)];
+        self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+190, 25, 25)];
+        self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+190, 60, 25)];
         
     }
     self.zhanghao1.placeholder = @"账号:";
@@ -158,11 +166,11 @@
     self.lijidenglu.titleLabel.font = [UIFont systemFontOfSize:24];
     [self.lijidenglu addTarget:self action:@selector(lijidenglu1) forControlEvents:UIControlEventTouchUpInside];
     //记住密码
-    self.checkbox1 = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-30, self.view.frame.size.height/3+240, 25, 25)];
+    
     [self.checkbox1 setImage:[UIImage imageNamed:@"mempass.png"] forState:UIControlStateNormal];
     [self.checkbox1 addTarget:self action:@selector(choose) forControlEvents:UIControlEventTouchUpInside];
     //记住密码文本
-    self.jizhu = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width)/2-5, self.view.frame.size.height/3+240, 60, 25)];
+    
     self.jizhu.backgroundColor = [UIColor clearColor];
     self.jizhu.font = [UIFont systemFontOfSize:15];
     self.jizhu.text = @"记住密码";
