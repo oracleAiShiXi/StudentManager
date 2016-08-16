@@ -37,7 +37,7 @@
 //    self.navigationController.navigationBar.shadowImage = [UIImage new];
 //    self.navigationController.navigationBar.translucent = YES;
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"5fc1ff"];
-    self.view.backgroundColor = [UIColor colorWithHexString:@"5fc1ff"];
+    //self.view.backgroundColor = [UIColor colorWithHexString:@"5fc1ff"];
     //按钮大小
     int MinWidth=20,MaxHeigth=20;
     //设置导航栏左侧按钮
@@ -47,38 +47,46 @@
     [leftBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem =[[UIBarButtonItem alloc]initWithCustomView: leftBtn];
     self.navigationItem.leftBarButtonItem = leftItem;
+    
+    [_biankuangview.layer setBorderWidth:1];
+    [_biankuangview.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+    [_biankuangview.layer setCornerRadius:10];
+    
+    self.neirongTextview.editable = NO;
 
-    self.myTF = [[UITextField alloc] initWithFrame:CGRectMake(30, 84, self.view.frame.size.width-60, self.view.frame.size.height-160)];
-    self.myTF.enabled = NO;
-    self.myTF.backgroundColor = [UIColor clearColor];
-    self.myTF.borderStyle = UITextBorderStyleRoundedRect;
-    self.myTF.layer.cornerRadius = 30.0;
-    self.myTF.layer.borderColor = [[UIColor whiteColor]CGColor];
-    self.myTF.layer.borderWidth = 2.0;
-    self.myTF.clearButtonMode = UITextFieldViewModeWhileEditing;
-    self.myTF.delegate = self;
-    [self.view addSubview:self.myTF];
-    self.xq1 = [[UITextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-70, 94, 140, 30)];
-    self.xq1.enabled = NO;
-    self.xq1.adjustsFontSizeToFitWidth = YES;
-    self.xq1.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    self.xq1.backgroundColor = [UIColor clearColor];
-    self.xq1.font = [UIFont systemFontOfSize:24];
-    self.xq1.textColor = [UIColor whiteColor];
-    [self.view addSubview:self.xq1];
+//    self.myTF = [[UITextField alloc] initWithFrame:CGRectMake(30, 84, self.view.frame.size.width-60, self.view.frame.size.height-160)];
+//    self.myTF.enabled = NO;
+//    self.myTF.backgroundColor = [UIColor clearColor];
+//    self.myTF.borderStyle = UITextBorderStyleRoundedRect;
+//    self.myTF.layer.cornerRadius = 30.0;
+//    self.myTF.layer.borderColor = [[UIColor whiteColor]CGColor];
+//    self.myTF.layer.borderWidth = 2.0;
+//    self.myTF.clearButtonMode = UITextFieldViewModeWhileEditing;
+//    self.myTF.delegate = self;
+//    [self.view addSubview:self.myTF];
+//    self.xq1 = [[UITextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-70, 94, 140, 30)];
+//    self.xq1.enabled = NO;
+//    self.xq1.adjustsFontSizeToFitWidth = YES;
+//    self.xq1.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+//    self.xq1.backgroundColor = [UIColor clearColor];
+//    self.xq1.font = [UIFont systemFontOfSize:24];
+//    self.xq1.textColor = [UIColor whiteColor];
+//    [self.view addSubview:self.xq1];
+//    
+//    self.xq2 = [[UITextView alloc] initWithFrame:CGRectMake(32, 134, self.view.frame.size.width-64, self.view.frame.size.height-190)];
+//    //self.xq2.enabled = NO;
+//    self.xq2.editable = NO;
+//    
+//    self.xq2.backgroundColor = [UIColor clearColor];
+//    self.xq2.font = [UIFont systemFontOfSize:18];
+//    self.xq2.textColor = [UIColor whiteColor];
+//    [self.view addSubview:self.xq2];
     
-    self.xq2 = [[UITextView alloc] initWithFrame:CGRectMake(32, 134, self.view.frame.size.width-64, self.view.frame.size.height-190)];
-    //self.xq2.enabled = NO;
-    self.xq2.editable = NO;
     
-    self.xq2.backgroundColor = [UIColor clearColor];
-    self.xq2.font = [UIFont systemFontOfSize:18];
-    self.xq2.textColor = [UIColor whiteColor];
-    [self.view addSubview:self.xq2];
 
     //NSLog(@"%@",self.studentId);
     //NSLog(@"%@",self.noticeId);
-    [WarningBox warningBoxModeIndeterminate:@"公告详情加载中..." andView:self.view];
+    [WarningBox warningBoxModeIndeterminate:@"正在加载中..." andView:self.view];
     
     //拿到学校IP和studentID
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
@@ -102,12 +110,14 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         @try {
             [WarningBox warningBoxHide:YES andView:self.view];
-            //NSLog(@"公告－－%@",responseObject);
+            NSLog(@"公告－－%@",responseObject);
             NSString *str1 = [responseObject objectForKey:@"noticeTitle"];
             NSString *str2 = [responseObject objectForKey:@"noticeContent"];
+            NSString *str3 = [responseObject objectForKey:@"issueTime"];
             
-            self.xq1.text = str1;
-            self.xq2.text = str2;
+            self.tongzhiLabel.text = str1;
+            self.neirongTextview.text = str2;
+            self.shijianLabel.text = str3;
             
         } @catch (NSException *exception) {
             //NSLog(@"网络");
@@ -116,6 +126,8 @@
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [WarningBox warningBoxHide:YES andView:self.view];
+        [WarningBox warningBoxTopModeText:@"网络异常，请重试！" andView:self.view];
         //NSLog(@"- -%@",error);
     }];
 

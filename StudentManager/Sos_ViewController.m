@@ -53,7 +53,7 @@
     UIBarButtonItem *leftItem =[[UIBarButtonItem alloc]initWithCustomView: leftBtn];
     self.navigationItem.leftBarButtonItem = leftItem;
     
-    [_TextView.layer setCornerRadius:5];
+    [_TextView.layer setCornerRadius:10];
     [_TextView.layer setBorderWidth:1];
     [_TextView.layer setBorderColor:[[UIColor whiteColor] CGColor]];
     [_tijiaoBtn.layer setCornerRadius:10];

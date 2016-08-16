@@ -59,7 +59,7 @@
     self.myTable.backgroundColor = [UIColor colorWithHexString:@"5fc1ff"];
     [self.view addSubview:self.myTable];
     //NSLog(@"=======%@",self.ip);
-    [WarningBox warningBoxModeIndeterminate:@"正在搜索中..." andView:self.view];
+    [WarningBox warningBoxModeIndeterminate:@"正在加载..." andView:self.view];
     
     //拿到学校IP和studentID
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
@@ -86,7 +86,7 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         @try {
             [WarningBox warningBoxHide:YES andView:self.view];
-            [WarningBox warningBoxModeText:@"搜索成功" andView:self.view];
+            //[WarningBox warningBoxModeText:@"搜索成功" andView:self.view];
             //NSLog(@"公告－－%@",responseObject);
             NSDictionary *array = [responseObject objectForKey:@"stuNoticeResSimpleDTOs"];
             //NSLog(@"数组－－%@",array);
@@ -107,9 +107,9 @@
             //NSLog(@"网络");
         }
         
-        
-        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [WarningBox warningBoxHide:YES andView:self.view];
+        [WarningBox warningBoxTopModeText:@"网络异常，请重试！" andView:self.view];
         //NSLog(@"- -%@",error);
     }];
 
@@ -250,14 +250,6 @@
     }
     
 }
-
-
-
-
-
-
-
-
 
 - (void)back {
 

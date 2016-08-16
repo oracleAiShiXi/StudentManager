@@ -56,11 +56,11 @@
     
     [_biaoti.layer setBorderWidth:1];
     [_biaoti.layer setBorderColor:[[UIColor whiteColor] CGColor]];
-    [_biaoti.layer setCornerRadius:5];
+    [_biaoti.layer setCornerRadius:10];
     
     [_neirong.layer setBorderWidth:1];
     [_neirong.layer setBorderColor:[[UIColor whiteColor] CGColor]];
-    [_neirong.layer setCornerRadius:5];
+    [_neirong.layer setCornerRadius:10];
     [_tijiaoBtn.layer setCornerRadius:10];
     
 //    UILabel *l1;
