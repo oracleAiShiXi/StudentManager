@@ -150,7 +150,12 @@
             [WarningBox warningBoxHide:YES andView:self.view];
             
             [WarningBox warningBoxModeText:@"上传成功！" andView:self.view];
-             [self.navigationController popViewControllerAnimated:YES];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+            
+           
           
         } @catch (NSException *exception) {
            [WarningBox warningBoxModeText:@"" andView:self.view];

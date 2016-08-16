@@ -57,6 +57,8 @@
     [self.mainView.layer setCornerRadius:10];
     [self.quit.layer setCornerRadius:10];
    
+    //[self.quit setBackgroundColor:[UIColor redColor]];
+    [self.quit setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     
     // Do any additional setup after loading the view.
 }

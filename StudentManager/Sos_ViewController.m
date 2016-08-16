@@ -182,14 +182,19 @@
             @try {
                 //if ([[responseObject objectForKey:@"result"] intValue]==0){
                 [WarningBox warningBoxModeText:@"上报成功" andView:self.view];
-                [WarningBox warningBoxHide:YES andView:self.view];
+                
                 NSLog(@"上报1－－%@",responseObject);
                 NSLog(@"--%@",[responseObject objectForKey:@"soscontent"]);
                 //[responseObject setObject:self.myTV.text forKey:@"soscontent"];
                 self.result = [responseObject objectForKey:@"result"];
                 Zhuye_ViewController *zvc = [[Zhuye_ViewController alloc]init];
                 zvc.result2 = self.result;
-                [self.navigationController popViewControllerAnimated:YES];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self.navigationController popViewControllerAnimated:YES];
+                });
+                
+                
+                
                 //}
                 
             } @catch (NSException *exception) {

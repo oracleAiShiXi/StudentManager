@@ -89,6 +89,8 @@
             
             [WarningBox warningBoxHide:YES andView:self.view];
          
+            NSLog(@"%@",responseObject);
+            
             NSArray *array = [responseObject objectForKey:@"stuAdvisoryLookResSimpleDTOs"];
             arr = [[NSMutableArray alloc]init];
             arr1 = [[NSMutableArray alloc]init];
