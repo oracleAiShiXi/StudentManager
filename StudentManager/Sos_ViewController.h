@@ -10,9 +10,9 @@
 
 @interface Sos_ViewController : UIViewController
 
-@property(strong,nonatomic)UITextField *myTF;
-@property(strong,nonatomic)UITextView *myTV;
-@property(strong,nonatomic)UIButton *myBt;
+//@property(strong,nonatomic)UITextField *myTF;
+//@property(strong,nonatomic)UITextView *myTV;
+//@property(strong,nonatomic)UIButton *myBt;
 
 @property(nonatomic,retain)NSString *studentId;
 @property(nonatomic,retain)NSString *ip;
