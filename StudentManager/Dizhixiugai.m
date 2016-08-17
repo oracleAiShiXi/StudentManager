@@ -250,6 +250,8 @@
         
         [shengTableView removeFromSuperview];
         
+        self.biankuangview.hidden = NO;
+        
         n=0;
     }
     
@@ -291,6 +293,9 @@
     }else{
         
         [shiTableView removeFromSuperview];
+        
+        self.biankuangview.hidden = NO;
+        
         kk=0;
         
     }
