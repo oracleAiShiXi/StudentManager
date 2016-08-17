@@ -224,12 +224,23 @@
 
 //退出账号
 - (IBAction)exit:(id)sender {
+    
+    UIAlertController *alert1=[UIAlertController alertControllerWithTitle:@"提示" message:@"是否退出当前登录？" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *yesAction=[UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+       
+        Denglu_ViewController *dlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"denglu"];
+        [self.navigationController pushViewController:dlvc animated:YES];
+        
+        
+    }];
+    UIAlertAction *noAction=[UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+    
+        
+    }];
+    [alert1 addAction:yesAction];
+    [alert1 addAction:noAction];
+    [self presentViewController:alert1 animated:true completion:nil];
   
-    Denglu_ViewController *dlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"denglu"];
-    [self.navigationController pushViewController:dlvc animated:YES];
-    
-    
-
    // NSLog(@"退出账号");
 }
 @end
