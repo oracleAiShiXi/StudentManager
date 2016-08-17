@@ -41,6 +41,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+   
+    
+    
+    
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
    
     
@@ -118,7 +122,7 @@
     //图标
     [self.dingwei setImage:[UIImage imageNamed:@"dingwei_03.png"]];
     
-    [self initializeLocationService];
+ 
 
     gx1 = [[UIView alloc] initWithFrame:CGRectMake(60, self.view1.frame.size.height*1.6, self.view1.frame.size.width-50, 1)];
     gx1.backgroundColor = [UIColor blackColor];
@@ -153,18 +157,20 @@
     
     
     //天气
-    //创建并初始化locationManager属性
-    self.locationManager = [[CLLocationManager alloc] init];
-    //定位服务委托对象为self
-    self.locationManager.delegate = self;
-    //设置精确属性，精度越高耗电越大
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-    //设置distanceFilter属性，距离过滤器
-    self.locationManager.distanceFilter = 1000.0f;
-    //授权
-    [self.locationManager requestWhenInUseAuthorization];
-    [self.locationManager requestAlwaysAuthorization];
+    {
     
+//    //创建并初始化locationManager属性
+//    self.locationManager = [[CLLocationManager alloc] init];
+//    //定位服务委托对象为self
+//    self.locationManager.delegate = self;
+//    //设置精确属性，精度越高耗电越大
+//    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+//    //设置distanceFilter属性，距离过滤器
+//    self.locationManager.distanceFilter = 1000.0f;
+//    //授权
+//    [self.locationManager requestWhenInUseAuthorization];
+//    [self.locationManager requestAlwaysAuthorization];
+    }
     //NSLog(@"%@",self.locationinfo);
         // Do any additional setup after loading the view.
 }
@@ -176,8 +182,30 @@
     //NSLog(@"result1---%@",self.result1);
     //NSLog(@"result2---%@",self.result2);
     [super viewWillAppear:animated];
+    
+    
+    //[self initializeLocationService];
+
     //开始定位
-    [self.locationManager startUpdatingLocation];
+    
+    NSString *st = [NSString stringWithFormat:@"%@",_locations];
+    
+    
+    if([st isEqualToString:@"1"]){
+        [self initializeLocationService];
+        
+      [WarningBox warningBoxModeIndeterminate:@"正在获取您的位置" andView:self.view];
+        st = @"2";
+           }else{
+               [self initializeLocationService];
+
+    
+        [self.locationManager stopUpdatingLocation];
+        
+    }
+    
+    
+    //[self.locationManager startUpdatingLocation];
     
 }
 
@@ -191,7 +219,7 @@
         
     [super viewWillDisappear:animated];
     //结束定位
-    [self.locationManager stopUpdatingLocation];
+    //[self.locationManager stopUpdatingLocation];
 }
 /*
 #pragma mark - Navigation
@@ -206,18 +234,15 @@
 #pragma mark - collectinview
 
 
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.arr.count;
 }
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString * CellIdentifier = @"GradientCell";
     UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -266,20 +291,17 @@
 }
 
 //定义每个UICollectionView 的大小
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return CGSizeMake((self.geju.frame.size.width-30)/2, (self.geju.frame.size.height-50)/3);
 }
 
 //定义每个UICollectionView 的 margin
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 
 //UICollectionView被选中时调用的方法
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     UILabel *ll;
     if (self.view.frame.size.width == 414) {
@@ -472,8 +494,7 @@
     
 }
 //返回这个UICollectionView是否可以被选择
--(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
+-(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
 }
 //取消选择了某个cell
@@ -638,7 +659,7 @@
 int nicaicai=0;
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
     //将经度显示到label上
-
+    
         self.jing = [NSString stringWithFormat:@"%lf", newLocation.coordinate.longitude];
     //将纬度现实到label上
         self.wei = [NSString stringWithFormat:@"%lf", newLocation.coordinate.latitude];
@@ -705,6 +726,7 @@ int nicaicai=0;
         }
     }];
     //系统会一直更新数据，直到选择停止更新，因为我们只需要获得一次经纬度即可，所以获取之后就停止更新
+    [WarningBox warningBoxHide:YES andView:self.view];
     [manager stopUpdatingLocation];
     
 }

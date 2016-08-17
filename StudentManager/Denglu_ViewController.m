@@ -618,6 +618,8 @@
     SchoolIP = [CommonFunc textFromBase64String:s1];
     [def setObject:SchoolIP forKey:@"IP"];
     
+   // NSLog(@"-----------------------------%@",SchoolIP);
+    
 }
 
 
@@ -628,8 +630,7 @@
   
    //[self.navigationController popViewControllerAnimated:YES];
     
-    NSLog(@"1");
-}
+   }
 
 - (IBAction)sure:(id)sender {
     if([self.username.text isEqualToString:@""]){
@@ -651,7 +652,9 @@
         
                 NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=login",[def objectForKey:@"IP"]];
         
-           
+        
+                
+                NSLog(@"the url-----%@",url);
                 
                 
 //                //拿到学校IP
@@ -683,10 +686,17 @@
                         
                             Zhuye_ViewController *zhuye = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"zhuye"];
         
-        
+                 
                             //加载省市
                             [self shengshi];
                             [self gerenxixin];
+                            
+                            
+                        NSString *location = @"1";
+                            
+                          
+                            zhuye.locations = location;
+                            
                             //[self presentViewController:zhuye animated:NO completion:nil];
         
                             [self.navigationController pushViewController:zhuye animated:YES];
@@ -701,7 +711,7 @@
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                     [WarningBox warningBoxHide:YES andView:self.view];
                     [WarningBox warningBoxModeText:@"网络连接失败!" andView:self.view];
-                   // NSLog(@"%@",error);
+                   NSLog(@"%@",error);
                 }];
 
             }
