@@ -35,6 +35,8 @@
     NSMutableArray *array;
     int flog;
     
+    NSString *st;
+    
     
 }
 
@@ -42,8 +44,9 @@
     [super viewDidLoad];
     
    
-    
-    
+    st = [NSString stringWithFormat:@"%@",_locations];
+
+    [self initializeLocationService];
     
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
    
@@ -188,21 +191,23 @@
 
     //开始定位
     
-    NSString *st = [NSString stringWithFormat:@"%@",_locations];
     
     
-    if([st isEqualToString:@"1"]){
-        [self initializeLocationService];
-        
-      [WarningBox warningBoxModeIndeterminate:@"正在获取您的位置" andView:self.view];
-        st = @"2";
-           }else{
-               [self initializeLocationService];
-
-    
-        [self.locationManager stopUpdatingLocation];
-        
-    }
+//    if([st isEqualToString:@"1"]){
+//        
+//        
+//        [self initializeLocationService];
+//        st = @"2";
+//        
+//        NSLog(@"%@",st);
+//        
+//    }else{
+//               //[self initializeLocationService];
+//
+//    
+//        [self.locationManager stopUpdatingLocation];
+//        
+//    }
     
     
     //[self.locationManager startUpdatingLocation];
@@ -374,90 +379,6 @@
 
     }
     else if (indexPath.row == 3){
-        
-        
-        
-//        //拿到学校IP和studentID
-//        NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-//        //    [def objectForKey:@"IP"];
-//        //    [def objectForKey:@"studentId"];
-//        
-//        //请求学生信息
-//        [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
-//        
-//        //将上传对象转换为json类型
-//        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//        
-//        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html", nil];
-//        
-//        //上传参数
-//        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId", nil];
-//        
-//        SBJsonWriter *writer = [[SBJsonWriter alloc] init];
-//        
-//        NSString *jsonstring = [writer stringWithObject:dic];
-//        
-//        NSDictionary *MSG = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
-//        NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=stuinformation",[def objectForKey:@"IP"]];
-//        
-//        [manager POST:url parameters:MSG progress:^(NSProgress * _Nonnull uploadProgress) {
-//            
-//            
-//        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//            
-//            NSLog(@"%@",responseObject);
-//            //把返回数据存入可变字典
-//            NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:responseObject];
-//            NSMutableDictionary *dataDic = [[NSMutableDictionary alloc] init];
-//            
-//            //将字典里的空指针转化为空字符串
-//            Values = [[NSMutableArray alloc] init];
-//            NSString *aa = [[NSString alloc] init];
-//            for (aa in [dic allValues]) {
-//                if ([aa isEqual:[NSNull null]]) {
-//                    aa=@"";
-//                }
-//                [Values addObject:aa];
-//            }
-//            
-//            NSLog(@"%@",Values);
-//            
-//            NSMutableArray *Keys = [[NSMutableArray alloc] init];
-//            for (NSString *bb in [dic allKeys]) {
-//                [Keys addObject:bb];
-//            }
-//            
-//            NSLog(@"%@",Keys);
-//            
-//            for (int i=0; i<[dic count]; i++) {
-//                
-//                [dataDic setValue:Values[i] forKey:Keys[i]];
-//            }
-//            
-//            NSLog(@"data------%@",dataDic);
-//            
-//            //把数据存入plist文件
-//            NSString *path=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/userInfo.plist"];
-//           /// NSLog(@"NSHomeDirectory()=====%@",NSHomeDirectory());
-//            
-//            [dataDic writeToFile:path atomically:YES];
-//            
-//            [WarningBox warningBoxHide:YES andView:self.view];
-//            
-//            //跳转到个人信息界面
-//            Gerenxinxi *gr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"grxx"];
-//            [self.navigationController pushViewController:gr animated:YES];
-//            
-//        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//            
-//            
-//            [WarningBox warningBoxHide:YES andView:self.view];
-//            
-//            [WarningBox warningBoxModeText:@"网络异常，请重试！" andView:self.view];
-//            
-//            NSLog(@"%@",error);
-//            
-//        }];
         
         //跳转到个人信息界面
                     Gerenxinxi *gr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"grxx"];
@@ -642,6 +563,9 @@
 //}
 - (void)initializeLocationService {
     
+    
+   
+    
     // 初始化定位管理器
     _locationManager = [[CLLocationManager alloc] init];
     // 设置代理
@@ -726,7 +650,6 @@ int nicaicai=0;
         }
     }];
     //系统会一直更新数据，直到选择停止更新，因为我们只需要获得一次经纬度即可，所以获取之后就停止更新
-    [WarningBox warningBoxHide:YES andView:self.view];
     [manager stopUpdatingLocation];
     
 }

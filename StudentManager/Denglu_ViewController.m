@@ -698,6 +698,8 @@
                             zhuye.locations = location;
                             
                             //[self presentViewController:zhuye animated:NO completion:nil];
+                            [def setObject:[NSString stringWithFormat:@"%@", self.password.text ] forKey:@"password"];
+                            [def setObject:[NSString stringWithFormat:@"%@",self.username.text] forKey:@"hahahaha"];
         
                             [self.navigationController pushViewController:zhuye animated:YES];
                         }else{

@@ -11,6 +11,7 @@
 #import "WarningBox.h"
 #import "SBJson.h"
 #import "Color+Hex.h"
+#import "Denglu_ViewController.h"
 
 @interface Xiugaimima ()<UITextFieldDelegate>
 
@@ -115,9 +116,12 @@
         [WarningBox warningBoxHide:YES andView:self.view];
         
         [WarningBox warningBoxModeText:@"修改成功！" andView:self.view];
-        
-        [self.navigationController popViewControllerAnimated:YES];
-        
+        Denglu_ViewController *dlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"denglu"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController pushViewController:dlvc animated:YES];        });
+
+       
+    
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         [WarningBox warningBoxHide:YES andView:self.view];

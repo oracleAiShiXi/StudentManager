@@ -14,6 +14,8 @@
 
 #import "AFHTTPSessionManager.h"
 #import "SBJson.h"
+
+#import "Denglu_ViewController.h"
 @interface SetViewController ()
 {
     NSMutableArray *shuju;
@@ -223,10 +225,9 @@
 //退出账号
 - (IBAction)exit:(id)sender {
   
-    ViewController *view = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"viewc"];
-
-    //[self.navigationController popToViewController:view animated:YES];
-    [self.navigationController pushViewController:view animated:YES];
+    Denglu_ViewController *dlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"denglu"];
+    [self.navigationController pushViewController:dlvc animated:YES];
+    
     
 
    // NSLog(@"退出账号");
