@@ -247,8 +247,11 @@
         self.xuexiao.text = self.str;
         
         [[NSUserDefaults standardUserDefaults]setObject: arr[indexPath.row] forKey:@"schoolname"];
-        [[NSUserDefaults standardUserDefaults]setObject: arr_ip[indexPath.row] forKey:@"ip"];
+        [[NSUserDefaults standardUserDefaults]setObject: arr_ip[indexPath.row] forKey:@"scip"];
         [[NSUserDefaults standardUserDefaults]setObject: arr_s[indexPath.row] forKey:@"serial"];
+        
+       
+        
         
         flog=0;
       

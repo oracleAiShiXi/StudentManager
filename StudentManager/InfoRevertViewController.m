@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //_mytable1.separatorStyle=UITableViewCellSeparatorStyleNone;
+    _mytable1.separatorStyle=UITableViewCellSeparatorStyleNone;
     _mytable1.backgroundColor=[UIColor colorWithRed:95/255.0 green:193/255.0 blue:255/255.0 alpha:1];
     _mytable1.showsVerticalScrollIndicator = NO;
     _mytable1.dataSource =self;

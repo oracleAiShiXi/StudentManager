@@ -63,7 +63,7 @@
     
     
     
-    def = [NSUserDefaults standardUserDefaults];
+ 
     
     
     self.schoolname.text = [NSString stringWithFormat:@"%@",[def objectForKey:@"schoolname"]];
@@ -611,10 +611,13 @@
 //解码学校ip
 -(void)schoolIP{
 
+    
+    def = [NSUserDefaults standardUserDefaults];
     //base64解码
-    NSString *s1 = [CommonFunc textFromBase64String:[def objectForKey:@"ip"]];
+    NSString *s1 = [CommonFunc textFromBase64String:[def objectForKey:@"scip"]];
     SchoolIP = [CommonFunc textFromBase64String:s1];
     [def setObject:SchoolIP forKey:@"IP"];
+    
 }
 
 
@@ -648,7 +651,9 @@
         
                 NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=login",[def objectForKey:@"IP"]];
         
-        
+           
+                
+                
 //                //拿到学校IP
 //                [[NSUserDefaults standardUserDefaults]setObject:s2 forKey:@"IP"];
         
@@ -675,11 +680,9 @@
         
         
                             [WarningBox warningBoxModeText:@"登录成功" andView:self.view];
-                            [def setObject:[NSString stringWithFormat:@"%@", self.password.text ] forKey:@"password"];
-                            [def setObject:[NSString stringWithFormat:@"%@",self.username.text] forKey:@"hahahaha"];
+                        
                             Zhuye_ViewController *zhuye = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"zhuye"];
-        //                    zhuye.studentId = studentId;
-        //                    zhuye.ip = self.ip;
+        
         
                             //加载省市
                             [self shengshi];
@@ -703,7 +706,7 @@
 
             }
     
-     NSLog(@"12");
+    
 }
 
 - (IBAction)rember:(id)sender {
@@ -711,6 +714,10 @@
     if (isRemember == NO) {
                 isRemember = YES;
                 [def setObject:@"1" forKey:@"zddl"];
+        
+        [def setObject:[NSString stringWithFormat:@"%@", self.password.text ] forKey:@"password"];
+        [def setObject:[NSString stringWithFormat:@"%@",self.username.text] forKey:@"hahahaha"];
+        
                 [self.checkbox1 setImage:[UIImage imageNamed:@"xuanzhong@2x.png"] forState:UIControlStateNormal];
             }else{
                 [def setObject:@"0" forKey:@"zddl"];
