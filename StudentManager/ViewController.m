@@ -245,11 +245,6 @@
         self.ip = arr_ip[indexPath.row];
         self.serial = arr_s[indexPath.row];
         self.xuexiao.text = self.str;
-        
-        [[NSUserDefaults standardUserDefaults]setObject: arr[indexPath.row] forKey:@"schoolname"];
-        [[NSUserDefaults standardUserDefaults]setObject: arr_ip[indexPath.row] forKey:@"ip"];
-        [[NSUserDefaults standardUserDefaults]setObject: arr_s[indexPath.row] forKey:@"serial"];
-        
         flog=0;
       
     }
@@ -323,11 +318,11 @@
     }else{
         Denglu_ViewController *dlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"denglu"];
         
-//        dlvc.name = self.xuexiao.text;
-//        
-//        dlvc.ip = self.ip;
-//        
-//        dlvc.serial = self.serial;
+        dlvc.name = self.xuexiao.text;
+        
+        dlvc.ip = self.ip;
+        
+        dlvc.serial = self.serial;
     
         [self.navigationController pushViewController:dlvc animated:YES];
         //[self presentViewController:dlvc animated:NO completion:nil];
