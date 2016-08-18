@@ -61,6 +61,9 @@
     [_neirong.layer setBorderWidth:1];
     [_neirong.layer setBorderColor:[[UIColor whiteColor] CGColor]];
     [_neirong.layer setCornerRadius:10];
+    //设置textView文字偏移（上，左，下，右）
+    _neirong.contentInset = UIEdgeInsetsMake(-8.f, 0.f, 0.f, 0.f);
+   
     [_tijiaoBtn.layer setCornerRadius:10];
     
 //    UILabel *l1;
