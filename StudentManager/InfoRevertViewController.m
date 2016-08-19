@@ -66,7 +66,7 @@
 
 -(void)wangluo{
     
-     [WarningBox warningBoxModeIndeterminate:@"正在加载中" andView:self.view];
+     [WarningBox warningBoxModeIndeterminate:@"正在加载" andView:self.view];
     //拿到存的学校IP和studentId
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
  

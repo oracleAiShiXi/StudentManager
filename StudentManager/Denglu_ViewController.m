@@ -315,9 +315,9 @@
 
 - (UIImage*)animatedImagesView:(RCAnimatedImagesView*)animatedImagesView imageAtIndex:(NSUInteger)index
 {
-    //return [UIImage imageNamed:@"bg-2"];
     
-    return [UIImage imageNamed:@"bizhi"];
+    //return [UIImage imageNamed:@"bizhi"];
+    return [UIImage imageNamed:@"bz"];
 }
 
 
@@ -692,10 +692,7 @@
                             [self gerenxixin];
                             
                             
-                        NSString *location = @"1";
-                            
-                          
-                            zhuye.locations = location;
+                     
                             
                             //[self presentViewController:zhuye animated:NO completion:nil];
                             [def setObject:[NSString stringWithFormat:@"%@", self.password.text ] forKey:@"password"];

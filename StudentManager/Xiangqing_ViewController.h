@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Xiangqing_ViewController : UIViewController
+@interface Xiangqing_ViewController : UIViewController<UITextViewDelegate>
 
 //@property(strong,nonatomic)UITextField *myTF;
 @property(nonatomic,retain)NSString *studentId;

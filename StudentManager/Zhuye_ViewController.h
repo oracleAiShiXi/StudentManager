@@ -36,6 +36,6 @@
 @property(nonatomic,retain)NSString *result1;
 @property(nonatomic,retain)NSString *result2;
 
-@property(nonatomic,retain)NSString *locations;
+
 
 @end

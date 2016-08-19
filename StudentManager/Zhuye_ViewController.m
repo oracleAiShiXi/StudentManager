@@ -35,7 +35,7 @@
     NSMutableArray *array;
     int flog;
     
-    NSString *st;
+   UILabel *ll;
     
     
 }
@@ -44,7 +44,7 @@
     [super viewDidLoad];
     
    
-    st = [NSString stringWithFormat:@"%@",_locations];
+    
 
     [self initializeLocationService];
     
@@ -179,7 +179,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     
-
+   
     
    [self.navigationController setNavigationBarHidden:YES animated:YES];
     //NSLog(@"result1---%@",self.result1);
@@ -190,25 +190,7 @@
     //[self initializeLocationService];
 
     //开始定位
-    
-    
-    
-//    if([st isEqualToString:@"1"]){
-//        
-//        
-//        [self initializeLocationService];
-//        st = @"2";
-//        
-//        NSLog(@"%@",st);
-//        
-//    }else{
-//               //[self initializeLocationService];
-//
-//    
-//        [self.locationManager stopUpdatingLocation];
-//        
-//    }
-    
+
     
     //[self.locationManager startUpdatingLocation];
     
@@ -244,7 +226,7 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.arr.count;
+    return _arr.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -252,25 +234,30 @@
     static NSString * CellIdentifier = @"GradientCell";
     UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
 
-    UILabel *ll;
+   
     
+    
+    //UILabel *ll;
     if (self.view.frame.size.width == 414) {
         imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
         ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
         ll.font = [UIFont systemFontOfSize:16];
         
-    }else if (self.view.frame.size.width == 375){
+    }
+    else if (self.view.frame.size.width == 375){
         
         imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
         ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
         ll.font = [UIFont systemFontOfSize:16];
         
-    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
+    }
+    else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
         imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-15, 20, 30, 30)];
         ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
         ll.font = [UIFont systemFontOfSize:11];
         
-    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
+    }
+    else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
         imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-10, 5, 25, 25)];
         ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-40)];
         ll.font = [UIFont systemFontOfSize:9];
@@ -278,20 +265,26 @@
     }
 
 
-    
 
     
-
-    if (flog == 0) {
+    
+   
+    //if (flog == 0) {
         
    imageview.image = [self.arr objectAtIndex:indexPath.row];
     ll.text = [array objectAtIndex:indexPath.row];
     ll.textAlignment = NSTextAlignmentCenter;
     ll.textColor =[UIColor colorWithHexString:@"483D8B"];
     cell.backgroundColor = [UIColor clearColor];
+    //}
+    
+    for (UIView *view in cell.contentView.subviews) {
+        [view removeFromSuperview];
     }
+    
     [cell.contentView addSubview:imageview];
     [cell.contentView addSubview:ll];
+
     return cell;
 }
 
@@ -307,42 +300,56 @@
 
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    UILabel *ll;
-    if (self.view.frame.size.width == 414) {
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
-        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
-        ll.font = [UIFont systemFontOfSize:16];
-        
-    }else if (self.view.frame.size.width == 375){
-        
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
-        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
-        ll.font = [UIFont systemFontOfSize:16];
-        
-    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-15, 20, 30, 30)];
-        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
-        ll.font = [UIFont systemFontOfSize:11];
-        
-    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-10, 5, 25, 25)];
-        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-40)];
-        ll.font = [UIFont systemFontOfSize:9];
-        
-    }
-    imageview.image = [self.arr1 objectAtIndex:indexPath.row];
-    [cell.contentView addSubview:imageview];
+    //UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    //UILabel *ll;
+//    if (self.view.frame.size.width == 414) {
+//        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
+//        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
+//        ll.font = [UIFont systemFontOfSize:16];
+//        
+//    }
+//    else if (self.view.frame.size.width == 375){
+//        
+//        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
+//        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
+//        ll.font = [UIFont systemFontOfSize:16];
+//        
+//    }
+//    else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
+//        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-15, 20, 30, 30)];
+//        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
+//        ll.font = [UIFont systemFontOfSize:11];
+//        
+//    }
+//    else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
+//        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-10, 5, 25, 25)];
+//        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-40)];
+//        ll.font = [UIFont systemFontOfSize:9];
+//        
+//    }
+//    
+//    
+//    
+//    for (UIView *view in cell.contentView.subviews) {
+//        [view removeFromSuperview];
+//    }
+    
+//        imageview.image = [self.arr1 objectAtIndex:indexPath.row];
+//        ll.text = [array objectAtIndex:indexPath.row];
+//        ll.textAlignment = NSTextAlignmentCenter;
+//        ll.textColor =[UIColor whiteColor];
+//        [cell.contentView addSubview:ll];
+//        [cell.contentView addSubview:button];
+//        //cell.backgroundColor = [UIColor darkGrayColor];
+//         flog =1;
+//       
+//    
+//   
+//    [cell.contentView addSubview:imageview];
+//    [cell.contentView addSubview:ll];
     
     
-    ll.text = [array objectAtIndex:indexPath.row];
-    ll.textAlignment = NSTextAlignmentCenter;
-    ll.textColor =[UIColor whiteColor];
-    [cell.contentView addSubview:ll];
-    [cell.contentView addSubview:button];
-    cell.backgroundColor = [UIColor darkGrayColor];
-    flog =1;
-    if (indexPath.row ==0) {
+    if (indexPath.row ==0){
        // NSLog(@"跳到签到界面");
         [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
 
@@ -352,7 +359,8 @@
         [WarningBox warningBoxHide:YES andView:self.view];
 
         
-    }else if (indexPath.row == 1) {
+    }
+    else if (indexPath.row == 1) {
        // NSLog(@"跳到公告界面");
         [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
 
@@ -400,7 +408,8 @@
         [WarningBox warningBoxHide:YES andView:self.view];
 
         
-    }else{
+    }
+    else{
        // NSLog(@"跳到设置界面");
         [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
         SetViewController  *set = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"set"];
@@ -415,45 +424,88 @@
     
 }
 //返回这个UICollectionView是否可以被选择
--(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+//-(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+//    return YES;
+//}
+////取消选择了某个cell
+//- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
+//    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+//   // UILabel *ll;
+//    if (self.view.frame.size.width == 414) {
+//        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
+//        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
+//        ll.font = [UIFont systemFontOfSize:16];
+//        
+//    }else if (self.view.frame.size.width == 375){
+//        
+//        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
+//        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
+//        ll.font = [UIFont systemFontOfSize:16];
+//        
+//    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
+//        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-15, 20, 30, 30)];
+//        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
+//        ll.font = [UIFont systemFontOfSize:11];
+//        
+//    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
+//        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-10, 5, 25, 25)];
+//        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-40)];
+//        ll.font = [UIFont systemFontOfSize:9];
+//        
+//    }
+//   
+//    imageview.image = [self.arr objectAtIndex:indexPath.row];
+//    ll.text = [array objectAtIndex:indexPath.row];
+//    ll.textAlignment = NSTextAlignmentCenter;
+//    
+//    
+//    
+//   
+//    ll.textColor =[UIColor colorWithHexString:@"483D8B"];
+//    [cell.contentView addSubview:imageview];
+//    [cell.contentView addSubview:ll];
+//    [cell setBackgroundColor:[UIColor clearColor]];
+//}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath
+{
     return YES;
 }
-//取消选择了某个cell
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    UILabel *ll;
-    if (self.view.frame.size.width == 414) {
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
-        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
-        ll.font = [UIFont systemFontOfSize:16];
-        
-    }else if (self.view.frame.size.width == 375){
-        
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
-        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
-        ll.font = [UIFont systemFontOfSize:16];
-        
-    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-15, 20, 30, 30)];
-        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
-        ll.font = [UIFont systemFontOfSize:11];
-        
-    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
-        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-10, 5, 25, 25)];
-        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-40)];
-        ll.font = [UIFont systemFontOfSize:9];
-        
-    }
-    imageview.image = [self.arr objectAtIndex:indexPath.row];
-    ll.text = [array objectAtIndex:indexPath.row];
-    ll.textAlignment = NSTextAlignmentCenter;
-    
-    ll.textColor =[UIColor colorWithHexString:@"483D8B"];
-    [cell.contentView addSubview:imageview];
-    [cell.contentView addSubview:ll];
-    [cell setBackgroundColor:[UIColor clearColor]];
-}
+//
+//- (void)collectionView:(UICollectionView *)colView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    UICollectionViewCell* cell = [colView cellForItemAtIndexPath:indexPath];
+//    //设置(Highlight)高亮下的颜色
+//
+//    NSIndexPath *p = indexPath;
+//    NSUInteger row = p;
+//    
+//    
+//    imageview.image = [self.arr1 objectAtIndex:indexPath.row];
+//   ll.text = [array objectAtIndex:indexPath];
+//  
+//    ll.textAlignment = NSTextAlignmentCenter;
+//    ll.textColor =[UIColor whiteColor];
+//
+//
+//    [cell setBackgroundColor:[UIColor darkGrayColor]];
+//}
+////
+//- (void)collectionView:(UICollectionView *)colView  didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//   UICollectionViewCell* cell = [colView cellForItemAtIndexPath:indexPath];
+
+ 
+    //设置(Nomal)正常状态下的颜色
+//
+//    imageview.image = [self.arr objectAtIndex:indexPath.row];
+//    ll.text = [array objectAtIndex:indexPath.row];
+//    ll.textAlignment = NSTextAlignmentCenter;
+//    ll.textColor =[UIColor colorWithHexString:@"483D8B"];
+//    
+//    [cell setBackgroundColor:[UIColor clearColor]];
+//}
+
 
 
 

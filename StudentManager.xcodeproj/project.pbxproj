@@ -27,6 +27,7 @@
 		D7B065A31D6449A60067AB02 /* icon-h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7B0659F1D6449A60067AB02 /* icon-h@2x.png */; };
 		D7B065A41D6449A60067AB02 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D7B065A01D6449A60067AB02 /* Icon.png */; };
 		D7B065A51D6449A60067AB02 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7B065A11D6449A60067AB02 /* Icon@2x.png */; };
+		D7C103641D66DBF800228759 /* bz.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C103631D66DBF800228759 /* bz.png */; };
 		D7C9F98A1D49B43700CB9ACD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C9F9891D49B43700CB9ACD /* main.m */; };
 		D7C9F9931D49B43700CB9ACD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7C9F9911D49B43700CB9ACD /* Main.storyboard */; };
 		D7C9F9951D49B43700CB9ACD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7C9F9941D49B43700CB9ACD /* Assets.xcassets */; };
@@ -172,6 +173,7 @@
 		D7B0659F1D6449A60067AB02 /* icon-h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-h@2x.png"; sourceTree = "<group>"; };
 		D7B065A01D6449A60067AB02 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		D7B065A11D6449A60067AB02 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		D7C103631D66DBF800228759 /* bz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bz.png; sourceTree = "<group>"; };
 		D7C9F9851D49B43700CB9ACD /* StudentManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7C9F9891D49B43700CB9ACD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D7C9F9921D49B43700CB9ACD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 		BBE5867A1D5C639C00ACB57A /* 登录 */ = {
 			isa = PBXGroup;
 			children = (
+				D7C103631D66DBF800228759 /* bz.png */,
 				D7E2D72A1D5B015A00E9A6E5 /* ViewController.h */,
 				D7E2D72B1D5B015A00E9A6E5 /* ViewController.m */,
 				D7E2D72D1D5B016900E9A6E5 /* Denglu_ViewController.h */,
@@ -859,6 +862,7 @@
 				D7E2D78A1D5B07F900E9A6E5 /* anniu_5.png in Resources */,
 				D7E2D7991D5B07F900E9A6E5 /* 10.png in Resources */,
 				D7E2D7841D5B07F900E9A6E5 /* anniu_2.png in Resources */,
+				D7C103641D66DBF800228759 /* bz.png in Resources */,
 				BB88D6C11D61984E001A8B30 /* usehelp01.png in Resources */,
 				D7E2D79D1D5B07F900E9A6E5 /* 14.png in Resources */,
 				D7E2D7821D5B07F900E9A6E5 /* anniu_1.png in Resources */,

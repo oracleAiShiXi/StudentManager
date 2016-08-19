@@ -273,7 +273,7 @@
 
 -(void)jiazaixuexiao{
     
-    [WarningBox warningBoxModeIndeterminate:@"正在加载学校列表！" andView:self.view];
+    [WarningBox warningBoxModeIndeterminate:@"正在加载学校列表" andView:self.view];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html", nil];
     

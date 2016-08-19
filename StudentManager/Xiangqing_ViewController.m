@@ -52,6 +52,8 @@
     [_biankuangview.layer setBorderColor:[[UIColor whiteColor] CGColor]];
     [_biankuangview.layer setCornerRadius:10];
     
+    
+    self.neirongTextview.delegate  = self;
     self.neirongTextview.editable = NO;
 
 //    self.myTF = [[UITextField alloc] initWithFrame:CGRectMake(30, 84, self.view.frame.size.width-60, self.view.frame.size.height-160)];
@@ -136,6 +138,12 @@
 
 }
 
+
+
+
+-(BOOL)textViewShouldEndEditing:(UITextView *)textView{
+    return NO;
+}
 - (void)back {
     
     [self.navigationController popViewControllerAnimated:YES];

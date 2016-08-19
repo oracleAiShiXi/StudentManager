@@ -62,7 +62,7 @@
     NSArray *arrr = [NSArray arrayWithObjects:bb1,wan, nil];
     
     [tool setItems:arrr];
-    [self.textview setInputAccessoryView:tool];
+    //[self.textview setInputAccessoryView:tool];
     
     
     
@@ -113,6 +113,12 @@
 */
 
 - (IBAction)submit:(id)sender {
+    
+    
+    if([_textview.text isEqualToString:@""])
+    {
+   [WarningBox warningBoxModeText:@"请输入您的建议" andView:self.view];
+    }else{
     
     //拿到存的学校IP和studentId
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
@@ -165,7 +171,7 @@
         [WarningBox warningBoxModeText:@"网络连接失败！" andView:self.view];
     }];
     
-    
+    }
  
     
     

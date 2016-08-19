@@ -14,7 +14,7 @@
 #import "AFHTTPSessionManager.h"
 #import "Zhuye_ViewController.h"
 #import <CoreLocation/CoreLocation.h>
-@interface Sos_ViewController()
+@interface Sos_ViewController()<CLLocationManagerDelegate>
 {
     NSString*street;
     NSString*jing;
@@ -134,7 +134,7 @@
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fingerTapped:)];
     [self.view addGestureRecognizer:singleTap];
 
-    NSLog(@"%@",self.ip);
+    
 }
 -(void)viewWillAppear:(BOOL)animated
 {
