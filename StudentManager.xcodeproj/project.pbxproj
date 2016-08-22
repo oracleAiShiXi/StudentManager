@@ -19,6 +19,7 @@
 		D707AE671D4B428D007ED80A /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D707AE661D4B428D007ED80A /* HelpViewController.m */; };
 		D707AE6A1D4B42AC007ED80A /* AdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D707AE691D4B42AC007ED80A /* AdviceViewController.m */; };
 		D70A23CB1D5178A0002F24A6 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D70A23CA1D5178A0002F24A6 /* SignInViewController.m */; };
+		D73FC2381D6A82B800CB3689 /* beiz.png in Resources */ = {isa = PBXBuildFile; fileRef = D73FC2371D6A82B800CB3689 /* beiz.png */; };
 		D740FE7D1D6313D400D8D9A1 /* RCAnimatedImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = D740FE7C1D6313D400D8D9A1 /* RCAnimatedImagesView.m */; };
 		D740FE7F1D6313E200D8D9A1 /* bizhi.png in Resources */ = {isa = PBXBuildFile; fileRef = D740FE7E1D6313E200D8D9A1 /* bizhi.png */; };
 		D79209541D5317AA006E13F3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D79209531D5317AA006E13F3 /* CoreLocation.framework */; };
@@ -164,6 +165,7 @@
 		D707AE691D4B42AC007ED80A /* AdviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdviceViewController.m; sourceTree = "<group>"; };
 		D70A23C91D5178A0002F24A6 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		D70A23CA1D5178A0002F24A6 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
+		D73FC2371D6A82B800CB3689 /* beiz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beiz.png; sourceTree = "<group>"; };
 		D740FE7B1D6313D400D8D9A1 /* RCAnimatedImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCAnimatedImagesView.h; sourceTree = "<group>"; };
 		D740FE7C1D6313D400D8D9A1 /* RCAnimatedImagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCAnimatedImagesView.m; sourceTree = "<group>"; };
 		D740FE7E1D6313E200D8D9A1 /* bizhi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bizhi.png; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				D7C103631D66DBF800228759 /* bz.png */,
+				D73FC2371D6A82B800CB3689 /* beiz.png */,
 				D7E2D72A1D5B015A00E9A6E5 /* ViewController.h */,
 				D7E2D72B1D5B015A00E9A6E5 /* ViewController.m */,
 				D7E2D72D1D5B016900E9A6E5 /* Denglu_ViewController.h */,
@@ -848,6 +851,7 @@
 				D740FE7F1D6313E200D8D9A1 /* bizhi.png in Resources */,
 				D7E2D7A41D5B07F900E9A6E5 /* 21.png in Resources */,
 				D7E2D78E1D5B07F900E9A6E5 /* bianse-anniu_07.png in Resources */,
+				D73FC2381D6A82B800CB3689 /* beiz.png in Resources */,
 				D7E2D7D31D5B217900E9A6E5 /* shezhi.png in Resources */,
 				BB88D6C21D61984E001A8B30 /* usehelp02.png in Resources */,
 				BBFDD73D1D62F35100453232 /* checkbox@2x.png in Resources */,

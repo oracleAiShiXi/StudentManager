@@ -317,7 +317,8 @@
 {
     
     //return [UIImage imageNamed:@"bizhi"];
-    return [UIImage imageNamed:@"bz"];
+    //return [UIImage imageNamed:@"bz"];
+    return [UIImage imageNamed:@"beiz"];
 }
 
 
