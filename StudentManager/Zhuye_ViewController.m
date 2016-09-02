@@ -161,23 +161,7 @@
     
     
     
-    //天气
-    {
-    
-//    //创建并初始化locationManager属性
-//    self.locationManager = [[CLLocationManager alloc] init];
-//    //定位服务委托对象为self
-//    self.locationManager.delegate = self;
-//    //设置精确属性，精度越高耗电越大
-//    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-//    //设置distanceFilter属性，距离过滤器
-//    self.locationManager.distanceFilter = 1000.0f;
-//    //授权
-//    [self.locationManager requestWhenInUseAuthorization];
-//    [self.locationManager requestAlwaysAuthorization];
-    }
-    //NSLog(@"%@",self.locationinfo);
-        // Do any additional setup after loading the view.
+           // Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated{
     
@@ -187,7 +171,12 @@
     //NSLog(@"result1---%@",self.result1);
     //NSLog(@"result2---%@",self.result2);
     [super viewWillAppear:animated];
-    [WarningBox warningBoxModeIndeterminate:@"正在获取天气" andView:self.view];
+    NSUserDefaults *kk = [NSUserDefaults standardUserDefaults];
+    if ([[kk objectForKey:@"kkey"]intValue]==1) {
+      [WarningBox warningBoxModeIndeterminate:@"正在获取天气" andView:self.view];
+      [kk setObject:@"0" forKey:@"kkey"];
+    }
+    
     
     //[self initializeLocationService];
 

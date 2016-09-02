@@ -684,7 +684,7 @@
         
                             //拿到studentId
                             [[NSUserDefaults standardUserDefaults]setObject:[responseObject objectForKey:@"studentId"] forKey:@"studentId"];
-        
+                       
         
                             [WarningBox warningBoxModeText:@"登录成功" andView:self.view];
                         
@@ -699,10 +699,13 @@
                      
                             
                             //[self presentViewController:zhuye animated:NO completion:nil];
+                            [def setObject:@"1" forKey:@"kkey"];
                             [def setObject:[NSString stringWithFormat:@"%@", self.password.text ] forKey:@"password"];
                             [def setObject:[NSString stringWithFormat:@"%@",self.username.text] forKey:@"hahahaha"];
-        
-                            [self.navigationController pushViewController:zhuye animated:YES];
+                            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                [self.navigationController pushViewController:zhuye animated:YES];
+                            });
+                            
                         }else{
         
                             [WarningBox warningBoxModeText:@"登录失败,用户名或密码不正确!" andView:self.view];
