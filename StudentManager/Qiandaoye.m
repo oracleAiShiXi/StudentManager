@@ -8,6 +8,7 @@
 
 #import "Qiandaoye.h"
 #import "ViewController.h"
+#import "Denglu_ViewController.h"
 #import "Color+Hex.h"
 
 @interface Qiandaoye ()<UIScrollViewDelegate>
@@ -102,9 +103,10 @@
 //跳转
 -(void)Turn{
     
-    ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"viewc"];
-        
-    [self.navigationController pushViewController:vc animated:YES];
+   // ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"viewc"];
+    Denglu_ViewController *dlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"denglu"];
+    
+    [self.navigationController pushViewController:dlvc animated:YES];
     
     //[self presentViewController:vc animated:NO completion:nil];
     NSLog(@"跳转");

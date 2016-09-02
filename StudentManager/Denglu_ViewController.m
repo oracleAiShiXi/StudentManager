@@ -60,13 +60,16 @@
     [backview addSubview:self.animatedImagesView];
     [self.view sendSubviewToBack:backview];
     
-    
-    
-    
  
-    
-    
+    if([def objectForKey:@"schoolname"]==nil){
+        _Eschoolname.text = @"Choose Your School";
+        _schoolname.text = @"请选择学校";
+    }else{
     self.schoolname.text = [NSString stringWithFormat:@"%@",[def objectForKey:@"schoolname"]];
+        _Eschoolname.text = @"The name of the school";
+    
+    }
+    
     
    
     
@@ -316,9 +319,9 @@
 - (UIImage*)animatedImagesView:(RCAnimatedImagesView*)animatedImagesView imageAtIndex:(NSUInteger)index
 {
     
-    //return [UIImage imageNamed:@"bizhi"];
-    //return [UIImage imageNamed:@"bz"];
-    return [UIImage imageNamed:@"beiz"];
+   return [UIImage imageNamed:@"bizhi"];
+   // return [UIImage imageNamed:@"bz"];
+    //return [UIImage imageNamed:@"beiz"];
 }
 
 

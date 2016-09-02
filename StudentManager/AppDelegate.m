@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "Qiandaoye.h"
 #import "ViewController.h"
-
+#import "Denglu_ViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -31,9 +31,11 @@
         
     }else{
         
-        ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"viewc"];
+        //ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"viewc"];
+        Denglu_ViewController *dlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"denglu"];
         
-        UINavigationController *navcontlr=[[UINavigationController alloc] initWithRootViewController:vc];
+        
+        UINavigationController *navcontlr=[[UINavigationController alloc] initWithRootViewController:dlvc];
         
         self.window.rootViewController=navcontlr;
     }

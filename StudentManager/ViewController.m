@@ -114,6 +114,7 @@
     
     self.xuanxuexiao.backgroundColor = [UIColor clearColor];
     [self.xuanxuexiao setImage:[UIImage imageNamed:@"arrowdown.png"] forState:UIControlStateNormal];
+    [self.xuanxuexiao setImageEdgeInsets:UIEdgeInsetsMake(5, 0, 5, 5)];
     [self.xuanxuexiao addTarget:self action:@selector(xuexiao:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.xuanxuexiao];
     

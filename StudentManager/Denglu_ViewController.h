@@ -28,6 +28,8 @@
 //@property(strong,nonatomic)UIButton *checkbox1;
 //@property(strong,nonatomic)UILabel *jizhu;
 @property (weak, nonatomic) IBOutlet UILabel *schoolname;
+@property (weak, nonatomic) IBOutlet UILabel *Eschoolname;
+
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UIButton *checkbox1;

@@ -169,7 +169,7 @@
     if (self.view.frame.size.width == 414) {
         
         haha = [[UIView alloc] initWithFrame:CGRectMake(15, 5, self.view.frame.size.width-30, 70)];
-        lala = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-50, 25, 15, 15)];
+        lala = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-50, 25, 10, 15)];
         l = [[UILabel alloc]initWithFrame:CGRectMake(25, 10, 50, 30)];
         tongzhi = [[UILabel alloc]initWithFrame:CGRectMake(75, 10, self.view.frame.size.width-50, 30)];
         shijian = [[UILabel alloc] initWithFrame:CGRectMake(25, 40, self.view.frame.size.width-50, 30)];
@@ -180,7 +180,7 @@
     }else if (self.view.frame.size.width == 375){
         
         haha = [[UIView alloc] initWithFrame:CGRectMake(15, 5, self.view.frame.size.width-30, 70)];
-        lala = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-50, 25, 15, 15)];
+        lala = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-50, 25, 10, 15)];
         l = [[UILabel alloc]initWithFrame:CGRectMake(25, 10, 50, 30)];
         tongzhi = [[UILabel alloc]initWithFrame:CGRectMake(75, 10, self.view.frame.size.width-50, 30)];
         shijian = [[UILabel alloc] initWithFrame:CGRectMake(25, 40, self.view.frame.size.width-50, 30)];
@@ -190,7 +190,7 @@
     }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
         
         haha = [[UIView alloc] initWithFrame:CGRectMake(15, 3, self.view.frame.size.width-30, 44)];
-        lala = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-50, 15, 15, 15)];
+        lala = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-50, 15, 10, 15)];
         l = [[UILabel alloc]initWithFrame:CGRectMake(15, 3, 50, 20)];
         tongzhi = [[UILabel alloc]initWithFrame:CGRectMake(45, 3, self.view.frame.size.width-50, 20)];
         shijian = [[UILabel alloc] initWithFrame:CGRectMake(15, 20, self.view.frame.size.width-50, 20)];

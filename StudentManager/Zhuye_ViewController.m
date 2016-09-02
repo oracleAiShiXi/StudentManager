@@ -48,6 +48,8 @@
 
     [self initializeLocationService];
     
+    
+    
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
    
     
@@ -70,10 +72,10 @@
     [self.view addSubview:self.view1];
     if (self.view.frame.size.width == 414){
         self.sos = [[UIButton alloc] initWithFrame:CGRectMake(240, 10, 60, 30)];
-        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 60, 60)];
-        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(200, 150, 12, 18)];
-        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(220, 90, 70, 50)];
-        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(220, 150, 70, 20)];
+        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100-64, 60, 60)];
+        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(200, 150-64, 12, 18)];
+        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(220, 90-64, 70, 50)];
+        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(220, 150-64, 70, 20)];
         self.wendu.font = [UIFont systemFontOfSize:40];
         self.xingqi.font = [UIFont systemFontOfSize:15];
 
@@ -81,20 +83,20 @@
         
     }else if (self.view.frame.size.width == 375){
         self.sos = [[UIButton alloc] initWithFrame:CGRectMake(230, 10, 45, 20)];
-        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 60, 60)];
-        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(200, 150, 12, 18)];
-        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(220, 90, 70, 50)];
-        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(220, 150, 70, 20)];
+        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100-64, 60, 60)];
+        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(200, 150-64, 12, 18)];
+        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(220, 90-64, 70, 50)];
+        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(220, 150-64, 70, 20)];
         self.wendu.font = [UIFont systemFontOfSize:40];
         self.xingqi.font = [UIFont systemFontOfSize:15];
         
     }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
         
         self.sos = [[UIButton alloc] initWithFrame:CGRectMake(170, 10, 40, 20)];
-        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(70, 110, 50, 50)];
-        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(150, 150, 12, 18)];
-        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(190, 100, 50, 30)];
-        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(180, 160, 50, 10)];
+        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(70, 110-64, 50, 50)];
+        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(150, 150-64, 12, 18)];
+        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(190, 100-64, 50, 30)];
+        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(180, 160-64, 50, 10)];
         self.wendu.font = [UIFont systemFontOfSize:30];
         self.xingqi.font = [UIFont systemFontOfSize:10];
 
@@ -185,7 +187,7 @@
     //NSLog(@"result1---%@",self.result1);
     //NSLog(@"result2---%@",self.result2);
     [super viewWillAppear:animated];
-    
+    [WarningBox warningBoxModeIndeterminate:@"正在获取天气" andView:self.view];
     
     //[self initializeLocationService];
 
@@ -423,88 +425,12 @@
 
     
 }
-//返回这个UICollectionView是否可以被选择
-//-(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    return YES;
-//}
-////取消选择了某个cell
-//- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-//   // UILabel *ll;
-//    if (self.view.frame.size.width == 414) {
-//        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
-//        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
-//        ll.font = [UIFont systemFontOfSize:16];
-//        
-//    }else if (self.view.frame.size.width == 375){
-//        
-//        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
-//        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
-//        ll.font = [UIFont systemFontOfSize:16];
-//        
-//    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
-//        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-15, 20, 30, 30)];
-//        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
-//        ll.font = [UIFont systemFontOfSize:11];
-//        
-//    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
-//        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-10, 5, 25, 25)];
-//        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-40)];
-//        ll.font = [UIFont systemFontOfSize:9];
-//        
-//    }
-//   
-//    imageview.image = [self.arr objectAtIndex:indexPath.row];
-//    ll.text = [array objectAtIndex:indexPath.row];
-//    ll.textAlignment = NSTextAlignmentCenter;
-//    
-//    
-//    
-//   
-//    ll.textColor =[UIColor colorWithHexString:@"483D8B"];
-//    [cell.contentView addSubview:imageview];
-//    [cell.contentView addSubview:ll];
-//    [cell setBackgroundColor:[UIColor clearColor]];
-//}
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
 }
-//
-//- (void)collectionView:(UICollectionView *)colView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    UICollectionViewCell* cell = [colView cellForItemAtIndexPath:indexPath];
-//    //设置(Highlight)高亮下的颜色
-//
-//    NSIndexPath *p = indexPath;
-//    NSUInteger row = p;
-//    
-//    
-//    imageview.image = [self.arr1 objectAtIndex:indexPath.row];
-//   ll.text = [array objectAtIndex:indexPath];
-//  
-//    ll.textAlignment = NSTextAlignmentCenter;
-//    ll.textColor =[UIColor whiteColor];
-//
-//
-//    [cell setBackgroundColor:[UIColor darkGrayColor]];
-//}
-////
-//- (void)collectionView:(UICollectionView *)colView  didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//   UICollectionViewCell* cell = [colView cellForItemAtIndexPath:indexPath];
 
- 
-    //设置(Nomal)正常状态下的颜色
-//
-//    imageview.image = [self.arr objectAtIndex:indexPath.row];
-//    ll.text = [array objectAtIndex:indexPath.row];
-//    ll.textAlignment = NSTextAlignmentCenter;
-//    ll.textColor =[UIColor colorWithHexString:@"483D8B"];
-//    
-//    [cell setBackgroundColor:[UIColor clearColor]];
-//}
 
 
 
@@ -523,96 +449,7 @@
     [self.navigationController pushViewController:svc animated:YES];}
 
 #pragma mark - tianqi
-//-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
-//{
-//    CLLocation *currlocation = [locations lastObject];
-//        //NSLog(@"latitude--%3.5f",currlocation.coordinate.latitude);
-//        //NSLog(@"longitude--%3.5f",currlocation.coordinate.longitude);
-//        //NSLog(@"altitude--%3.5f",currlocation.altitude);
-//    NSLog(@"定位成功！");
-//    self.latitude = [[NSString alloc] initWithFormat:@"%f",currlocation.coordinate.latitude];
-//    self.latitude = [[NSString alloc] initWithFormat:@"%f",currlocation.coordinate.longitude];
-//    
-//    CLGeocoder *geocoder = [[CLGeocoder alloc]init];
-//    [geocoder reverseGeocodeLocation:currlocation completionHandler:^(NSArray *placemarks,NSError *error){
-//        NSString *ss1;
-//        NSLog(@"%@",placemarks);
-//        for (CLPlacemark *place in placemarks) {
-//            NSString *s1 = [NSString stringWithFormat:@"%@",place.subLocality];
-//            ss1 = [s1 substringToIndex:s1.length-1];
-//            NSLog(@"Quss1---%@",ss1);
-//        }
-//        if (placemarks.count > 0) {
-//            CLPlacemark *placemark = placemarks[0];
-//            
-//            NSLog(@"具体位置%@",placemark.name);
-//            NSDictionary *addressDictionary = placemark.addressDictionary;
-//            
-//            NSString *state = [addressDictionary objectForKey:(NSString *)kABPersonAddressStateKey];
-//            state = state == nil ?@"":state;
-//            NSString *city = [addressDictionary objectForKey:(NSString *)kABPersonAddressCityKey];
-//            city = city == nil ?@"":city;
-//            
-//            self.locationinfo = [NSString stringWithFormat:@"%@",state];
-//            NSString *ss3 = [self.locationinfo substringToIndex:self.locationinfo.length-1];
-//            self.cityName = [NSString stringWithFormat:@"%@",city];
-//            NSString *ss2 = [self.cityName substringToIndex:self.cityName.length-1];
-//            NSLog(@"ss3----%@",ss3);
-//            NSLog(@"CityNamess2---%@",ss2);
-//            NSString *str = [NSString stringWithFormat:@"%@-%@-%@",ss1,ss2,ss3];
-//            NSLog(@"str--%@",str);
-//            
-//            NSString *path = [[NSBundle mainBundle] pathForResource:@"code" ofType:@"plist"];
-//            NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
-//            NSLog(@"dic---%@",dic);
-//            self.SSS = [dic objectForKey:[NSString stringWithFormat:@"%@",str]];
-//            NSLog(@"SSS---%@",self.SSS);
-//            //拿到城市ID
-//            [[NSUserDefaults standardUserDefaults]setObject:self.SSS forKey:@"cityId"];
-//            
-//
-//            Tianqi *tianqi = [[Tianqi alloc]init];
-//            self.xingqi.text = [tianqi code:currlocation];
-//            NSString *s = [tianqi tianqitupian:currlocation];
-//            [self.tianqi setImage:[UIImage imageNamed:s]];
-//            self.wendu.text = [tianqi wendu:currlocation];
-//        }
-//    }];
-//
-//    
-//    
-//    
-//    
-//
-//}
 
-//-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-//{
-//    CLGeocoder *geocoder = [[CLGeocoder alloc]init];
-//    [geocoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks,NSError *error){
-//        if (placemarks.count > 0) {
-//            CLPlacemark *placemark = placemarks[0];
-//            
-//            NSLog(@"具体位置%@",placemark.name);
-//            NSDictionary *addressDictionary = placemark.addressDictionary;
-//            
-//            NSString *state = [addressDictionary objectForKey:(NSString *)kABPersonAddressStateKey];
-//            state = state == nil ?@"":state;
-//            NSString *city = [addressDictionary objectForKey:(NSString *)kABPersonAddressCityKey];
-//            city = city == nil ?@"":city;
-//            NSString *s1 = [addressDictionary objectForKey:(NSString *)kABPersonAddressZIPKey];
-//            s1 = s1 == nil ?@"":s1;
-//            self.locationinfo = [NSString stringWithFormat:@"%@-%@-%@",state,city,s1];
-//            self.cityName = [NSString stringWithFormat:@"%@",city];
-//            
-//            NSLog(@"CityName---%@",self.cityName);
-////            NSString *path = [[NSBundle mainBundle] pathForResource:@"code" ofType:@"plist"];
-////            NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
-//            //NSLog(@"%@\n%@\n%@",state,address,city);
-//        }
-//    }];
-//
-//}
 - (void)initializeLocationService {
     
     
@@ -631,6 +468,7 @@
     // 一个是requestAlwaysAuthorization，一个是requestWhenInUseAuthorization
     [_locationManager requestAlwaysAuthorization];//这句话ios8以上版本使用。
     [_locationManager startUpdatingLocation];
+    
 }
 int nicaicai=0;
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
@@ -685,12 +523,13 @@ int nicaicai=0;
                 
                 [[NSUserDefaults standardUserDefaults]setObject:str1 forKey:@"cityId"];
             }
-            
+            [WarningBox warningBoxHide:YES andView:self.view];
                         Tianqi *tianqi = [[Tianqi alloc]init];
                         self.xingqi.text = [tianqi code:newLocation];
                         NSString *s = [tianqi tianqitupian:newLocation];
                         [self.tianqi setImage:[UIImage imageNamed:s]];
                         self.wendu.text = [tianqi wendu:newLocation];
+           
         }
         else if (error == nil && [array1 count] == 0)
         {
