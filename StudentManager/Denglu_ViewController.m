@@ -702,9 +702,9 @@
                             [def setObject:@"1" forKey:@"kkey"];
                             [def setObject:[NSString stringWithFormat:@"%@", self.password.text ] forKey:@"password"];
                             [def setObject:[NSString stringWithFormat:@"%@",self.username.text] forKey:@"hahahaha"];
-                            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            
                                 [self.navigationController pushViewController:zhuye animated:YES];
-                            });
+                          
                             
                         }else{
         

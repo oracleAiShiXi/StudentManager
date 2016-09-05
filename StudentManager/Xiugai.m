@@ -100,7 +100,7 @@
     rightItem =[[UIBarButtonItem alloc]initWithCustomView: rightBtn];
     rightItem1 =[[UIBarButtonItem alloc]initWithCustomView: rightBtn1];
     
-    self.navigationItem.rightBarButtonItem = rightItem;
+    self.navigationItem.rightBarButtonItem = rightItem1;
     //设置编辑按钮隐藏
     //rightBtn.hidden = YES;
     //rightBtn1.hidden = YES;
@@ -110,26 +110,26 @@
     [self.biankuangview.layer setBorderWidth:1];
     [self.biankuangview.layer setBorderColor:[[UIColor whiteColor] CGColor]];
     
-    //设置编辑箭头隐藏
-    self.danweiimv.hidden = YES;
-    self.dizhiimv.hidden = YES;
-    self.mimaimv.hidden = YES;
-    
-    //设置相关按钮为不可点击状态
-    self.danweiBtn.hidden=YES;
-    self.dizhiBtn.hidden = YES;
-    self.mimaBtn.hidden = YES;
-    //设置月薪和电话为不可编辑状态
-    [self.yuexintextfield setEnabled:NO];
-    [self.dianhuatextfield setEnabled:NO];
-    //设置选择按钮不可点击
-    [self.yesBtn setEnabled:NO];
-    [self.noBtn setEnabled:NO];
+//    //设置编辑箭头隐藏
+//    self.danweiimv.hidden = YES;
+//    self.dizhiimv.hidden = YES;
+//    self.mimaimv.hidden = YES;
+//    
+//    //设置相关按钮为不可点击状态
+//    self.danweiBtn.hidden=YES;
+//    self.dizhiBtn.hidden = YES;
+//    self.mimaBtn.hidden = YES;
+//    //设置月薪和电话为不可编辑状态
+//    [self.yuexintextfield setEnabled:NO];
+//    [self.dianhuatextfield setEnabled:NO];
+//    //设置选择按钮不可点击
+//    [self.yesBtn setEnabled:NO];
+//    [self.noBtn setEnabled:NO];
     
     _yuexintextfield.delegate = self;
     _dianhuatextfield.delegate = self;
     
-    
+    n=0;
     [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
     [self shuju];
     [WarningBox warningBoxHide:YES andView:self.view];
@@ -137,7 +137,9 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    
     if (n==1) {
+        
         [self linshishuju];
     } else {
         [self shuju];
@@ -253,113 +255,125 @@
 
 
 - (void)back:(id)sender {
-    if (k==0) {
-        //返回上一页
-        [self.navigationController popViewControllerAnimated:YES];
-    }else{
-        //将取消按钮变为箭头
-        self.navigationItem.leftBarButtonItem = leftItem;
-        [leftBtn1 removeFromSuperview];
-        //将保存按钮变为编辑
-        self.navigationItem.rightBarButtonItem = rightItem;
-        [rightBtn1 removeFromSuperview];
-        k=0;
-        //设置编辑箭头不显示
-        self.danweiimv.hidden = YES;
-        self.dizhiimv.hidden = YES;
-        self.mimaimv.hidden = YES;
-        
-        //设置相关按钮为不可点击状态
-        self.danweiBtn.hidden=YES;
-        self.dizhiBtn.hidden = YES;
-        self.mimaBtn.hidden = YES;
-        //设置月薪和电话为不可编辑状态
-        [self.yuexintextfield setEnabled:NO];
-        [self.dianhuatextfield setEnabled:NO];
-        //设置选择按钮不可点击
-        [self.yesBtn setEnabled:NO];
-        [self.noBtn setEnabled:NO];
-        //取消时重新装载数据
-        [self shuju];
-
-    }
+    [self.navigationController popViewControllerAnimated:YES];
+    [self shuju];
+//    if (k==0) {
+//        //返回上一页
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }else{
+//        //将取消按钮变为箭头
+//        self.navigationItem.leftBarButtonItem = leftItem;
+//        [leftBtn1 removeFromSuperview];
+//        //将保存按钮变为编辑
+//        self.navigationItem.rightBarButtonItem = rightItem;
+//        [rightBtn1 removeFromSuperview];
+//        k=0;
+//        //设置编辑箭头不显示
+//        self.danweiimv.hidden = YES;
+//        self.dizhiimv.hidden = YES;
+//        self.mimaimv.hidden = YES;
+//        
+//        //设置相关按钮为不可点击状态
+//        self.danweiBtn.hidden=YES;
+//        self.dizhiBtn.hidden = YES;
+//        self.mimaBtn.hidden = YES;
+//        //设置月薪和电话为不可编辑状态
+//        [self.yuexintextfield setEnabled:NO];
+//        [self.dianhuatextfield setEnabled:NO];
+//        //设置选择按钮不可点击
+//        [self.yesBtn setEnabled:NO];
+//        [self.noBtn setEnabled:NO];
+//        //取消时重新装载数据
+//        [self shuju];
+//
+//    }
     
 }
 
 
 -(void)bianjiorbaocun:(id)sender{
-    //编辑
-    if (k==0) {
-        //设置编辑箭头显示
-        self.danweiimv.hidden = NO;
-        self.dizhiimv.hidden = NO;
-        self.mimaimv.hidden = NO;
-        
-        if ([isInPost intValue]==0) {
-            [self.yuexintextfield setEnabled:NO];
-        }else{
-            [self.yuexintextfield setEnabled:YES];
-        }
-        //设置相关按钮为可点击状态
-        self.dizhiBtn.hidden = NO;
-        self.mimaBtn.hidden = NO;
-        self.danweiBtn.hidden = NO;
-        
-        //将编辑按钮变为保存
-        self.navigationItem.rightBarButtonItem = rightItem1;
-        [rightBtn removeFromSuperview];
-        //将箭头变为取消
-        self.navigationItem.leftBarButtonItem = leftItem1;
-        [leftBtn removeFromSuperview];
-
-        //设置电话为可编辑状态
-        [self.dianhuatextfield setEnabled:YES];
-        //设置选择按钮可点击
-        [self.yesBtn setEnabled:YES];
-        [self.noBtn setEnabled:YES];
-       
-        k=1;
-        
+//    //编辑
+//    if (k==0) {
+//        //设置编辑箭头显示
+//        self.danweiimv.hidden = NO;
+//        self.dizhiimv.hidden = NO;
+//        self.mimaimv.hidden = NO;
+//        
+//        if ([isInPost intValue]==0) {
+//            [self.yuexintextfield setEnabled:NO];
+//        }else{
+//            [self.yuexintextfield setEnabled:YES];
+//        }
+//        //设置相关按钮为可点击状态
+//        self.dizhiBtn.hidden = NO;
+//        self.mimaBtn.hidden = NO;
+//        self.danweiBtn.hidden = NO;
+//        
+//        //将编辑按钮变为保存
+//        self.navigationItem.rightBarButtonItem = rightItem1;
+//        [rightBtn removeFromSuperview];
+//        //将箭头变为取消
+//        self.navigationItem.leftBarButtonItem = leftItem1;
+//        [leftBtn removeFromSuperview];
+//
+//        //设置电话为可编辑状态
+//        [self.dianhuatextfield setEnabled:YES];
+//        //设置选择按钮可点击
+//        [self.yesBtn setEnabled:YES];
+//        [self.noBtn setEnabled:YES];
+//       
+//        k=1;
+//        
         linshiPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/linshi.plist"];
 
         NSMutableDictionary *lDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
         
         [lDic writeToFile:linshiPath atomically:YES];
-        n=1;
-        
-        NSLog(@"编辑");
-
-    }else{//保存
-        
-        [self save];
-        
-        //设置编辑箭头不显示
-        self.danweiimv.hidden = YES;
-        self.dizhiimv.hidden = YES;
-        self.mimaimv.hidden = YES;
-        
-        //设置相关按钮为不可点击状态
-        self.danweiBtn.hidden=YES;
-        self.dizhiBtn.hidden = YES;
-        self.mimaBtn.hidden = YES;
-
-        //保存变为编辑
-        self.navigationItem.rightBarButtonItem = rightItem;
-        [rightBtn1 removeFromSuperview];
-        //取消变为箭头
-        self.navigationItem.leftBarButtonItem = leftItem;
-        [leftBtn1 removeFromSuperview];
-        //设置月薪和电话为不可编辑状态
-        [self.yuexintextfield setEnabled:NO];
-        [self.dianhuatextfield setEnabled:NO];
-        //设置选择按钮不可点击
-        [self.yesBtn setEnabled:NO];
-        [self.noBtn setEnabled:NO];
-        k=0;
-        n=1;
-        NSLog(@"保存");
-
-    }
+//        n=1;
+//        
+//        NSLog(@"编辑");
+//
+//    }else{//保存
+//        
+//        [self save];
+//        
+//        //设置编辑箭头不显示
+//        self.danweiimv.hidden = YES;
+//        self.dizhiimv.hidden = YES;
+//        self.mimaimv.hidden = YES;
+//        
+//        //设置相关按钮为不可点击状态
+//        self.danweiBtn.hidden=YES;
+//        self.dizhiBtn.hidden = YES;
+//        self.mimaBtn.hidden = YES;
+//
+//        //保存变为编辑
+//        self.navigationItem.rightBarButtonItem = rightItem;
+//        [rightBtn1 removeFromSuperview];
+//        //取消变为箭头
+//        self.navigationItem.leftBarButtonItem = leftItem;
+//        [leftBtn1 removeFromSuperview];
+//        //设置月薪和电话为不可编辑状态
+//        [self.yuexintextfield setEnabled:NO];
+//        [self.dianhuatextfield setEnabled:NO];
+//        //设置选择按钮不可点击
+//        [self.yesBtn setEnabled:NO];
+//        [self.noBtn setEnabled:NO];
+//        k=0;
+//        n=1;
+//        NSLog(@"保存");
+//
+//    }
+    
+   
+   
+    
+//    NSMutableDictionary *lDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+//    
+//    [lDic writeToFile:linshiPath atomically:YES];
+    [self save];
+   
+     n=1;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -375,7 +389,15 @@
         
     }else{
         Xiugaidanwei *xd = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"xgdw"];
-        
+//      linshiPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/linshi.plist"];
+//        linshiDic = [NSMutableDictionary dictionaryWithContentsOfFile:linshiPath];
+//        
+//        [linshiDic setObject:[NSString stringWithFormat:@"%@", isInPost ] forKey:@"isInPost"];
+//        [linshiDic setObject:[NSString stringWithFormat:@"%@", self.yuexintextfield.text ] forKey:@"money"];
+//        [linshiDic setObject:[NSString stringWithFormat:@"%@", self.dianhuatextfield.text ] forKey:@"studentPhone"];
+//        [linshiDic writeToFile:linshiPath atomically:YES];
+//        
+//        [linshiDic writeToFile:path atomically:YES];
         [self.navigationController pushViewController:xd animated:YES];
     }
 
@@ -384,6 +406,15 @@
 - (IBAction)xiugaidizhiBtn:(id)sender {
     
     Dizhixiugai *dz = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"xgdz"];
+//     linshiPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/linshi.plist"];
+//    linshiDic = [NSMutableDictionary dictionaryWithContentsOfFile:linshiPath];
+//    
+//    [linshiDic setObject:[NSString stringWithFormat:@"%@", isInPost ] forKey:@"isInPost"];
+//    [linshiDic setObject:[NSString stringWithFormat:@"%@", self.yuexintextfield.text ] forKey:@"money"];
+//    [linshiDic setObject:[NSString stringWithFormat:@"%@", self.dianhuatextfield.text ] forKey:@"studentPhone"];
+//    [linshiDic writeToFile:linshiPath atomically:YES];
+//    
+//    [linshiDic writeToFile:path atomically:YES];
     
     [self.navigationController pushViewController:dz animated:YES];
 
@@ -392,6 +423,15 @@
 - (IBAction)xiugaimimaBtn:(id)sender {
     
     Xiugaimima *xm = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"xgmm"];
+//     linshiPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/linshi.plist"];
+//    linshiDic = [NSMutableDictionary dictionaryWithContentsOfFile:linshiPath];
+//    
+//    [linshiDic setObject:[NSString stringWithFormat:@"%@", isInPost ] forKey:@"isInPost"];
+//    [linshiDic setObject:[NSString stringWithFormat:@"%@", self.yuexintextfield.text ] forKey:@"money"];
+//    [linshiDic setObject:[NSString stringWithFormat:@"%@", self.dianhuatextfield.text ] forKey:@"studentPhone"];
+//    [linshiDic writeToFile:linshiPath atomically:YES];
+//    
+//    [linshiDic writeToFile:path atomically:YES];
     
     [self.navigationController pushViewController:xm animated:YES];
 
@@ -420,6 +460,8 @@
 //保存数据
 -(void)save{
     //保存修改信息
+     linshiPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/linshi.plist"];
+    
     linshiDic = [NSMutableDictionary dictionaryWithContentsOfFile:linshiPath];
     
     [linshiDic setObject:[NSString stringWithFormat:@"%@", isInPost ] forKey:@"isInPost"];
@@ -448,6 +490,8 @@
     SBJsonWriter *writer = [[SBJsonWriter alloc] init];
     
     NSString *jsonstring = [writer stringWithObject:linshiDic];
+    
+ 
     
     NSDictionary *MSG = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
     NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=stuinfomod",[def objectForKey:@"IP"]];
@@ -486,7 +530,7 @@
         if ([toBeString length] > 11) { //如果输入框内容大于20则弹出警告
             textField.text = [toBeString substringToIndex:11];
             
-            [WarningBox warningBoxTopModeText:@"号码数位已超，请不要再输了！" andView:self.view];
+           
             return NO;
         }
     }

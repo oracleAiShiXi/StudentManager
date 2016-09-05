@@ -83,9 +83,9 @@
         
     }else if (self.view.frame.size.width == 375){
         self.sos = [[UIButton alloc] initWithFrame:CGRectMake(230, 10, 45, 20)];
-        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100-64, 60, 60)];
-        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(200, 150-64, 12, 18)];
-        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(220, 90-64, 70, 50)];
+        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 60, 60)];
+        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(200, 150, 12, 18)];
+        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(220, 90, 70, 50)];
         self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(220, 150-64, 70, 20)];
         self.wendu.font = [UIFont systemFontOfSize:40];
         self.xingqi.font = [UIFont systemFontOfSize:15];
@@ -93,12 +93,15 @@
     }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
         
         self.sos = [[UIButton alloc] initWithFrame:CGRectMake(170, 10, 40, 20)];
-        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(70, 110-64, 50, 50)];
-        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(150, 150-64, 12, 18)];
-        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(190, 100-64, 50, 30)];
-        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(180, 160-64, 50, 10)];
-        self.wendu.font = [UIFont systemFontOfSize:30];
-        self.xingqi.font = [UIFont systemFontOfSize:10];
+        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(40, 50, 90, 90)];
+        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 140, 50, 90, 55)];
+        
+        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMinX(self.wendu.frame) - 18, 115, 12, 18)];
+        
+        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(self.wendu.frame) , 105, 105, 35)];
+        
+        self.wendu.font = [UIFont systemFontOfSize:40];
+        self.xingqi.font = [UIFont systemFontOfSize:20];
 
     }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
         
@@ -109,9 +112,9 @@
     self.xingqi.adjustsFontSizeToFitWidth = YES;
     self.tianqi.backgroundColor = [UIColor clearColor];
     self.dingwei.backgroundColor = [UIColor clearColor];
-    self.wendu.backgroundColor = [UIColor clearColor];
+    //self.wendu.backgroundColor = [UIColor redColor];
     self.wendu.textColor = [UIColor whiteColor];
-    self.xingqi.backgroundColor = [UIColor clearColor];
+    //self.xingqi.backgroundColor = [UIColor yellowColor];
     self.xingqi.textColor = [UIColor whiteColor];
     [self.view addSubview:self.tianqi];
     [self.view addSubview:self.dingwei];
@@ -129,15 +132,15 @@
     
  
 
-    gx1 = [[UIView alloc] initWithFrame:CGRectMake(60, self.view1.frame.size.height*1.6, self.view1.frame.size.width-50, 1)];
-    gx1.backgroundColor = [UIColor blackColor];
-    
-    gx2 = [[UIView alloc] initWithFrame:CGRectMake(60, self.view1.frame.size.height*2.5, self.view1.frame.size.width-50, 1)];
-    gx2.backgroundColor = [UIColor blackColor];
-    
-    
-    gx3 = [[UIView alloc] initWithFrame:CGRectMake(self.view1.frame.size.width/1.5, 130, 1, 270)];
-    gx3.backgroundColor = [UIColor blackColor];
+//    gx1 = [[UIView alloc] initWithFrame:CGRectMake(60, self.view1.frame.size.height*1.6, self.view1.frame.size.width-50, 1)];
+//    gx1.backgroundColor = [UIColor blackColor];
+//    
+//    gx2 = [[UIView alloc] initWithFrame:CGRectMake(60, self.view1.frame.size.height*2.5, self.view1.frame.size.width-50, 1)];
+//    gx2.backgroundColor = [UIColor blackColor];
+//    
+//    
+//    gx3 = [[UIView alloc] initWithFrame:CGRectMake(self.view1.frame.size.width/1.5, 130, 1, 270)];
+//    gx3.backgroundColor = [UIColor blackColor];
     
     
 
