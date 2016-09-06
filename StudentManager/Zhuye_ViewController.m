@@ -176,7 +176,7 @@
     [super viewWillAppear:animated];
     NSUserDefaults *kk = [NSUserDefaults standardUserDefaults];
     if ([[kk objectForKey:@"kkey"]intValue]==1) {
-      [WarningBox warningBoxModeIndeterminate:@"正在获取天气" andView:self.view];
+      //[WarningBox warningBoxModeIndeterminate:@"正在获取天气" andView:self.view];
       [kk setObject:@"0" forKey:@"kkey"];
     }
     
@@ -437,7 +437,7 @@
     svc.longitude = self.jing;
 //    svc.studentId = self.studentId;
     svc.locationinfo = [NSString stringWithFormat:@"%@",self.placemark ];
-    NSLog(@"详细地理位置:%@",svc.locationinfo);
+   // NSLog(@"详细地理位置:%@",svc.locationinfo);
     [self.navigationController pushViewController:svc animated:YES];}
 
 #pragma mark - tianqi
@@ -497,14 +497,14 @@ int nicaicai=0;
                 qu1 = [qu substringToIndex:qu.length-1];
             }
             NSString*strrrrrr=[NSString stringWithFormat:@"%@-%@-%@",qu1,shi1,sheng1];
-            NSLog(@"\n\n\n\n\n\n\n%@-%@-%@",qu1,shi1,sheng1 );
+           // NSLog(@"\n\n\n\n\n\n\n%@-%@-%@",qu1,shi1,sheng1 );
 
             NSString *path = [[NSBundle mainBundle] pathForResource:@"code" ofType:@"plist"];
                         NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
             
                         self.SSS = [dic objectForKey:[NSString stringWithFormat:@"%@",strrrrrr]];
             
-                        NSLog(@"SSS--12345-%@",self.SSS);
+                      //  NSLog(@"SSS--12345-%@",self.SSS);
                         //拿到城市ID
                         [[NSUserDefaults standardUserDefaults]setObject:self.SSS forKey:@"cityId"];
             NSString *str;

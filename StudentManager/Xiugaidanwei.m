@@ -95,7 +95,7 @@
     
     
     // 文件路径
-    linshiPath1 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/linshi.plist"];
+    linshiPath1 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/userinfo.plist"];
     
     // 读取数据
     linshiDic1 = [NSMutableDictionary dictionaryWithContentsOfFile:linshiPath1];
@@ -180,7 +180,7 @@
         MaxY1 =CGRectGetMaxY(self.shilabel.frame)-205;
         
         MaxH = 200;
-        NSLog(@"4s");
+       // NSLog(@"4s");
     } else {
         
         MaxY = CGRectGetMaxY(self.shenlabel.frame)+45;
@@ -311,7 +311,7 @@
         if ([dataArr[i][@"provinceId"] isEqual:companyProvinceId]) {
             NSDictionary *pdic = [NSDictionary dictionaryWithDictionary:dataArr[i]];
             carr = [NSArray arrayWithArray:pdic[@"citys"]];
-            NSLog(@"%@",carr);
+    
         }
     }
     

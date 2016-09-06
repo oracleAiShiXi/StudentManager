@@ -83,7 +83,7 @@
     [self.shilabel.layer setBorderColor:[[UIColor whiteColor] CGColor]];
     
     // 文件路径
-    linshiPath1 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/linshi.plist"];
+    linshiPath1 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/userinfo.plist"];
     
     // 读取数据
     linshiDic1 = [NSMutableDictionary dictionaryWithContentsOfFile:linshiPath1];
@@ -269,7 +269,7 @@
             if ([dataArr[i][@"provinceId"] isEqual:lodgingProvinceId]) {
                 NSDictionary *pdic = [NSDictionary dictionaryWithDictionary:dataArr[i]];
                 carr = [NSArray arrayWithArray:pdic[@"citys"]];
-                NSLog(@"%@",carr);
+               // NSLog(@"%@",carr);
             }
         }
         
@@ -283,7 +283,7 @@
             
         }
         
-        NSLog(@"%@",shi);
+       // NSLog(@"%@",shi);
         self.biankuangview.hidden = YES;
         [shiTableView reloadData];
         [self.view addSubview:shiTableView];
