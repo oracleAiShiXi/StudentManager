@@ -13,12 +13,16 @@
 @property(nonatomic,strong)CLLocationManager *locationManager;
 
 @property (weak, nonatomic) IBOutlet UIView *view1;
+
 @property (strong, nonatomic) UIImageView *dingwei;
-@property (strong, nonatomic) UIImageView *tianqi;
-@property (strong, nonatomic)UIButton *sos;
-- (void)sos:(id)sender;
-@property (strong, nonatomic) UILabel *wendu;
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *tianqi;
+@property (weak, nonatomic) IBOutlet UILabel *wendu;
+@property (weak, nonatomic) IBOutlet UIButton *xingq;
+
 @property (strong, nonatomic) UILabel *xingqi;
+- (IBAction)SOS:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *geju;
 @property(strong,nonatomic) NSMutableArray *arr;

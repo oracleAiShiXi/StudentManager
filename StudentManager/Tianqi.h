@@ -10,7 +10,7 @@
 #import <AddressBook/AddressBook.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface Tianqi : NSObject
+@interface Tianqi : NSObject<NSXMLParserDelegate>
 
 -(NSString *)code:(CLLocation *)location;
 

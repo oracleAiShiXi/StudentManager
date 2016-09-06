@@ -20,6 +20,7 @@
 #import "AFNetworking.h"
 #import "WarningBox.h"
 #import "Gerenxinxi.h"
+#import "UIImageView+WebCache.h"
 @interface Zhuye_ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @end
@@ -55,83 +56,96 @@
     
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg-2.png"]];
-    
-    
     imageView.frame = self.view.bounds;
-    
     imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    
     [self.view addSubview:imageView];
-        
+    [self.view sendSubviewToBack:imageView];
+    
     self.view1.backgroundColor = [UIColor whiteColor];
-    
     self.view1.layer.cornerRadius = 5.0;
-    
     self.view1.alpha = 0.7;
+    self.geju.backgroundColor = [UIColor clearColor];
+    self.arr = [[NSMutableArray alloc] initWithCapacity:6];
+    self.arr1 = [[NSMutableArray alloc] initWithCapacity:6];
     
-    [self.view addSubview:self.view1];
-    if (self.view.frame.size.width == 414){
-        self.sos = [[UIButton alloc] initWithFrame:CGRectMake(240, 10, 60, 30)];
-        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100-64, 60, 60)];
-        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(200, 150-64, 12, 18)];
-        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(220, 90-64, 70, 50)];
-        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(220, 150-64, 70, 20)];
-        self.wendu.font = [UIFont systemFontOfSize:40];
-        self.xingqi.font = [UIFont systemFontOfSize:15];
-
-
-        
-    }else if (self.view.frame.size.width == 375){
-        self.sos = [[UIButton alloc] initWithFrame:CGRectMake(230, 10, 45, 20)];
-        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 60, 60)];
-        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(200, 150, 12, 18)];
-        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(220, 90, 70, 50)];
-        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(220, 150-64, 70, 20)];
-        self.wendu.font = [UIFont systemFontOfSize:40];
-        self.xingqi.font = [UIFont systemFontOfSize:15];
-        
-    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
-        
-        self.sos = [[UIButton alloc] initWithFrame:CGRectMake(170, 10, 40, 20)];
-        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(40, 50, 90, 90)];
-        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 140, 50, 90, 55)];
-        
-        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMinX(self.wendu.frame) - 18, 115, 12, 18)];
-        
-        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(self.wendu.frame) , 105, 105, 35)];
-        
-        self.wendu.font = [UIFont systemFontOfSize:40];
-        self.xingqi.font = [UIFont systemFontOfSize:20];
-
-    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
-        
-        self.sos = [[UIButton alloc] initWithFrame:CGRectMake(180, 10, 35, 18)];
-
+    for (int i =1; i<7; i++) {
+        [self.arr addObject:[UIImage imageNamed:[[NSString alloc] initWithFormat:@"anniu_%d.png",i ]]];
     }
-    self.wendu.adjustsFontSizeToFitWidth = YES;
-    self.xingqi.adjustsFontSizeToFitWidth = YES;
-    self.tianqi.backgroundColor = [UIColor clearColor];
-    self.dingwei.backgroundColor = [UIColor clearColor];
-    //self.wendu.backgroundColor = [UIColor redColor];
-    self.wendu.textColor = [UIColor whiteColor];
-    //self.xingqi.backgroundColor = [UIColor yellowColor];
-    self.xingqi.textColor = [UIColor whiteColor];
-    [self.view addSubview:self.tianqi];
-    [self.view addSubview:self.dingwei];
-    [self.view addSubview:self.wendu];
-    [self.view addSubview:self.xingqi];
-    [self.sos setImage:[UIImage imageNamed:@"anniu_03.png"] forState:UIControlStateNormal];
-    [self.sos setImage:[UIImage imageNamed:@"anniu_03.png"] forState:UIControlStateHighlighted];
-    [self.sos addTarget:self action:@selector(sos:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view1 addSubview:self.sos];
+    for (int j = 1; j<7; j++) {
+        [self.arr1 addObject:[UIImage imageNamed:[[NSString alloc]initWithFormat:@"bianse-anniu_%d.png",j]]];
+    }
     
+    array = [[NSMutableArray alloc] initWithObjects:@"一键签到",@"公告",@"信息上报",@"个人信息",@"信息回复",@"设置",nil];
+    flog =0;
+    [self.geju reloadData];
     
+    [_xingq setImage:[UIImage imageNamed:@"dingwei_03.png"] forState:UIControlStateNormal];
+    //[_xingq setTitle:@"哈尔滨，星期三" forState:UIControlStateNormal];
+    _xingq.titleLabel.font=[UIFont systemFontOfSize:15];
+    [_xingq setImageEdgeInsets:UIEdgeInsetsMake(1, 0, 0, 0)];
+    [_xingq setTitleEdgeInsets:UIEdgeInsetsMake(1, 5, 0, 0)];
+    //self.wendu.text = @"30℃";
     
+  {
+//    [self.view addSubview:self.view1];
+//    if (self.view.frame.size.width == 414){
+//        self.sos = [[UIButton alloc] initWithFrame:CGRectMake(240, 10, 60, 30)];
+//        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100-64, 60, 60)];
+//        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(200, 150-64, 12, 18)];
+//        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(220, 90-64, 70, 50)];
+//        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(220, 150-64, 70, 20)];
+//        self.wendu.font = [UIFont systemFontOfSize:40];
+//        self.xingqi.font = [UIFont systemFontOfSize:15];
+//
+//
+//        
+//    }else if (self.view.frame.size.width == 375){
+//        self.sos = [[UIButton alloc] initWithFrame:CGRectMake(230, 10, 45, 20)];
+//        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 60, 60)];
+//        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(200, 150, 12, 18)];
+//        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(220, 90, 70, 50)];
+//        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(220, 150-64, 70, 20)];
+//        self.wendu.font = [UIFont systemFontOfSize:40];
+//        self.xingqi.font = [UIFont systemFontOfSize:15];
+//        
+//    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
+//        
+//        self.sos = [[UIButton alloc] initWithFrame:CGRectMake(170, 10, 40, 20)];
+//        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(40, 50, 90, 90)];
+//        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 140, 50, 90, 55)];
+//        
+//        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMinX(self.wendu.frame) - 18, 115, 12, 18)];
+//        
+//        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(self.wendu.frame) , 105, 105, 35)];
+//        
+//        self.wendu.font = [UIFont systemFontOfSize:40];
+//        self.xingqi.font = [UIFont systemFontOfSize:20];
+//
+//    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
+//        
+//        self.sos = [[UIButton alloc] initWithFrame:CGRectMake(180, 10, 35, 18)];
+//
+//    }
+//    self.wendu.adjustsFontSizeToFitWidth = YES;
+//    self.xingqi.adjustsFontSizeToFitWidth = YES;
+//    self.tianqi.backgroundColor = [UIColor clearColor];
+//    self.dingwei.backgroundColor = [UIColor clearColor];
+//    //self.wendu.backgroundColor = [UIColor redColor];
+//    self.wendu.textColor = [UIColor whiteColor];
+//    //self.xingqi.backgroundColor = [UIColor yellowColor];
+//    self.xingqi.textColor = [UIColor whiteColor];
+//    [self.view addSubview:self.tianqi];
+//    [self.view addSubview:self.dingwei];
+//    [self.view addSubview:self.wendu];
+//    [self.view addSubview:self.xingqi];
+//    [self.sos setImage:[UIImage imageNamed:@"anniu_03.png"] forState:UIControlStateNormal];
+//    [self.sos setImage:[UIImage imageNamed:@"anniu_03.png"] forState:UIControlStateHighlighted];
+//    [self.sos addTarget:self action:@selector(sos:) forControlEvents:UIControlEventTouchUpInside];
+    //[self.view1 addSubview:self.sos];
+  
     //图标
-    [self.dingwei setImage:[UIImage imageNamed:@"dingwei_03.png"]];
+    //[self.dingwei setImage:[UIImage imageNamed:@"dingwei_03.png"]];
     
- 
-
 //    gx1 = [[UIView alloc] initWithFrame:CGRectMake(60, self.view1.frame.size.height*1.6, self.view1.frame.size.width-50, 1)];
 //    gx1.backgroundColor = [UIColor blackColor];
 //    
@@ -141,26 +155,10 @@
 //    
 //    gx3 = [[UIView alloc] initWithFrame:CGRectMake(self.view1.frame.size.width/1.5, 130, 1, 270)];
 //    gx3.backgroundColor = [UIColor blackColor];
-    
+  }
     
 
-    self.geju.backgroundColor = [UIColor clearColor];
-    self.arr = [[NSMutableArray alloc] initWithCapacity:6];
-    self.arr1 = [[NSMutableArray alloc] initWithCapacity:6];
-
-    for (int i =1; i<7; i++) {
-        [self.arr addObject:[UIImage imageNamed:[[NSString alloc] initWithFormat:@"anniu_%d.png",i ]]];
-    }
-    for (int j = 1; j<7; j++) {
-        [self.arr1 addObject:[UIImage imageNamed:[[NSString alloc]initWithFormat:@"bianse-anniu_%d.png",j]]];
-    }
-    
-    array = [[NSMutableArray alloc] initWithObjects:@"一键签到",@"公告",@"信息上报",@"个人信息",@"信息回复",@"设置",nil];
-    
-    flog =0;
-    //NSLog(@"studentID--%@",self.studentId);
-    //NSLog(@"ip-----%@",self.ip);
-    [self.geju reloadData];
+   
     
     
     
@@ -168,25 +166,13 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     
-   
-    
    [self.navigationController setNavigationBarHidden:YES animated:YES];
-    //NSLog(@"result1---%@",self.result1);
-    //NSLog(@"result2---%@",self.result2);
     [super viewWillAppear:animated];
     NSUserDefaults *kk = [NSUserDefaults standardUserDefaults];
     if ([[kk objectForKey:@"kkey"]intValue]==1) {
       //[WarningBox warningBoxModeIndeterminate:@"正在获取天气" andView:self.view];
       [kk setObject:@"0" forKey:@"kkey"];
     }
-    
-    
-    //[self initializeLocationService];
-
-    //开始定位
-
-    
-    //[self.locationManager startUpdatingLocation];
     
 }
 
@@ -199,8 +185,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
         
     [super viewWillDisappear:animated];
-    //结束定位
-    //[self.locationManager stopUpdatingLocation];
+ 
 }
 /*
 #pragma mark - Navigation
@@ -265,7 +250,7 @@
    
     //if (flog == 0) {
         
-   imageview.image = [self.arr objectAtIndex:indexPath.row];
+    imageview.image = [self.arr objectAtIndex:indexPath.row];
     ll.text = [array objectAtIndex:indexPath.row];
     ll.textAlignment = NSTextAlignmentCenter;
     ll.textColor =[UIColor colorWithHexString:@"483D8B"];
@@ -294,55 +279,6 @@
 
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    //UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    //UILabel *ll;
-//    if (self.view.frame.size.width == 414) {
-//        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
-//        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
-//        ll.font = [UIFont systemFontOfSize:16];
-//        
-//    }
-//    else if (self.view.frame.size.width == 375){
-//        
-//        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-25, (cell.frame.size.height)/2-30, 50, 50)];
-//        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
-//        ll.font = [UIFont systemFontOfSize:16];
-//        
-//    }
-//    else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
-//        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-15, 20, 30, 30)];
-//        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-20)];
-//        ll.font = [UIFont systemFontOfSize:11];
-//        
-//    }
-//    else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
-//        imageview = [[UIImageView alloc]initWithFrame:CGRectMake((cell.frame.size.width)/2-10, 5, 25, 25)];
-//        ll = [[UILabel alloc] initWithFrame:CGRectMake(0, cell.frame.size.height-(cell.frame.size.height)/2+20,cell.frame.size.width , (cell.frame.size.height)/2-40)];
-//        ll.font = [UIFont systemFontOfSize:9];
-//        
-//    }
-//    
-//    
-//    
-//    for (UIView *view in cell.contentView.subviews) {
-//        [view removeFromSuperview];
-//    }
-    
-//        imageview.image = [self.arr1 objectAtIndex:indexPath.row];
-//        ll.text = [array objectAtIndex:indexPath.row];
-//        ll.textAlignment = NSTextAlignmentCenter;
-//        ll.textColor =[UIColor whiteColor];
-//        [cell.contentView addSubview:ll];
-//        [cell.contentView addSubview:button];
-//        //cell.backgroundColor = [UIColor darkGrayColor];
-//         flog =1;
-//       
-//    
-//   
-//    [cell.contentView addSubview:imageview];
-//    [cell.contentView addSubview:ll];
-    
-    
     if (indexPath.row ==0){
        // NSLog(@"跳到签到界面");
         [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
@@ -359,10 +295,6 @@
         [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
 
         Gonggao_ViewController *ggvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"gonggao"];
-        //[self presentViewController:ggvc animated:YES completion:nil];
-//        ggvc.studentId = self.studentId;
-//        ggvc.ip = self.ip;
-        
         [self.navigationController pushViewController:ggvc animated:YES];
         [WarningBox warningBoxHide:YES andView:self.view];
 
@@ -373,8 +305,6 @@
        // NSLog(@"跳到信息上报界面");
         [WarningBox warningBoxModeIndeterminate:@"加载中..." andView:self.view];
         Shangbao_ViewController *sbvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"shangbao"];
-//        sbvc.ip = self.ip;
-//        sbvc.studentId = self.studentId;
         [self.navigationController pushViewController:sbvc animated:YES];
         [WarningBox warningBoxHide:YES andView:self.view];
 
@@ -383,12 +313,9 @@
     else if (indexPath.row == 3){
         
         //跳转到个人信息界面
-                    Gerenxinxi *gr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"grxx"];
-                    [self.navigationController pushViewController:gr animated:YES];
-                    
-
-        
-        //NSLog(@"跳到个人信息界面");
+        Gerenxinxi *gr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"grxx"];
+        [self.navigationController pushViewController:gr animated:YES];
+ 
 
     }
     else if (indexPath.row == 4){
@@ -427,25 +354,23 @@
 
 
 
-#pragma mark - button
-- (void)sos:(id)sender {
-    
-    //NSLog(@"跳转帮助界面");
-    Sos_ViewController *svc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"sos"];
-     svc.ip = self.ip;
-    svc.latitude = self.wei;
-    svc.longitude = self.jing;
-//    svc.studentId = self.studentId;
-    svc.locationinfo = [NSString stringWithFormat:@"%@",self.placemark ];
-   // NSLog(@"详细地理位置:%@",svc.locationinfo);
-    [self.navigationController pushViewController:svc animated:YES];}
+//#pragma mark - button
+//- (void)sos:(id)sender {
+//    
+//    //NSLog(@"跳转帮助界面");
+//    Sos_ViewController *svc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"sos"];
+//     svc.ip = self.ip;
+//    svc.latitude = self.wei;
+//    svc.longitude = self.jing;
+////    svc.studentId = self.studentId;
+//    svc.locationinfo = [NSString stringWithFormat:@"%@",self.placemark ];
+//   // NSLog(@"详细地理位置:%@",svc.locationinfo);
+//    [self.navigationController pushViewController:svc animated:YES];
+//}
 
 #pragma mark - tianqi
 
 - (void)initializeLocationService {
-    
-    
-   
     
     // 初始化定位管理器
     _locationManager = [[CLLocationManager alloc] init];
@@ -491,6 +416,7 @@ int nicaicai=0;
                 //市
                 
                 shi=[NSString stringWithFormat:@"%@",self.placemark.locality];
+                [[NSUserDefaults standardUserDefaults]setObject:shi forKey:@"locality"];
                 shi1 = [shi substringToIndex:shi.length-1];
                 //区
                 qu=[NSString stringWithFormat:@"%@",self.placemark.subLocality];
@@ -517,10 +443,17 @@ int nicaicai=0;
             }
             [WarningBox warningBoxHide:YES andView:self.view];
                         Tianqi *tianqi = [[Tianqi alloc]init];
-                        self.xingqi.text = [tianqi code:newLocation];
+            [_xingq setTitle:[tianqi code:newLocation] forState:UIControlStateNormal];
+                       // self.xingqi.text = [tianqi code:newLocation];
                         NSString *s = [tianqi tianqitupian:newLocation];
-                        [self.tianqi setImage:[UIImage imageNamed:s]];
-                        self.wendu.text = [tianqi wendu:newLocation];
+            
+            NSString *strs = [NSString stringWithFormat:@" http://php.weather.sina.com.cn/images/yb3/180_180/%@_0.png",s];
+    
+            //[self.tianqi setImage:[UIImage imageNamed:s]];
+             [self.tianqi sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",strs]] placeholderImage:[UIImage imageNamed:@"daiti.png"]];
+            
+            
+                        _wendu.text = [tianqi wendu:newLocation];
            
         }
         else if (error == nil && [array1 count] == 0)
@@ -537,4 +470,16 @@ int nicaicai=0;
     
 }
 
+- (IBAction)SOS:(id)sender {
+    //NSLog(@"跳转帮助界面");
+    Sos_ViewController *svc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"sos"];
+    svc.ip = self.ip;
+    svc.latitude = self.wei;
+    svc.longitude = self.jing;
+    //    svc.studentId = self.studentId;
+    svc.locationinfo = [NSString stringWithFormat:@"%@",self.placemark ];
+    // NSLog(@"详细地理位置:%@",svc.locationinfo);
+    [self.navigationController pushViewController:svc animated:YES];
+    
+}
 @end
