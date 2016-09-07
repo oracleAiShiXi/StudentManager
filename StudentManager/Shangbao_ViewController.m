@@ -303,7 +303,7 @@
 
 - (IBAction)tj:(id)sender {
     //获取textfield和textview中的text，传到字典中就好了
-    NSLog(@"%@--%@--%@--%d",self.biaoti.text,self.neirong.text,self.studentId,advisoryType);
+   // NSLog(@"%@--%@--%@--%d",self.biaoti.text,self.neirong.text,self.studentId,advisoryType);
     if (advisoryType != 0 && advisoryType != 1){
         [WarningBox warningBoxModeText:@"请选择咨询类型!" andView:self.view];
         
@@ -331,7 +331,7 @@
         NSDictionary *datadic = [NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId",[NSString stringWithFormat:@"%@",self.biaoti.text],@"advisoryTitle",[NSString stringWithFormat:@"%@",self.neirong.text],@"advisoryContent",[NSString stringWithFormat:@"%d",advisoryType],@"advisoryType", nil];
         
         
-        NSLog(@"\n\n\nxiaolang\n\n\n%@",datadic);
+       // NSLog(@"\n\n\nxiaolang\n\n\n%@",datadic);
         NSString *jsonstring =[writer stringWithObject:datadic];
         
         NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=stuadvisoryup",[def objectForKey:@"IP"]];
@@ -341,13 +341,13 @@
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [WarningBox warningBoxHide:YES andView:self.view];
-            NSLog(@"上报1－－%@",responseObject);
+           // NSLog(@"上报1－－%@",responseObject);
             @try {
                 if ([[responseObject objectForKey:@"result"] intValue] == 0){
                     [WarningBox warningBoxModeText:@"上报成功" andView:self.view];
                     self.result = [responseObject objectForKey:@"result"];
                     
-                    NSLog(@"---%@--%@--%@--%@",[responseObject objectForKey:@"advisoryTitle"],[responseObject objectForKey:@"advisoryContent"],[responseObject objectForKey:@"advisoryType"],[responseObject objectForKey:@"studentId"]);
+                   // NSLog(@"---%@--%@--%@--%@",[responseObject objectForKey:@"advisoryTitle"],[responseObject objectForKey:@"advisoryContent"],[responseObject objectForKey:@"advisoryType"],[responseObject objectForKey:@"studentId"]);
                     Zhuye_ViewController *zvc = [[Zhuye_ViewController alloc]init];
                     zvc.result1 = self.result;
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -362,8 +362,8 @@
                     
                 }
                 
-                NSLog(@"上报2－－%@",responseObject);
-                NSLog(@"网络");
+                //NSLog(@"上报2－－%@",responseObject);
+               // NSLog(@"网络");
                 
                 
                 
@@ -372,7 +372,7 @@
             
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            NSLog(@"- -%@",error);
+            //NSLog(@"- -%@",error);
         }];
     }
 

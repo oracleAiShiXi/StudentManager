@@ -104,11 +104,11 @@
     
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     NSString *astr = [def objectForKey:@"locality"];
-    NSLog(@"the city is  %@",astr);
+   // NSLog(@"the city is  %@",astr);
    // NSString *astr = @"哈尔滨";
     NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding (kCFStringEncodingGB_18030_2000);
     NSString *str1 = [astr stringByAddingPercentEscapesUsingEncoding:enc];
-    NSLog(@" reStr %@",str1);
+   // NSLog(@" reStr %@",str1);
     NSString *strURL1 = [[NSString alloc] initWithFormat:@"http://php.weather.sina.com.cn/xml.php?city=%@&password=DJOYnieT8234jlsK&day=0",str1];
     NSURL *url=[NSURL URLWithString:strURL1];//创建URL
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2.0f];

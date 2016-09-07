@@ -325,7 +325,7 @@ int nicaicai=0;
         if (array1.count > 0){
             
             self.placemark = [array1 objectAtIndex:0];
-            NSLog(@"1-1-1-1%@",self.placemark);
+            //NSLog(@"1-1-1-1%@",self.placemark);
                 NSString *sheng=[NSString stringWithFormat:@"%@",[self.placemark.addressDictionary objectForKey:@"State"]];
             NSString *sheng1 = [sheng substringToIndex:sheng.length-1];
             
@@ -362,7 +362,7 @@ int nicaicai=0;
             if (self.SSS == nil) {
                 str = [NSString stringWithFormat:@"%@-%@-%@",shi1,shi1,sheng1];
                 NSString *str1 = [dic objectForKey:[NSString stringWithFormat:@"%@",str]];
-                NSLog(@"str1--1---%@",str1);
+               // NSLog(@"str1--1---%@",str1);
                 
                 [[NSUserDefaults standardUserDefaults]setObject:str1 forKey:@"cityId"];
             }
@@ -373,7 +373,7 @@ int nicaicai=0;
                         NSString *s = [tianqi tianqitupian:newLocation];
             
             NSString *strs = [NSString stringWithFormat:@"http://php.weather.sina.com.cn/images/yb3/180_180/%@_0.png",s];
-            NSLog(@"the strs url = %@",strs);
+           // NSLog(@"the strs url = %@",strs);
             //[self.tianqi setImage:[UIImage imageNamed:s]];
              [self.tianqi sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",strs]] placeholderImage:[UIImage imageNamed:@"daiti.png"]];
             

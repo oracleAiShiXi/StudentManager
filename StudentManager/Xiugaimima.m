@@ -111,7 +111,7 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        NSLog(@"%@",responseObject);
+       // NSLog(@"%@",responseObject);
         
         [WarningBox warningBoxHide:YES andView:self.view];
         
@@ -128,7 +128,7 @@
         
         [WarningBox warningBoxModeText:@"网络异常，请重试！" andView:self.view];
         
-        NSLog(@"%@",error);
+      //  NSLog(@"%@",error);
         
     }];
         

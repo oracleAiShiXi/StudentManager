@@ -211,10 +211,10 @@
           
             
         } @catch (NSException *exception) {
-            NSLog(@"wangluo");
+           // NSLog(@"wangluo");
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@",error);
+       // NSLog(@"%@",error);
     }];
     
 

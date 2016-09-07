@@ -112,7 +112,7 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         @try {
             [WarningBox warningBoxHide:YES andView:self.view];
-            NSLog(@"公告－－%@",responseObject);
+           // NSLog(@"公告－－%@",responseObject);
             NSString *str1 = [responseObject objectForKey:@"noticeTitle"];
             NSString *str2 = [responseObject objectForKey:@"noticeContent"];
             NSString *str3 = [responseObject objectForKey:@"issueTime"];

@@ -220,7 +220,7 @@
         
         [WarningBox warningBoxHide:YES andView:self.view];
         [WarningBox warningBoxModeText:@"网络异常，请重试！" andView:self.view];
-        NSLog(@"%@",error);
+       // NSLog(@"%@",error);
         
     }];
     
@@ -324,7 +324,7 @@
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                     [WarningBox warningBoxHide:YES andView:self.view];
                     [WarningBox warningBoxModeText:@"网络连接失败!" andView:self.view];
-                   NSLog(@"%@",error);
+                   //NSLog(@"%@",error);
                 }];
 
             }

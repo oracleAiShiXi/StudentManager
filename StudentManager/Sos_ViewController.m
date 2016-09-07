@@ -183,8 +183,8 @@
                 //if ([[responseObject objectForKey:@"result"] intValue]==0){
                 [WarningBox warningBoxModeText:@"上报成功" andView:self.view];
                 
-                NSLog(@"上报1－－%@",responseObject);
-                NSLog(@"--%@",[responseObject objectForKey:@"soscontent"]);
+               // NSLog(@"上报1－－%@",responseObject);
+               // NSLog(@"--%@",[responseObject objectForKey:@"soscontent"]);
                 //[responseObject setObject:self.myTV.text forKey:@"soscontent"];
                 self.result = [responseObject objectForKey:@"result"];
                 Zhuye_ViewController *zvc = [[Zhuye_ViewController alloc]init];
@@ -198,7 +198,7 @@
                 //}
                 
             } @catch (NSException *exception) {
-                NSLog(@"网络");
+                //NSLog(@"网络");
                 //[self.navigationController popViewControllerAnimated:YES];
             }
             
@@ -298,7 +298,7 @@
         [_locationManager startUpdatingLocation];
         
     }else{
-        NSLog(@"我们找不到你");
+       // NSLog(@"我们找不到你");
     }
     
     
@@ -320,7 +320,7 @@
         if (array.count > 0){
             CLPlacemark *placemark = [array objectAtIndex:0];
             
-            NSLog(@"-------------------------------具体位置%@",placemark);
+           // NSLog(@"-------------------------------具体位置%@",placemark);
             
             street = [NSString stringWithFormat:@"%@",placemark];
             
@@ -341,11 +341,11 @@
         }
         else if (error == nil && [array count] == 0)
         {
-            NSLog(@"No results were returned.");
+           // NSLog(@"No results were returned.");
         }
         else if (error != nil)
         {
-            NSLog(@"An error occurred = %@", error);
+           // NSLog(@"An error occurred = %@", error);
         }
     }];
     //系统会一直更新数据，直到选择停止更新，因为我们只需要获得一次经纬度即可，所以获取之后就停止更新

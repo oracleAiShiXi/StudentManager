@@ -109,7 +109,7 @@
     [self.navigationController pushViewController:dlvc animated:YES];
     
     //[self presentViewController:vc animated:NO completion:nil];
-    NSLog(@"跳转");
+//NSLog(@"跳转");
     
 }
 

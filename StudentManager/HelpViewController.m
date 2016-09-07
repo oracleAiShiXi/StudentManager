@@ -61,7 +61,7 @@
     
     [self.navigationController popViewControllerAnimated:YES];
     
-    NSLog(@"2123");
+    //NSLog(@"2123");
     
 }
 

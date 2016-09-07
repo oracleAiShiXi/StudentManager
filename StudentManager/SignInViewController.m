@@ -82,7 +82,7 @@
         [_locationManager startUpdatingLocation];
     
     }else{
-        NSLog(@"我们找不到你");
+       // NSLog(@"我们找不到你");
     }
    
 
@@ -104,7 +104,7 @@
         if (array.count > 0){
             CLPlacemark *placemark = [array objectAtIndex:0];
            
-            NSLog(@"-------------------------------具体位置%@",placemark);
+           // NSLog(@"-------------------------------具体位置%@",placemark);
             
             street = [NSString stringWithFormat:@"%@",placemark];
             
@@ -125,11 +125,11 @@
         }
         else if (error == nil && [array count] == 0)
         {
-            NSLog(@"No results were returned.");
+           // NSLog(@"No results were returned.");
         }
         else if (error != nil)
         {
-            NSLog(@"An error occurred = %@", error);
+          //  NSLog(@"An error occurred = %@", error);
         }
     }];
     //系统会一直更新数据，直到选择停止更新，因为我们只需要获得一次经纬度即可，所以获取之后就停止更新
@@ -245,13 +245,13 @@
     //出入参数：
   
      NSDictionary*datadic=[NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId",jing,@"longitude",wei,@"latitude",street,@"address", nil];
-        NSLog(@"%@-------%@--------%@",jing,wei,sheng);
+      //  NSLog(@"%@-------%@--------%@",jing,wei,sheng);
     
     NSString *jsonstring =[writer stringWithObject:datadic];
     
     
     NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=attup",[def objectForKey:@"IP"]];
-        NSLog(@"the url=------%@",url);
+       // NSLog(@"the url=------%@",url);
     
     NSDictionary *msg = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
     
@@ -263,7 +263,7 @@
        
    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
        @try {
-           NSLog(@"%@",responseObject);
+          // NSLog(@"%@",responseObject);
            [WarningBox warningBoxHide:YES andView:self.view];
            
            [WarningBox warningBoxModeText:@"签到成功！" andView:self.view];

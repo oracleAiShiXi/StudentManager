@@ -241,7 +241,7 @@
         
         [WarningBox warningBoxModeText:@"网络异常，请重试！" andView:self.view];
         
-        NSLog(@"%@",error);
+       // NSLog(@"%@",error);
         
     }];
     
