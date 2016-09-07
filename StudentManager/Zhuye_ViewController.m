@@ -82,6 +82,7 @@
     [_xingq setImage:[UIImage imageNamed:@"dingwei_03.png"] forState:UIControlStateNormal];
     //[_xingq setTitle:@"哈尔滨，星期三" forState:UIControlStateNormal];
     _xingq.titleLabel.font=[UIFont systemFontOfSize:15];
+    _xingq.titleLabel.adjustsFontSizeToFitWidth = YES;
     [_xingq setImageEdgeInsets:UIEdgeInsetsMake(1, 0, 0, 0)];
     [_xingq setTitleEdgeInsets:UIEdgeInsetsMake(1, 5, 0, 0)];
     //self.wendu.text = @"30℃";
@@ -448,7 +449,7 @@ int nicaicai=0;
                         NSString *s = [tianqi tianqitupian:newLocation];
             
             NSString *strs = [NSString stringWithFormat:@" http://php.weather.sina.com.cn/images/yb3/180_180/%@_0.png",s];
-    
+            NSLog(@"the strs url = %@",strs);
             //[self.tianqi setImage:[UIImage imageNamed:s]];
              [self.tianqi sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",strs]] placeholderImage:[UIImage imageNamed:@"daiti.png"]];
             

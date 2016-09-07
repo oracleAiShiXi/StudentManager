@@ -102,8 +102,10 @@
 //    }
 //    return str;
     
-    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-    NSString *astr = [def objectForKey:@"locality"];
+  //  NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+   // NSString *astr = [def objectForKey:@"locality"];
+   // NSLog(@"the city is  %@",astr);
+    NSString *astr = @"哈尔滨";
     NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding (kCFStringEncodingGB_18030_2000);
     NSString *str1 = [astr stringByAddingPercentEscapesUsingEncoding:enc];
     NSLog(@" reStr %@",str1);
@@ -113,16 +115,18 @@
     NSError *err;
     NSData *data=[NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&err];
     
+    dic = [[NSMutableDictionary alloc]init];
+    
     NSXMLParser *parser = [[NSXMLParser alloc]initWithData:data];
     parser.delegate = self;
     [parser parse];
     
     NSString *str;
     //self.tianqi =  [dic objectForKey:@"figure1"];
-    str = [dic objectForKey:self.tianqi];
-    if (str == nil) {
-        str = @" ";
-        }
+    str = [dic objectForKey:@"figure1"];
+//    if (str == nil) {
+//        str = @" ";
+//        }
     NSLog(@"the str = =%@",str);
     return str;
     
@@ -162,16 +166,28 @@
   namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     
     NSString *str=[[NSString alloc] initWithString:element];
-    dic = [[NSMutableDictionary alloc]init];
-  
-    if ([elementName isEqualToString:@"figure1"]) {
-       // NSLog(@"figure1...%@",str);
-        [dic setObject:str forKey:@"figure1"];
+    
+   
+    if ([elementName isEqualToString:@"status1"]) {
+        NSLog(@"status1...%@",str);
+      [dic setObject:str forKey:@"status1"];
     }
-  
+   else if ([elementName isEqualToString:@"figure1"]) {
+        NSLog(@"figure1...%@",str);
+      [dic setObject:str forKey:@"figure1"];
+    }
+  else  if ([elementName isEqualToString:@"city"]) {
+        NSLog(@"city...%@",str);
+       [dic setObject:str forKey:@"city"];
+    }
+    
+   NSLog(@"%@",dic);
 }
 
-
+-(void)parserDidEndDocument:(NSXMLParser *)parser{
+  
+   
+}
 
 
 
