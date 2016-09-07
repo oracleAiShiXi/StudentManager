@@ -44,11 +44,11 @@
         self.city = [result objectForKey:@"city"];
         self.riqi = [result objectForKey:@"week"];
        // NSLog(@"city===%@",self.city);
-        //NSLog(@"riqi===%@",self.riqi);
-        NSString *str1 = @",";
-        NSString *str2;
-        str2 = [self.city stringByAppendingString:str1];
-        str = [str2 stringByAppendingString:self.riqi];
+       //NSLog(@"riqi===%@",self.riqi);
+        NSString *str1 = @"";
+       // NSString *str2;
+        str = [self.city stringByAppendingString:str1];
+        //str = [str2 stringByAppendingString:self.riqi];
 
     }
     return str;
@@ -102,10 +102,10 @@
 //    }
 //    return str;
     
-  //  NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-   // NSString *astr = [def objectForKey:@"locality"];
-   // NSLog(@"the city is  %@",astr);
-    NSString *astr = @"哈尔滨";
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    NSString *astr = [def objectForKey:@"locality"];
+    NSLog(@"the city is  %@",astr);
+   // NSString *astr = @"哈尔滨";
     NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding (kCFStringEncodingGB_18030_2000);
     NSString *str1 = [astr stringByAddingPercentEscapesUsingEncoding:enc];
     NSLog(@" reStr %@",str1);
@@ -127,7 +127,7 @@
 //    if (str == nil) {
 //        str = @" ";
 //        }
-    NSLog(@"the str = =%@",str);
+   // NSLog(@"the str = =%@",str);
     return str;
     
 }
@@ -169,19 +169,19 @@
     
    
     if ([elementName isEqualToString:@"status1"]) {
-        NSLog(@"status1...%@",str);
+       // NSLog(@"status1...%@",str);
       [dic setObject:str forKey:@"status1"];
     }
    else if ([elementName isEqualToString:@"figure1"]) {
-        NSLog(@"figure1...%@",str);
+       // NSLog(@"figure1...%@",str);
       [dic setObject:str forKey:@"figure1"];
     }
   else  if ([elementName isEqualToString:@"city"]) {
-        NSLog(@"city...%@",str);
+       // NSLog(@"city...%@",str);
        [dic setObject:str forKey:@"city"];
     }
     
-   NSLog(@"%@",dic);
+   //NSLog(@"%@",dic);
 }
 
 -(void)parserDidEndDocument:(NSXMLParser *)parser{

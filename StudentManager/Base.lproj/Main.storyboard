@@ -889,7 +889,6 @@
                                         <rect key="frame" x="0.0" y="0.0" width="235" height="235"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="fl2-Ed-z9b" firstAttribute="leading" secondItem="JaQ-sJ-5N7" secondAttribute="leading" id="Gzn-Mf-dIf"/>
                                     <constraint firstAttribute="trailing" secondItem="fl2-Ed-z9b" secondAttribute="trailing" id="TaN-nv-3Uf"/>

@@ -251,11 +251,16 @@
    }
 
 - (IBAction)sure:(id)sender {
+    if([_schoolname.text isEqualToString:@"请选择学校"]){
+     [WarningBox warningBoxModeText:@"请选择学校" andView:self.view];
+    }else{
     if([self.username.text isEqualToString:@""]){
                 [WarningBox warningBoxModeText:@"请输入用户名!" andView:self.view];
-            }else if([self.password.text isEqualToString:@""]){
+            }
+    else if([self.password.text isEqualToString:@""]){
                 [WarningBox warningBoxModeText:@"请输入密码!" andView:self.view];
-            }else{
+            }
+    else{
                 [WarningBox warningBoxModeIndeterminate:@"正在登录..." andView:self.view];
                 AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
                 manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html", nil];
@@ -324,7 +329,9 @@
 
             }
     
-    
+    }
+        
+   
 }
 
 - (IBAction)rember:(id)sender {

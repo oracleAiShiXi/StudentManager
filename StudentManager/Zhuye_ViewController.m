@@ -80,89 +80,12 @@
     [self.geju reloadData];
     
     [_xingq setImage:[UIImage imageNamed:@"dingwei_03.png"] forState:UIControlStateNormal];
-    //[_xingq setTitle:@"哈尔滨，星期三" forState:UIControlStateNormal];
     _xingq.titleLabel.font=[UIFont systemFontOfSize:15];
     _xingq.titleLabel.adjustsFontSizeToFitWidth = YES;
     [_xingq setImageEdgeInsets:UIEdgeInsetsMake(1, 0, 0, 0)];
     [_xingq setTitleEdgeInsets:UIEdgeInsetsMake(1, 5, 0, 0)];
-    //self.wendu.text = @"30℃";
-    
-  {
-//    [self.view addSubview:self.view1];
-//    if (self.view.frame.size.width == 414){
-//        self.sos = [[UIButton alloc] initWithFrame:CGRectMake(240, 10, 60, 30)];
-//        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100-64, 60, 60)];
-//        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(200, 150-64, 12, 18)];
-//        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(220, 90-64, 70, 50)];
-//        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(220, 150-64, 70, 20)];
-//        self.wendu.font = [UIFont systemFontOfSize:40];
-//        self.xingqi.font = [UIFont systemFontOfSize:15];
-//
-//
-//        
-//    }else if (self.view.frame.size.width == 375){
-//        self.sos = [[UIButton alloc] initWithFrame:CGRectMake(230, 10, 45, 20)];
-//        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 60, 60)];
-//        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(200, 150, 12, 18)];
-//        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(220, 90, 70, 50)];
-//        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(220, 150-64, 70, 20)];
-//        self.wendu.font = [UIFont systemFontOfSize:40];
-//        self.xingqi.font = [UIFont systemFontOfSize:15];
-//        
-//    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
-//        
-//        self.sos = [[UIButton alloc] initWithFrame:CGRectMake(170, 10, 40, 20)];
-//        self.tianqi = [[UIImageView alloc] initWithFrame:CGRectMake(40, 50, 90, 90)];
-//        self.wendu = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 140, 50, 90, 55)];
-//        
-//        self.dingwei = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMinX(self.wendu.frame) - 18, 115, 12, 18)];
-//        
-//        self.xingqi = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(self.wendu.frame) , 105, 105, 35)];
-//        
-//        self.wendu.font = [UIFont systemFontOfSize:40];
-//        self.xingqi.font = [UIFont systemFontOfSize:20];
-//
-//    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
-//        
-//        self.sos = [[UIButton alloc] initWithFrame:CGRectMake(180, 10, 35, 18)];
-//
-//    }
-//    self.wendu.adjustsFontSizeToFitWidth = YES;
-//    self.xingqi.adjustsFontSizeToFitWidth = YES;
-//    self.tianqi.backgroundColor = [UIColor clearColor];
-//    self.dingwei.backgroundColor = [UIColor clearColor];
-//    //self.wendu.backgroundColor = [UIColor redColor];
-//    self.wendu.textColor = [UIColor whiteColor];
-//    //self.xingqi.backgroundColor = [UIColor yellowColor];
-//    self.xingqi.textColor = [UIColor whiteColor];
-//    [self.view addSubview:self.tianqi];
-//    [self.view addSubview:self.dingwei];
-//    [self.view addSubview:self.wendu];
-//    [self.view addSubview:self.xingqi];
-//    [self.sos setImage:[UIImage imageNamed:@"anniu_03.png"] forState:UIControlStateNormal];
-//    [self.sos setImage:[UIImage imageNamed:@"anniu_03.png"] forState:UIControlStateHighlighted];
-//    [self.sos addTarget:self action:@selector(sos:) forControlEvents:UIControlEventTouchUpInside];
-    //[self.view1 addSubview:self.sos];
-  
-    //图标
-    //[self.dingwei setImage:[UIImage imageNamed:@"dingwei_03.png"]];
-    
-//    gx1 = [[UIView alloc] initWithFrame:CGRectMake(60, self.view1.frame.size.height*1.6, self.view1.frame.size.width-50, 1)];
-//    gx1.backgroundColor = [UIColor blackColor];
-//    
-//    gx2 = [[UIView alloc] initWithFrame:CGRectMake(60, self.view1.frame.size.height*2.5, self.view1.frame.size.width-50, 1)];
-//    gx2.backgroundColor = [UIColor blackColor];
-//    
-//    
-//    gx3 = [[UIView alloc] initWithFrame:CGRectMake(self.view1.frame.size.width/1.5, 130, 1, 270)];
-//    gx3.backgroundColor = [UIColor blackColor];
-  }
     
 
-   
-    
-    
-    
            // Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -171,7 +94,7 @@
     [super viewWillAppear:animated];
     NSUserDefaults *kk = [NSUserDefaults standardUserDefaults];
     if ([[kk objectForKey:@"kkey"]intValue]==1) {
-      //[WarningBox warningBoxModeIndeterminate:@"正在获取天气" andView:self.view];
+      [WarningBox warningBoxModeIndeterminate:@"正在获取天气" andView:self.view];
       [kk setObject:@"0" forKey:@"kkey"];
     }
     
@@ -417,8 +340,9 @@ int nicaicai=0;
                 //市
                 
                 shi=[NSString stringWithFormat:@"%@",self.placemark.locality];
-                [[NSUserDefaults standardUserDefaults]setObject:shi forKey:@"locality"];
+               
                 shi1 = [shi substringToIndex:shi.length-1];
+                [[NSUserDefaults standardUserDefaults]setObject:shi1 forKey:@"locality"];
                 //区
                 qu=[NSString stringWithFormat:@"%@",self.placemark.subLocality];
                 qu1 = [qu substringToIndex:qu.length-1];
@@ -448,13 +372,12 @@ int nicaicai=0;
                        // self.xingqi.text = [tianqi code:newLocation];
                         NSString *s = [tianqi tianqitupian:newLocation];
             
-            NSString *strs = [NSString stringWithFormat:@" http://php.weather.sina.com.cn/images/yb3/180_180/%@_0.png",s];
+            NSString *strs = [NSString stringWithFormat:@"http://php.weather.sina.com.cn/images/yb3/180_180/%@_0.png",s];
             NSLog(@"the strs url = %@",strs);
             //[self.tianqi setImage:[UIImage imageNamed:s]];
              [self.tianqi sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",strs]] placeholderImage:[UIImage imageNamed:@"daiti.png"]];
             
-            
-                        _wendu.text = [tianqi wendu:newLocation];
+            _wendu.text = [tianqi wendu:newLocation];
            
         }
         else if (error == nil && [array1 count] == 0)
