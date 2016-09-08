@@ -317,11 +317,11 @@
 //保存数据
 -(void)save{
     //保存修改信息
-     linshiPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/userinfo.plist"];
+     linshiPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/userInfo.plist"];
     
-    linshiDic = [NSMutableDictionary dictionaryWithContentsOfFile:linshiPath];
+  linshiDic = [NSMutableDictionary dictionaryWithContentsOfFile:linshiPath];
     
-   // NSLog(@"JSON---%@",linshiDic);
+   //NSLog(@"JSON---%@",linshiDic);
     
     
     [linshiDic setObject:[NSString stringWithFormat:@"%@", isInPost ] forKey:@"isInPost"];
@@ -340,6 +340,8 @@
 
     [linshiDic setValue:[def objectForKey:@"studentId"] forKey:@"studentId"];
 
+   
+    
     //将上传对象转换为json类型
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
@@ -351,14 +353,15 @@
     
     NSString *jsonstring = [writer stringWithObject:linshiDic];
     
- 
-    
     NSDictionary *MSG = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
+    
     NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=stuinfomod",[def objectForKey:@"IP"]];
     
     [manager POST:url parameters:MSG progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //NSLog(@"%@",responseObject);
         
         [WarningBox warningBoxHide:YES andView:self.view];
         
@@ -377,7 +380,7 @@
         
         [WarningBox warningBoxModeText:@"网络异常，请重试！" andView:self.view];
         
-       //NSLog(@"%@",error);
+      //NSLog(@"%@",error);
         
     }];
    
@@ -403,5 +406,49 @@
     }
     return YES;
 }
-
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if (textField==_dianhuatextfield){
+        if (![self isMobileNumberClassification:_dianhuatextfield.text]){
+            [WarningBox warningBoxTopModeText:@"请检查手机号" andView:self.view];
+        }
+    }
+}
+//判断手机号是否正确
+-(BOOL)isMobileNumberClassification:(NSString *)mobile{
+    if (mobile.length != 11){
+        
+        return NO;
+        
+    }else{
+        /**
+         * 移动号段正则表达式
+         */
+        NSString *CM_NUM = @"^((13[4-9])|(147)|(15[0-2,7-9])|(178)|(18[2-4,7-8]))\\d{8}|(1705)\\d{7}$";
+        /**
+         * 联通号段正则表达式
+         */
+        NSString *CU_NUM = @"^((13[0-2])|(145)|(15[5-6])|(176)|(18[5,6]))\\d{8}|(1709)\\d{7}$";
+        /**
+         * 电信号段正则表达式
+         */
+        NSString *CT_NUM = @"^((133)|(153)|(177)|(18[0,1,9]))\\d{8}$";
+        
+        //手机号正确表达式
+        //        NSString *mm = @"[1][34578]\\d{9}";
+        
+        NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CM_NUM];
+        BOOL isMatch1 = [pred1 evaluateWithObject:mobile];
+        NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CU_NUM];
+        BOOL isMatch2 = [pred2 evaluateWithObject:mobile];
+        NSPredicate *pred3 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CT_NUM];
+        BOOL isMatch3 = [pred3 evaluateWithObject:mobile];
+        
+        if (isMatch1 || isMatch2 || isMatch3) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }
+    return NO;
+}
 @end

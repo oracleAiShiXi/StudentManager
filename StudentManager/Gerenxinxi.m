@@ -183,16 +183,16 @@
         /// NSLog(@"NSHomeDirectory()=====%@",NSHomeDirectory());
         
         [dataDic writeToFile:path atomically:YES];
-        
+       
         
         {
             
             //把数据存入plist文件
-            NSString *path=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/userInfo.plist"];
+           // NSString *path=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/userInfo.plist"];
           //  NSLog(@"%@",path);
             
-            NSDictionary *dataDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
-            [dataDic writeToFile:path atomically:YES];
+           // NSDictionary *dataDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+           // [dataDic writeToFile:path atomically:YES];
             
             if (dataDic[@"money"]==nil) {
                 self.yuexinlable.text = @"";

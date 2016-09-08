@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIView *view1;
 
 @property (strong, nonatomic) UIImageView *dingwei;
+@property (weak, nonatomic) IBOutlet UIButton *qiuzhu;
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *tianqi;

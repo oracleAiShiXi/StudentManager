@@ -85,8 +85,8 @@
     [_xingq setImageEdgeInsets:UIEdgeInsetsMake(1, 0, 0, 0)];
     [_xingq setTitleEdgeInsets:UIEdgeInsetsMake(1, 5, 0, 0)];
     _xingq.adjustsImageWhenHighlighted = NO;
-
-           // Do any additional setup after loading the view.
+    _qiuzhu.adjustsImageWhenHighlighted = NO;
+             // Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated{
     

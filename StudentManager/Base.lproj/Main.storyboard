@@ -1016,6 +1016,7 @@
                     </view>
                     <connections>
                         <outlet property="geju" destination="iQ9-nL-cxH" id="Ggs-YD-xcB"/>
+                        <outlet property="qiuzhu" destination="OUA-Tg-5lu" id="S1B-q8-L3c"/>
                         <outlet property="tianqi" destination="fl2-Ed-z9b" id="xMB-0Y-IMS"/>
                         <outlet property="view1" destination="IvP-xv-66g" id="wqg-KG-dcg"/>
                         <outlet property="wendu" destination="70l-Iv-L3p" id="A6C-fA-JnP"/>
