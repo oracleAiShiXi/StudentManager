@@ -84,7 +84,7 @@
     _xingq.titleLabel.adjustsFontSizeToFitWidth = YES;
     [_xingq setImageEdgeInsets:UIEdgeInsetsMake(1, 0, 0, 0)];
     [_xingq setTitleEdgeInsets:UIEdgeInsetsMake(1, 5, 0, 0)];
-    
+    _xingq.adjustsImageWhenHighlighted = NO;
 
            // Do any additional setup after loading the view.
 }
