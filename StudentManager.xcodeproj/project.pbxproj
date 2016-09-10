@@ -15,6 +15,7 @@
 		BB88D6C51D61984E001A8B30 /* usehelp05.png in Resources */ = {isa = PBXBuildFile; fileRef = BB88D6C01D61984E001A8B30 /* usehelp05.png */; };
 		BBFDD73D1D62F35100453232 /* checkbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBFDD73B1D62F35100453232 /* checkbox@2x.png */; };
 		BBFDD73E1D62F35100453232 /* xuanzhong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBFDD73C1D62F35100453232 /* xuanzhong@2x.png */; };
+		D261FCE91D83D280008B670A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D261FCE81D83D280008B670A /* Default-568h@2x.png */; };
 		D707AE641D4AEDBB007ED80A /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D707AE631D4AEDBB007ED80A /* SetViewController.m */; };
 		D707AE671D4B428D007ED80A /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D707AE661D4B428D007ED80A /* HelpViewController.m */; };
 		D707AE6A1D4B42AC007ED80A /* AdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D707AE691D4B42AC007ED80A /* AdviceViewController.m */; };
@@ -171,6 +172,7 @@
 		BB88D6C01D61984E001A8B30 /* usehelp05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usehelp05.png; sourceTree = "<group>"; };
 		BBFDD73B1D62F35100453232 /* checkbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox@2x.png"; sourceTree = "<group>"; };
 		BBFDD73C1D62F35100453232 /* xuanzhong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xuanzhong@2x.png"; sourceTree = "<group>"; };
+		D261FCE81D83D280008B670A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D707AE621D4AEDBB007ED80A /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };
 		D707AE631D4AEDBB007ED80A /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
 		D707AE651D4B428D007ED80A /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 				D7C9F9911D49B43700CB9ACD /* Main.storyboard */,
 				BB223F8C1D5D9BA2002531DB /* code.plist */,
 				D7C9F9941D49B43700CB9ACD /* Assets.xcassets */,
+				D261FCE81D83D280008B670A /* Default-568h@2x.png */,
 				D7B0659E1D6449A60067AB02 /* Default@2x.png */,
 				D7B0659F1D6449A60067AB02 /* icon-h@2x.png */,
 				D7B065A01D6449A60067AB02 /* Icon.png */,
@@ -862,7 +865,7 @@
 				TargetAttributes = {
 					D7C9F9841D49B43700CB9ACD = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = Q893CLHQS4;
+						DevelopmentTeam = GP8BUACAG4;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -921,6 +924,7 @@
 				D7E2D7881D5B07F900E9A6E5 /* anniu_4.png in Resources */,
 				D7E2D7A81D5B07F900E9A6E5 /* dingwei_03.png in Resources */,
 				BBFDD73E1D62F35100453232 /* xuanzhong@2x.png in Resources */,
+				D261FCE91D83D280008B670A /* Default-568h@2x.png in Resources */,
 				D7E2D7891D5B07F900E9A6E5 /* bianse-anniu_4.png in Resources */,
 				D7B065A21D6449A60067AB02 /* Default@2x.png in Resources */,
 				D7E2D7911D5B07F900E9A6E5 /* 2.png in Resources */,
@@ -1199,8 +1203,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Harbin Aipuyifeng Science&Tech. Development Co., Ltd. (GP8BUACAG4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Harbin Aipuyifeng Science&Tech. Development Co., Ltd. (GP8BUACAG4)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/StudentManager/BaiduMap_IOSSDK_v3.0.0_Lib",
@@ -1208,9 +1212,10 @@
 				INFOPLIST_FILE = StudentManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = StudentManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appleyifeng.shixi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cb7e70c6-15f6-4f1b-8ed0-3a2ae0abef4d";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1218,8 +1223,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Harbin Aipuyifeng Science&Tech. Development Co., Ltd. (GP8BUACAG4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Harbin Aipuyifeng Science&Tech. Development Co., Ltd. (GP8BUACAG4)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/StudentManager/BaiduMap_IOSSDK_v3.0.0_Lib",
@@ -1227,9 +1232,10 @@
 				INFOPLIST_FILE = StudentManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = StudentManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appleyifeng.shixi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cb7e70c6-15f6-4f1b-8ed0-3a2ae0abef4d";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
