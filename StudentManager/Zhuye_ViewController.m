@@ -35,7 +35,7 @@
     UIImageView *imageview;
     NSMutableArray *array;
     int flog;
-    
+    NSString * shi ;
    UILabel *ll;
     
     
@@ -328,11 +328,11 @@ int nicaicai=0;
             NSLog(@"1-1-1-1%@",self.placemark);
                 NSString *sheng=[NSString stringWithFormat:@"%@",[self.placemark.addressDictionary objectForKey:@"State"]];
             NSString *sheng1 = [sheng substringToIndex:sheng.length-1];
-            
+           
             
             //获取城市
             NSString *city = self.placemark.locality;
-            NSString * shi ;NSString * qu;NSString *shi1;NSString *qu1;
+            NSString * qu;NSString *shi1;NSString *qu1;
             if (city) {
                 //四大直辖市的城市信息无法通过locality获得，只能通过获取省份的方法来获得（如果city为空，则可知为直辖市）
                 city = self.placemark.administrativeArea;
@@ -347,6 +347,7 @@ int nicaicai=0;
                 qu=[NSString stringWithFormat:@"%@",self.placemark.subLocality];
                 qu1 = [qu substringToIndex:qu.length-1];
             }
+             NSLog(@"%@",shi);
             NSString*strrrrrr=[NSString stringWithFormat:@"%@-%@-%@",qu1,shi1,sheng1];
            // NSLog(@"\n\n\n\n\n\n\n%@-%@-%@",qu1,shi1,sheng1 );
 
@@ -368,7 +369,7 @@ int nicaicai=0;
             }
             [WarningBox warningBoxHide:YES andView:self.view];
                         Tianqi *tianqi = [[Tianqi alloc]init];
-            [_xingq setTitle:[tianqi code:newLocation] forState:UIControlStateNormal];
+            [_xingq setTitle:shi forState:UIControlStateNormal];
                        // self.xingqi.text = [tianqi code:newLocation];
                         NSString *s = [tianqi tianqitupian:newLocation];
             

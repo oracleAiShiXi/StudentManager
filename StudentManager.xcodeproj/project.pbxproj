@@ -1214,7 +1214,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appleyifeng.shixi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cb7e70c6-15f6-4f1b-8ed0-3a2ae0abef4d";
+				PROVISIONING_PROFILE = "194fc403-cba9-47f1-8411-1f60fc282d51";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1234,7 +1234,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appleyifeng.shixi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cb7e70c6-15f6-4f1b-8ed0-3a2ae0abef4d";
+				PROVISIONING_PROFILE = "194fc403-cba9-47f1-8411-1f60fc282d51";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
