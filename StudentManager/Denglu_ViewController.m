@@ -286,7 +286,7 @@
         
                 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                     [WarningBox warningBoxHide:YES andView:self.view];
-    
+                    NSLog(@"%@",responseObject);
         
                     @try {
         
@@ -295,8 +295,9 @@
         
                             //拿到studentId
                             [[NSUserDefaults standardUserDefaults]setObject:[responseObject objectForKey:@"studentId"] forKey:@"studentId"];
-                       
-        
+                           [[NSUserDefaults standardUserDefaults]setObject:[responseObject objectForKey:@"teacherPhone"] forKey:@"teacherPhone"];
+                            [[NSUserDefaults standardUserDefaults]setObject:[responseObject objectForKey:@"studentName"] forKey:@"studentName"];
+                            
                             [WarningBox warningBoxModeText:@"登录成功" andView:self.view];
                         
                             Zhuye_ViewController *zhuye = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"zhuye"];
