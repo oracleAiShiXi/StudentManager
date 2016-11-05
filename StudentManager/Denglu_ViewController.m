@@ -101,7 +101,9 @@
     // Do any additional setup after loading the view.
 }
 - (void)viewWillAppear:(BOOL)animated
-{self.navigationController.navigationBarHidden=YES;
+{
+    
+    self.navigationController.navigationBarHidden=YES;
     [super viewWillAppear:animated];
     [self.animatedImagesView startAnimating];
     if (self.rcDebug) {
@@ -233,9 +235,11 @@
     
     def = [NSUserDefaults standardUserDefaults];
     //base64解码
+    
     NSString *s1 = [CommonFunc textFromBase64String:[def objectForKey:@"scip"]];
     SchoolIP = [CommonFunc textFromBase64String:s1];
     [def setObject:SchoolIP forKey:@"IP"];
+    NSLog(@"%@",[def objectForKey:@"IP"]);
     
     
 }

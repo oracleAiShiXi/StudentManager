@@ -184,17 +184,7 @@
         
     }else
     {
-        
-        
-        //        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"模拟其中无法打开照相机,请在真机中使用" preferredStyle:  UIAlertControllerStyleAlert];
-        //
-        //        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        //            //点击按钮的响应事件；
-        //        }]];
-        //
-        //        //弹出提示框；
-        //        [self presentViewController:alert animated:true completion:nil];
-        
+
         
         Imgpicker = [[UIImagePickerController alloc] init];
         Imgpicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;//相册
@@ -263,15 +253,17 @@
        
    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
        @try {
-          // NSLog(@"%@",responseObject);
+        NSLog(@"\n\n---------\n\n%@",responseObject);
            [WarningBox warningBoxHide:YES andView:self.view];
-           
-           [WarningBox warningBoxModeText:@"签到成功！" andView:self.view];
-           
-           dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-               [self.navigationController popViewControllerAnimated:YES];
-           });
-           
+           if ([[responseObject objectForKey:@"result"] intValue]==0) {
+               [WarningBox warningBoxModeText:@"签到成功！" andView:self.view];
+               
+               dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                   [self.navigationController popViewControllerAnimated:YES];
+               });
+           }else{
+               [WarningBox warningBoxModeText:@"签到失败，请重试" andView:self.view];
+           }
        } @catch (NSException *exception) {
           [WarningBox warningBoxModeText:@"" andView:self.view];
        }

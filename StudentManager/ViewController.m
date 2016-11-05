@@ -5,7 +5,8 @@
 //  Created by csh on 16/7/28.
 //  Copyright © 2016年 csh. All rights reserved.
 //
-
+#define CLog(format, ...)  NSLog(format, ## __VA_ARGS__)
+#define NSLog(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 #import "ViewController.h"
 #import "Denglu_ViewController.h"
 #import <QuartzCore/QuartzCore.h>
@@ -284,7 +285,7 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         @try {
-            //NSLog(@"%@",responseObject);
+            NSLog(@"%@",responseObject);
             NSDictionary *array = [responseObject objectForKey:@"schoolDTOs"];
             
             arr = [[NSMutableArray alloc]init];

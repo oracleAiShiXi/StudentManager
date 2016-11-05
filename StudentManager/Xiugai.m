@@ -340,13 +340,10 @@
 
     [linshiDic setValue:[def objectForKey:@"studentId"] forKey:@"studentId"];
 
-   
-    
     //将上传对象转换为json类型
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html", nil];
-    
     //上传参数
         
     SBJsonWriter *writer = [[SBJsonWriter alloc] init];
@@ -354,14 +351,14 @@
     NSString *jsonstring = [writer stringWithObject:linshiDic];
     
     NSDictionary *MSG = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
-    
+    NSLog(@"msg---%@",MSG);
     NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=stuinfomod",[def objectForKey:@"IP"]];
-    
+    NSLog(@"%@",url);
     [manager POST:url parameters:MSG progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        //NSLog(@"%@",responseObject);
+        NSLog(@"\n\nresponseObject\n\n%@",responseObject);
         
         [WarningBox warningBoxHide:YES andView:self.view];
         
@@ -375,7 +372,7 @@
         
       
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        NSLog(@"%@",error);
         [WarningBox warningBoxHide:YES andView:self.view];
         
         [WarningBox warningBoxModeText:@"网络异常，请重试！" andView:self.view];
