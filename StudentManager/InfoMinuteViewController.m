@@ -59,14 +59,17 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         @try {
            
-            
+            //NSLog(@"%@",responseObject);
              [WarningBox warningBoxHide:YES andView:self.view];
-            
+            if ([[responseObject objectForKey:@"result"] intValue]==0){
+                
+          
             if ([[responseObject objectForKey:@"advisoryTitle"] isEqual:[NSNull null]]) {
                 _tit.text =@" ";
                 
             }else {
                 _tit.text = [responseObject objectForKey:@"advisoryTitle"];
+                _tit.adjustsFontSizeToFitWidth = YES;
             }
             
             if ([[responseObject objectForKey:@"advisoryType"] isEqual:[NSNull null]]) {
@@ -80,8 +83,6 @@
             }
         
             _time.text = [responseObject objectForKey:@"advisoryTime"];
-        
-            
             if ([[responseObject objectForKey:@"advisoryContent"] isEqual:[NSNull null]]) {
                 _problem.text =@" ";
                 
@@ -89,8 +90,6 @@
                 _problem.text = [responseObject objectForKey:@"advisoryContent"];
                 
             }
-            // _problem.text = [responseObject objectForKey:@"advisoryContent"];
-            //_reppro.text = [responseObject objectForKey:@"reportContent"];
 
             if ([[responseObject objectForKey:@"state"] intValue]==1) {
                                _hftime.text = [responseObject objectForKey:@"reportTime"];
@@ -103,8 +102,12 @@
             
             
             
-            
-            
+        }
+            else{
+            [WarningBox warningBoxModeText:@"获取失败，请重试" andView:self.view];
+
+        }
+        
             
             
             

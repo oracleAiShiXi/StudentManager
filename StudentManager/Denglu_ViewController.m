@@ -66,6 +66,7 @@
         _schoolname.text = @"请选择学校";
     }else{
     self.schoolname.text = [NSString stringWithFormat:@"%@",[def objectForKey:@"schoolname"]];
+        _schoolname.adjustsFontSizeToFitWidth = YES;
         _Eschoolname.text = @"The name of the school";
     
     }
@@ -166,13 +167,13 @@
     
     
     NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=procity",[def objectForKey:@"IP"]];
-    
+   
     [manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
         
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        
+        //NSLog(@"省市列表%@",responseObject);
         NSArray *cityArr = [NSArray arrayWithArray:responseObject[@"cityDTOs"]];
         
         NSArray *provinceArr = [NSArray arrayWithArray:responseObject[@"provinceDTOs"]];
@@ -239,7 +240,7 @@
     NSString *s1 = [CommonFunc textFromBase64String:[def objectForKey:@"scip"]];
     SchoolIP = [CommonFunc textFromBase64String:s1];
     [def setObject:SchoolIP forKey:@"IP"];
-    NSLog(@"%@",[def objectForKey:@"IP"]);
+    //NSLog(@"%@",[def objectForKey:@"IP"]);
     
     
 }
@@ -280,7 +281,7 @@
                 NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=login",[def objectForKey:@"IP"]];
         
     
-        
+      
         
         
                 NSDictionary *msg = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
@@ -290,16 +291,17 @@
         
                 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                     [WarningBox warningBoxHide:YES andView:self.view];
-    
-        
+
+                   // NSLog(@"%@",responseObject);
+
                     @try {
-        
         
                         if ([[responseObject objectForKey:@"result"] intValue]==0) {
         
                             //拿到studentId
                             [[NSUserDefaults standardUserDefaults]setObject:[responseObject objectForKey:@"studentId"] forKey:@"studentId"];
-                       
+                            [[NSUserDefaults standardUserDefaults]setObject:[responseObject objectForKey:@"studentName"] forKey:@"studentName"];
+                            [[NSUserDefaults standardUserDefaults]setObject:[responseObject objectForKey:@"teacherPhone"] forKey:@"teacherPhone"];
         
                             [WarningBox warningBoxModeText:@"登录成功" andView:self.view];
                         
@@ -313,6 +315,7 @@
                             [def setObject:@"1" forKey:@"kkey"];
                             [def setObject:[NSString stringWithFormat:@"%@", self.password.text ] forKey:@"password"];
                             [def setObject:[NSString stringWithFormat:@"%@",self.username.text] forKey:@"hahahaha"];
+                            
                             
                                 [self.navigationController pushViewController:zhuye animated:YES];
                           

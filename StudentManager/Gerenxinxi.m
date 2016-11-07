@@ -147,7 +147,7 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        // NSLog(@"%@",responseObject);
+         //NSLog(@"studentinfo ------%@",responseObject);
         //把返回数据存入可变字典
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:responseObject];
         NSMutableDictionary *dataDic = [[NSMutableDictionary alloc] init];

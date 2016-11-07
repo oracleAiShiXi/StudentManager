@@ -326,7 +326,7 @@
         
         SBJsonWriter *writer = [[SBJsonWriter alloc]init];
         //出入参数：
-        //NSDictionary *datadic = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@", _studentId ],@"studentId",[NSString stringWithFormat:@"%@",self.biaoti.text],@"advisoryTitle",[NSString stringWithFormat:@"%@",self.neirong.text],@"advisoryContent",[NSString stringWithFormat:@"%d",advisoryType],@"advisoryType", nil];
+       
         
         NSDictionary *datadic = [NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId",[NSString stringWithFormat:@"%@",self.biaoti.text],@"advisoryTitle",[NSString stringWithFormat:@"%@",self.neirong.text],@"advisoryContent",[NSString stringWithFormat:@"%d",advisoryType],@"advisoryType", nil];
         
@@ -347,13 +347,17 @@
                     [WarningBox warningBoxModeText:@"上报成功" andView:self.view];
                     self.result = [responseObject objectForKey:@"result"];
                     
-                   // NSLog(@"---%@--%@--%@--%@",[responseObject objectForKey:@"advisoryTitle"],[responseObject objectForKey:@"advisoryContent"],[responseObject objectForKey:@"advisoryType"],[responseObject objectForKey:@"studentId"]);
+                
                     Zhuye_ViewController *zvc = [[Zhuye_ViewController alloc]init];
                     zvc.result1 = self.result;
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [self.navigationController popViewControllerAnimated:YES];
                     });
                 }
+                else{
+                [WarningBox warningBoxModeText:@"上报失败，请重试" andView:self.view];
+                }
+                
             } @catch (NSException *exception) {
                 if ([self.biaoti.text isEqualToString:@"(null)"] || [self.neirong.text isEqualToString:@"(null)"]) {
                     
@@ -379,83 +383,6 @@
     
 }
 
-//-(void)tj//添加
-//{
-//    //获取textfield和textview中的text，传到字典中就好了
-//    NSLog(@"%@--%@--%@--%d",self.biaoti.text,self.neirong.text,self.studentId,advisoryType);
-//    if (advisoryType != 0 && advisoryType != 1){
-//        [WarningBox warningBoxModeText:@"请选择咨询类型!" andView:self.view];
-//        
-//    }else if([self.biaoti.text isEqualToString:@""]){
-//        [WarningBox warningBoxModeText:@"请输入标题!" andView:self.view];
-//    }else if([self.neirong.text isEqualToString:@""]){
-//        [WarningBox warningBoxModeText:@"请输入内容!" andView:self.view];
-//    }else{
-//        [WarningBox warningBoxModeIndeterminate:@"正在上报..." andView:self.view];
-//        
-//        //拿到学校IP和studentID
-//        NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-//        //    [def objectForKey:@"IP"];
-//        //    [def objectForKey:@"studentId"];
-//        
-//    //接口
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    
-//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html", nil];
-//    
-//    SBJsonWriter *writer = [[SBJsonWriter alloc]init];
-//    //出入参数：
-//    //NSDictionary *datadic = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@", _studentId ],@"studentId",[NSString stringWithFormat:@"%@",self.biaoti.text],@"advisoryTitle",[NSString stringWithFormat:@"%@",self.neirong.text],@"advisoryContent",[NSString stringWithFormat:@"%d",advisoryType],@"advisoryType", nil];
-//        
-//    NSDictionary *datadic = [NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId",[NSString stringWithFormat:@"%@",self.biaoti.text],@"advisoryTitle",[NSString stringWithFormat:@"%@",self.neirong.text],@"advisoryContent",[NSString stringWithFormat:@"%d",advisoryType],@"advisoryType", nil];
-//        
-//        
-//        NSLog(@"\n\n\nxiaolang\n\n\n%@",datadic);
-//    NSString *jsonstring =[writer stringWithObject:datadic];
-//   
-//    NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=stuadvisoryup",[def objectForKey:@"IP"]];
-//    NSDictionary *msg = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
-//    
-//    [manager POST:url parameters:msg progress:^(NSProgress * _Nonnull uploadProgress) {
-//        
-//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        [WarningBox warningBoxHide:YES andView:self.view];
-//        NSLog(@"上报1－－%@",responseObject);
-//        @try {
-//            if ([[responseObject objectForKey:@"result"] intValue] == 0){
-//                [WarningBox warningBoxModeText:@"上报成功" andView:self.view];
-//                self.result = [responseObject objectForKey:@"result"];
-//
-//                NSLog(@"---%@--%@--%@--%@",[responseObject objectForKey:@"advisoryTitle"],[responseObject objectForKey:@"advisoryContent"],[responseObject objectForKey:@"advisoryType"],[responseObject objectForKey:@"studentId"]);
-//                Zhuye_ViewController *zvc = [[Zhuye_ViewController alloc]init];
-//                zvc.result1 = self.result;
-//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                   [self.navigationController popViewControllerAnimated:YES];
-//                });
-//            }
-//        } @catch (NSException *exception) {
-//            if ([self.biaoti.text isEqualToString:@"(null)"] || [self.neirong.text isEqualToString:@"(null)"]) {
-//                
-//                self.biaoti.text = @"";
-//                self.neirong.text = @"";
-//                
-//            }
-//
-//            NSLog(@"上报2－－%@",responseObject);
-//            NSLog(@"网络");
-//            
-//            
-//            
-//        }
-//        
-//        
-//        
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        NSLog(@"- -%@",error);
-//    }];
-//    }
-//    
-//}
 #pragma mark - textfield
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {

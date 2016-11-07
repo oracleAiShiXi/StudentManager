@@ -172,29 +172,29 @@
     }
     
     
+    
+    _danweiTextField.delegate = self;
+    _bumenTxetField.delegate = self;
+    _zhiweiTextField.delegate = self;
+    _danweidianhuaTextField.delegate = self;
+    _danweidizhiTextFiled.delegate = self;
+       // [self shipeiii];
+    [WarningBox warningBoxHide:YES andView:self.view];
+}
+-(void)shipeiii{
     MaxX = 35;
     
-    //适配4s
-    if ([[UIScreen mainScreen] bounds].size.height==480) {
-        MaxY = CGRectGetMaxY(self.shenlabel.frame)-205;
-        MaxY1 =CGRectGetMaxY(self.shilabel.frame)-205;
-        
-        MaxH = 200;
-       // NSLog(@"4s");
-    } else {
-        
-        MaxY = CGRectGetMaxY(self.shenlabel.frame)+45;
-        
-        MaxY1 =CGRectGetMaxY(self.shilabel.frame)+45;
-        
-        MaxH = 150;
-    }
+    MaxY = CGRectGetMaxY(self.shenlabel.frame);
+   
+    MaxY1 =CGRectGetMaxY(self.shilabel.frame);
     
+    MaxH = 150;
     MaxW = [[UIScreen mainScreen] bounds].size.width-70;
     
-    shengTableView = [[UITableView alloc] initWithFrame:CGRectMake(MaxX , MaxY, MaxW, MaxH)];
+    shengTableView = [[UITableView alloc] initWithFrame:CGRectMake(MaxX ,MaxY, MaxW, MaxH)];
     shengTableView.backgroundColor = [UIColor colorWithRed:99/255.0 green:194/255.0 blue:252/255.0 alpha:1];
     
+
     shengTableView.delegate = self;
     shengTableView.dataSource = self;
     
@@ -204,16 +204,8 @@
     
     shiTableView.delegate = self;
     shiTableView.dataSource = self;
-    
-    _danweiTextField.delegate = self;
-    _bumenTxetField.delegate = self;
-    _zhiweiTextField.delegate = self;
-    _danweidianhuaTextField.delegate = self;
-    _danweidizhiTextFiled.delegate = self;
-    
-    [WarningBox warningBoxHide:YES andView:self.view];
-}
 
+}
 
 
 //返回上一页
@@ -260,12 +252,8 @@
 
 - (IBAction)shenBtn:(id)sender {
     
-    //适配4s
-    if ([[UIScreen mainScreen] bounds].size.height==480) {
-        
-        _biankuangview.hidden = YES;
-    }
     if (n==0){
+        [self shipeiii];
         [shiTableView removeFromSuperview];
         sheng = [[NSMutableArray alloc] init];
         pId = [[NSMutableArray alloc] init];
@@ -283,7 +271,7 @@
         [shengTableView reloadData];
         
         [self.view addSubview:shengTableView];
-        
+       
         n = 1;
     }else{
         [shengTableView removeFromSuperview];
@@ -302,7 +290,7 @@
     }
     
     if (kk==0) {
-
+        [self shipeiii];
     shi = [[NSMutableArray alloc] init];
     cId = [[NSMutableArray alloc] init];
     NSArray *carr;

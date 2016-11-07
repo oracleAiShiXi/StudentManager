@@ -22,6 +22,7 @@
 		D70A23CB1D5178A0002F24A6 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D70A23CA1D5178A0002F24A6 /* SignInViewController.m */; };
 		D740FE7D1D6313D400D8D9A1 /* RCAnimatedImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = D740FE7C1D6313D400D8D9A1 /* RCAnimatedImagesView.m */; };
 		D740FE7F1D6313E200D8D9A1 /* bizhi.png in Resources */ = {isa = PBXBuildFile; fileRef = D740FE7E1D6313E200D8D9A1 /* bizhi.png */; };
+		D7499F651DC03DEB00FFCB40 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7499F641DC03DEB00FFCB40 /* MessageUI.framework */; };
 		D79209541D5317AA006E13F3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D79209531D5317AA006E13F3 /* CoreLocation.framework */; };
 		D79209561D5317B1006E13F3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D79209551D5317B1006E13F3 /* MapKit.framework */; };
 		D7B065A21D6449A60067AB02 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7B0659E1D6449A60067AB02 /* Default@2x.png */; };
@@ -184,6 +185,7 @@
 		D740FE7B1D6313D400D8D9A1 /* RCAnimatedImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCAnimatedImagesView.h; sourceTree = "<group>"; };
 		D740FE7C1D6313D400D8D9A1 /* RCAnimatedImagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCAnimatedImagesView.m; sourceTree = "<group>"; };
 		D740FE7E1D6313E200D8D9A1 /* bizhi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bizhi.png; sourceTree = "<group>"; };
+		D7499F641DC03DEB00FFCB40 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		D79209531D5317AA006E13F3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D79209551D5317B1006E13F3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D7B0659E1D6449A60067AB02 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7499F651DC03DEB00FFCB40 /* MessageUI.framework in Frameworks */,
 				D7E2D7B21D5B094700E9A6E5 /* QuartzCore.framework in Frameworks */,
 				D7E2D7B01D5B093000E9A6E5 /* Security.framework in Frameworks */,
 				D7E2D7AE1D5B092A00E9A6E5 /* AddressBook.framework in Frameworks */,
@@ -498,6 +501,14 @@
 			name = "信息上报";
 			sourceTree = "<group>";
 		};
+		D7499F631DC03DEA00FFCB40 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D7499F641DC03DEB00FFCB40 /* MessageUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D7C9F97C1D49B43700CB9ACD = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +516,7 @@
 				D7C9F9A11D49B43700CB9ACD /* StudentManagerTests */,
 				D7C9F9AC1D49B43700CB9ACD /* StudentManagerUITests */,
 				D7C9F9861D49B43700CB9ACD /* Products */,
+				D7499F631DC03DEA00FFCB40 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -866,7 +878,7 @@
 					D7C9F9841D49B43700CB9ACD = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = GP8BUACAG4;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -1204,9 +1216,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yulan Zhao (4RSNZMG5V8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yulan Zhao (4RSNZMG5V8)";
-				DEVELOPMENT_TEAM = GP8BUACAG4;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Harbin Aipuyifeng Science&Tech. Development Co., Ltd. (GP8BUACAG4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/StudentManager/BaiduMap_IOSSDK_v3.0.0_Lib",
@@ -1216,8 +1228,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appleyifeng.shixi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f7d1f667-2f34-4004-a26e-2dce1ad41507";
-				PROVISIONING_PROFILE_SPECIFIER = ceshi_ishixi;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1227,8 +1239,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yulan Zhao (4RSNZMG5V8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yulan Zhao (4RSNZMG5V8)";
-				DEVELOPMENT_TEAM = GP8BUACAG4;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/StudentManager/BaiduMap_IOSSDK_v3.0.0_Lib",
@@ -1238,8 +1250,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appleyifeng.shixi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f7d1f667-2f34-4004-a26e-2dce1ad41507";
-				PROVISIONING_PROFILE_SPECIFIER = ceshi_ishixi;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

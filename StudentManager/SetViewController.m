@@ -36,11 +36,7 @@
     
     
    
-    
-//    //去掉导航条下方自带分割线
-//    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-//    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
-    
+
  
     
     //设置导航条属性
@@ -78,7 +74,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = NO;
-    [self banben];
+   // [self banben];
 }
 //当前版本信息
 -(void)banben {
@@ -109,7 +105,7 @@
             
             
         } @catch (NSException *exception) {
-            NSLog(@"wangluo");
+           // NSLog(@"wangluo");
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@",error);
@@ -192,10 +188,7 @@
             
             NSString *str=[NSString stringWithFormat:@"\r%@:%@-%@\n%@:%@-%@",typename[0],starttime[0],endtime[0],typename[1],starttime[1],endtime[1]];
             
-//            NSUserDefaults *def=[NSUserDefaults standardUserDefaults];
-//            
-//            [def setObject:starttime[0] forKey:@"update1"];
-//            [def setObject:starttime[1] forKey:@"update2"];
+
             
         
             //初始化提示框；

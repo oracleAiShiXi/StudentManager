@@ -335,8 +335,7 @@
     
     //拿到学校IP和studentID
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-    //    [def objectForKey:@"IP"];
-    //    [def objectForKey:@"studentId"];
+
 
     [linshiDic setValue:[def objectForKey:@"studentId"] forKey:@"studentId"];
 
@@ -345,21 +344,20 @@
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html", nil];
     //上传参数
-        
+//
     SBJsonWriter *writer = [[SBJsonWriter alloc] init];
-    
-    NSString *jsonstring = [writer stringWithObject:linshiDic];
-    
+    [linshiDic removeObjectForKey:@"studentName"];
+   NSString *jsonstring = [writer stringWithObject:linshiDic];
+ 
     NSDictionary *MSG = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
-    NSLog(@"msg---%@",MSG);
+    
     NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=stuinfomod",[def objectForKey:@"IP"]];
-    NSLog(@"%@",url);
     [manager POST:url parameters:MSG progress:^(NSProgress * _Nonnull uploadProgress) {
-        
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        NSLog(@"\n\nresponseObject\n\n%@",responseObject);
-        
+        @try {
+
+        //NSLog(@"\n\nresponseObject\n\n%@",responseObject);
+        if([[responseObject objectForKey:@"result"] intValue]==0){
         [WarningBox warningBoxHide:YES andView:self.view];
         
         [WarningBox warningBoxModeText:@"信息保存成功！" andView:self.view];
@@ -369,10 +367,16 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.navigationController pushViewController:zhuye animated:YES];
         });
+        }else{
+        [WarningBox warningBoxModeText:@"上传失败，请重试！" andView:self.view];
+        }
+    } @catch (NSException *exception) {
+        [WarningBox warningBoxModeText:@"" andView:self.view];
+    }
+     
         
-      
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@",error);
+        //NSLog(@"%@",error);
         [WarningBox warningBoxHide:YES andView:self.view];
         
         [WarningBox warningBoxModeText:@"网络异常，请重试！" andView:self.view];
@@ -381,6 +385,12 @@
         
     }];
    
+    
+    
+  
+    
+    
+    
 
 }
 

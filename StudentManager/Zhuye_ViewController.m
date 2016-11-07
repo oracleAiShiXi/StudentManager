@@ -278,19 +278,7 @@
 
 
 
-//#pragma mark - button
-//- (void)sos:(id)sender {
-//    
-//    //NSLog(@"跳转帮助界面");
-//    Sos_ViewController *svc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"sos"];
-//     svc.ip = self.ip;
-//    svc.latitude = self.wei;
-//    svc.longitude = self.jing;
-////    svc.studentId = self.studentId;
-//    svc.locationinfo = [NSString stringWithFormat:@"%@",self.placemark ];
-//   // NSLog(@"详细地理位置:%@",svc.locationinfo);
-//    [self.navigationController pushViewController:svc animated:YES];
-//}
+
 
 #pragma mark - tianqi
 
@@ -325,7 +313,7 @@ int nicaicai=0;
         if (array1.count > 0){
             
             self.placemark = [array1 objectAtIndex:0];
-            NSLog(@"1-1-1-1%@",self.placemark);
+           // NSLog(@"1-1-1-1%@",self.placemark);
                 NSString *sheng=[NSString stringWithFormat:@"%@",[self.placemark.addressDictionary objectForKey:@"State"]];
             NSString *sheng1 = [sheng substringToIndex:sheng.length-1];
            
@@ -347,7 +335,7 @@ int nicaicai=0;
                 qu=[NSString stringWithFormat:@"%@",self.placemark.subLocality];
                 qu1 = [qu substringToIndex:qu.length-1];
             }
-             NSLog(@"%@",shi);
+            // NSLog(@"%@",shi);
             NSString*strrrrrr=[NSString stringWithFormat:@"%@-%@-%@",qu1,shi1,sheng1];
            // NSLog(@"\n\n\n\n\n\n\n%@-%@-%@",qu1,shi1,sheng1 );
 
@@ -374,7 +362,7 @@ int nicaicai=0;
                         NSString *s = [tianqi tianqitupian:newLocation];
             
             NSString *strs = [NSString stringWithFormat:@"http://php.weather.sina.com.cn/images/yb3/180_180/%@_0.png",s];
-           // NSLog(@"the strs url = %@",strs);
+            //NSLog(@"the strs url = %@",strs);
             //[self.tianqi setImage:[UIImage imageNamed:s]];
              [self.tianqi sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",strs]] placeholderImage:[UIImage imageNamed:@"daiti.png"]];
             

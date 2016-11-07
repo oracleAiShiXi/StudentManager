@@ -58,13 +58,12 @@
     self.myTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.myTable.backgroundColor = [UIColor colorWithHexString:@"5fc1ff"];
     [self.view addSubview:self.myTable];
-    //NSLog(@"=======%@",self.ip);
+   
     [WarningBox warningBoxModeIndeterminate:@"正在加载..." andView:self.view];
     
     //拿到学校IP和studentID
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-    //    [def objectForKey:@"IP"];
-    //    [def objectForKey:@"studentId"];
+ 
     
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -87,7 +86,7 @@
         @try {
             [WarningBox warningBoxHide:YES andView:self.view];
             //[WarningBox warningBoxModeText:@"搜索成功" andView:self.view];
-            //NSLog(@"公告－－%@",responseObject);
+           // NSLog(@"公告－－%@",responseObject);
             NSDictionary *array = [responseObject objectForKey:@"stuNoticeResSimpleDTOs"];
             //NSLog(@"数组－－%@",array);
             title = [[NSMutableArray alloc]init];

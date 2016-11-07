@@ -116,12 +116,13 @@
             if (city) {
                 //四大直辖市的城市信息无法通过locality获得，只能通过获取省份的方法来获得（如果city为空，则可知为直辖市）
                 city = placemark.administrativeArea;
+                sheng = city;
                 //市
                  shi=[NSString stringWithFormat:@"%@",placemark.locality];
                 //区
                  qu=[NSString stringWithFormat:@"%@",placemark.subLocality];
             }
-            
+           
         }
         else if (error == nil && [array count] == 0)
         {
@@ -233,15 +234,15 @@
     SBJsonWriter *writer = [[SBJsonWriter alloc]init];
     
     //出入参数：
-  
-     NSDictionary*datadic=[NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId",jing,@"longitude",wei,@"latitude",street,@"address", nil];
-      //  NSLog(@"%@-------%@--------%@",jing,wei,sheng);
+        NSString *ss = [NSString stringWithFormat:@"%@%@",sheng,shi];
+     NSDictionary*datadic=[NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId",jing,@"longitude",wei,@"latitude",ss,@"address", nil];
+      
     
     NSString *jsonstring =[writer stringWithObject:datadic];
     
     
     NSString *url = [NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=attup",[def objectForKey:@"IP"]];
-       // NSLog(@"the url=------%@",url);
+   
     
     NSDictionary *msg = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
     
@@ -253,7 +254,7 @@
        
    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
        @try {
-        NSLog(@"\n\n---------\n\n%@",responseObject);
+        //NSLog(@"\n\n---------\n\n%@",responseObject);
            [WarningBox warningBoxHide:YES andView:self.view];
            if ([[responseObject objectForKey:@"result"] intValue]==0) {
                [WarningBox warningBoxModeText:@"签到成功！" andView:self.view];

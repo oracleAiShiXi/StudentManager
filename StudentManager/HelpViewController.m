@@ -23,19 +23,7 @@
     
     
    self.navigationController.navigationBar.hidden = YES;
-//  
-//    //设置导航条属性
-//    self.navigationController.navigationBar.barTintColor =[UIColor colorWithRed:95/255.0 green:193/255.0 blue:255/255.0 alpha:1];
-//    self.title  =@"帮助";
-//    UIButton  *backbtn = [[UIButton alloc]initWithFrame:CGRectMake(15,10, 25, 25)];
-//    [backbtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-//    [backbtn addTarget:self action:@selector(backbutton:) forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem *leftben = [[UIBarButtonItem alloc]initWithCustomView:backbtn];
-//    self.navigationItem.leftBarButtonItem =leftben;
-//    
-//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],NSForegroundColorAttributeName:[UIColor whiteColor]}];
-//    
-    
+  
     
     
     

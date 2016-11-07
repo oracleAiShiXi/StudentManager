@@ -89,7 +89,8 @@
             
             [WarningBox warningBoxHide:YES andView:self.view];
          
-            //NSLog(@"%@",responseObject);
+           // NSLog(@"%@",responseObject);
+            if  ([[responseObject objectForKey:@"result"] intValue]==0){
             
             NSArray *array = [responseObject objectForKey:@"stuAdvisoryLookResSimpleDTOs"];
             arr = [[NSMutableArray alloc]init];
@@ -114,7 +115,10 @@
             
             [_mytable1 reloadData];
 
-
+            }
+            else{
+            [WarningBox warningBoxModeText:@"获取失败，请重试" andView:self.view];
+            }
             
             
             
@@ -225,7 +229,7 @@
         UILabel *l1 = (UILabel*)[cell.contentView viewWithTag:101];
         UILabel *l2 = (UILabel*)[cell.contentView viewWithTag:102];
         l1.font = [UIFont systemFontOfSize:14.0];
-
+        l1.adjustsFontSizeToFitWidth = YES;
         l2.font = [UIFont systemFontOfSize:14.0];
     
     UIImageView *img =(UIImageView *)[cell.contentView viewWithTag:201];

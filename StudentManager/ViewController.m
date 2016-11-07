@@ -142,40 +142,6 @@
     self.xuexiaomingcheng.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.xuexiaomingcheng];
     
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html", nil];
-//    
-//    NSString *url=[NSString stringWithFormat:@"http://203.171.234.171:8080/jobservice/intf/mobile/school.shtml?command=schoollist"];
-//    
-//    [manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-//        
-//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        @try {
-//            //NSLog(@"%@",responseObject);
-//            NSDictionary *array = [responseObject objectForKey:@"schoolDTOs"];
-//            
-//            arr = [[NSMutableArray alloc]init];
-//            arr_ip = [[NSMutableArray alloc]init];
-//            arr_s = [[NSMutableArray alloc]init];
-//            
-//            for (NSDictionary *aa in array) {
-//                
-//                [arr addObject:[aa objectForKey:@"name"]];
-//                [arr_ip addObject:[aa objectForKey:@"ip"]];
-//                [arr_s addObject:[aa objectForKey:@"serial"]];
-//            }
-//            [self.xuexiaomingcheng reloadData];
-//            
-//        } @catch (NSException *exception) {
-//            
-//            //NSLog(@"网络");
-//        }
-//        
-//        
-//        
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        //NSLog(@"- -%@",error);
-//    }];
     flog = 0;
     self.xuexiaomingcheng.hidden = YES;
     // Do any additional setup after loading the view, typically from a nib.
@@ -286,6 +252,7 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         @try {
             NSLog(@"%@",responseObject);
+            if([[responseObject objectForKey:@"result"] intValue]==0){
             NSDictionary *array = [responseObject objectForKey:@"schoolDTOs"];
             
             arr = [[NSMutableArray alloc]init];
@@ -302,10 +269,13 @@
             self.xuexiaomingcheng.hidden = NO;
             flog = 1;
             [self.xuexiaomingcheng reloadData];
-            
+            }
+            else{
+                [WarningBox warningBoxModeText:@"获取失败，请重试！" andView:self.view];
+
+            }
         } @catch (NSException *exception) {
             
-            //NSLog(@"网络");
         }
         
         
@@ -314,7 +284,6 @@
         [WarningBox warningBoxHide:YES andView:self.view];
         [WarningBox warningBoxModeText:@"网络异常，请重试！" andView:self.view];
         flog=0;
-        //NSLog(@"- -%@",error);
     }];
 
 }
@@ -328,12 +297,7 @@
     }else{
         Denglu_ViewController *dlvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"denglu"];
         
-//        dlvc.name = self.xuexiao.text;
-//        
-//        dlvc.ip = self.ip;
-//        
-//        dlvc.serial = self.serial;
-    
+
         [self.navigationController pushViewController:dlvc animated:YES];
         //[self presentViewController:dlvc animated:NO completion:nil];
     }

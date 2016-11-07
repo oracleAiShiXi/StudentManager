@@ -33,9 +33,7 @@
      @{NSFontAttributeName:[UIFont systemFontOfSize:18],
        NSForegroundColorAttributeName:[UIColor whiteColor]}];
     //设置导航条为透明
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-//    self.navigationController.navigationBar.shadowImage = [UIImage new];
-//    self.navigationController.navigationBar.translucent = YES;
+
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"5fc1ff"];
     //self.view.backgroundColor = [UIColor colorWithHexString:@"5fc1ff"];
     //按钮大小
@@ -56,45 +54,12 @@
     self.neirongTextview.delegate  = self;
     self.neirongTextview.editable = NO;
 
-//    self.myTF = [[UITextField alloc] initWithFrame:CGRectMake(30, 84, self.view.frame.size.width-60, self.view.frame.size.height-160)];
-//    self.myTF.enabled = NO;
-//    self.myTF.backgroundColor = [UIColor clearColor];
-//    self.myTF.borderStyle = UITextBorderStyleRoundedRect;
-//    self.myTF.layer.cornerRadius = 30.0;
-//    self.myTF.layer.borderColor = [[UIColor whiteColor]CGColor];
-//    self.myTF.layer.borderWidth = 2.0;
-//    self.myTF.clearButtonMode = UITextFieldViewModeWhileEditing;
-//    self.myTF.delegate = self;
-//    [self.view addSubview:self.myTF];
-//    self.xq1 = [[UITextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-70, 94, 140, 30)];
-//    self.xq1.enabled = NO;
-//    self.xq1.adjustsFontSizeToFitWidth = YES;
-//    self.xq1.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-//    self.xq1.backgroundColor = [UIColor clearColor];
-//    self.xq1.font = [UIFont systemFontOfSize:24];
-//    self.xq1.textColor = [UIColor whiteColor];
-//    [self.view addSubview:self.xq1];
-//    
-//    self.xq2 = [[UITextView alloc] initWithFrame:CGRectMake(32, 134, self.view.frame.size.width-64, self.view.frame.size.height-190)];
-//    //self.xq2.enabled = NO;
-//    self.xq2.editable = NO;
-//    
-//    self.xq2.backgroundColor = [UIColor clearColor];
-//    self.xq2.font = [UIFont systemFontOfSize:18];
-//    self.xq2.textColor = [UIColor whiteColor];
-//    [self.view addSubview:self.xq2];
-    
-    
 
-    //NSLog(@"%@",self.studentId);
-    //NSLog(@"%@",self.noticeId);
     [WarningBox warningBoxModeIndeterminate:@"正在加载中..." andView:self.view];
     
     //拿到学校IP和studentID
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-    //    [def objectForKey:@"IP"];
-    //    [def objectForKey:@"studentId"];
-    
+   
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html", nil];
@@ -112,7 +77,7 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         @try {
             [WarningBox warningBoxHide:YES andView:self.view];
-           // NSLog(@"公告－－%@",responseObject);
+           // NSLog(@"公告详情－－%@",responseObject);
             NSString *str1 = [responseObject objectForKey:@"noticeTitle"];
             NSString *str2 = [responseObject objectForKey:@"noticeContent"];
             NSString *str3 = [responseObject objectForKey:@"issueTime"];

@@ -122,8 +122,7 @@
     
     //拿到存的学校IP和studentId
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-//    [def objectForKey:@"IP"];
-//    [def objectForKey:@"studentId"];
+
    
   [WarningBox warningBoxModeIndeterminate:@"提交中..." andView:self.view];
     
@@ -152,7 +151,8 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         @try {
-            
+           // NSLog(@"用户意见%@",responseObject);
+            if ([[responseObject objectForKey:@"result"]intValue]==0){
             [WarningBox warningBoxHide:YES andView:self.view];
             
             [WarningBox warningBoxModeText:@"上传成功！" andView:self.view];
@@ -161,7 +161,10 @@
                 [self.navigationController popViewControllerAnimated:YES];
             });
             
-           
+            }
+            else{
+            [WarningBox warningBoxModeText:@"上传失败，请重试" andView:self.view];
+            }
           
         } @catch (NSException *exception) {
            [WarningBox warningBoxModeText:@"" andView:self.view];

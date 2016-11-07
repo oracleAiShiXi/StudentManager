@@ -79,33 +79,9 @@
 //图片
 -(NSString *)tianqitupian:(CLLocation *)location
 {
-   //NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-//    NSString *strURL = [[NSString alloc] initWithFormat:@"http://weatherapi.market.xiaomi.com/wtr-v2/temp/realtime?cityId=%@",[def objectForKey:@"cityId"]];
-//    strURL = [strURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    NSURL *url = [NSURL URLWithString:strURL];
-//    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-//    NSError *error;
-//    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil  error:&error];
-//    //data转换dictionary
-//    NSDictionary *resDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-//    //把字典中result剥离出来
-//    NSLog(@"resDict2--%@",resDict);
-//    NSString *str;
-//    if (resDict) {
-//        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:@"0",@"晴",@"1",@"中雪",@"2",@"中雨",@"3",@"阵雨",@"4",@"多云",@"5",@"多云转晴",@"6",@"小雪",@"7",@"阴转晴",@"8",@"阴",@"9",@"小雨",@"10",@"大雨",@"11",@"大雨转晴",@"12",@"多云转阴",@"13",@"雨加雪",@"14",@"小雨转晴",@"15",@"大雪转晴",@"16",@"霾",@"17",@"中雨转晴",@"18",@"多云转晴天",@"19",@"暴雨转晴",@"20",@"中雨转阴",@"21",@"小雨转阴",@"22",@"大雨转阴",@"23",@"阵雨转阴", nil];
-//        NSDictionary *result = [resDict objectForKey:@"weatherinfo"];
-//        self.tianqi = [result objectForKey:@"weather"];
-//        str = [dict objectForKey:self.tianqi];
-//        if (str == nil) {
-//            str = @" ";
-//        }
-//    }
-//    return str;
-    
+   
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     NSString *astr = [def objectForKey:@"locality"];
-   // NSLog(@"the city is  %@",astr);
-   // NSString *astr = @"哈尔滨";
     NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding (kCFStringEncodingGB_18030_2000);
     NSString *str1 = [astr stringByAddingPercentEscapesUsingEncoding:enc];
    // NSLog(@" reStr %@",str1);
@@ -114,7 +90,8 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2.0f];
     NSError *err;
     NSData *data=[NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&err];
-    
+//    NSString *strr=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+//    NSLog(@"the strr ---%@",strr);
     dic = [[NSMutableDictionary alloc]init];
     
     NSXMLParser *parser = [[NSXMLParser alloc]initWithData:data];
@@ -122,12 +99,16 @@
     [parser parse];
     
     NSString *str;
-    //self.tianqi =  [dic objectForKey:@"figure1"];
+  
     str = [dic objectForKey:@"figure1"];
-//    if (str == nil) {
-//        str = @" ";
-//        }
-   // NSLog(@"the str = =%@",str);
+    if (str == nil||str.length==1||[str isEqual:@" "]) {
+        str = [dic objectForKey:@"figure2"];
+        if (str == nil||str.length==1||[str isEqual:@" "]){
+         str = [dic objectForKey:@"figure1"];
+        }
+        }
+   
+    //NSLog(@"the str = =%@",str);
     return str;
     
 }
@@ -169,16 +150,25 @@
     
    
     if ([elementName isEqualToString:@"status1"]) {
-       // NSLog(@"status1...%@",str);
+        //NSLog(@"status1...%@",str);
+        
       [dic setObject:str forKey:@"status1"];
     }
-   else if ([elementName isEqualToString:@"figure1"]) {
+    if ([elementName isEqualToString:@"figure1"]) {
        // NSLog(@"figure1...%@",str);
       [dic setObject:str forKey:@"figure1"];
     }
-  else  if ([elementName isEqualToString:@"city"]) {
+   if ([elementName isEqualToString:@"city"]) {
        // NSLog(@"city...%@",str);
        [dic setObject:str forKey:@"city"];
+    }
+    if ([elementName isEqualToString:@"figure2"]) {
+        // NSLog(@"city...%@",str);
+        [dic setObject:str forKey:@"figure2"];
+    }
+    if ([elementName isEqualToString:@"status2"]) {
+        // NSLog(@"city...%@",str);
+        [dic setObject:str forKey:@"status2"];
     }
     
    //NSLog(@"%@",dic);

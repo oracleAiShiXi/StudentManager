@@ -150,28 +150,6 @@
 
     
     
-    MaxX = 35;
-    
-    MaxY = CGRectGetMaxY(self.shenlabel.frame)+45;
-    
-    MaxY1 =CGRectGetMaxY(self.shilabel.frame)+45;
-    
-    MaxW = [[UIScreen mainScreen] bounds].size.width-70;
-    
-    MaxH = 150;
-    
-    shengTableView = [[UITableView alloc] initWithFrame:CGRectMake(MaxX , MaxY, MaxW, MaxH)];
-    shengTableView.backgroundColor = [UIColor colorWithRed:99/255.0 green:194/255.0 blue:252/255.0 alpha:1];
-    
-    shengTableView.delegate = self;
-    shengTableView.dataSource = self;
-    
-    
-    shiTableView = [[UITableView alloc] initWithFrame:CGRectMake(MaxX , MaxY1, MaxW, MaxH)];
-    shiTableView.backgroundColor = [UIColor colorWithRed:99/255.0 green:194/255.0 blue:252/255.0 alpha:1];
-    
-    shiTableView.delegate = self;
-    shiTableView.dataSource = self;
     
     _jinjilianxirenTextField.delegate = self;
     _lianxidianhuaTextField.delegate = self;
@@ -219,12 +197,37 @@
     // Pass the selected object to the new view controller.
 }
 */
+-(void)shishishi{
+    MaxX = 35;
+    
+    MaxY = CGRectGetMaxY(self.shenlabel.frame);
+    
+    MaxY1 =CGRectGetMaxY(self.shilabel.frame);
+    
+    MaxW = [[UIScreen mainScreen] bounds].size.width-70;
+    
+    MaxH = 150;
+    
+    shengTableView = [[UITableView alloc] initWithFrame:CGRectMake(MaxX , MaxY, MaxW, MaxH)];
+    shengTableView.backgroundColor = [UIColor colorWithRed:99/255.0 green:194/255.0 blue:252/255.0 alpha:1];
+    
+    shengTableView.delegate = self;
+    shengTableView.dataSource = self;
+    
+    
+    shiTableView = [[UITableView alloc] initWithFrame:CGRectMake(MaxX , MaxY1, MaxW, MaxH)];
+    shiTableView.backgroundColor = [UIColor colorWithRed:99/255.0 green:194/255.0 blue:252/255.0 alpha:1];
+    
+    shiTableView.delegate = self;
+    shiTableView.dataSource = self;
 
+}
 - (IBAction)shenBtn:(id)sender {
     
     [shiTableView removeFromSuperview];
     
     if (n==0) {
+        [self shishishi];
         sheng = [[NSMutableArray alloc] init];
         pId = [[NSMutableArray alloc] init];
         
@@ -261,6 +264,7 @@
     
     
     if (kk==0) {
+        [self shishishi]; 
         shi = [[NSMutableArray alloc] init];
         cId = [[NSMutableArray alloc] init];
         NSArray *carr;

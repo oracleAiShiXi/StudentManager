@@ -13,8 +13,10 @@
 #import "SBJson.h"
 #import "AFHTTPSessionManager.h"
 #import "Zhuye_ViewController.h"
+#import <MessageUI/MessageUI.h>
+
 #import <CoreLocation/CoreLocation.h>
-@interface Sos_ViewController()<CLLocationManagerDelegate>
+@interface Sos_ViewController()<CLLocationManagerDelegate,MFMessageComposeViewControllerDelegate>
 {
     NSString*street;
     NSString*jing;
@@ -37,9 +39,7 @@
      @{NSFontAttributeName:[UIFont systemFontOfSize:18],
        NSForegroundColorAttributeName:[UIColor whiteColor]}];
     //设置导航条为透明
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-//    self.navigationController.navigationBar.shadowImage = [UIImage new];
-   // self.navigationController.navigationBar.translucent = NO;
+
     self.view.backgroundColor = [UIColor colorWithHexString:@"5fc1ff"];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"5fc1ff"];
     //按钮大小
@@ -61,72 +61,7 @@
     //设置输入文字顶行【有导航栏时】
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-//    UILabel *l1;
-//    UITextField *tf5;
-//    self.myTF = [[UITextField alloc] initWithFrame:CGRectMake(50, 80, self.view.frame.size.width-100, self.view.frame.size.height/2)];
-//    self.myTV = [[UITextView alloc] initWithFrame:CGRectMake(55, 90, self.view.frame.size.width-110, self.view.frame.size.height/2-10)];
-//    if (self.view.frame.size.width == 414){
-//        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+10, 100, 40)];
-//        l1 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/2+90, self.view.frame.size.width-90, 20)];
-//
-//        
-//        self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+10, 100, 40)];
-//        l1.font = [UIFont systemFontOfSize:15];
-//    }else if (self.view.frame.size.width == 375){
-//        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+10, 100, 40)];
-//        self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+10, 100, 40)];
-//        l1 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/2+90, self.view.frame.size.width-100, 20)];
-//        l1.font = [UIFont systemFontOfSize:13];
-//        
-//    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 568){
-//        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+30, 80, 30)];
-//        self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+30, 80, 30)];
-//        l1 = [[UILabel alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height/2+90, self.view.frame.size.width-100, 20)];
-//        l1.font = [UIFont systemFontOfSize:10];
-//        
-//    }else if (self.view.frame.size.width == 320 && self.view.frame.size.height == 480){
-//        tf5 = [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+40, 60, 25)];
-//        self.myBt = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, self.view.frame.size.height/3*2+40, 60, 25)];
-//        l1 = [[UILabel alloc] initWithFrame:CGRectMake(60, self.view.frame.size.height/2+90, self.view.frame.size.width-100, 20)];
-//        l1.font = [UIFont systemFontOfSize:9];
-//    }
-
-//    self.myTF.backgroundColor = [UIColor clearColor];
-//    self.myTF.enabled = NO;
-//    self.myTF.borderStyle = UITextBorderStyleRoundedRect;
-//    self.myTF.layer.cornerRadius = 8.0;
-//    self.myTF.layer.borderColor = [[UIColor whiteColor]CGColor];
-//    self.myTF.layer.borderWidth = 2.0;
-//    self.myTF.clearButtonMode = UITextFieldViewModeWhileEditing;
-//    [self.view addSubview:self.myTF];
     
-//    self.myTV.backgroundColor = [UIColor clearColor];
-//    self.myTV.font = [UIFont systemFontOfSize:18];
-//    self.myTV.textColor = [UIColor whiteColor];
-//    [self.view addSubview:self.myTV];
-    
-    
-//    l1.textColor = [UIColor whiteColor];
-//    l1.text = @"注:把你的紧急情况进行上报，我们会立马查收!";
-//    [self.view addSubview:l1];
-//    
-//    
-//    tf5.backgroundColor = [UIColor clearColor];
-//    tf5.textColor = [UIColor whiteColor];
-//    tf5.enabled = NO;
-//    tf5.borderStyle = UITextBorderStyleRoundedRect;
-//    tf5.layer.cornerRadius = 8.0;
-//    tf5.layer.borderColor = [[UIColor whiteColor]CGColor];
-//    tf5.layer.borderWidth = 2.0;
-//    tf5.clearButtonMode = UITextFieldViewModeWhileEditing;
-//    [self.view addSubview:tf5];
-//    
-//    
-//    [self.myBt setTitle:@"提交" forState:UIControlStateNormal];
-//    [self.myBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    self.myBt.backgroundColor = [UIColor clearColor];
-//    [self.myBt addTarget:self action:@selector(tj) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:self.myBt];
     
     //键盘回收
     self.view.userInteractionEnabled = YES;
@@ -180,22 +115,21 @@
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [WarningBox warningBoxHide:YES andView:self.view];
             @try {
-                //if ([[responseObject objectForKey:@"result"] intValue]==0){
+               // NSLog(@"sos上报－－%@",responseObject);
+               
+                if ([[responseObject objectForKey:@"result"] intValue]==0){
                 [WarningBox warningBoxModeText:@"上报成功" andView:self.view];
-                
-               // NSLog(@"上报1－－%@",responseObject);
-               // NSLog(@"--%@",[responseObject objectForKey:@"soscontent"]);
-                //[responseObject setObject:self.myTV.text forKey:@"soscontent"];
-                self.result = [responseObject objectForKey:@"result"];
                 Zhuye_ViewController *zvc = [[Zhuye_ViewController alloc]init];
                 zvc.result2 = self.result;
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                     [self sendsms];
                     [self.navigationController popViewControllerAnimated:YES];
                 });
-                
-                
-                
-                //}
+           
+            }
+            else{
+                [WarningBox warningBoxModeText:@"上报失败 请重试" andView:self.view];
+            }
                 
             } @catch (NSException *exception) {
                 //NSLog(@"网络");
@@ -211,59 +145,8 @@
 }
 
 
-//-(void)tj//添加
-//{
-//    if([self.myTV.text isEqualToString:@""]){
-//        [WarningBox warningBoxModeText:@"请输入内容!" andView:self.view];
-//    }else{
-//        [WarningBox warningBoxModeIndeterminate:@"正在上报..." andView:self.view];
-//        
-//        //拿到学校IP和studentID
-//        NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-// 
-//        
-//    //接口
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    
-//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain",@"text/html", nil];
-//    
-//    SBJsonWriter *writer = [[SBJsonWriter alloc]init];
-//    //出入参数：
-//     NSDictionary*datadic=[NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId",jing,@"longitude",wei,@"latitude",street,@"locationinfo",self.myTV.text,@"soscontent", nil];
-//        
-//        
-//    NSString *jsonstring =[writer stringWithObject:datadic];
-//    NSString *url=[NSString stringWithFormat:@"http://%@/job/intf/mobile/gate.shtml?command=sosup",[def objectForKey:@"IP"]];
-//    NSDictionary *msg = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
-//    
-//    [manager POST:url parameters:msg progress:^(NSProgress * _Nonnull uploadProgress) {
-//        
-//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        [WarningBox warningBoxHide:YES andView:self.view];
-//        @try {
-//            //if ([[responseObject objectForKey:@"result"] intValue]==0){
-//                [WarningBox warningBoxModeText:@"上报成功" andView:self.view];
-//                [WarningBox warningBoxHide:YES andView:self.view];
-//                NSLog(@"上报1－－%@",responseObject);
-//                NSLog(@"--%@",[responseObject objectForKey:@"soscontent"]);
-//            //[responseObject setObject:self.myTV.text forKey:@"soscontent"];
-//                self.result = [responseObject objectForKey:@"result"];
-//                Zhuye_ViewController *zvc = [[Zhuye_ViewController alloc]init];
-//                zvc.result2 = self.result;
-//                [self.navigationController popViewControllerAnimated:YES];
-//            //}
-//            
-//        } @catch (NSException *exception) {
-//            NSLog(@"网络");
-//            //[self.navigationController popViewControllerAnimated:YES];
-//        }
-//    
-//    }failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        //NSLog(@"- -%@",error);
-//    }];
-//    }
-//
-//}
+
+
 
 #pragma mark - textfield
 //-(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -275,6 +158,57 @@
 -(void)fingerTapped:(UITapGestureRecognizer *)gestureRecognizer
 {
     [self.view endEditing:YES];
+}
+
+
+-(void)sendsms{
+    if( [MFMessageComposeViewController canSendText] )// 判断设备能不能发送短信
+    {
+        MFMessageComposeViewController*picker = [[MFMessageComposeViewController alloc] init];
+        // 设置委托
+        picker.messageComposeDelegate= self;
+        NSUserDefaults*def= [NSUserDefaults standardUserDefaults];
+        
+        NSRange range = [street rangeOfString:@"@"];
+        NSString *addres = [street substringToIndex:range.location];
+        // 默认信息内容
+       
+        NSString *text = [NSString stringWithFormat:@"求助！我在：%@%@%@,我是：%@",jing,wei,addres,[def objectForKey:@"studentName"]];
+    
+        picker.body = text;
+        // 默认收件人(可多个)
+       NSString *Ss = [NSString stringWithFormat:@"%@",[def objectForKey:@"teacherPhone"]];
+       
+       picker.recipients = [NSArray arrayWithObject:Ss];
+     
+     
+        [self presentViewController:picker animated:YES completion:^{}];
+        
+        }else{
+        [WarningBox warningBoxModeText:@" 该设备不能发送应用内SMS消息，请升级设备" andView:self.view];
+       //NSLog(@"不支持");
+    }
+}
+
+#pragma mark MFMessageComposeViewControllerDelegate
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    switch (result){
+        case MessageComposeResultCancelled:
+           // NSLog(@"取消发送");
+            break;
+        case MessageComposeResultFailed:
+            
+           // NSLog(@"发送失败");
+            break;
+        case MessageComposeResultSent:
+          //  NSLog(@"发送成功");
+            break;
+            
+        default:
+            break;
+    }
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 
@@ -312,7 +246,7 @@
     //将纬度现实到label上
     wei = [NSString stringWithFormat:@"%lf", newLocation.coordinate.latitude];
     // 获取当前所在的城市名
-    // NSLog(@"经纬度------%@,%@",jing,wei);
+     //NSLog(@"经纬度------%@,%@",jing,wei);
     
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     //根据经纬度反向地理编译出地 址信息
