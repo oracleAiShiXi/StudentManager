@@ -251,7 +251,7 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         @try {
-            NSLog(@"%@",responseObject);
+//            NSLog(@"%@",responseObject);
             if([[responseObject objectForKey:@"result"] intValue]==0){
             NSDictionary *array = [responseObject objectForKey:@"schoolDTOs"];
             
