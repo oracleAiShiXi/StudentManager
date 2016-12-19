@@ -23,6 +23,7 @@
 		D740FE7D1D6313D400D8D9A1 /* RCAnimatedImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = D740FE7C1D6313D400D8D9A1 /* RCAnimatedImagesView.m */; };
 		D740FE7F1D6313E200D8D9A1 /* bizhi.png in Resources */ = {isa = PBXBuildFile; fileRef = D740FE7E1D6313E200D8D9A1 /* bizhi.png */; };
 		D7499F651DC03DEB00FFCB40 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7499F641DC03DEB00FFCB40 /* MessageUI.framework */; };
+		D74CC5BB1DD424B900614605 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7C9F9991D49B43700CB9ACD /* Info.plist */; };
 		D79209541D5317AA006E13F3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D79209531D5317AA006E13F3 /* CoreLocation.framework */; };
 		D79209561D5317B1006E13F3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D79209551D5317B1006E13F3 /* MapKit.framework */; };
 		D7B065A21D6449A60067AB02 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7B0659E1D6449A60067AB02 /* Default@2x.png */; };
@@ -968,6 +969,7 @@
 				D7E2D7841D5B07F900E9A6E5 /* anniu_2.png in Resources */,
 				BB88D6C11D61984E001A8B30 /* usehelp01.png in Resources */,
 				D7E2D79D1D5B07F900E9A6E5 /* 14.png in Resources */,
+				D74CC5BB1DD424B900614605 /* Info.plist in Resources */,
 				D7E2D7821D5B07F900E9A6E5 /* anniu_1.png in Resources */,
 				D7E2D7961D5B07F900E9A6E5 /* 7.png in Resources */,
 				D7E2D7A21D5B07F900E9A6E5 /* 19.png in Resources */,
