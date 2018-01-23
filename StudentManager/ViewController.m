@@ -101,6 +101,7 @@
         self.xuexiaomingcheng = [[UITableView alloc]initWithFrame:CGRectMake((self.view.frame.size.width)/2-120, (self.view.frame.size.height/3)+(self.view.frame.size.height/10-10)+10, 240, 240)];
         
     }
+    
     self.xuexiao.placeholder = @"选择你的学校";
     self.xuexiao.layer.borderColor = [[UIColor whiteColor]CGColor];
     self.xuexiao.layer.borderWidth = 2.0;
@@ -109,7 +110,7 @@
     self.xuexiao.delegate = self;
     self.xuexiao.backgroundColor = [UIColor clearColor];
     self.xuexiao.textColor = [UIColor whiteColor];
-    self.xuexiao.borderStyle = UITextBorderStyleRoundedRect;
+    //self.xuexiao.borderStyle = UITextBorderStyleRoundedRect;
 
     [self.view addSubview:self.xuexiao];
     
@@ -120,7 +121,7 @@
     [self.view addSubview:self.xuanxuexiao];
     
     self.queding.backgroundColor = [UIColor clearColor];
-    self.queding.borderStyle = UITextBorderStyleRoundedRect;
+    //self.queding.borderStyle = UITextBorderStyleRoundedRect;
     self.queding.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.queding.layer.borderWidth = 2.0;
     self.queding.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -251,7 +252,7 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         @try {
-//            NSLog(@"%@",responseObject);
+            NSLog(@"%@",responseObject);
             if([[responseObject objectForKey:@"result"] intValue]==0){
             NSDictionary *array = [responseObject objectForKey:@"schoolDTOs"];
             
@@ -281,6 +282,7 @@
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
         [WarningBox warningBoxHide:YES andView:self.view];
         [WarningBox warningBoxModeText:@"网络异常，请重试！" andView:self.view];
         flog=0;

@@ -313,7 +313,7 @@ int nicaicai=0;
         if (array1.count > 0){
             
             self.placemark = [array1 objectAtIndex:0];
-           // NSLog(@"1-1-1-1%@",self.placemark);
+            NSLog(@"1-1-1-1%@",self.placemark);
                 NSString *sheng=[NSString stringWithFormat:@"%@",[self.placemark.addressDictionary objectForKey:@"State"]];
             NSString *sheng1 = [sheng substringToIndex:sheng.length-1];
            

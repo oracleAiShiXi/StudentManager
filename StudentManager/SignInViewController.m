@@ -24,6 +24,8 @@
     NSString*street;
     NSString*jing;
     NSString*wei;
+    NSString*jied;
+    
 }
 @end
 
@@ -80,6 +82,7 @@
         // 一个是requestAlwaysAuthorization，一个是requestWhenInUseAuthorization
         [_locationManager requestAlwaysAuthorization];//这句话ios8以上版本使用。
         [_locationManager startUpdatingLocation];
+      
     
     }else{
        // NSLog(@"我们找不到你");
@@ -104,12 +107,12 @@
         if (array.count > 0){
             CLPlacemark *placemark = [array objectAtIndex:0];
            
-           // NSLog(@"-------------------------------具体位置%@",placemark);
+            NSLog(@"-------------------------------具体位置%@",placemark);
             
             street = [NSString stringWithFormat:@"%@",placemark];
             
             
-         
+            NSLog(@"%@",street);
             //获取城市
             NSString *city = placemark.locality;
             
@@ -121,6 +124,11 @@
                  shi=[NSString stringWithFormat:@"%@",placemark.locality];
                 //区
                  qu=[NSString stringWithFormat:@"%@",placemark.subLocality];
+                //街道
+                jied =[NSString stringWithFormat:@"%@",placemark.thoroughfare];
+               
+                
+                
             }
            
         }
@@ -194,7 +202,7 @@
         //设置选择后的图片可被编辑
         Imgpicker.allowsEditing = YES;
         
-        
+       
         
         [self presentViewController:Imgpicker animated:YES completion:nil];
         
@@ -234,10 +242,15 @@
     SBJsonWriter *writer = [[SBJsonWriter alloc]init];
     
     //出入参数：
-        NSString *ss = [NSString stringWithFormat:@"%@%@",sheng,shi];
+
+        if([jied isEqualToString:@"null"]){
+        jied =@"";
+        }
+
+    NSString *ss = [NSString stringWithFormat:@"%@%@%@%@",sheng,shi,qu,jied];
      NSDictionary*datadic=[NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId",jing,@"longitude",wei,@"latitude",ss,@"address", nil];
       
-    
+        NSLog(@"%@",datadic);
     NSString *jsonstring =[writer stringWithObject:datadic];
     
     
@@ -245,16 +258,17 @@
    
     
     NSDictionary *msg = [NSDictionary dictionaryWithObjectsAndKeys:jsonstring,@"MSG", nil];
-    
+     //   NSLog(@"%@",msg);
    [manager POST:url parameters:msg constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
        NSURL *filepa = [NSURL fileURLWithPath:filepath];
+       NSLog(@"%@",filepa);
        [formData appendPartWithFileURL:filepa name:@"currentImage" error:nil];
    
         } progress:^(NSProgress * _Nonnull uploadProgress) {
        
    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
        @try {
-        //NSLog(@"\n\n---------\n\n%@",responseObject);
+      // NSLog(@"\n\n---------\n\n%@",responseObject);
            [WarningBox warningBoxHide:YES andView:self.view];
            if ([[responseObject objectForKey:@"result"] intValue]==0) {
                [WarningBox warningBoxModeText:@"签到成功！" andView:self.view];
@@ -269,6 +283,7 @@
           [WarningBox warningBoxModeText:@"" andView:self.view];
        }
    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+       NSLog(@"%@",error);
        [WarningBox warningBoxHide:YES andView:self.view];
        [WarningBox warningBoxModeText:@"网络连接失败！" andView:self.view];
    }];
@@ -293,11 +308,14 @@
     //这里将图片放在沙盒的documents下的Image文件夹中
     NSString * DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/"];
     
-    //把刚刚图片转换的data对象拷贝至沙盒中
+    
     [fileManager createDirectoryAtPath:DocumentsPath withIntermediateDirectories:YES attributes:nil error:nil];
     
     //图片名以时间戳的格式存储到目录下
     filepath=[DocumentsPath stringByAppendingString:[NSString stringWithFormat:@"/currentImage.png"]];
+    
+    
+    
     
    [fileManager createFileAtPath:filepath contents:imgdata attributes:nil];
     

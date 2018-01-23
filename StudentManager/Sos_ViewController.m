@@ -103,7 +103,10 @@
         
         SBJsonWriter *writer = [[SBJsonWriter alloc]init];
         //出入参数：
-        NSDictionary*datadic=[NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId",jing,@"longitude",wei,@"latitude",street,@"locationinfo",self.TextView.text,@"soscontent", nil];
+        NSRange range = [street rangeOfString:@"@"];
+        NSString *addres = [street substringToIndex:range.location];
+        
+        NSDictionary*datadic=[NSDictionary dictionaryWithObjectsAndKeys:[def objectForKey:@"studentId"],@"studentId",jing,@"longitude",wei,@"latitude",addres,@"locationinfo",self.TextView.text,@"soscontent", nil];
         
         
         NSString *jsonstring =[writer stringWithObject:datadic];
